@@ -1,1 +1,0 @@
-These assets describe surface shading properites.
