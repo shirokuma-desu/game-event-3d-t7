@@ -1,0 +1,1 @@
+Image files can consist of texture files for materials and surfacing, UI overlay elements for user interface, and light map to store lighting information

@@ -1,0 +1,1 @@
+Aniamations contain animatied motion clips and thier controller files. These can also contain Timeline assets for in-game cinematics or rigging information for procedural animation.
