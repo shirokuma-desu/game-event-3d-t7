@@ -721,7 +721,7 @@ MonoBehaviour:
   isDead: 0
   attackDamage: 20
   attackSpeed: 0.5
-  attackRange: 25
+  attackRange: 15
   spotIndex: 0
   lockPos: {x: 0, y: 0, z: 0}
 --- !u!114 &-6731632440895196106
