@@ -23,16 +23,30 @@ public class TurretShooting : MonoBehaviour
     {
         if (turretStat.isSettle)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
-            foreach (Collider collider in colliders)
+            Attack(FindNearestEnemy(), attackDamage);
+        }
+    }
+
+    GameObject FindNearestEnemy()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
+        GameObject nearestEnemy = null;
+        float nearestDistance = Mathf.Infinity;
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Enemy"))
             {
-                if (collider.CompareTag("Enemy"))
+                float distance = Vector3.Distance(transform.position, collider.transform.position);
+                if (distance < nearestDistance)
                 {
-                    Attack(collider.gameObject, attackDamage);
-                    break;
+                    nearestDistance = distance;
+                    nearestEnemy = collider.gameObject;
                 }
             }
         }
+
+        return nearestEnemy;
     }
 
     void Attack(GameObject target, int damage)

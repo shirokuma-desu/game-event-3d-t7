@@ -38,15 +38,18 @@ public class Turret : MonoBehaviour
 
     public void TakeDamage(int health)
     {
-        currentHealth -= health;
-        if (currentHealth <= 0)
+        if (isSettle)
         {
-            currentHealth = 0;
-        }
+            currentHealth -= health;
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+            }
 
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
         }
     }
 

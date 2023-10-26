@@ -643,7 +643,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   turretStat: {fileID: 0}
-  turretTransform: {fileID: 0}
 --- !u!1 &6291903787343292546
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,8 +720,8 @@ MonoBehaviour:
   isUpgrade: 0
   isDead: 0
   attackDamage: 20
-  attackSpeed: 1
-  attackRange: 15
+  attackSpeed: 0.5
+  attackRange: 25
   spotIndex: 0
   lockPos: {x: 0, y: 0, z: 0}
 --- !u!114 &-6731632440895196106
