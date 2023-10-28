@@ -17,8 +17,8 @@ public class HealthTurretShow : MonoBehaviour
 
     private void Update()
     {
-        maxHealth = turretStat.maxHealth;
-        currentHealth = turretStat.currentHealth;
+        maxHealth = turretStat.turretStat.health;
+        currentHealth = turretStat.health;
 
         health.maxValue = maxHealth;
         health.minValue = 0f;

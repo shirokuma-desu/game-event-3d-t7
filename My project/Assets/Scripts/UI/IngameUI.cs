@@ -73,8 +73,8 @@ public class IngameUI : MonoBehaviour
 
         if (selectedTurret != null)
         {
-            int currentHealth = selectedTurret.GetComponent<Turret>().currentHealth;
-            int maxHealth = selectedTurret.GetComponent<Turret>().maxHealth;
+            int currentHealth = selectedTurret.GetComponent<Turret>().health;
+            int maxHealth = selectedTurret.GetComponent<Turret>().turretStat.health;
             int repairCostAll = (maxHealth - currentHealth) / 10 * repairCost;
             repairCostAll += repairCostAll * (int)(0.05f * repairTimes);
 
@@ -125,8 +125,8 @@ public class IngameUI : MonoBehaviour
 
     void RepairButton()
     {
-        int currentHealth = selectedTurret.GetComponent<Turret>().currentHealth;
-        int maxHealth = selectedTurret.GetComponent<Turret>().maxHealth;
+        int currentHealth = selectedTurret.GetComponent<Turret>().health;
+        int maxHealth = selectedTurret.GetComponent<Turret>().turretStat.health;
         int repairCostAll = (maxHealth - currentHealth) * repairCost;
         repairCostAll += repairCostAll * (int)(0.05f * repairTimes);
 
@@ -139,7 +139,7 @@ public class IngameUI : MonoBehaviour
             if (moneySystem.money >= repairCostAll)
             {
                 moneySystem.money -= repairCostAll;
-                selectedTurret.GetComponent<Turret>().currentHealth = selectedTurret.GetComponent<Turret>().maxHealth;
+                selectedTurret.GetComponent<Turret>().health = selectedTurret.GetComponent<Turret>().turretStat.health;
             }
             else
             {

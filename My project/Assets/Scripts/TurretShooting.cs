@@ -9,6 +9,8 @@ public class TurretShooting : MonoBehaviour
     private int attackDamage;
     private float attackSpeed;
     private float attackRange;
+
+    private float attackCooldown;
     private float currentCooldown = 0f;
 
     private void Awake()
@@ -17,6 +19,8 @@ public class TurretShooting : MonoBehaviour
         attackDamage = turretStat.attackDamage;
         attackRange = turretStat.attackRange;
         attackSpeed = turretStat.attackSpeed;
+
+        attackCooldown = 1f / attackSpeed;
     }
 
     private void Update()
@@ -64,7 +68,7 @@ public class TurretShooting : MonoBehaviour
                 bulletScript.SetTarget(target, damage);
             }
 
-            currentCooldown = attackSpeed;
+            currentCooldown = attackCooldown;
         }
         else
         {

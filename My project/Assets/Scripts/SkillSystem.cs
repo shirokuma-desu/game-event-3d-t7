@@ -6,6 +6,8 @@ using Button = UnityEngine.UI.Button;
 
 public class SkillSystem : MonoBehaviour
 {
+    public Animator animator;
+
     public GameObject[] skillAoePrefabs;
     public GameObject[] skillDisablePrefabs;
     public GameObject[] skillDpsPrefabs;
@@ -165,6 +167,7 @@ public class SkillSystem : MonoBehaviour
 
     void HandleSkillAoe()
     {
+        animator.SetTrigger("isCasting");
         StartCoroutine(DisplayText("Meteor is coming!"));
         Vector3 randomOffset = Random.insideUnitCircle * 10f;
         Vector3 spawnPos = lockSkillPos + new Vector3(randomOffset.x, 25f, randomOffset.y);
