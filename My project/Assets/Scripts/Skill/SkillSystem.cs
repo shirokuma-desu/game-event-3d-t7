@@ -168,6 +168,7 @@ public class SkillSystem : MonoBehaviour
     void HandleSkillAoe()
     {
         animator.SetTrigger("isCasting");
+
         StartCoroutine(DisplayText("Meteor is coming!"));
         Vector3 randomOffset = Random.insideUnitCircle * 10f;
         Vector3 spawnPos = lockSkillPos + new Vector3(randomOffset.x, 25f, randomOffset.y);

@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
     {
         moneySystem = GameObject.Find("GameManager").GetComponent<MoneySystem>();
         rb = GetComponent<Rigidbody>();
+
         health = enemyStat.health;
         damage = enemyStat.attackDamage;
         speed = enemyStat.speed;
