@@ -2,29 +2,32 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    public int maxHealth;
-    public int currentHealth;
+    public TurretSO turretStat;
 
     public bool isSettle = false;
     public bool isUpgrade = false;
     public bool isDead = false;
 
-    public int attackDamage = 20;
-    public float attackSpeed = 1f;
-    public float attackRange = 15f;
+    public int health;
+    public int attackDamage;
+    public float attackSpeed;
+    public float attackRange;
 
     public int spotIndex;
 
     public Vector3 lockPos;
 
-    private void Start()
+    private void Awake()
     {
-        currentHealth = maxHealth;
+        health = turretStat.health;
+        attackDamage = turretStat.attackDamage;
+        attackSpeed = turretStat.attackSpeed;
+        attackRange = turretStat.attackRange;
     }
 
     private void Update()
     {
-        isDead = currentHealth <= 0;
+        isDead = health <= 0;
         if (isDead)
         {
             Die();
@@ -36,19 +39,19 @@ public class Turret : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int health)
+    public void TakeDamage(int damage)
     {
         if (isSettle)
         {
-            currentHealth -= health;
-            if (currentHealth <= 0)
+            health -= damage;
+            if (health <= 0)
             {
-                currentHealth = 0;
+                health = 0;
             }
 
-            if (currentHealth > maxHealth)
+            if (health > turretStat.health)
             {
-                currentHealth = maxHealth;
+                health = turretStat.health;
             }
         }
     }

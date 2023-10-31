@@ -6318,6 +6318,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7080512682472304806}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2076079745 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6631008873790084651, guid: 97d09cafeccf6fa4eb7629a38fb1ef1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7080512682472304806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2096305517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6528,6 +6534,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3888392526467437766, guid: 97d09cafeccf6fa4eb7629a38fb1ef1c,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2076079745}
     - target: {fileID: 3888392526467437766, guid: 97d09cafeccf6fa4eb7629a38fb1ef1c,
         type: 3}
       propertyPath: skillAoe

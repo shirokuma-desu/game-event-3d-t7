@@ -3,21 +3,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Animator animator;
     public MoneySystem moneySystem;
+    public EnemySO enemyStat;
     private Rigidbody rb;
+    public BoxCollider boxCollider;
 
     public GameObject target;
 
     [SerializeField]
-    private int maxHealth;
-    [SerializeField]
-    private int currentHealth;
-    [SerializeField]
-    private int baseDamage;
-    [SerializeField]
+    private int health;
     private int damage;
-    [SerializeField]
     private float speed;
+    private int moneyDrop;
+
+    private bool isDyingAnimation = false;
 
     [Header("Disable Affects")]
     [SerializeField]
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        health -= damage;
     }
 
     public void TakeDisable(float disableTime)
@@ -46,16 +46,29 @@ public class Enemy : MonoBehaviour
     {
         moneySystem = GameObject.Find("GameManager").GetComponent<MoneySystem>();
         rb = GetComponent<Rigidbody>();
-        currentHealth = maxHealth;
-        damage = baseDamage;
+
+        health = enemyStat.health;
+        damage = enemyStat.attackDamage;
+        speed = enemyStat.speed;
+        moneyDrop = enemyStat.moneyDrop;
     }
 
     private void Update()
     {
-        Die();
+        if (isDyingAnimation)
+        {
+            boxCollider.enabled = false;
+            damage = 0;
+            rb.isKinematic = true;
+        }
+
+        if (health <= 0)
+        {
+            Die();
+        }
 
         target = FindTarget();
-        if (target != null && !isStunning)
+        if (target != null && !isStunning && !isDyingAnimation)
         {
             Vector3 dir = target.transform.position - transform.position;
             dir.Normalize();
@@ -122,11 +135,15 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        if (currentHealth <= 0)
-        {
-            moneySystem.money += 10;
-            Destroy(gameObject);
-        }
+        moneySystem.money += moneyDrop;
+        isDyingAnimation = true;
+        animator.SetTrigger("Die");
+        Invoke("DestroyGO", .5f);
+    }
+
+    void DestroyGO()
+    {
+        Destroy(gameObject);
     }
 
     void Attack(int damage)
