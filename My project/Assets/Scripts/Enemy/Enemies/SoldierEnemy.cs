@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoliderEnemy : Enemy
+public class SoldierEnemy : Enemy
 {
-    private void Start()
-    {
-        SetTarget();
-    }
-
     private void FixedUpdate()
     {
         Move();

@@ -32,8 +32,19 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameEvent m_anEnemyAttacking;
 
+    public EnemySpawner Spawner
+    {
+        get; set;
+    }
+
+    public bool IsDied
+    {
+        get; private set;
+    }
+
     protected Vector3 m_target;
 
+    //
     public virtual void TakeDamage(float _ammount)
     {
         m_health -= _ammount;
@@ -46,6 +57,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
+        IsDied = true;
+
         m_anEnemyDie.RaiseEvent();
     }
 
@@ -57,6 +70,13 @@ public class Enemy : MonoBehaviour
     public virtual void SetTarget()
     {
         m_target = GetTarget();
+    }
+
+    //
+    protected virtual void Start()
+    {
+        IsDied = false;
+        SetTarget();
     }
 
     protected virtual void Move()
