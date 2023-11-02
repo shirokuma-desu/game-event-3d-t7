@@ -26,6 +26,12 @@ public class Enemy : MonoBehaviour
     private float m_bounty;
     public float Bounty { get => m_bounty; }
 
+    [Header("Stats")]
+    [SerializeField]
+    private GameEvent m_anEnemyDie;
+    [SerializeField]
+    private GameEvent m_anEnemyAttacking;
+
     protected Vector3 m_target;
 
     public virtual void TakeDamage(float _ammount)
@@ -38,14 +44,14 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
-
+        m_anEnemyDie.RaiseEvent();
     }
 
     public virtual void Attack()
     {
-
+        m_anEnemyAttacking.RaiseEvent();
     }
 
     public virtual void SetTarget()
