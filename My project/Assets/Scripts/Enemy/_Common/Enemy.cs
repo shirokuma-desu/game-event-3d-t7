@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     private float m_bounty;
     public float Bounty { get => m_bounty; }
 
-    [Header("Stats")]
+    [Header("GameEvents")]
     [SerializeField]
     private GameEvent m_anEnemyDie;
     [SerializeField]
@@ -72,15 +72,20 @@ public class Enemy : MonoBehaviour
     {
         Vector3 _target = Vector3.zero;
 
-        if (!EnvironmentManager.Instance.IsAnyTowerLeft)
+        if (EnvironmentManager.Instance.IsAnyTowerLeft)
         {
-            _target = EnvironmentManager.Instance.GetTowerPosition(0);
+            float _tempDistance = Mathf.Infinity;
             for (int i = 1; i < 4; i++)
             {
-                Vector3 _towerPosition = EnvironmentManager.Instance.GetTowerPosition(i);
-                if (Vector3.Distance(transform.position, _towerPosition) < Vector3.Distance(transform.position, _target))
+                if (EnvironmentManager.Instance.IsTowerSettled(i))
                 {
-                    _target = _towerPosition;
+                    Vector3 _towerPosition = EnvironmentManager.Instance.GetTowerPosition(i);
+                    float _towerDistance = Vector3.Distance(transform.position, _towerPosition);
+                    if (_towerDistance < _tempDistance)
+                    {
+                        _tempDistance = _towerDistance;
+                        _target = _towerPosition;
+                    }
                 }
             }
         }

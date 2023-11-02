@@ -10,6 +10,8 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     [SerializeField]
     private GameObject[] m_tower = new GameObject[4];
 
+    private bool[] m_settledTower = new bool[4];
+
     private int m_currentTowerNumber;
 
     private bool m_isAnyTowerLeft;
@@ -23,6 +25,11 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     public Vector3 GetTowerPosition(int _index)
     {
         return m_tower[_index].transform.position;
+    }
+
+    public bool IsTowerSettled(int _index)
+    {
+        return m_settledTower[_index];
     }
 
     //
