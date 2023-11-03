@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Move()
     {
         Vector3 _direction = (m_target - transform.position).normalized;
-        _direction.y = transform.position.y;
+        _direction.y = 0;
 
         transform.forward = _direction;
         m_body.velocity = _direction * m_moveSpeed * m_speedScale;

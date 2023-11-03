@@ -20,6 +20,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float m_spawningInterval = 1f;
 
+    [Range(0f, 1f)] [SerializeField]
+    private float m_spawningProbability = 1f;
+
     [Header("Pools")]
     [SerializeField]
     private EnemyObjectPool m_enemyPool;
@@ -33,8 +36,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void CalculatePosition()
     {
-        Vector3 position = EnvironmentManager.Instance.EnemySpawnZone.GetSpawnPoint();
-        SpawnEnemy(position);
+        float _probability = Random.Range(0f, 1f);
+        if (_probability < m_spawningProbability)
+        {
+            Vector3 position = EnvironmentManager.Instance.EnemySpawnZone.GetSpawnPoint();
+            SpawnEnemy(position);
+        }
     }
 
     int _count = 0;
