@@ -7,19 +7,16 @@ public class EnemySpawner : MonoBehaviour
     [Header("Prototype")]
     [SerializeField]
     private GameObject m_enemyPrototype;
-    public GameObject EnemyPrototype
-    {
-        get => m_enemyPrototype;
-    }
+    public GameObject EnemyPrototype { get => m_enemyPrototype; }
 
     [Header("Spawn")]
     [Space(15f)]
     [SerializeField]
+    private float m_spawnYPosition = 0f;
+    [SerializeField]
     private float m_spawningDelay = 0f;
-
     [SerializeField]
     private float m_spawningInterval = 1f;
-
     [Range(0f, 1f)] [SerializeField]
     private float m_spawningProbability = 1f;
 
@@ -44,11 +41,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    int _count = 0;
     private void SpawnEnemy(Vector3 _position)
     {
+        _position.y = m_spawnYPosition;
         var enemy = m_enemyPool.Get(_position);
-        Debug.Log(++_count);
 
         StartCoroutine(DespawnEnemy(enemy));
     }

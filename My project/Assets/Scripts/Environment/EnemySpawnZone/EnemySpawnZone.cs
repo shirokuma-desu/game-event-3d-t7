@@ -9,8 +9,6 @@ public class EnemySpawnZone : MonoBehaviour
 
     [Header("Configs")]
     [SerializeField]
-    private float m_spawnYPosition;
-    [SerializeField]
     private float m_spawnPointRadius;
 
     public Vector3 GetSpawnPoint()
@@ -20,7 +18,6 @@ public class EnemySpawnZone : MonoBehaviour
         Vector3 _targetSpawnPoint = m_spawnPoints[_pointIndex].position;
         Vector2 _randomCircleSpawn = Random.insideUnitCircle * Random.Range(0f, m_spawnPointRadius);
         _targetSpawnPoint.x += _randomCircleSpawn.x;
-        _targetSpawnPoint.y = m_spawnYPosition;
         _targetSpawnPoint.z += _randomCircleSpawn.y;
 
         return _targetSpawnPoint;

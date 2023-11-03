@@ -11,10 +11,7 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     private GameObject[] m_towerSpot = new GameObject[4];
     [SerializeField]
     private EnemySpawnZone m_enemySpawnZone;
-    public EnemySpawnZone EnemySpawnZone
-    {
-        get => m_enemySpawnZone;
-    }
+    public EnemySpawnZone EnemySpawnZone { get => m_enemySpawnZone; }
 
     private bool[] m_settledTower = new bool[4];
 

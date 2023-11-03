@@ -2468,6 +2468,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1222236706}
+  - {fileID: 1107935823}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &601140698
@@ -2482,8 +2483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526657c94d061614f89ba4c8ad37f671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_individualSpawner:
+  m_spawner:
   - {fileID: 1222236707}
+  - {fileID: 1107935824}
 --- !u!1 &669312863
 GameObject:
   m_ObjectHideFlags: 0
@@ -3812,6 +3814,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068885763}
   m_CullTransparentMesh: 1
+--- !u!1 &1107935822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107935823}
+  - component: {fileID: 1107935824}
+  m_Layer: 0
+  m_Name: PaladinSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1107935823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107935822}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1656872438}
+  m_Father: {fileID: 601140697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107935824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107935822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f8b3c7e5417304a9948bd63d9241d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemyPrototype: {fileID: 7353811381822490567, guid: b3921407206ea214a9bdfc9f09775fdb,
+    type: 3}
+  m_spawnYPosition: 0
+  m_spawningDelay: 0
+  m_spawningInterval: 1
+  m_spawningProbability: 1
+  m_enemyPool: {fileID: 1656872439}
 --- !u!1 &1117810162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,9 +4000,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 8696727463069981470, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
     type: 3}
+  m_spawnYPosition: 0
   m_spawningDelay: 0
-  m_spawningInterval: 0.1
-  m_spawningProbability: 0.1
+  m_spawningInterval: 0.5
+  m_spawningProbability: 1
   m_enemyPool: {fileID: 676647313}
 --- !u!1 &1231241333
 GameObject:
@@ -5213,6 +5268,51 @@ Transform:
   - {fileID: 200010720}
   m_Father: {fileID: 85096402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1656872437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1656872438}
+  - component: {fileID: 1656872439}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1656872438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656872437}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1107935823}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656872439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656872437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb116265d1d30ee4a9cf21c4ae7c7986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MaxSize: 50
 --- !u!1 &1659084498
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,7 +6473,6 @@ MonoBehaviour:
   - {fileID: 308841004}
   - {fileID: 1547405759}
   - {fileID: 773908455}
-  m_spawnYPosition: 0
   m_spawnPointRadius: 20
 --- !u!1 &2024645235
 GameObject:

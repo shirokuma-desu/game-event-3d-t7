@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField]
     protected Rigidbody m_body;
 
     [Header("Stats")]
     [SerializeField]
-    private float m_health;
-    public float Health { get => m_health; }
+    private float m_maxHealth;
+    public float MaxHealth { get => m_maxHealth; }
+    private float m_currentHealth;
+    public float CurrentHealth { get => m_currentHealth; }
 
     [SerializeField]
     private float m_moveSpeed;
@@ -32,22 +33,16 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameEvent m_anEnemyAttacking;
 
-    public EnemySpawner Spawner
-    {
-        get; set;
-    }
+    public EnemySpawner Spawner { get; set; }
 
-    public bool IsDied
-    {
-        get; private set;
-    }
+    public bool IsDied { get; private set; }
 
     protected Vector3 m_target;
 
     //
     public virtual void TakeDamage(float _ammount)
     {
-        m_health -= _ammount;
+        m_currentHealth -= _ammount;
     }
 
     public virtual void TakeDisable(float _time)
@@ -75,6 +70,8 @@ public class Enemy : MonoBehaviour
     //
     protected virtual void Start()
     {
+        m_body = GetComponent<Rigidbody>();
+
         IsDied = false;
         SetTarget();
     }
