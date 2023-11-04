@@ -50,7 +50,7 @@ public class DisableCasting : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Enemy"))
             {
-                collider.gameObject.GetComponent<Enemy>().TakeDisable(disableTime);
+                //collider.gameObject.GetComponent<Enemy>().TakeDisable(disableTime);
                 collider.gameObject.GetComponent<Enemy>().TakeDamage(damage);
 
             }

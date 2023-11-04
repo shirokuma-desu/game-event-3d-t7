@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float m_moveSpeed;
     public float MoveSpeed { get => m_moveSpeed; }
+    private float m_currentMoveSpeed;
+    public float CurrentMoveSpeed { get => m_currentMoveSpeed; }
     private const float m_speedScale = 0.05f;
 
     [SerializeField]
@@ -35,7 +37,11 @@ public class Enemy : MonoBehaviour
 
     public EnemySpawner Spawner { get; set; }
 
+    //
     public bool IsDied { get; private set; }
+
+    public bool IsSlowed { get => (SlowAmmount > 0); }
+    public float SlowAmmount { get; private set; } 
 
     protected Vector3 m_target;
 
@@ -43,11 +49,6 @@ public class Enemy : MonoBehaviour
     public virtual void TakeDamage(float _ammount)
     {
         m_currentHealth -= _ammount;
-    }
-
-    public virtual void TakeDisable(float _time)
-    {
-
     }
 
     protected virtual void Die()
@@ -67,10 +68,21 @@ public class Enemy : MonoBehaviour
         m_target = GetTarget();
     }
 
+    public virtual void TakeSlowDebuff(float _ammount, float _duration)
+    {
+        float _trueAmmount = Mathf.Min(_ammount, 100 - SlowAmmount);
+        SlowAmmount += _trueAmmount;
+
+        StartCoroutine(SlowDebuffExpire(_trueAmmount, _duration));
+    }
+
     //
     protected virtual void Start()
     {
         m_body = GetComponent<Rigidbody>();
+
+        m_currentHealth = m_maxHealth;
+        m_currentMoveSpeed = m_moveSpeed;
 
         IsDied = false;
         SetTarget();
@@ -82,7 +94,7 @@ public class Enemy : MonoBehaviour
         _direction.y = 0;
 
         transform.forward = _direction;
-        m_body.velocity = _direction * m_moveSpeed * m_speedScale;
+        m_body.velocity = _direction * m_moveSpeed * m_speedScale * ((100f - SlowAmmount) / 100f);
     }
 
     protected virtual Vector3 GetTarget()
@@ -113,4 +125,12 @@ public class Enemy : MonoBehaviour
 
         return _target;
     } 
+
+    //
+    private IEnumerator SlowDebuffExpire(float _ammount, float _duration)
+    {
+        yield return new WaitForSeconds(_duration);
+
+        SlowAmmount -= _ammount;
+    }
 }
