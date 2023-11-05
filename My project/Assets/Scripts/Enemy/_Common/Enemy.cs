@@ -40,8 +40,15 @@ public class Enemy : MonoBehaviour
     //
     public bool IsDied { get; private set; }
 
-    public bool IsSlowed { get => (SlowAmmount > 0); }
-    public float SlowAmmount { get; private set; } 
+    public bool IsSlowed { get; private set; }
+    public bool IsStun { get; private set; }
+
+    private List<EnemyDebuff> m_currentDebuffs = new List<EnemyDebuff>();
+    private float m_healthModifyScale;
+    private float m_speedModifyScale;
+
+    private bool m_canMove;
+    private bool m_canAttack;
 
     protected Vector3 m_target;
 
@@ -60,6 +67,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
+        if (!m_canAttack) return;
+
         m_anEnemyAttacking.RaiseEvent();
     }
 
@@ -68,12 +77,16 @@ public class Enemy : MonoBehaviour
         m_target = GetTarget();
     }
 
-    public virtual void TakeSlowDebuff(float _ammount, float _duration)
+    public virtual void TakeSlowEffect(float _ammount, float _duration)
     {
-        float _trueAmmount = Mathf.Min(_ammount, 100 - SlowAmmount);
-        SlowAmmount += _trueAmmount;
+        EnemyDebuff _debuff = new EnemyDebuff(
+            EnemyDebuff.DebuffType.Slow, _ammount, _duration
+        );
 
-        StartCoroutine(SlowDebuffExpire(_trueAmmount, _duration));
+        m_currentDebuffs.Add(_debuff);
+        StartCoroutine(ExpireDebuff(_debuff, _duration));
+
+        SetDebuffStatus();
     }
 
     //
@@ -81,10 +94,16 @@ public class Enemy : MonoBehaviour
     {
         m_body = GetComponent<Rigidbody>();
 
+        m_canMove = true;
+        m_canAttack = true;
+
         m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 
+        SetDebuffStatus();
+
         IsDied = false;
+
         SetTarget();
     }
 
@@ -94,7 +113,11 @@ public class Enemy : MonoBehaviour
         _direction.y = 0;
 
         transform.forward = _direction;
-        m_body.velocity = _direction * m_moveSpeed * m_speedScale * ((100f - SlowAmmount) / 100f);
+
+        if (m_canMove)
+        {
+            m_body.velocity = _direction * m_moveSpeed * m_speedScale * m_speedModifyScale;
+        }
     }
 
     protected virtual Vector3 GetTarget()
@@ -124,13 +147,33 @@ public class Enemy : MonoBehaviour
         }
 
         return _target;
-    } 
+    }
 
     //
-    private IEnumerator SlowDebuffExpire(float _ammount, float _duration)
+    private void SetDebuffStatus()
+    {
+        m_speedModifyScale = 1f;
+
+        foreach (EnemyDebuff _debuff in m_currentDebuffs)
+        {
+            switch (_debuff.Type)
+            {
+                case EnemyDebuff.DebuffType.Slow:
+                    m_speedModifyScale = Mathf.Min(m_speedModifyScale, (100f - _debuff.Ammount) / 100f);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    private IEnumerator ExpireDebuff(EnemyDebuff _debuff, float _duration)
     {
         yield return new WaitForSeconds(_duration);
 
-        SlowAmmount -= _ammount;
+        m_currentDebuffs.Remove(_debuff);
+
+        SetDebuffStatus();
     }
 }

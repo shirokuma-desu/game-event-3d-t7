@@ -15924,6 +15924,8 @@ MonoBehaviour:
   m_bounty: 100
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
   m_anEnemyAttacking: {fileID: 11400000, guid: 6b08b8d4680f9e84c8fc7793499e72d6, type: 2}
+  _slow1: {fileID: 11400000, guid: 956e84d503d11fa4f93de790fc808a09, type: 2}
+  _slow2: {fileID: 11400000, guid: 6ad56ce4325406b4881d9afd213282e5, type: 2}
 --- !u!114 &6757664115958256806
 MonoBehaviour:
   m_ObjectHideFlags: 0
