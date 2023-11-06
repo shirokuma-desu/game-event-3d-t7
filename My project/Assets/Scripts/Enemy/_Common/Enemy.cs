@@ -73,6 +73,12 @@ public class Enemy : MonoBehaviour
         m_target = GetTarget();
     }
 
+    public virtual void Heal(float _ammount)
+    {
+        m_currentHealth += _ammount;
+        m_currentHealth = Mathf.Min(m_currentHealth, m_maxHealth);
+    }
+
     public virtual void TakeSlowEffect(float _ammount, float _duration)
     {
         EnemyDebuff _debuff = new EnemyDebuff(

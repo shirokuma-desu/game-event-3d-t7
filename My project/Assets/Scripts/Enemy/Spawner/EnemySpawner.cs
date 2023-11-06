@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private EnemyObjectPool m_enemyPool;
 
-    public EnemySpawnManager Manager;
+    public EnemySpawnManager Manager { get; set; }
 
     public void SetSpawningInterval(float _value)
     {
