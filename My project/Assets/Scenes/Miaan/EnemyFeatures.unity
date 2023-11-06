@@ -2457,6 +2457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601140697}
   - component: {fileID: 601140698}
+  - component: {fileID: 601140699}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -2493,9 +2494,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526657c94d061614f89ba4c8ad37f671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spawner:
+  m_enemies:
+  - {fileID: 3779488997612212858, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d, type: 3}
+  - {fileID: 2552418493621885343, guid: b3921407206ea214a9bdfc9f09775fdb, type: 3}
+--- !u!114 &601140699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601140696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b283f8ca14aa5b943a7556280b05eb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spawners:
   - {fileID: 1222236707}
   - {fileID: 1107935824}
+  m_forms: []
 --- !u!1 &669312863
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,10 +3899,10 @@ MonoBehaviour:
   m_enemyPrototype: {fileID: 7353811381822490567, guid: b3921407206ea214a9bdfc9f09775fdb,
     type: 3}
   m_spawnYPosition: 0
-  m_spawningDelay: 0
   m_spawningInterval: 0.1
   m_spawningProbability: 1
   m_enemyPool: {fileID: 1656872439}
+  Manager: {fileID: 0}
 --- !u!1 &1117810162
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,10 +4038,10 @@ MonoBehaviour:
   m_enemyPrototype: {fileID: 8696727463069981470, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
     type: 3}
   m_spawnYPosition: 0
-  m_spawningDelay: 0
   m_spawningInterval: 0.1
   m_spawningProbability: 1
   m_enemyPool: {fileID: 676647313}
+  Manager: {fileID: 0}
 --- !u!1 &1231241333
 GameObject:
   m_ObjectHideFlags: 0

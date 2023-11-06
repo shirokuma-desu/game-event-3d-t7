@@ -23,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private EnemyObjectPool m_enemyPool;
 
+    public EnemySpawnManager Manager;
+
     public void SetSpawningInterval(float _value)
     {
         m_spawningInterval = _value;
@@ -52,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(Vector3 _position)
+    public void SpawnEnemy(Vector3 _position)
     {
         _position.y = m_spawnYPosition;
         var enemy = m_enemyPool.Get(_position);
