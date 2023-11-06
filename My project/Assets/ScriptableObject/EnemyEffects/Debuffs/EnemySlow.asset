@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemySlow
   m_EditorClassIdentifier: 
   Ammount: 40
-  Duration: 2
+  Duration: 4

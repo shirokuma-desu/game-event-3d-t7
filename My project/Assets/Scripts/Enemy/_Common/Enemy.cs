@@ -160,6 +160,7 @@ public class Enemy : MonoBehaviour
             {
                 case EnemyDebuff.DebuffType.Slow:
                     m_speedModifyScale = Mathf.Min(m_speedModifyScale, (100f - _debuff.Ammount) / 100f);
+                    IsSlowed = true;
                     break;
 
                 default:

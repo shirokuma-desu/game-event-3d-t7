@@ -1698,6 +1698,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretSpot4
       objectReference: {fileID: 0}
+    - target: {fileID: 5987222169251645423, guid: a910bf5108c2f2f449826c92f52d5220,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6583099397941443787, guid: a910bf5108c2f2f449826c92f52d5220,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1960,6 +1965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretSpot2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987222169251645423, guid: a910bf5108c2f2f449826c92f52d5220,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6583099397941443787, guid: a910bf5108c2f2f449826c92f52d5220,
         type: 3}
@@ -2933,6 +2943,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretSpot3
       objectReference: {fileID: 0}
+    - target: {fileID: 5987222169251645423, guid: a910bf5108c2f2f449826c92f52d5220,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6583099397941443787, guid: a910bf5108c2f2f449826c92f52d5220,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3222,6 +3237,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 8101918828389589910, guid: 97d09cafeccf6fa4eb7629a38fb1ef1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3863,8 +3883,8 @@ MonoBehaviour:
     type: 3}
   m_spawnYPosition: 0
   m_spawningDelay: 0
-  m_spawningInterval: 1
-  m_spawningProbability: 0
+  m_spawningInterval: 0.1
+  m_spawningProbability: 1
   m_enemyPool: {fileID: 1656872439}
 --- !u!1 &1117810162
 GameObject:
@@ -4002,8 +4022,8 @@ MonoBehaviour:
     type: 3}
   m_spawnYPosition: 0
   m_spawningDelay: 0
-  m_spawningInterval: 0.5
-  m_spawningProbability: 0
+  m_spawningInterval: 0.1
+  m_spawningProbability: 1
   m_enemyPool: {fileID: 676647313}
 --- !u!1 &1231241333
 GameObject:
@@ -4348,6 +4368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretSpot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987222169251645423, guid: a910bf5108c2f2f449826c92f52d5220,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6583099397941443787, guid: a910bf5108c2f2f449826c92f52d5220,
         type: 3}
@@ -6307,74 +6332,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 499837184}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1921575885
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -23.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -13.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1355705313022252736, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696727463069981470, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Soldier
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d, type: 3}
 --- !u!1 &1940089044
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,4 +6864,3 @@ SceneRoots:
   - {fileID: 710455423}
   - {fileID: 196675703}
   - {fileID: 601140697}
-  - {fileID: 1921575885}
