@@ -8,4 +8,7 @@ public class PaladinEnemy : Enemy
     {
         Move();
     }
+
+    public override void TakeSlowEffect(float _ammount, float _duration) { }
+    public override void TakeStunEffect(float _duration) { }
 }

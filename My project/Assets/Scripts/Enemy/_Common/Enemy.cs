@@ -42,20 +42,18 @@ public class Enemy : MonoBehaviour
 
     public bool IsSlowed { get; private set; }
     public bool IsStun { get; private set; }
+    public bool IsVulnerable { get; private set; }
 
     private List<EnemyDebuff> m_currentDebuffs = new List<EnemyDebuff>();
-    private float m_healthModifyScale;
     private float m_speedModifyScale;
-
-    private bool m_canMove;
-    private bool m_canAttack;
+    private float m_damageTakenModifyScale;
 
     protected Vector3 m_target;
 
     //
     public virtual void TakeDamage(float _ammount)
     {
-        m_currentHealth -= _ammount;
+        m_currentHealth -= _ammount * m_damageTakenModifyScale;
     }
 
     protected virtual void Die()
@@ -67,8 +65,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
-        if (!m_canAttack) return;
-
         m_anEnemyAttacking.RaiseEvent();
     }
 
@@ -89,13 +85,34 @@ public class Enemy : MonoBehaviour
         SetDebuffStatus();
     }
 
+    public virtual void TakeStunEffect(float _duration)
+    {
+        EnemyDebuff _debuff = new EnemyDebuff(
+            EnemyDebuff.DebuffType.Stun, 0f, _duration
+        );
+
+        m_currentDebuffs.Add(_debuff);
+        StartCoroutine(ExpireDebuff(_debuff, _duration));
+
+        SetDebuffStatus();
+    }
+
+    public virtual void TakeVulnerableEffect(float _ammount, float _duration)
+    {
+        EnemyDebuff _debuff = new EnemyDebuff(
+            EnemyDebuff.DebuffType.Vulnerable, _ammount, _duration
+        );
+
+        m_currentDebuffs.Add(_debuff);
+        StartCoroutine(ExpireDebuff(_debuff, _duration));
+
+        SetDebuffStatus();
+    }
+
     //
     protected virtual void Start()
     {
         m_body = GetComponent<Rigidbody>();
-
-        m_canMove = true;
-        m_canAttack = true;
 
         m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
@@ -109,13 +126,13 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Move()
     {
-        Vector3 _direction = (m_target - transform.position).normalized;
-        _direction.y = 0;
-
-        transform.forward = _direction;
-
-        if (m_canMove)
+        if (!IsStun)
         {
+            Vector3 _direction = (m_target - transform.position).normalized;
+            _direction.y = 0;
+
+            transform.forward = _direction;
+
             m_body.velocity = _direction * m_moveSpeed * m_speedScale * m_speedModifyScale;
         }
     }
@@ -149,18 +166,34 @@ public class Enemy : MonoBehaviour
         return _target;
     }
 
-    //
-    private void SetDebuffStatus()
+    protected void SetDebuffStatus()
     {
+        IsSlowed = false;
+        IsStun = false;
+        IsVulnerable = false; 
         m_speedModifyScale = 1f;
+        m_damageTakenModifyScale = 1f;
 
         foreach (EnemyDebuff _debuff in m_currentDebuffs)
         {
             switch (_debuff.Type)
             {
                 case EnemyDebuff.DebuffType.Slow:
-                    m_speedModifyScale = Mathf.Min(m_speedModifyScale, (100f - _debuff.Ammount) / 100f);
+                    m_speedModifyScale = Mathf.Min(m_speedModifyScale, 
+                        (100f - _debuff.Ammount) / 100f
+                    );
                     IsSlowed = true;
+                    break;
+
+                case EnemyDebuff.DebuffType.Stun:
+                    IsStun = true;
+                    break;
+
+                case EnemyDebuff.DebuffType.Vulnerable:
+                    m_damageTakenModifyScale = Mathf.Max(m_damageTakenModifyScale,
+                        (100f + _debuff.Ammount) / 100f
+                    );
+                    IsVulnerable = true;
                     break;
 
                 default:
@@ -169,6 +202,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //
     private IEnumerator ExpireDebuff(EnemyDebuff _debuff, float _duration)
     {
         yield return new WaitForSeconds(_duration);

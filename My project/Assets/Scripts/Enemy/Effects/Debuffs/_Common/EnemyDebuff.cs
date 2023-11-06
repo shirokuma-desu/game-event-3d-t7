@@ -6,6 +6,8 @@ public class EnemyDebuff
     public enum DebuffType
     {
         Slow,
+        Stun,
+        Vulnerable,
     }
 
     public DebuffType Type;

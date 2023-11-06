@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemySlow", menuName = "Scriptable Objects/Enemy Effects/Debuff/Slow", order = 1)]
-public class EnemySlowEffect : EnemyExternalEffect
+public class EnemySlowEffectSO : EnemyEffectSO
 {
     public float Ammount;
     public float Duration;
