@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     [SerializeField]
-    private List<EnemySpawner> m_spawner;
-
+    private List<Enemy> m_enemies;
 
 }

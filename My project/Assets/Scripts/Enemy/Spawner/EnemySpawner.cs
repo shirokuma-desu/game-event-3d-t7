@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -14,8 +15,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float m_spawnYPosition = 0f;
     [SerializeField]
-    private float m_spawningDelay = 0f;
-    [SerializeField]
     private float m_spawningInterval = 1f;
     [Range(0f, 1f)] [SerializeField]
     private float m_spawningProbability = 1f;
@@ -24,14 +23,26 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private EnemyObjectPool m_enemyPool;
 
+    public void SetSpawningInterval(float _value)
+    {
+        m_spawningInterval = _value;
+    }
+    public void SetSpawningProbability(float _value)
+    {
+        m_spawningProbability = _value;
+    }
+
     private void Start()
     {
         m_enemyPool.Spawner = this;
-
-        InvokeRepeating(nameof(CalculatePosition), m_spawningDelay, m_spawningInterval);
     }
 
-    private void CalculatePosition()
+    public void StartSpawning()
+    {
+        InvokeRepeating(nameof(SpawnRandomPosition), 0f, m_spawningInterval);
+    }
+
+    private void SpawnRandomPosition()
     {
         float _probability = Random.Range(0f, 1f);
         if (_probability < m_spawningProbability)
