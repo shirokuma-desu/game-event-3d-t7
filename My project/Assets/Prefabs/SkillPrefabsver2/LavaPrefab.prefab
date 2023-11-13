@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1084233825836398668}
   - component: {fileID: 5357931711703791407}
   - component: {fileID: 5078892390358776739}
+  - component: {fileID: 2954169756693631530}
   m_Layer: 0
   m_Name: LavaPrefab
   m_TagString: Untagged
@@ -102,3 +103,15 @@ MonoBehaviour:
   duration: 6
   numberOfPieces: 0
   multicastRate: 0.2
+--- !u!114 &2954169756693631530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4426456262099810233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3f818c97ec15a4891c093de3ad8ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
