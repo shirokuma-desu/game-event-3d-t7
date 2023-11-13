@@ -8,7 +8,7 @@ public class SkillCastController : MonoBehaviour
     private int[] equippedSkillIndex = new int[3];
 
     private float[] skillCooldown = new float[3];
-    [HideInInspector] public float[] skillLastUsed = new float[3];
+    [HideInInspector] public float[] skillLastUsed = new float[3] { 0, 0, 0 };
 
     private void Awake()
     {
@@ -59,6 +59,8 @@ public class SkillCastController : MonoBehaviour
         //skillCooldown[2] = container.SkillPrefabs[2].GetComponent<SkillStats>().Cooldown;
         //container.SetSkillIndex(2, 2);
         #endregion
+
+        HandePropertiesSkillIndex();
     }
 
     #region Cast Skill
@@ -221,6 +223,15 @@ public class SkillCastController : MonoBehaviour
     {
         float currentTime = Time.time;
         return currentTime - skillLastUsed[index] >= skillCooldown[index];
+    }
+
+    private void HandePropertiesSkillIndex()
+    {
+        if (visualScript.isCurrentPreviewAvai())
+        {
+            visualScript.skillPrefabUsingIndex = -1;
+            visualScript.skillPressedIndex = -1;
+        }
     }
     #endregion
 }

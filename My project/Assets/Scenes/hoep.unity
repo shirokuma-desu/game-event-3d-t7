@@ -2004,6 +2004,7 @@ MonoBehaviour:
   skillPressedIndex: 0
   skillPrefabUsingIndex: 0
   isUsingSkill: 0
+  currentSkillToMulti: {fileID: 0}
 --- !u!4 &549191710
 Transform:
   m_ObjectHideFlags: 0
@@ -2044,7 +2045,7 @@ MonoBehaviour:
   skillPreviewPrefabs:
   - {fileID: 7751752049656383104, guid: b674ceeeeccfe0f49ac0dfc26d82c241, type: 3}
   - {fileID: 7464030008664906584, guid: 19fcc0b1494754547a90cbeda5d2baf9, type: 3}
-  equippedSkill: ffffffffffffffffffffffff
+  equippedSkill: 000000000100000002000000
 --- !u!1 &696651273
 GameObject:
   m_ObjectHideFlags: 0

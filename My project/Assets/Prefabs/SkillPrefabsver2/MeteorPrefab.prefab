@@ -50,6 +50,7 @@ MonoBehaviour:
   range: 12
   cooldown: 2.5
   duration: 0
+  numberOfPieces: 0
   multicastRate: 0.15
 --- !u!114 &7778963517824479514
 MonoBehaviour:

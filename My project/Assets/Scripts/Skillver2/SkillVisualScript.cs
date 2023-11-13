@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class SkillVisualScript : MonoBehaviour
@@ -6,11 +7,15 @@ public class SkillVisualScript : MonoBehaviour
     private SkillCastController controller;
     private int[] equippedSkillIndex = new int[3];
 
-    [HideInInspector] public int skillPressedIndex;
-    [HideInInspector] public int skillPrefabUsingIndex;
+    /*[HideInInspector]*/ public int skillPressedIndex = -1;
+    /*[HideInInspector]*/ public int skillPrefabUsingIndex;
     private GameObject currentPreview;
     private Vector3 lockSkillPos = Vector3.zero;
     [HideInInspector] public bool isUsingSkill = false;
+
+    [SerializeField] private GameObject currentSkillToMulti;
+
+    private int multiCastTimes = 0;
 
     private void Awake()
     {
@@ -45,6 +50,8 @@ public class SkillVisualScript : MonoBehaviour
                     break;
             }
         }
+
+        Multicast();
     }
 
     #region Meteor Skill
@@ -69,7 +76,8 @@ public class SkillVisualScript : MonoBehaviour
             isUsingSkill = false;
             controller.skillLastUsed[skillPressedIndex] = Time.time;
             Destroy(currentPreview);
-            HandleMeteorSkill();
+            HandleMeteorSkill(lockSkillPos);
+            multiCastTimes = 0;
         }
 
         if (Input.GetMouseButton(1))
@@ -79,17 +87,17 @@ public class SkillVisualScript : MonoBehaviour
         }
     }
 
-    private void HandleMeteorSkill()
+    private void HandleMeteorSkill(Vector3 targetPos)
     {
         Vector2 randomOffset = Random.insideUnitCircle * 10f;
-        Vector3 spawnPos = lockSkillPos + new Vector3(randomOffset.x, 25f, randomOffset.y);
+        Vector3 spawnPos = targetPos + new Vector3(randomOffset.x, 25f, randomOffset.y);
 
         GameObject meteor = Instantiate(container.SkillPrefabs[0], spawnPos, Quaternion.identity);
         MeteorCasting meteorScript = meteor.GetComponent<MeteorCasting>();
 
         if (meteorScript != null)
         {
-            meteorScript.SetTarget(lockSkillPos);
+            meteorScript.SetTarget(targetPos);
         }
     }
     #endregion
@@ -118,6 +126,7 @@ public class SkillVisualScript : MonoBehaviour
             controller.skillLastUsed[skillPressedIndex] = Time.time;
             Destroy(currentPreview);
             HandleAcidRainSkill();
+            multiCastTimes = 0;
         }
 
         if (Input.GetMouseButton(1))
@@ -130,6 +139,7 @@ public class SkillVisualScript : MonoBehaviour
     private void HandleAcidRainSkill()
     {
         GameObject acidRain = Instantiate(container.SkillPrefabs[1], lockSkillPos, Quaternion.identity);
+        currentSkillToMulti = acidRain;
         float scaleSkill = container.SkillPrefabs[1].GetComponent<SkillStats>().Range;
         acidRain.transform.localScale = new Vector3(2 * scaleSkill, 0.05f, 2 * scaleSkill);
         AcidRainCasting acidScript = acidRain.GetComponent<AcidRainCasting>();
@@ -165,7 +175,8 @@ public class SkillVisualScript : MonoBehaviour
             isUsingSkill = false;
             controller.skillLastUsed[skillPressedIndex] = Time.time;
             Destroy(currentPreview);
-            HandleLazerBeamSkill();
+            HandleLazerBeamSkill(lockSkillPos);
+            multiCastTimes = 0;
         }
 
         if (Input.GetMouseButton(1))
@@ -175,19 +186,19 @@ public class SkillVisualScript : MonoBehaviour
         }
     }
 
-    private void HandleLazerBeamSkill()
+    private void HandleLazerBeamSkill(Vector3 targetPos)
     {
         GameObject lazer = Instantiate(container.SkillPrefabs[2], transform.position, Quaternion.identity);
         float scaleSkill = container.SkillPrefabs[2].GetComponent<SkillStats>().Range;
         lazer.transform.localScale = new Vector3(0.5f, 0.5f, scaleSkill);
-        lazer.transform.position = (lockSkillPos - transform.position).normalized * (scaleSkill / 2f);
+        lazer.transform.position = (targetPos - transform.position).normalized * (scaleSkill / 2f);
         lazer.transform.position = new Vector3(lazer.transform.position.x, 1.5f, lazer.transform.position.z);
-        lazer.transform.forward = (lockSkillPos - transform.position).normalized;
+        lazer.transform.forward = (targetPos - transform.position).normalized;
 
         LazerBeamCasting lazerScript = lazer.GetComponent<LazerBeamCasting>();
         if (lazerScript != null)
         {
-            lazerScript.SetTarget(lockSkillPos);
+            lazerScript.SetTarget(targetPos);
         }
     }
     #endregion
@@ -214,7 +225,8 @@ public class SkillVisualScript : MonoBehaviour
             isUsingSkill = false;
             controller.skillLastUsed[skillPressedIndex] = Time.time;
             Destroy(currentPreview);
-            HandleStarFallSkill();
+            HandleStarFallSkill(container.SkillPrefabs[3].GetComponent<SkillStats>().NumberOfPieces);
+            multiCastTimes = 0;
         }
 
         if (Input.GetMouseButton(1))
@@ -224,9 +236,9 @@ public class SkillVisualScript : MonoBehaviour
         }
     }
 
-    private void HandleStarFallSkill()
+    private void HandleStarFallSkill(int numberPieces)
     {
-        for (int i = 1; i <= container.SkillPrefabs[3].GetComponent<SkillStats>().NumberOfPieces; i++)
+        for (int i = 1; i <= numberPieces; i++)
         {
             Vector2 randomOffset = Random.insideUnitCircle * container.SkillPrefabs[3].GetComponent<SkillStats>().Range;
             Vector3 spawnPos = lockSkillPos + new Vector3(randomOffset.x, lockSkillPos.y, randomOffset.y);
@@ -262,7 +274,8 @@ public class SkillVisualScript : MonoBehaviour
             isUsingSkill = false;
             controller.skillLastUsed[skillPressedIndex] = Time.time;
             Destroy(currentPreview);
-            HandleShadeSkill();
+            HandleShadeSkill(lockSkillPos);
+            multiCastTimes = 0;
         }
 
         if (Input.GetMouseButton(1))
@@ -272,13 +285,13 @@ public class SkillVisualScript : MonoBehaviour
         }
     }
 
-    private void HandleShadeSkill()
+    private void HandleShadeSkill(Vector3 targetPos)
     {
-        GameObject shade = Instantiate(container.SkillPrefabs[4], lockSkillPos, Quaternion.identity);
+        GameObject shade = Instantiate(container.SkillPrefabs[4], targetPos, Quaternion.identity);
         ShadeCasting shadeScript = shade.GetComponent<ShadeCasting>();
         if (shadeScript != null)
         {
-            shadeScript.Settarget(lockSkillPos);
+            shadeScript.Settarget(targetPos);
         }
     }
     #endregion
@@ -307,6 +320,7 @@ public class SkillVisualScript : MonoBehaviour
             controller.skillLastUsed[skillPressedIndex] = Time.time;
             Destroy(currentPreview);
             HandleLavaSkill();
+            multiCastTimes = 0;
         }
 
         if (Input.GetMouseButton(1))
@@ -328,6 +342,106 @@ public class SkillVisualScript : MonoBehaviour
         }
     }
     #endregion
+
+    #region Multicast Skill
+    private void Multicast()
+    {
+        if (skillPressedIndex != -1)
+        {
+            if (controller.skillLastUsed[skillPressedIndex] != 0 && (Time.time - controller.skillLastUsed[skillPressedIndex] < 0.2f) && multiCastTimes < 4)
+            {
+                switch (skillPrefabUsingIndex)
+                {
+                    case 0:
+                        float random0 = Random.value;
+                        Vector3 targetPos = lockSkillPos;
+                        while (random0 <= container.SkillPrefabs[0].GetComponent<SkillStats>().MulticastRate && multiCastTimes < 4)
+                        {
+                            multiCastTimes++;
+                            Vector2 randomNewTargetMeteor = Random.insideUnitCircle * container.SkillPrefabs[0].GetComponent<SkillStats>().Range;
+                            Vector3 newTargetPos = targetPos + new Vector3(randomNewTargetMeteor.x, transform.position.y, randomNewTargetMeteor.y);
+                            Debug.Log("Multicast x" + multiCastTimes);
+                            HandleMeteorSkill(newTargetPos);
+                            random0 = Random.value;
+                        }
+                        break;
+                    case 1:
+                        if (currentSkillToMulti != null)
+                        {
+                            float random1 = Random.value;
+                            while (random1 <= container.SkillPrefabs[1].GetComponent<SkillStats>().MulticastRate && multiCastTimes < 4)
+                            {
+                                multiCastTimes++;
+                                Vector3 baseScale = currentSkillToMulti.transform.localScale;
+                                currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
+                                Debug.Log("Multicast x" + multiCastTimes);
+                                random1 = Random.value;
+                            }
+                        }
+                        break;
+                    case 2:
+                        float random2 = Random.value;
+                        while (random2 <= container.SkillPrefabs[2].GetComponent<SkillStats>().MulticastRate && multiCastTimes < 4)
+                        {
+                            multiCastTimes++;
+                            Vector3 newTargetPos = new Vector3(Random.value, transform.position.y, Random.value).normalized;
+                            HandleLazerBeamSkill(newTargetPos);
+                            random2 = Random.value;
+                        }
+                        break;
+                    case 3:
+                        float random3 = Random.value;
+                        while (random3 <= container.SkillPrefabs[3].GetComponent<SkillStats>().MulticastRate && multiCastTimes < 4)
+                        {
+                            multiCastTimes++;
+                            int numberMore = 2;
+                            HandleStarFallSkill(numberMore);
+                            random3 = Random.value;
+                        }
+                        break;
+                    case 4:
+                        float random4 = Random.value;
+                        while (random4 <= container.SkillPrefabs[4].GetComponent<SkillStats>().MulticastRate && multiCastTimes < 4)
+                        {
+                            multiCastTimes++;
+                            Vector3 targetPos1 = lockSkillPos;
+                            Vector2 randomNewTargetShade = Random.insideUnitCircle * container.SkillPrefabs[0].GetComponent<SkillStats>().Range;
+                            Vector3 newTargetPos = targetPos1 + new Vector3(randomNewTargetShade.x, transform.position.y, randomNewTargetShade.y);
+                            HandleShadeSkill(newTargetPos);
+                            random4 = Random.value;
+                        }
+                        break;
+                    case 5:
+                        if (currentSkillToMulti != null)
+                        {
+                            float random1 = Random.value;
+                            while (random1 <= container.SkillPrefabs[5].GetComponent<SkillStats>().MulticastRate && multiCastTimes < 4)
+                            {
+                                multiCastTimes++;
+                                Vector3 baseScale = currentSkillToMulti.transform.localScale;
+                                currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
+                                Debug.Log("Multicast x" + multiCastTimes);
+                                random1 = Random.value;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+    }
+    #endregion
+
+    public bool isCurrentPreviewAvai()
+    {
+        if (currentPreview == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     private Vector3 GetMousePoint()
     {

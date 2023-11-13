@@ -5,7 +5,6 @@ public class StarFallCasting : MonoBehaviour
     private SkillStats stat;
 
     private int damage;
-    private int numberOfPieces;
 
     private void Awake()
     {
@@ -15,7 +14,6 @@ public class StarFallCasting : MonoBehaviour
     public void SetDamage()
     {
         damage = stat.Damage;
-        numberOfPieces = stat.NumberOfPieces;
     }
 
     private void Update()
