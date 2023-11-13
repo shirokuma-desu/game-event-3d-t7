@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5707135291037197370}
   - component: {fileID: 6631008873790084651}
   - component: {fileID: 4402306503691239824}
-  - component: {fileID: 3888392526467437766}
+  - component: {fileID: -1380851498032842833}
   m_Layer: 0
   m_Name: Base Tower
   m_TagString: BaseTower
@@ -310,7 +310,7 @@ MonoBehaviour:
   armorRecoveryAmount: 5
   currentArmorRecoveryTime: 0
   isDead: 0
---- !u!114 &3888392526467437766
+--- !u!114 &-1380851498032842833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,44 +319,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8101918828389589910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed76e56a047203249ae850c76caaa830, type: 3}
+  m_Script: {fileID: 11500000, guid: cb168b7ed9084f64e82e89c676dc0283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillAoePrefabs:
-  - {fileID: 7816689892644604639, guid: a4d380a988e0a314f95dbf748401a7e4, type: 3}
-  skillDisablePrefabs:
-  - {fileID: 6857744912707604702, guid: 9bc2710fcb922c74da9bfa8962ad3778, type: 3}
-  skillDpsPrefabs:
-  - {fileID: 3888241507040513743, guid: 0d2a8270052552d4a8c38c518b01ea8b, type: 3}
-  skillAoePreview: {fileID: 7751752049656383104, guid: b674ceeeeccfe0f49ac0dfc26d82c241,
-    type: 3}
-  skillDisablePreview: {fileID: 7751752049656383104, guid: 36de753566b74304285017f94e33dba3,
-    type: 3}
-  skillDpsPreview: {fileID: 7464030008664906584, guid: 19fcc0b1494754547a90cbeda5d2baf9,
-    type: 3}
-  skillAoe: {fileID: 0}
-  skillDisable: {fileID: 0}
-  skillDps: {fileID: 0}
-  announceText: {fileID: 0}
-  skillMultiCastRate:
-  - 0.3
-  - 0.3
-  - 0.3
-  skillFreeCastRate:
-  - 0.3
-  - 0.3
-  - 0.3
-  skillCooldown:
-  - 15
-  - 10
-  - 5
-  currentSkillCooldown:
-  - 0
-  - 0
-  - 0
-  currentPreview: {fileID: 0}
-  lockSkillPos: {x: 0, y: 0, z: 0}
-  isUsingSkill: 0
 --- !u!1001 &4298106539030282465
 PrefabInstance:
   m_ObjectHideFlags: 0

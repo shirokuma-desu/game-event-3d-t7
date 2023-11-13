@@ -1,7 +1,7 @@
 # game-event-3d-t7
 
-Coding Style:
-public class MyCodeStyle : MonoBehaviour
+//Coding Style:
+//public class MyCodeStyle : MonoBehaviour
 {
     // Constants: UpperCase SnakeCase
     public const int CONSTANT_FIELD = 56;
