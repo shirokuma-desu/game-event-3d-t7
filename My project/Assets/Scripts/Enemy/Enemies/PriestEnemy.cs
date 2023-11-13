@@ -17,9 +17,9 @@ public class PriestEnemy : Enemy
         Move();
     }
 
-    protected override void Start()
+    protected override void SetupProperties()
     {
-        base.Start();
+        base.SetupProperties();
 
         InvokeRepeating(nameof(Healing), 0f, m_healingInterval);
     }

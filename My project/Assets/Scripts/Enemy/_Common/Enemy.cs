@@ -119,15 +119,23 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         m_body = GetComponent<Rigidbody>();
+    }
 
+    protected virtual void SetupProperties()
+    {
+        SetDebuffStatus();
+
+        SetTarget();
+    }
+
+    protected virtual void ResetProperties()
+    {
         m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 
-        SetDebuffStatus();
-
         IsDied = false;
 
-        SetTarget();
+        StopAllCoroutines();
     }
 
     protected virtual void Move()
@@ -216,5 +224,15 @@ public class Enemy : MonoBehaviour
         m_currentDebuffs.Remove(_debuff);
 
         SetDebuffStatus();
+    }
+
+    private void OnEnable()
+    {
+        SetupProperties();
+    }
+
+    private void OnDisable()
+    {
+        ResetProperties();
     }
 }
