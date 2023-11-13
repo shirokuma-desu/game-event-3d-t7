@@ -7,8 +7,8 @@ public abstract class GenericObjectPool<T> : MonoBehaviour where T : Component
 {
     [Header("Pooling")]
     [SerializeField]
-    [Range(1, 10000)]
-    protected int _MaxSize = 5000;
+    [Range(1, 300)]
+    protected int _MaxSize;
 
     protected IObjectPool<T> _pool;
     protected readonly bool _check = true;
@@ -29,7 +29,7 @@ public abstract class GenericObjectPool<T> : MonoBehaviour where T : Component
         return instance;
     }
 
-    public virtual T Get(Vector2 position)
+    public virtual T Get(Vector3 position)
     {
         var instance = _pool.Get();
         instance.transform.localPosition = position;
