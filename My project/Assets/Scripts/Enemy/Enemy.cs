@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Die();
+            //Die();
         }
 
         target = FindTarget();
@@ -133,13 +133,13 @@ public class Enemy : MonoBehaviour
         return closestTarget;
     }
 
-    void Die()
-    {
-        moneySystem.money += moneyDrop;
-        isDyingAnimation = true;
-        animator.SetTrigger("Die");
-        Invoke("DestroyGO", .5f);
-    }
+    //void Die()
+    //{
+    //    moneySystem.money += moneyDrop;
+    //    isDyingAnimation = true;
+    //    animator.SetTrigger("Die");
+    //    Invoke("DestroyGO", .5f);
+    //}
 
     void DestroyGO()
     {
