@@ -3101,6 +3101,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a910bf5108c2f2f449826c92f52d5220, type: 3}
+--- !u!1 &771187593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771187595}
+  - component: {fileID: 771187594}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &771187594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771187593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb03195d8fda002438a88255f8842aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NotDestroy: 1
+  _initialPoolSize: 10
+  _canGrowPool: 1
+  _loggingType: 1
+  _checkUnassignedSounds: 1
+  _soundList:
+  - Name: 
+    soundType: 0
+    audioClip: {fileID: 0}
+    volumeLow: 0
+    volumeHigh: 0
+    pitchLow: 0
+    pitchHigh: 0
+--- !u!4 &771187595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771187593}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773908454
 GameObject:
   m_ObjectHideFlags: 0
@@ -7158,3 +7215,4 @@ SceneRoots:
   - {fileID: 710455423}
   - {fileID: 196675703}
   - {fileID: 601140697}
+  - {fileID: 771187595}
