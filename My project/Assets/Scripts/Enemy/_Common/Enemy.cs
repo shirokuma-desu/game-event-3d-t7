@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
     public bool IsSlowed { get; private set; }
     public bool IsStun { get; private set; }
     public bool IsVulnerable { get; private set; }
+    public bool IsHealing { get; private set; }
 
     private List<EnemyDebuff> m_currentDebuffs = new List<EnemyDebuff>();
     private float m_speedModifyScale;
@@ -54,17 +55,33 @@ public class Enemy : MonoBehaviour
     public virtual void TakeDamage(float _ammount)
     {
         m_currentHealth -= _ammount * m_damageTakenModifyScale;
+
+        if (m_currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     protected virtual void Die()
     {
         IsDied = true;
 
+        if (Spawner != null)
+        {
+            Spawner.DespawnEnemy(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         m_anEnemyDie.RaiseEvent();
     }
 
     public virtual void Attack()
     {
+        EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(1);
+
         m_anEnemyAttacking.RaiseEvent();
     }
 
@@ -115,6 +132,21 @@ public class Enemy : MonoBehaviour
         SetDebuffStatus();
     }
 
+    public virtual void TakeHealingEffect(float _ammount, float _duration)
+    {
+        EnemyDebuff _debuff = new EnemyDebuff(
+            EnemyDebuff.DebuffType.Healing, _ammount, _duration
+        );
+
+        if (!IsHealing)
+        {
+            m_currentDebuffs.Add(_debuff);
+            StartCoroutine(ExpireDebuff(_debuff, _duration));
+
+            SetDebuffStatus();
+        }
+    }
+
     //
     protected virtual void Start()
     {
@@ -123,6 +155,9 @@ public class Enemy : MonoBehaviour
 
     protected virtual void SetupProperties()
     {
+        m_currentHealth = m_maxHealth;
+        m_currentMoveSpeed = m_moveSpeed;
+
         SetDebuffStatus();
 
         SetTarget();
@@ -184,7 +219,9 @@ public class Enemy : MonoBehaviour
     {
         IsSlowed = false;
         IsStun = false;
-        IsVulnerable = false; 
+        IsVulnerable = false;
+        IsHealing = false;
+
         m_speedModifyScale = 1f;
         m_damageTakenModifyScale = 1f;
 
@@ -208,6 +245,11 @@ public class Enemy : MonoBehaviour
                         (100f + _debuff.Ammount) / 100f
                     );
                     IsVulnerable = true;
+                    break;
+
+                case EnemyDebuff.DebuffType.Healing:
+                    Heal(_debuff.Ammount);
+                    IsHealing = true;
                     break;
 
                 default:

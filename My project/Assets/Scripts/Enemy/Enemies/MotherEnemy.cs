@@ -11,8 +11,8 @@ public class MotherEnemy : Enemy
 
     protected override void Die()
     {
-        base.Die();
-
         Spawner.Manager.SpawnEnemyForm("MotherDeadFormation");
+
+        base.Die();
     }
 }
