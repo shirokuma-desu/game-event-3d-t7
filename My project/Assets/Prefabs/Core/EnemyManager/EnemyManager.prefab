@@ -100,7 +100,7 @@ MonoBehaviour:
     type: 3}
   m_spawnYPosition: 0
   m_spawningInterval: 1
-  m_spawningProbability: 0
+  m_spawningProbability: 1
   m_enemyPool: {fileID: 5666596036922987100}
 --- !u!1 &2067762295219661679
 GameObject:
@@ -484,7 +484,7 @@ MonoBehaviour:
     type: 3}
   m_spawnYPosition: 0
   m_spawningInterval: 1
-  m_spawningProbability: 0
+  m_spawningProbability: 1
   m_enemyPool: {fileID: 2989393162531208109}
 --- !u!1 &8648271585790435428
 GameObject:
@@ -535,5 +535,5 @@ MonoBehaviour:
     type: 3}
   m_spawnYPosition: 0
   m_spawningInterval: 1
-  m_spawningProbability: 0
+  m_spawningProbability: 1
   m_enemyPool: {fileID: 3858319145760042730}
