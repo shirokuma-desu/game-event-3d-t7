@@ -32,7 +32,7 @@ public class PriestEnemy : Enemy
             if (_collision.tag == "Enemy")
             {
                 Enemy _enemy = _collision.GetComponent<Enemy>();
-                _enemy.Heal(m_healAmmount);
+                _enemy.TakeHealingEffect(m_healAmmount, m_healingInterval);
             }
         }
     }

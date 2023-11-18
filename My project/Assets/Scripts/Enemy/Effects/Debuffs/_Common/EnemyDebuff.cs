@@ -8,6 +8,7 @@ public class EnemyDebuff
         Slow,
         Stun,
         Vulnerable,
+        Healing,
     }
 
     public DebuffType Type;

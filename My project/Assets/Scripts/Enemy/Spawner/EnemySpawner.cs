@@ -58,13 +58,10 @@ public class EnemySpawner : MonoBehaviour
     {
         _position.y = m_spawnYPosition;
         var enemy = m_enemyPool.Get(_position);
-
-        StartCoroutine(DespawnEnemy(enemy));
     }
 
-    private IEnumerator DespawnEnemy(Enemy _enemy)
+    public void DespawnEnemy(Enemy _enemy)
     {
-        yield return new WaitUntil(() => _enemy.IsDied);
         m_enemyPool.Release(_enemy);
     }
 }
