@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
+  m_Name: Skill_Shade
+  m_EditorClassIdentifier: 
+  skill_name: shade
+  image: {fileID: 21300000, guid: ddc261c15d5b7e345a51651e8ccf83ad, type: 3}
+  image_upgrade: {fileID: 21300000, guid: 8c86a8d42467a434eaa31d0fd6666994, type: 3}
+  price: 3
+  description: 
+  is_upgraded: 0
