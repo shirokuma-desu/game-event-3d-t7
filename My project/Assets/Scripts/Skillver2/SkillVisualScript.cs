@@ -7,13 +7,13 @@ public class SkillVisualScript : MonoBehaviour
     private SkillCastController controller;
     private int[] equippedSkillIndex = new int[3];
 
-    /*[HideInInspector]*/ public int skillPressedIndex = -1;
-    /*[HideInInspector]*/ public int skillPrefabUsingIndex;
+    [HideInInspector] public int skillPressedIndex = -1;
+    [HideInInspector] public int skillPrefabUsingIndex;
     private GameObject currentPreview;
     private Vector3 lockSkillPos = Vector3.zero;
     [HideInInspector] public bool isUsingSkill = false;
 
-    [SerializeField] private GameObject currentSkillToMulti;
+    private GameObject currentSkillToMulti;
 
     private int multiCastTimes = 0;
 
