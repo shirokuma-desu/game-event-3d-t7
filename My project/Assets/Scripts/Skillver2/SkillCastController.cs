@@ -12,8 +12,8 @@ public class SkillCastController : MonoBehaviour
 
     private void Awake()
     {
-        container = GameObject.Find("UIManager").GetComponent<SkillThingContainer>();
-        visualScript = GameObject.Find("UIManager").GetComponent<SkillVisualScript>();
+        container = GameObject.Find("SkillManager").GetComponent<SkillThingContainer>();
+        visualScript = GameObject.Find("SkillManager").GetComponent<SkillVisualScript>();
 
         container.Skill1.onClick.AddListener(CastSkillOne);
         container.Skill2.onClick.AddListener(CastSkillTwo);
