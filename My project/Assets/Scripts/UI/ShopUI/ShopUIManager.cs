@@ -9,26 +9,28 @@ using UnityEngine.UI;
 public class ShopUIManager : MonoBehaviour
 {
     public GameObject ShopUI;
-    public TextMeshProUGUI totalsouls;
+    public TextMeshProUGUI total_souls;
     public TextMeshProUGUI reroll_price;
-    public Button rerollbutton;
+    public GameObject open_button;
 
     private ShopSystem shopSystem;
 
+    //const
+    private const string PRICE_NAME = "Souls: ";
+
     [SerializeField] public Image[] skill_slot;
 
-    private bool m_isOn ;
 
     private void Awake()
     {
         shopSystem = GetComponent<ShopSystem>();
         ShopUI.gameObject.SetActive(false);
-        m_isOn = false;
     }
     // Start is called before the first frame update
     void Start()
     {
         UpdateVisual();
+        this.RegisterListener(EventID.OnRerolledShop, (param) => OnClickRerolled());
     }
 
     // Update is called once per frame
@@ -38,22 +40,28 @@ public class ShopUIManager : MonoBehaviour
 
     public void Show()
     {
-        if (m_isOn)
-        {
-            ShopUI.gameObject.SetActive(false);
-            m_isOn = false;
-        }
-        else
-        {
+        
             ShopUI.gameObject.SetActive(true);
-            m_isOn = true;
-        }
+            open_button.gameObject.SetActive(false);
     }
 
-    public void UpdateVisual()
+    public void Close()
     {
-        totalsouls.text = "Souls: " + shopSystem.getTotalSouls().ToString();
+        ShopUI.gameObject.SetActive(false);
+        open_button.gameObject.SetActive(true);
+    }
+
+    private void UpdateVisual()
+    {
+        //update text
+        total_souls.text = PRICE_NAME + shopSystem.getTotalSouls().ToString();
         reroll_price.text = shopSystem.getRerollPrice().ToString();
+    }
+
+
+    private void OnClickRerolled()
+    {
+        UpdateVisual();
     }
 
 
