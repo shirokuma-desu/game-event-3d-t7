@@ -59,6 +59,8 @@ MonoBehaviour:
   - {fileID: 7751752049656383104, guid: b674ceeeeccfe0f49ac0dfc26d82c241, type: 3}
   - {fileID: 7464030008664906584, guid: 19fcc0b1494754547a90cbeda5d2baf9, type: 3}
   equippedSkill: 030000000400000005000000
+  castSkill: {fileID: 11400000, guid: 6d0d512971f49bf44a2adf8bbb3d6f4d, type: 2}
+  useMulticast: {fileID: 11400000, guid: 6b5b5cb65392e184180fe1b2313a3d02, type: 2}
 --- !u!114 &4848813289535347481
 MonoBehaviour:
   m_ObjectHideFlags: 0

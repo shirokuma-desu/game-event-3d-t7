@@ -99,6 +99,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             meteorScript.SetTarget(targetPos);
         }
+
+        container.CastSkill.RaiseEvent();
     }
     #endregion
 
@@ -147,6 +149,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             acidScript.SetTarget(lockSkillPos);
         }
+
+        container.CastSkill.RaiseEvent();
     }
     #endregion
 
@@ -200,6 +204,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lazerScript.SetTarget(targetPos);
         }
+
+        container.CastSkill.RaiseEvent();
     }
     #endregion
 
@@ -250,6 +256,8 @@ public class SkillVisualScript : MonoBehaviour
                 starScript.SetDamage();
             }
         }
+
+        container.CastSkill.RaiseEvent();
     }
     #endregion
 
@@ -293,6 +301,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             shadeScript.Settarget(targetPos);
         }
+
+        container.CastSkill.RaiseEvent();
     }
     #endregion
 
@@ -340,6 +350,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lavaScript.SetTarget(lockSkillPos);
         }
+
+        container.CastSkill.RaiseEvent();
     }
     #endregion
 
@@ -362,6 +374,7 @@ public class SkillVisualScript : MonoBehaviour
                             Vector3 newTargetPos = targetPos + new Vector3(randomNewTargetMeteor.x, transform.position.y, randomNewTargetMeteor.y);
                             Debug.Log("Multicast x" + multiCastTimes);
                             HandleMeteorSkill(newTargetPos);
+                            container.UseMulticast.RaiseEvent();
                             random0 = Random.value;
                         }
                         break;
@@ -375,6 +388,7 @@ public class SkillVisualScript : MonoBehaviour
                                 Vector3 baseScale = currentSkillToMulti.transform.localScale;
                                 currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
                                 Debug.Log("Multicast x" + multiCastTimes);
+                                container.UseMulticast.RaiseEvent();
                                 random1 = Random.value;
                             }
                         }
@@ -386,6 +400,7 @@ public class SkillVisualScript : MonoBehaviour
                             multiCastTimes++;
                             Vector3 newTargetPos = new Vector3(Random.value, transform.position.y, Random.value).normalized;
                             HandleLazerBeamSkill(newTargetPos);
+                            container.UseMulticast.RaiseEvent();
                             random2 = Random.value;
                         }
                         break;
@@ -396,6 +411,7 @@ public class SkillVisualScript : MonoBehaviour
                             multiCastTimes++;
                             int numberMore = 2;
                             HandleStarFallSkill(numberMore);
+                            container.UseMulticast.RaiseEvent();
                             random3 = Random.value;
                         }
                         break;
@@ -408,6 +424,7 @@ public class SkillVisualScript : MonoBehaviour
                             Vector2 randomNewTargetShade = Random.insideUnitCircle * container.SkillPrefabs[0].GetComponent<SkillStats>().Range;
                             Vector3 newTargetPos = targetPos1 + new Vector3(randomNewTargetShade.x, transform.position.y, randomNewTargetShade.y);
                             HandleShadeSkill(newTargetPos);
+                            container.UseMulticast.RaiseEvent();
                             random4 = Random.value;
                         }
                         break;
@@ -421,6 +438,7 @@ public class SkillVisualScript : MonoBehaviour
                                 Vector3 baseScale = currentSkillToMulti.transform.localScale;
                                 currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
                                 Debug.Log("Multicast x" + multiCastTimes);
+                                container.UseMulticast.RaiseEvent();
                                 random1 = Random.value;
                             }
                         }
