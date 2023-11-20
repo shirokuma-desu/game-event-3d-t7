@@ -12,8 +12,10 @@ public class PriestEnemy : Enemy
     [SerializeField]
     private float m_healingInterval = 0.5f;
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+        
         Move();
     }
 

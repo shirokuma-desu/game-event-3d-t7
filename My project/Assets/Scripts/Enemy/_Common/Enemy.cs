@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     public float MoveSpeed { get => m_moveSpeed; }
     private float m_currentMoveSpeed;
     public float CurrentMoveSpeed { get => m_currentMoveSpeed; }
-    private const float m_speedScale = 0.05f;
+    private const float SPEEDSCALE = 0.0005f;
 
     [SerializeField]
     private float m_attackDamage;
@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     public EnemySpawner Spawner { get; set; }
 
     //
+    public bool IsSpawned { get; private set; }
     public bool IsDied { get; private set; }
 
     public bool IsSlowed { get; private set; }
@@ -51,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     protected Vector3 m_target;
 
-    //
+    // ------ PUBLIC ------
     public virtual void TakeDamage(float _ammount)
     {
         m_currentHealth -= _ammount * m_damageTakenModifyScale;
@@ -147,14 +148,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //
+    // ------ PROTECTED ------
     protected virtual void Start()
     {
         m_body = GetComponent<Rigidbody>();
     }
-
+    protected virtual void FixedUpdate()
+    {
+        m_body.velocity = Vector3.zero;
+    }
     protected virtual void SetupProperties()
     {
+        IsSpawned = true;
+
         m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 
@@ -168,7 +174,12 @@ public class Enemy : MonoBehaviour
         m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 
-        IsDied = false;
+        IsSpawned = false;
+        IsDied = false; 
+
+        m_currentDebuffs.Clear();
+        m_speedModifyScale = 1f;
+        m_damageTakenModifyScale = 1f;
 
         StopAllCoroutines();
     }
@@ -182,34 +193,29 @@ public class Enemy : MonoBehaviour
 
             transform.forward = _direction;
 
-            m_body.velocity = _direction * m_moveSpeed * m_speedScale * m_speedModifyScale;
+            m_body.MovePosition(
+                transform.position + _direction * m_moveSpeed * m_speedModifyScale * SPEEDSCALE
+            );
         }
     }
 
     protected virtual Vector3 GetTarget()
     {
-        Vector3 _target = Vector3.zero;
+        Vector3 _target = EnvironmentManager.Instance.PlayerPosition;
 
-        if (EnvironmentManager.Instance.IsAnyTowerLeft)
+        float _tempDistance = Vector3.Distance(transform.position, _target);
+        for (int i = 0; i < 4; i++)
         {
-            float _tempDistance = Mathf.Infinity;
-            for (int i = 1; i < 4; i++)
+            if (EnvironmentManager.Instance.IsTowerSettled(i))
             {
-                if (EnvironmentManager.Instance.IsTowerSettled(i))
+                Vector3 _towerPosition = EnvironmentManager.Instance.GetTowerPosition(i);
+                float _towerDistance = Vector3.Distance(transform.position, _towerPosition);
+                if (_towerDistance < _tempDistance)
                 {
-                    Vector3 _towerPosition = EnvironmentManager.Instance.GetTowerPosition(i);
-                    float _towerDistance = Vector3.Distance(transform.position, _towerPosition);
-                    if (_towerDistance < _tempDistance)
-                    {
-                        _tempDistance = _towerDistance;
-                        _target = _towerPosition;
-                    }
+                    _tempDistance = _towerDistance;
+                    _target = _towerPosition;
                 }
             }
-        }
-        else
-        {
-            _target = EnvironmentManager.Instance.PlayerPosition;
         }
 
         return _target;
@@ -258,7 +264,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //
+    // ------ PRIVATE ------
     private IEnumerator ExpireDebuff(EnemyDebuff _debuff, float _duration)
     {
         yield return new WaitForSeconds(_duration);
