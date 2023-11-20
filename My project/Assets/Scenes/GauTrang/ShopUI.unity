@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7827cf89e15dd5b4eabb2e854e8dd081, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dde9d15906ac30b4b8b0f298e95de66a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3351,7 +3351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ddfc8fde9c707854f89051474c697eca, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4006,10 +4006,15 @@ MonoBehaviour:
   total_souls: {fileID: 170096256}
   reroll_price: {fileID: 69905577}
   open_button: {fileID: 1947883874}
-  skill_slot:
+  shopInventorySO: {fileID: 11400000, guid: ef1209a5b0ceb584cbc0f12ef2892b13, type: 2}
+  skill_slots:
   - {fileID: 1320446190}
   - {fileID: 15762839}
   - {fileID: 1626976989}
+  price_slots:
+  - {fileID: 1226781567}
+  - {fileID: 32976340}
+  - {fileID: 1007069420}
 --- !u!114 &1931580457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4025,15 +4030,7 @@ MonoBehaviour:
   m_total_souls: 100
   m_reroll_price: 0
   m_price: 10
-  m_list_of_random: 
-  m_skill_sprites:
-  - {fileID: 21300000, guid: 8642f4fbe088d99439107093bc044b55, type: 3}
-  - {fileID: 21300000, guid: dde9d15906ac30b4b8b0f298e95de66a, type: 3}
-  - {fileID: 21300000, guid: e45f0c6ceb6c3d04ca83f8f568784fe8, type: 3}
-  - {fileID: 21300000, guid: 7827cf89e15dd5b4eabb2e854e8dd081, type: 3}
-  - {fileID: 21300000, guid: ddc261c15d5b7e345a51651e8ccf83ad, type: 3}
-  - {fileID: 21300000, guid: ddfc8fde9c707854f89051474c697eca, type: 3}
-  m_skill_sprites_upgrade: []
+  m_skill_price: 0
 --- !u!1 &1947883874
 GameObject:
   m_ObjectHideFlags: 0
