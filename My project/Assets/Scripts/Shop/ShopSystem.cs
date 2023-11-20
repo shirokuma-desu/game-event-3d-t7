@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ShopSystem : MonoBehaviour
 {
-
     [SerializeField] private int m_total_souls = 100;
     [SerializeField] private int m_reroll_price = 0;
     [SerializeField] private int m_price = 10;
+    [SerializeField] private int m_skill_price;
 
-    [SerializeField] public Sprite[] m_skill_sprites = null;
-    [SerializeField] public Sprite[] m_skill_sprites_upgrade = null;
+ 
 
-    private ShopUIManager shopUIManager;
+
+    #region get
 
     public int getTotalSouls()
     {
@@ -24,24 +24,30 @@ public class ShopSystem : MonoBehaviour
         return m_reroll_price;
     }
 
+
+    #endregion
+
+    #region init
     private void Awake()
-    {
-        shopUIManager = GetComponent<ShopUIManager>();
-    }
-    private void Start()
     {
     }
 
-    public int Sell(int soulToAdd)
+    private void Start()
+    {
+    }
+    #endregion
+
+    #region method
+    private int Sell(int soulToAdd)
     {
         m_total_souls += soulToAdd;
         return m_total_souls;
     }
 
-    public int Buy(int soulToMinus)
+    private int Buy(int soulToMinus)
     {
         m_total_souls -= soulToMinus;
-        return m_total_souls;   
+        return m_total_souls;
     }
 
     private int IncreasePrice(int priceToIncrease)
@@ -49,17 +55,22 @@ public class ShopSystem : MonoBehaviour
         m_reroll_price += priceToIncrease;
         return m_reroll_price;
     }
+   
 
-    public void Reroll()
+    public void DoReroll()
     {
         if (m_total_souls < m_reroll_price)
         {
             return;
         }
-        m_total_souls = m_total_souls - m_reroll_price;
+        Buy(m_reroll_price);
         IncreasePrice(m_price);
-        shopUIManager.UpdateVisual();
+
+        //call event reroll
+        this.PostEvent(EventID.OnRerolledShop);
     }
 
-   
+    #endregion
+    
+
 }
