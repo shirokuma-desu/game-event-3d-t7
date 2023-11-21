@@ -9,4 +9,5 @@ public enum EventID
     OnBuyingItem,
     OnSellingItem,
     OnReclaimUpgrade,
+    OnBuyingTurret,
 }

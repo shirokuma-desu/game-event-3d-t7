@@ -14,7 +14,7 @@ public class ShopUIManager : MonoBehaviour
     public TextMeshProUGUI reroll_price;
     public GameObject open_button;
 
-    private ShopSystem shopSystem;
+    public ShopSystem shopSystem;
 
     public  ShopInventorySO shopInventorySO;
 
@@ -26,7 +26,6 @@ public class ShopUIManager : MonoBehaviour
 
     private void Awake()
     {
-        shopSystem = GetComponent<ShopSystem>();
         ShopUI.gameObject.SetActive(false);
     }
 
@@ -36,6 +35,7 @@ public class ShopUIManager : MonoBehaviour
         DisplayRandomSkills();
         UpdatePrice();
         this.RegisterListener(EventID.OnRerolledShop, (param) => OnClickRerolled());
+        this.RegisterListener(EventID.OnBuyingTurret, (param) => UpdatePrice());
     }
 
     // Update is called once per frame
@@ -57,17 +57,21 @@ public class ShopUIManager : MonoBehaviour
 
     private void UpdatePrice()
     {
-        //update text
         total_souls.text = PRICE_NAME + shopSystem.getTotalSouls().ToString();
         reroll_price.text = shopSystem.getRerollPrice().ToString();
 
-        //update image
+    }
+
+    private void OnClickBuyTurret()
+    {
+
     }
 
     private void OnClickRerolled()
     {
+    
+        DisplayRandomSkills();
         UpdatePrice();
-        DisplayRandomSkills();  
     }
 
     private void DisplayRandomSkills()

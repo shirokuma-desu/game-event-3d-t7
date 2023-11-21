@@ -11,4 +11,6 @@ public class SkillObjectSO : ScriptableObject
     public int price;
     public string description;
     public bool is_upgraded;
+
+    
 }
