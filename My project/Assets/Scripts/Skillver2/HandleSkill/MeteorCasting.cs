@@ -1,3 +1,4 @@
+using LeakyAbstraction;
 using UnityEngine;
 
 public class MeteorCasting : MonoBehaviour
@@ -40,6 +41,8 @@ public class MeteorCasting : MonoBehaviour
 
     private void Explosion()
     {
+        SoundManager.Instance.PlaySound(GameSound.MeteorImpact);
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
 
         foreach (Collider collider in colliders)

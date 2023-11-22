@@ -1,3 +1,4 @@
+using LeakyAbstraction;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class ShadeCasting : MonoBehaviour
     {
         if (!isLockedTarget)
         {
-            target = FIndTarget();
+            target = FindTarget();
         }
 
         if (target != null)
@@ -46,7 +47,7 @@ public class ShadeCasting : MonoBehaviour
         }
     }
 
-    private GameObject FIndTarget()
+    private GameObject FindTarget()
     {
         if (target == null && targetPos != null)
         {
@@ -69,6 +70,8 @@ public class ShadeCasting : MonoBehaviour
 
     private void Explosion()
     {
+        SoundManager.Instance.PlaySound(GameSound.ShadeImpact);
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
 
         foreach (Collider collider in colliders)

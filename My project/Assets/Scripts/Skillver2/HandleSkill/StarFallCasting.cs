@@ -1,3 +1,4 @@
+using LeakyAbstraction;
 using UnityEngine;
 
 public class StarFallCasting : MonoBehaviour
@@ -31,6 +32,8 @@ public class StarFallCasting : MonoBehaviour
 
     private void Explosion()
     {
+        SoundManager.Instance.PlaySound(GameSound.StarImpact);
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, 2.5f);
 
         foreach (Collider collider in colliders)

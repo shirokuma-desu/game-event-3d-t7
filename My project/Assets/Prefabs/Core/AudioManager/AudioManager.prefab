@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8014413904659154455}
   - component: {fileID: 577062946156741425}
+  - component: {fileID: 7196744907536527980}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -45,8 +46,111 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NotDestroy: 1
-  _initialPoolSize: 10
+  _initialPoolSize: 20
   _canGrowPool: 1
   _loggingType: 1
   _checkUnassignedSounds: 1
-  _soundList: []
+  _soundList:
+  - Name: MeteorCast
+    soundType: 3
+    audioClip: {fileID: 8300000, guid: 76790fdece036004e9b55801e9d59155, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: MeteorImpact
+    soundType: 4
+    audioClip: {fileID: 8300000, guid: 8b0eedbffa0a56842926aa71a0f0fed3, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: AcidCast
+    soundType: 5
+    audioClip: {fileID: 8300000, guid: 435d95b74a666ab47b68c479d160f4e8, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: LazerCast
+    soundType: 6
+    audioClip: {fileID: 8300000, guid: 33ae634a286babc4fafbd2679c4c7c0f, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: LavaCast
+    soundType: 7
+    audioClip: {fileID: 8300000, guid: 2595445454e98c745b0242f01a17272d, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: ShadeCast
+    soundType: 8
+    audioClip: {fileID: 8300000, guid: c216a5a2313eb4b44b6f82518d3239de, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: ShadeImpact
+    soundType: 9
+    audioClip: {fileID: 8300000, guid: 8239f2963df8680429485c85e2653766, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: StarCast
+    soundType: 10
+    audioClip: {fileID: 8300000, guid: 1771a774519e5e741be6dff5c99fa9fe, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: StarImpact
+    soundType: 11
+    audioClip: {fileID: 8300000, guid: f06db403f6181b24b8c5378793888e50, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: StarImpact
+    soundType: 11
+    audioClip: {fileID: 8300000, guid: 46dfb16ce17fe414aacc6cf555cf040c, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: StarImpact
+    soundType: 11
+    audioClip: {fileID: 8300000, guid: 52b13bb446a61204e858617ecfecc666, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: StarImpact
+    soundType: 1
+    audioClip: {fileID: 8300000, guid: 9a0dbd3469e8c2b4a9334482194dd65a, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+  - Name: StarImpact
+    soundType: 2
+    audioClip: {fileID: 8300000, guid: de94c9a3867916445bba8906bf08d18d, type: 3}
+    volumeLow: 0.5
+    volumeHigh: 0.25
+    pitchLow: 1
+    pitchHigh: 0.5
+--- !u!114 &7196744907536527980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748928753827645982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c1117ac7834ff40949d4982f6de083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

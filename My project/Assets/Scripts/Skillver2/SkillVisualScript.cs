@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using LeakyAbstraction;
 using UnityEngine;
 
 public class SkillVisualScript : MonoBehaviour
@@ -101,6 +102,7 @@ public class SkillVisualScript : MonoBehaviour
         }
 
         container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.MeteorCast);
     }
     #endregion
 
@@ -151,6 +153,7 @@ public class SkillVisualScript : MonoBehaviour
         }
 
         container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.AcidCast);
     }
     #endregion
 
@@ -206,6 +209,7 @@ public class SkillVisualScript : MonoBehaviour
         }
 
         container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.LazerCast);
     }
     #endregion
 
@@ -258,6 +262,7 @@ public class SkillVisualScript : MonoBehaviour
         }
 
         container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.StarCast);
     }
     #endregion
 
@@ -303,6 +308,7 @@ public class SkillVisualScript : MonoBehaviour
         }
 
         container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.ShadeCast);
     }
     #endregion
 
@@ -352,6 +358,7 @@ public class SkillVisualScript : MonoBehaviour
         }
 
         container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.LavaCast);
     }
     #endregion
 
