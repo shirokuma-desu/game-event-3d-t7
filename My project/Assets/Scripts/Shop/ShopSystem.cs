@@ -1,6 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopSystem : MonoBehaviour
 {
@@ -10,8 +13,12 @@ public class ShopSystem : MonoBehaviour
     [SerializeField] private int m_price_to_increase;
     [SerializeField] private int m_price_turret = 50;
 
- 
 
+
+    public InventorySO shopInventorySO;
+    public InventorySO playerInventorySO;
+
+    public List<DataContainer> dataContainersSkill = new List<DataContainer>();
 
     #region get
 
@@ -61,16 +68,21 @@ public class ShopSystem : MonoBehaviour
         Buy(m_reroll_price);
         m_price_to_increase = 10;
         m_reroll_price += m_price_to_increase;
+        BindRandomData();
         //call event reroll
         this.PostEvent(EventID.OnRerolledShop);
     }
 
 
-    public void DoBuySkill(SkillObjectSO skillObjectSO)
+    public void DoBuySkill(DataContainer datacontainer)
     {
-        Buy(skillObjectSO.price);
-        skillObjectSO.price++;
+        SkillObjectSO skillObjectSO = datacontainer.Get();
+        int price = skillObjectSO.price;
+        m_total_souls -= price;
+
         skillObjectSO.is_upgraded = true;
+        Debug.Log(skillObjectSO.name);
+        this.PostEvent(EventID.OnBuyingItem);
     }
 
     public void BuyTurret()
@@ -87,9 +99,39 @@ public class ShopSystem : MonoBehaviour
         this.PostEvent(EventID.OnBuyingTurret);
 
     }
+
+    private void BindRandomData()
+    {
+        int[] randomindex = GenerateRandomNumbersArrays();
+        for (int i = 0; i < dataContainersSkill.Count; i++)
+        {
+
+            dataContainersSkill[i].Set(shopInventorySO.m_Inventory[randomindex[i]]);
+        }
+    }
+
+    private int[] GenerateRandomNumbersArrays()
+    {
+        System.Random random = new System.Random();
+        int[] randomNumbers = new int[3];
+
+        for (int i = 0; i < randomNumbers.Length; i++)
+        {
+            int randomNumber;
+            // Lặp cho đến khi có một số ngẫu nhiên không trùng
+            do
+            {
+                randomNumber = random.Next(0, maxValue: shopInventorySO.m_Inventory.Count); // Điều chỉnh phạm vi theo nhu cầu của bạn
+            } while (Array.IndexOf(randomNumbers, randomNumber) != -1);
+
+            randomNumbers[i] = randomNumber;
+        }
+
+        return randomNumbers;
+    }
     #endregion
 
 
-    
+
 
 }

@@ -16,13 +16,13 @@ public class ShopUIManager : MonoBehaviour
 
     public ShopSystem shopSystem;
 
-    public  ShopInventorySO shopInventorySO;
+    public  InventorySO shopInventorySO;
 
     //const
     private const string PRICE_NAME = "Souls: ";
 
-    [SerializeField] public Image[] skill_slots;
     [SerializeField] public TextMeshProUGUI[] price_slots;
+    [SerializeField] public Button[] skill_buttons;
 
     private void Awake()
     {
@@ -32,10 +32,11 @@ public class ShopUIManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        DisplayRandomSkills();
         UpdatePrice();
+
+        this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
+        this.RegisterListener(EventID.OnBuyingItem, (param) => OnClickBuyItem());
         this.RegisterListener(EventID.OnRerolledShop, (param) => OnClickRerolled());
-        this.RegisterListener(EventID.OnBuyingTurret, (param) => UpdatePrice());
     }
 
     // Update is called once per frame
@@ -59,46 +60,30 @@ public class ShopUIManager : MonoBehaviour
     {
         total_souls.text = PRICE_NAME + shopSystem.getTotalSouls().ToString();
         reroll_price.text = shopSystem.getRerollPrice().ToString();
-
     }
 
     private void OnClickBuyTurret()
     {
+        UpdatePrice();
+    }
 
+    private void OnClickBuyItem()
+    {
+
+        foreach(var item in skill_buttons)
+        {
+            item.interactable = false;
+        }
+        UpdatePrice();
     }
 
     private void OnClickRerolled()
     {
-    
-        DisplayRandomSkills();
         UpdatePrice();
-    }
-
-    private void DisplayRandomSkills()
-    {
-        List<int> selectedIndexes = new List<int>();
-        int maxSlots = 3;
-
-        for (int i = 0; i < maxSlots; i++)
+        foreach (var item in skill_buttons)
         {
-            int randomIndex;
-            do
-            {
-                randomIndex = UnityEngine.Random.Range(0, shopInventorySO.m_Inventory.Count);
-            } while (selectedIndexes.Contains(randomIndex));
-
-            selectedIndexes.Add(randomIndex);
-            SkillObjectSO skillObject = shopInventorySO.m_Inventory[randomIndex];
-
-            if (i < skill_slots.Length)
-            {
-                skill_slots[i].sprite = skillObject.image;
-            }
-
-            if (i < price_slots.Length)
-            {
-                price_slots[i].text = PRICE_NAME + skillObject.price.ToString();
-            }
+            item.interactable = true;
         }
     }
+
 }
