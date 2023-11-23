@@ -128,14 +128,14 @@ MonoBehaviour:
     volumeHigh: 0.25
     pitchLow: 1
     pitchHigh: 0.5
-  - Name: StarImpact
+  - Name: Ambient
     soundType: 1
     audioClip: {fileID: 8300000, guid: 9a0dbd3469e8c2b4a9334482194dd65a, type: 3}
     volumeLow: 0.5
     volumeHigh: 0.25
     pitchLow: 1
     pitchHigh: 0.5
-  - Name: StarImpact
+  - Name: BGM
     soundType: 2
     audioClip: {fileID: 8300000, guid: de94c9a3867916445bba8906bf08d18d, type: 3}
     volumeLow: 0.5

@@ -6,6 +6,7 @@ public class SkillVisualScript : MonoBehaviour
 {
     private SkillThingContainer container;
     private SkillCastController controller;
+    private HandleFloatingText floatingText;
     private int[] equippedSkillIndex = new int[3];
 
     [HideInInspector] public int skillPressedIndex = -1;
@@ -17,11 +18,13 @@ public class SkillVisualScript : MonoBehaviour
     private GameObject currentSkillToMulti;
 
     private int multiCastTimes = 0;
+    public int MultiCastTimes {  get { return multiCastTimes; } }
 
     private void Awake()
     {
         controller = GameObject.FindGameObjectWithTag("BaseTower").GetComponent<SkillCastController>();
         container = GetComponent<SkillThingContainer>();
+        floatingText = GetComponent<HandleFloatingText>();
         equippedSkillIndex = container.EquippedSkill;
     }
 
@@ -379,10 +382,12 @@ public class SkillVisualScript : MonoBehaviour
                             multiCastTimes++;
                             Vector2 randomNewTargetMeteor = Random.insideUnitCircle * container.SkillPrefabs[0].GetComponent<SkillStats>().Range;
                             Vector3 newTargetPos = targetPos + new Vector3(randomNewTargetMeteor.x, transform.position.y, randomNewTargetMeteor.y);
-                            Debug.Log("Multicast x" + multiCastTimes);
                             HandleMeteorSkill(newTargetPos);
-                            container.UseMulticast.RaiseEvent();
                             random0 = Random.value;
+                        }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
                         }
                         break;
                     case 1:
@@ -394,9 +399,11 @@ public class SkillVisualScript : MonoBehaviour
                                 multiCastTimes++;
                                 Vector3 baseScale = currentSkillToMulti.transform.localScale;
                                 currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
-                                Debug.Log("Multicast x" + multiCastTimes);
-                                container.UseMulticast.RaiseEvent();
                                 random1 = Random.value;
+                            }
+                            if (multiCastTimes > 0)
+                            {
+                                container.UseMulticast.RaiseEvent();
                             }
                         }
                         break;
@@ -407,8 +414,11 @@ public class SkillVisualScript : MonoBehaviour
                             multiCastTimes++;
                             Vector3 newTargetPos = new Vector3(Random.value, transform.position.y, Random.value).normalized;
                             HandleLazerBeamSkill(newTargetPos);
-                            container.UseMulticast.RaiseEvent();
                             random2 = Random.value;
+                        }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
                         }
                         break;
                     case 3:
@@ -418,8 +428,11 @@ public class SkillVisualScript : MonoBehaviour
                             multiCastTimes++;
                             int numberMore = 2;
                             HandleStarFallSkill(numberMore);
-                            container.UseMulticast.RaiseEvent();
                             random3 = Random.value;
+                        }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
                         }
                         break;
                     case 4:
@@ -431,8 +444,11 @@ public class SkillVisualScript : MonoBehaviour
                             Vector2 randomNewTargetShade = Random.insideUnitCircle * container.SkillPrefabs[0].GetComponent<SkillStats>().Range;
                             Vector3 newTargetPos = targetPos1 + new Vector3(randomNewTargetShade.x, transform.position.y, randomNewTargetShade.y);
                             HandleShadeSkill(newTargetPos);
-                            container.UseMulticast.RaiseEvent();
                             random4 = Random.value;
+                        }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
                         }
                         break;
                     case 5:
@@ -444,9 +460,11 @@ public class SkillVisualScript : MonoBehaviour
                                 multiCastTimes++;
                                 Vector3 baseScale = currentSkillToMulti.transform.localScale;
                                 currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
-                                Debug.Log("Multicast x" + multiCastTimes);
-                                container.UseMulticast.RaiseEvent();
                                 random1 = Random.value;
+                            }
+                            if (multiCastTimes > 0)
+                            {
+                                container.UseMulticast.RaiseEvent();
                             }
                         }
                         break;

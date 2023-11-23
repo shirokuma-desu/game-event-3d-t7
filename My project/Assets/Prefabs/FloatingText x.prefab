@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5092157009395200581}
   - component: {fileID: 5791231174369466566}
   m_Layer: 0
-  m_Name: FloatingText
+  m_Name: FloatingText x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 55.917, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 10}
+  m_AnchoredPosition: {x: -6, y: 10}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5409335377496622851
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Multicast
+  m_text: x1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 508c0ad0b7f6d124996aef0c62329427, type: 2}
   m_sharedMaterial: {fileID: 942823020361339314, guid: 508c0ad0b7f6d124996aef0c62329427,
@@ -182,10 +182,10 @@ Animation:
   m_GameObject: {fileID: 9116005820580296804}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 19b5393a24d7c894b95bf8ec1e144553, type: 2}
+  m_Animation: {fileID: 7400000, guid: 11fc21fa6da0d10409d91860f203015d, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 19b5393a24d7c894b95bf8ec1e144553, type: 2}
-  - {fileID: 7400000, guid: 59544bca71b7c244db63e108e3f1f59a, type: 2}
+  - {fileID: 7400000, guid: 52cf9553c5ddbc74faf17376685f5049, type: 2}
+  - {fileID: 7400000, guid: 885b6b63e5f47de4eb6eabd8434d423c, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

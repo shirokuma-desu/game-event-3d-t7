@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6867297590855782702}
   - component: {fileID: 6277733647946796687}
   - component: {fileID: 4848813289535347481}
+  - component: {fileID: 3573969918188514888}
+  - component: {fileID: 4210183308994863970}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -58,7 +60,7 @@ MonoBehaviour:
   skillPreviewPrefabs:
   - {fileID: 7751752049656383104, guid: b674ceeeeccfe0f49ac0dfc26d82c241, type: 3}
   - {fileID: 7464030008664906584, guid: 19fcc0b1494754547a90cbeda5d2baf9, type: 3}
-  equippedSkill: 030000000400000005000000
+  equippedSkill: 000000000400000005000000
   castSkill: {fileID: 11400000, guid: 6d0d512971f49bf44a2adf8bbb3d6f4d, type: 2}
   useMulticast: {fileID: 11400000, guid: 6b5b5cb65392e184180fe1b2313a3d02, type: 2}
 --- !u!114 &4848813289535347481
@@ -76,3 +78,47 @@ MonoBehaviour:
   skillPressedIndex: 0
   skillPrefabUsingIndex: 0
   isUsingSkill: 0
+--- !u!114 &3573969918188514888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7008003361518152291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f508b46b861c2914891c73ebd3d0ab8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multicastTextPrefab: {fileID: 9116005820580296804, guid: cdcb6d9302cd83947a932ef44b033736,
+    type: 3}
+  xTextPrefab: {fileID: 9116005820580296804, guid: dce0f9d13d74ae74bb48763f870088ce,
+    type: 3}
+--- !u!114 &4210183308994863970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7008003361518152291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48507b39cec06be448f32f4b2853e460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 6b5b5cb65392e184180fe1b2313a3d02, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3573969918188514888}
+        m_TargetAssemblyTypeName: HandleFloatingText, Assembly-CSharp
+        m_MethodName: ShowFloatingText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
