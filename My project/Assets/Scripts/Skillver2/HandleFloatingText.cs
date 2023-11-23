@@ -70,7 +70,7 @@ public class HandleFloatingText : MonoBehaviour
             if (xText.activeSelf)
             {
                 xAnimation.Play("x_exit");
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.13f);
             }
 
             xText.GetComponent<TextMeshPro>().text = "x" + i.ToString();
@@ -85,7 +85,7 @@ public class HandleFloatingText : MonoBehaviour
         xAnimation.Play("x_exit");
         multicastAnimation.Play("text_exit");
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.13f);
 
         xText.SetActive(false);
         multicastText.SetActive(false);
