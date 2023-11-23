@@ -23,6 +23,7 @@ public class LazerBeamCasting : MonoBehaviour
         damage = stat.Damage;
         range = stat.Range;
         skillCenterPos = (targetPos - basePos).normalized * (range / 2f);
+        skillCenterPos.y = 0f;
     }
 
     private void Update()
