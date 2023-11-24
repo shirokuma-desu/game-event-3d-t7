@@ -21,7 +21,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private EnemyObjectPool m_enemyPool;
 
-    public EnemySpawnManager Manager { get; set; }
+    private List<Transform> m_enemiesTransform = new();
+    public List<Transform> EnemiesTransform { get => m_enemiesTransform; }
+
+    public EnemyManager Manager { get; set; }
 
     public void SetSpawningInterval(float _value)
     {
@@ -55,11 +58,15 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy(Vector3 _position)
     {
         _position.y = 0f;
-        var enemy = m_enemyPool.Get(_position);
+        var _enemy = m_enemyPool.Get(_position);
+
+        m_enemiesTransform.Add(_enemy.transform);
     }
 
     public void DespawnEnemy(Enemy _enemy)
     {
+        m_enemiesTransform.Remove(_enemy.transform);
+
         m_enemyPool.Release(_enemy);
     }
 }
