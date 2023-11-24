@@ -7,7 +7,9 @@ public class NormalBulletScript : MonoBehaviour
 
     private int damage;
     [SerializeField]
-    private float speed = 5f;
+    private float speed;
+
+    public BulletSpawner Spawner { get; set; }
 
     public void SetTarget(GameObject newTarget, int attackDamage)
     {
@@ -44,6 +46,28 @@ public class NormalBulletScript : MonoBehaviour
             enemy.TakeDamage(damage);
         }
 
-        Destroy(gameObject);
+        Spawner.DespawnBullet(this);
+    }
+
+    private void SetUpProperties()
+    {
+
+    }
+
+    private void ResetProperties()
+    {
+        target = null;
+        damage = 0;
+        speed = 55f;
+    }
+
+    private void OnEnable()
+    {
+        SetUpProperties();
+    }
+
+    private void OnDisable()
+    {
+        ResetProperties();
     }
 }

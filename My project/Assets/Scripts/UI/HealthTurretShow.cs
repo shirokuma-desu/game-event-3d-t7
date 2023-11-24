@@ -1,30 +1,30 @@
-//using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.UI;
 
-//public class HealthTurretShow : MonoBehaviour
-//{
-//    public Slider health;
-//    public Turret turretStat;
+public class HealthTurretShow : MonoBehaviour
+{
+    private Slider health;
+    private Turret ts;
 
-//    private int maxHealth;
-//    private int currentHealth;
+    private int maxHealth;
+    private int currentHealth;
 
-//    private void Awake()
-//    {
-//        turretStat = GetComponentInParent<Turret>();
-//        health = GetComponentInChildren<Slider>();
-//    }
+    private void Awake()
+    {
+        ts = GetComponentInParent<Turret>();
+        health = GetComponentInChildren<Slider>();
+    }
 
-//    private void Update()
-//    {
-//        maxHealth = turretStat.turretStat.health;
-//        currentHealth = turretStat.health;
+    private void Update()
+    {
+        maxHealth = ts.Health;
+        currentHealth = ts.CurrentHealth;
 
-//        health.maxValue = maxHealth;
-//        health.minValue = 0f;
+        health.maxValue = maxHealth;
+        health.minValue = 0f;
 
-//        health.value = currentHealth;
+        health.value = currentHealth;
 
-//        transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
-//    }
-//}
+        transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
+    }
+}
