@@ -6084,7 +6084,7 @@ MonoBehaviour:
   skillPreviewPrefabs:
   - {fileID: 7751752049656383104, guid: b674ceeeeccfe0f49ac0dfc26d82c241, type: 3}
   - {fileID: 7464030008664906584, guid: 19fcc0b1494754547a90cbeda5d2baf9, type: 3}
-  equippedSkill: 030000000400000005000000
+  equippedSkill: 000000000100000005000000
 --- !u!4 &2068111056
 Transform:
   m_ObjectHideFlags: 0
