@@ -45,10 +45,12 @@ public class Enemy : MonoBehaviour
     public bool IsStun { get; private set; }
     public bool IsVulnerable { get; private set; }
     public bool IsHealing { get; private set; }
+    public bool IsKnockback { get; private set; }
 
     private List<EnemyDebuff> m_currentDebuffs = new List<EnemyDebuff>();
     private float m_speedModifyScale;
     private float m_damageTakenModifyScale;
+    private float m_knockbackSpeedScale;
 
     protected Vector3 m_target;
 
@@ -148,6 +150,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public virtual void TakeKnockbackEffect(float _ammount, float _duration)
+    {
+        EnemyDebuff _debuff = new EnemyDebuff(
+            EnemyDebuff.DebuffType.Healing, _ammount, _duration
+        );
+
+        if (!IsKnockback)
+        {
+            m_currentDebuffs.Add(_debuff);
+            StartCoroutine(ExpireDebuff(_debuff, _duration));
+
+            SetDebuffStatus();
+        }
+    }
+
     // ------ PROTECTED ------
     protected virtual void Start()
     {
@@ -156,6 +173,16 @@ public class Enemy : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         m_body.velocity = Vector3.zero;
+
+        if (IsKnockback)
+        {
+            Vector3 _direction = -(m_target - transform.position).normalized;
+            _direction.y = 0;
+
+            m_body.MovePosition(
+                transform.position + _direction * m_knockbackSpeedScale * SPEEDSCALE
+            );
+        }
     }
     protected virtual void SetupProperties()
     {
@@ -227,9 +254,11 @@ public class Enemy : MonoBehaviour
         IsStun = false;
         IsVulnerable = false;
         IsHealing = false;
+        IsKnockback = false;
 
         m_speedModifyScale = 1f;
         m_damageTakenModifyScale = 1f;
+        m_knockbackSpeedScale = 1f;
 
         foreach (EnemyDebuff _debuff in m_currentDebuffs)
         {
@@ -256,6 +285,12 @@ public class Enemy : MonoBehaviour
                 case EnemyDebuff.DebuffType.Healing:
                     Heal(_debuff.Ammount);
                     IsHealing = true;
+                    break;
+
+                case EnemyDebuff.DebuffType.Knockback:
+                    m_knockbackSpeedScale = _debuff.Ammount;
+                    IsStun = true;
+                    IsKnockback = true;
                     break;
 
                 default:

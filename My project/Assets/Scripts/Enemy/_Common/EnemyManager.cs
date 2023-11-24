@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
         return _count;
     }
 
-    public List<Enemy> EnemiesTransform()
+    public List<Enemy> GetEnemies()
     {
         List<Enemy> _result = new();
         foreach (EnemySpawner _spawner in m_spawners)
