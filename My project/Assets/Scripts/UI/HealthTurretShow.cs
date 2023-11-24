@@ -3,22 +3,22 @@ using UnityEngine.UI;
 
 public class HealthTurretShow : MonoBehaviour
 {
-    public Slider health;
-    public Turret turretStat;
+    private Slider health;
+    private Turret ts;
 
     private int maxHealth;
     private int currentHealth;
 
     private void Awake()
     {
-        turretStat = GetComponentInParent<Turret>();
+        ts = GetComponentInParent<Turret>();
         health = GetComponentInChildren<Slider>();
     }
 
     private void Update()
     {
-        maxHealth = turretStat.turretStat.health;
-        currentHealth = turretStat.health;
+        maxHealth = ts.Health;
+        currentHealth = ts.CurrentHealth;
 
         health.maxValue = maxHealth;
         health.minValue = 0f;

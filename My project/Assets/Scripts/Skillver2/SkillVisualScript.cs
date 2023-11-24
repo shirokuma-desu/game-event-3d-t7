@@ -1,26 +1,30 @@
 using JetBrains.Annotations;
+using LeakyAbstraction;
 using UnityEngine;
 
 public class SkillVisualScript : MonoBehaviour
 {
     private SkillThingContainer container;
     private SkillCastController controller;
+    private HandleFloatingText floatingText;
     private int[] equippedSkillIndex = new int[3];
 
-    /*[HideInInspector]*/ public int skillPressedIndex = -1;
-    /*[HideInInspector]*/ public int skillPrefabUsingIndex;
+    [HideInInspector] public int skillPressedIndex = -1;
+    [HideInInspector] public int skillPrefabUsingIndex;
     private GameObject currentPreview;
     private Vector3 lockSkillPos = Vector3.zero;
     [HideInInspector] public bool isUsingSkill = false;
 
-    [SerializeField] private GameObject currentSkillToMulti;
+    private GameObject currentSkillToMulti;
 
     private int multiCastTimes = 0;
+    public int MultiCastTimes {  get { return multiCastTimes; } }
 
     private void Awake()
     {
         controller = GameObject.FindGameObjectWithTag("BaseTower").GetComponent<SkillCastController>();
         container = GetComponent<SkillThingContainer>();
+        floatingText = GetComponent<HandleFloatingText>();
         equippedSkillIndex = container.EquippedSkill;
     }
 
@@ -99,6 +103,9 @@ public class SkillVisualScript : MonoBehaviour
         {
             meteorScript.SetTarget(targetPos);
         }
+
+        container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.MeteorCast);
     }
     #endregion
 
@@ -147,6 +154,9 @@ public class SkillVisualScript : MonoBehaviour
         {
             acidScript.SetTarget(lockSkillPos);
         }
+
+        container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.AcidCast);
     }
     #endregion
 
@@ -200,6 +210,9 @@ public class SkillVisualScript : MonoBehaviour
         {
             lazerScript.SetTarget(targetPos);
         }
+
+        container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.LazerCast);
     }
     #endregion
 
@@ -250,6 +263,9 @@ public class SkillVisualScript : MonoBehaviour
                 starScript.SetDamage();
             }
         }
+
+        container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.StarCast);
     }
     #endregion
 
@@ -293,6 +309,9 @@ public class SkillVisualScript : MonoBehaviour
         {
             shadeScript.Settarget(targetPos);
         }
+
+        container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.ShadeCast);
     }
     #endregion
 
@@ -340,6 +359,9 @@ public class SkillVisualScript : MonoBehaviour
         {
             lavaScript.SetTarget(lockSkillPos);
         }
+
+        container.CastSkill.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.LavaCast);
     }
     #endregion
 
@@ -360,9 +382,12 @@ public class SkillVisualScript : MonoBehaviour
                             multiCastTimes++;
                             Vector2 randomNewTargetMeteor = Random.insideUnitCircle * container.SkillPrefabs[0].GetComponent<SkillStats>().Range;
                             Vector3 newTargetPos = targetPos + new Vector3(randomNewTargetMeteor.x, transform.position.y, randomNewTargetMeteor.y);
-                            Debug.Log("Multicast x" + multiCastTimes);
                             HandleMeteorSkill(newTargetPos);
                             random0 = Random.value;
+                        }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
                         }
                         break;
                     case 1:
@@ -374,8 +399,11 @@ public class SkillVisualScript : MonoBehaviour
                                 multiCastTimes++;
                                 Vector3 baseScale = currentSkillToMulti.transform.localScale;
                                 currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
-                                Debug.Log("Multicast x" + multiCastTimes);
                                 random1 = Random.value;
+                            }
+                            if (multiCastTimes > 0)
+                            {
+                                container.UseMulticast.RaiseEvent();
                             }
                         }
                         break;
@@ -388,6 +416,10 @@ public class SkillVisualScript : MonoBehaviour
                             HandleLazerBeamSkill(newTargetPos);
                             random2 = Random.value;
                         }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
+                        }
                         break;
                     case 3:
                         float random3 = Random.value;
@@ -397,6 +429,10 @@ public class SkillVisualScript : MonoBehaviour
                             int numberMore = 2;
                             HandleStarFallSkill(numberMore);
                             random3 = Random.value;
+                        }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
                         }
                         break;
                     case 4:
@@ -410,6 +446,10 @@ public class SkillVisualScript : MonoBehaviour
                             HandleShadeSkill(newTargetPos);
                             random4 = Random.value;
                         }
+                        if (multiCastTimes > 0)
+                        {
+                            container.UseMulticast.RaiseEvent();
+                        }
                         break;
                     case 5:
                         if (currentSkillToMulti != null)
@@ -420,8 +460,11 @@ public class SkillVisualScript : MonoBehaviour
                                 multiCastTimes++;
                                 Vector3 baseScale = currentSkillToMulti.transform.localScale;
                                 currentSkillToMulti.transform.localScale = new Vector3(baseScale.x + 3, baseScale.y, baseScale.z + 3);
-                                Debug.Log("Multicast x" + multiCastTimes);
                                 random1 = Random.value;
+                            }
+                            if (multiCastTimes > 0)
+                            {
+                                container.UseMulticast.RaiseEvent();
                             }
                         }
                         break;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6583099397941443787}
   - component: {fileID: 1577150565064167055}
-  - component: {fileID: -8182922009061577035}
+  - component: {fileID: 257089168473631216}
   m_Layer: 0
   m_Name: TurretSpot
   m_TagString: TurretSpot
@@ -55,7 +55,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.11842002, z: 1}
   m_Center: {x: 0, y: -0.06465941, z: 0}
---- !u!114 &-8182922009061577035
+--- !u!114 &257089168473631216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,10 +64,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5987222169251645423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67225a0586c6a1d48b71ebd811fd36b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a6a4a7acf188b94d86dd8c7bbda4e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSettle: 0
 --- !u!1 &7712246868923071706
 GameObject:
   m_ObjectHideFlags: 0
