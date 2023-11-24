@@ -20,9 +20,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Pools")]
     [SerializeField]
     private EnemyObjectPool m_enemyPool;
-
-    private List<Transform> m_enemiesTransform = new();
-    public List<Transform> EnemiesTransform { get => m_enemiesTransform; }
+    public EnemyObjectPool Pool { get => m_enemyPool; }
 
     public EnemyManager Manager { get; set; }
 
@@ -59,14 +57,10 @@ public class EnemySpawner : MonoBehaviour
     {
         _position.y = 0f;
         var _enemy = m_enemyPool.Get(_position);
-
-        m_enemiesTransform.Add(_enemy.transform);
     }
 
     public void DespawnEnemy(Enemy _enemy)
     {
-        m_enemiesTransform.Remove(_enemy.transform);
-
         m_enemyPool.Release(_enemy);
     }
 }

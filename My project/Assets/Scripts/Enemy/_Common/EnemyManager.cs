@@ -16,18 +16,18 @@ public class EnemyManager : MonoBehaviour
         int _count = 0;
         foreach (EnemySpawner _spawner in m_spawners)
         {
-            _count += _spawner.EnemiesTransform.Count;
+            _count += _spawner.Pool.GetActiveEnemies().Count;
         }
 
         return _count;
     }
 
-    public List<Transform> EnemiesTransform()
+    public List<Enemy> EnemiesTransform()
     {
-        List<Transform> _result = new();
+        List<Enemy> _result = new();
         foreach (EnemySpawner _spawner in m_spawners)
         {
-            _result.AddRange(_spawner.EnemiesTransform);
+            _result.AddRange(_spawner.Pool.GetActiveEnemies());
         }
 
         return _result;
