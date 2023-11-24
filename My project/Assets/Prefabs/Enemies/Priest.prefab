@@ -35,7 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8642164580632316331}
+  - {fileID: 3652935811772967721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &-8411340846021458048
@@ -67,7 +67,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7445610403672495919}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 300
-  m_moveSpeed: 35
+  m_moveSpeed: 20
   m_attackDamage: 200
   m_bounty: 400
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
@@ -184,7 +184,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1001 &8099050584745717312
+--- !u!1001 &3835779050379054274
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -245,16 +245,47 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2dc362e61b61e514bbbcc1a02456a703,
         type: 3}
       propertyPath: m_Name
-      value: Enemy_Priestess
+      value: enemy_priestess
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2dc362e61b61e514bbbcc1a02456a703,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4294920144620690029}
   m_SourcePrefab: {fileID: 100100000, guid: 2dc362e61b61e514bbbcc1a02456a703, type: 3}
---- !u!4 &8642164580632316331 stripped
+--- !u!4 &3652935811772967721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2dc362e61b61e514bbbcc1a02456a703,
     type: 3}
-  m_PrefabInstance: {fileID: 8099050584745717312}
+  m_PrefabInstance: {fileID: 3835779050379054274}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4177657552109547923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2dc362e61b61e514bbbcc1a02456a703,
+    type: 3}
+  m_PrefabInstance: {fileID: 3835779050379054274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4294920144620690029
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177657552109547923}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71b26656c4de0b849bff36f7b1776c9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

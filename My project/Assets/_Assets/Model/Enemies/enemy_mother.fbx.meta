@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2dc362e61b61e514bbbcc1a02456a703
+guid: a4917b591916a9141a9a2980103dca8c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: root|enemy_priest_walk
-      takeName: root|enemy_priest_walk
-      internalID: 4807483786303235053
+      name: enemy_mother_rig|enemy_mother_fly
+      takeName: enemy_mother_rig|enemy_mother_fly
+      internalID: -8943286793984953517
       firstFrame: 0
-      lastFrame: 215
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

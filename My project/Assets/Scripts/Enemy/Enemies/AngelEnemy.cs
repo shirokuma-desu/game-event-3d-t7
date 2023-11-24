@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AngelEnemy : Enemy
 {
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         Move();
     }
 

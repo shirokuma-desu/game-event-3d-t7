@@ -4,9 +4,45 @@ using UnityEngine;
 
 public class PaladinEnemy : Enemy
 {
-    private void FixedUpdate()
+    [Header("Paladin")]
+    [SerializeField]
+    private float m_walkDuration;
+    [SerializeField]
+    private float m_walkDelay;
+    private bool m_canMoving;
+
+    protected override void SetupProperties()
     {
-        Move();
+        base.SetupProperties();
+
+        m_canMoving = true;
+        StartCoroutine(WalkingCircle());
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        if (m_canMoving)
+        {
+            Move();
+        } 
+    }
+
+    private IEnumerator WalkingCircle()
+    {
+        if (m_canMoving) 
+        {
+            yield return new WaitForSeconds(m_walkDuration);
+            m_canMoving = false;
+        }
+        else 
+        {
+            yield return new WaitForSeconds(m_walkDelay);
+            m_canMoving = true;
+        }
+
+        StartCoroutine(WalkingCircle());
     }
 
     public override void TakeSlowEffect(float _ammount, float _duration) { }

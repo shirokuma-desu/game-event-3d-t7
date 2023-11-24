@@ -13,8 +13,6 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn")]
     [Space(15f)]
     [SerializeField]
-    private float m_spawnYPosition = 0f;
-    [SerializeField]
     private float m_spawningInterval = 1f;
     [Range(0f, 1f)] [SerializeField]
     private float m_spawningProbability = 1f;
@@ -22,8 +20,9 @@ public class EnemySpawner : MonoBehaviour
     [Header("Pools")]
     [SerializeField]
     private EnemyObjectPool m_enemyPool;
+    public EnemyObjectPool Pool { get => m_enemyPool; }
 
-    public EnemySpawnManager Manager { get; set; }
+    public EnemyManager Manager { get; set; }
 
     public void SetSpawningInterval(float _value)
     {
@@ -56,8 +55,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy(Vector3 _position)
     {
-        _position.y = m_spawnYPosition;
-        var enemy = m_enemyPool.Get(_position);
+        _position.y = 0f;
+        var _enemy = m_enemyPool.Get(_position);
     }
 
     public void DespawnEnemy(Enemy _enemy)

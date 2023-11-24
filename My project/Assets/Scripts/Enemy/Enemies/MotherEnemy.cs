@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class MotherEnemy : Enemy
 {
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         Move();
     }
 
     protected override void Die()
     {
-        Spawner.Manager.SpawnEnemyForm("MotherDeadFormation");
+        Spawner.Manager.SpawnEnemyForm("MotherDeadFormation", transform.position);
 
         base.Die();
     }
