@@ -16,8 +16,6 @@ public class ShopUIManager : MonoBehaviour
 
     public ShopSystem shopSystem;
 
-    public  InventorySO shopInventorySO;
-
     //const
     private const string PRICE_NAME = "Souls: ";
 
