@@ -15,12 +15,12 @@ public class ShopSystem : MonoBehaviour
 
     //scriptableobject
     public InventorySO shopInventorySO;
-
+    public SkillObjectSO emptySlot;
     public InventorySO playerInventorySO;
+    public InventorySO defaulSkillsValueSO;
 
     //datacontainer
     public List<DataContainer> dataContainersSkill = new List<DataContainer>();
-
     public List<SellDataContainer> dataContainerSellItem = new List<SellDataContainer>();
 
     #region get
@@ -53,7 +53,7 @@ public class ShopSystem : MonoBehaviour
 
     #endregion init
 
-    #region method
+    
 
     private int Sell(int soulToAdd)
     {
@@ -113,6 +113,50 @@ public class ShopSystem : MonoBehaviour
         //call event buying
         this.PostEvent(EventID.OnBuyingTurret);
     }
+
+    public void sellSkill(SellDataContainer dataconainter) {
+        SkillObjectSO skillObjectSO = dataconainter.Get();
+        if(skillObjectSO.ID_Skill == 0)
+        {
+            Debug.Log("Cant allow to sell empty slot");
+            return;
+        }
+        else
+        {
+
+            if(playerInventorySO.m_Inventory.Count > 0)
+            {
+                SkillObjectSO delete_skill_object  =  playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+                SkillObjectSO default_skill_object =  defaulSkillsValueSO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+                if (delete_skill_object != null && default_skill_object!= null)
+                {
+                    int sellprice = skillObjectSO.sellprice;
+                    m_total_souls += sellprice;
+                    for(int i = 0; i < shopInventorySO.m_Inventory.Count; i++)
+                    {
+                        if (shopInventorySO.m_Inventory[i].ID_Skill == skillObjectSO.ID_Skill)
+                        {
+                            shopInventorySO.m_Inventory[i] = default_skill_object;
+                        }
+                    }
+                    
+                    int index = playerInventorySO.m_Inventory.IndexOf(delete_skill_object);
+                    playerInventorySO.m_Inventory.RemoveAt(index);
+
+                    dataconainter.Set(emptySlot);
+
+                    //call event
+                    this.PostEvent(EventID.OnSellingItem);
+                }
+            }
+
+            
+           
+        }
+
+    }
+
+    #region logic method
 
     private void bindRandomData()
     {
@@ -196,10 +240,10 @@ public class ShopSystem : MonoBehaviour
             return;
         }
         m_total_souls -= price;
-        skillObjectSO.price += skillObjectSO.price_increasement;
+        skillObjectSO.price += skillObjectSO.price_increase;
         skillObjectSO.is_upgraded = true;
         skillObjectSO.level_skill++;
-        skillObjectSO.sellprice += 2;
+        skillObjectSO.sellprice += skillObjectSO.sell_price_increase;
     }
    
 

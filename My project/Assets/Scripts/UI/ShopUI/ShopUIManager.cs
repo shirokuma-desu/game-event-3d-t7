@@ -19,7 +19,6 @@ public class ShopUIManager : MonoBehaviour
     //const
     private const string PRICE_NAME = "Souls: ";
 
-    [SerializeField] public TextMeshProUGUI[] price_slots;
     [SerializeField] public Button[] skill_buttons;
 
     private void Awake()
@@ -35,6 +34,7 @@ public class ShopUIManager : MonoBehaviour
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
         this.RegisterListener(EventID.OnBuyingItem, (param) => OnClickBuyItem());
         this.RegisterListener(EventID.OnRerolledShop, (param) => OnClickRerolled());
+        this.RegisterListener(EventID.OnSellingItem, (param) => UpdatePrice());
     }
 
     // Update is called once per frame

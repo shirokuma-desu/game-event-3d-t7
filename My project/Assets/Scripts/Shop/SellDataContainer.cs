@@ -13,7 +13,6 @@ public class SellDataContainer : MonoBehaviour
     public Button button;
 
     //data
-    private int m_skill_id = 0;
 
     public SkillObjectSO m_datacontain;
 
@@ -22,6 +21,7 @@ public class SellDataContainer : MonoBehaviour
     {
         LoadScriptableObject();
         this.RegisterListener(EventID.OnBuyingItem, (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnSellingItem, (param) => LoadScriptableObject());
     }
 
     // Update is called once per frame
@@ -33,7 +33,6 @@ public class SellDataContainer : MonoBehaviour
     {
         image.sprite = m_datacontain.image;
         price.text = m_datacontain.sellprice.ToString();
-        m_skill_id = m_datacontain.ID_Skill;
     }
 
     public void Set(SkillObjectSO skillObject)

@@ -16,23 +16,12 @@ public class DataContainer : MonoBehaviour
     private int m_skill_id = 0;
     public SkillObjectSO m_datacontain;
 
-    private void Awake()
-    {
-      
-    }
-
     void Start()
     {
         //load first time
         LoadScriptableObject();
         this.RegisterListener(EventID.OnRerolledShop, (param) => LoadScriptableObject());
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 
     private void LoadScriptableObject()

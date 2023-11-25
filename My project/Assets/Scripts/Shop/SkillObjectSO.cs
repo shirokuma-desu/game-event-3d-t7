@@ -11,7 +11,8 @@ public class SkillObjectSO : ScriptableObject
     public Sprite image;
     public Sprite image_upgrade;
     public int price;
-    public int price_increasement;
+    public int price_increase;
+    public int sell_price_increase;
     public int sellprice;
     public string description;
     public bool is_upgraded;
