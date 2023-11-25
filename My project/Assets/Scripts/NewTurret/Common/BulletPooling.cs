@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPooling : GenericObjectPool<NormalBulletScript>
+public class BulletPooling : GenericObjectPool<Bullet>
 {
     private BulletSpawner m_spawner;
     public BulletSpawner Spawner
@@ -10,18 +10,18 @@ public class BulletPooling : GenericObjectPool<NormalBulletScript>
         set => m_spawner = value;
     }
 
-    public List<NormalBulletScript> GetActiveEnemies()
+    public List<Bullet> GetActiveEnemies()
     {
-        return new List<NormalBulletScript>(GetComponentsInChildren<NormalBulletScript>());
+        return new List<Bullet>(GetComponentsInChildren<Bullet>());
     }
 
-    protected override NormalBulletScript OnCreateInstance()
+    protected override Bullet OnCreateInstance()
     {
         GameObject _bulletIntance = Instantiate(
             m_spawner.BulletPrefab, Vector3.zero, Quaternion.identity, transform
         );
-        _bulletIntance.GetComponent<NormalBulletScript>().Spawner = m_spawner;
+        _bulletIntance.GetComponent<Bullet>().Spawner = m_spawner;
 
-        return _bulletIntance.GetComponent<NormalBulletScript>();
+        return _bulletIntance.GetComponent<Bullet>();
     }
 }

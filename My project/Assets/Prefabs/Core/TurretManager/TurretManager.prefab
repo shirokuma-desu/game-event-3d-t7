@@ -100,6 +100,8 @@ MonoBehaviour:
   - {fileID: 0}
   m_isSpotsOccupied: 
   m_emptySpotAvai: 1
+  m_buildANewTurret: {fileID: 11400000, guid: b59ac3b5ef9843e47894bba14187c63f, type: 2}
+  m_ATurretDestroyed: {fileID: 11400000, guid: ddd266ab95913954c8ed7467831ac3e1, type: 2}
   m_spawners:
   - {fileID: 5453499076395948678}
 --- !u!114 &9044146983731891567

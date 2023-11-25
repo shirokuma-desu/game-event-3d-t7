@@ -37,14 +37,14 @@ public class BulletSpawner : MonoBehaviour
         m_bulletPool.Spawner = this;
     }
 
-    public NormalBulletScript SpawnBullet(Vector3 _position)
+    public Bullet SpawnBullet(Vector3 _position)
     {
         _position.y = m_spawnYPosition;
         var bullet = m_bulletPool.Get(_position);
-        return bullet.GetComponent<NormalBulletScript>();
+        return bullet.GetComponent<Bullet>();
     }
 
-    public void DespawnBullet(NormalBulletScript _bullet)
+    public void DespawnBullet(Bullet _bullet)
     {
         m_bulletPool.Release(_bullet);
     }

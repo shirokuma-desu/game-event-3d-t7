@@ -45,7 +45,7 @@ public class NormalShooting : MonoBehaviour
             Vector3 bulletPosition = transform.position;
             bulletPosition.y = 1f;
 
-            NormalBulletScript bulletScript = tm.StartSpawner(0, bulletPosition);
+            Bullet bulletScript = tm.StartSpawner(0, bulletPosition);
 
             if (bulletScript != null)
             {

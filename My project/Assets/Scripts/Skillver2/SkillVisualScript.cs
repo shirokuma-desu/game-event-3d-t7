@@ -6,7 +6,6 @@ public class SkillVisualScript : MonoBehaviour
 {
     private SkillThingContainer container;
     private SkillCastController controller;
-    private HandleFloatingText floatingText;
     private int[] equippedSkillIndex = new int[3];
 
     [HideInInspector] public int skillPressedIndex = -1;
@@ -24,7 +23,6 @@ public class SkillVisualScript : MonoBehaviour
     {
         controller = GameObject.FindGameObjectWithTag("BaseTower").GetComponent<SkillCastController>();
         container = GetComponent<SkillThingContainer>();
-        floatingText = GetComponent<HandleFloatingText>();
         equippedSkillIndex = container.EquippedSkill;
     }
 

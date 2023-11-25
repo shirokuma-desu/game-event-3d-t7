@@ -54,6 +54,7 @@ public class HandleTurretSpawn : MonoBehaviour
                             m_currentTurret.GetComponent<Turret>().SpotIndex = m_snappedIndex;
                             tm.SetOccupied(m_snappedIndex);
                             m_currentTurret = null;
+                            tm.BuildANewTurret.RaiseEvent();
                         }
                         break;
                     }
