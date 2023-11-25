@@ -7,18 +7,21 @@ using UnityEngine.UI;
 
 public class ShopSystem : MonoBehaviour
 {
+    //data
     [SerializeField] private int m_total_souls = 1000;
     [SerializeField] private int m_reroll_price = 0;
-    [SerializeField] private int m_skill_price;
     [SerializeField] private int m_price_to_increase;
     [SerializeField] private int m_price_turret = 50;
 
-
-
+    //scriptableobject
     public InventorySO shopInventorySO;
+
     public InventorySO playerInventorySO;
 
+    //datacontainer
     public List<DataContainer> dataContainersSkill = new List<DataContainer>();
+
+    public List<SellDataContainer> dataContainerSellItem = new List<SellDataContainer>();
 
     #region get
 
@@ -32,20 +35,26 @@ public class ShopSystem : MonoBehaviour
         return m_reroll_price;
     }
 
-
-    #endregion
+    #endregion get
 
     #region init
+
     private void Awake()
     {
     }
 
     private void Start()
     {
+        if(playerInventorySO.m_Inventory.Count > 0)
+        {
+            loadDataFromPlayerInventory();
+        }
     }
-    #endregion
+
+    #endregion init
 
     #region method
+
     private int Sell(int soulToAdd)
     {
         m_total_souls += soulToAdd;
@@ -58,8 +67,7 @@ public class ShopSystem : MonoBehaviour
         return m_total_souls;
     }
 
-
-    public void DoReroll()
+    public void doReroll()
     {
         if (m_total_souls < m_reroll_price)
         {
@@ -68,24 +76,31 @@ public class ShopSystem : MonoBehaviour
         Buy(m_reroll_price);
         m_price_to_increase = 10;
         m_reroll_price += m_price_to_increase;
-        BindRandomData();
+        bindRandomData();
         //call event reroll
         this.PostEvent(EventID.OnRerolledShop);
     }
 
-
-    public void DoBuySkill(DataContainer datacontainer)
+    public void doBuySkill(DataContainer datacontainer)
     {
         SkillObjectSO skillObjectSO = datacontainer.Get();
-        int price = skillObjectSO.price;
-        m_total_souls -= price;
 
-        skillObjectSO.is_upgraded = true;
-        Debug.Log(skillObjectSO.name);
-        this.PostEvent(EventID.OnBuyingItem);
+        // player cant not buy empty slot 
+        if (skillObjectSO.ID_Skill == 0)
+        {
+            Debug.Log("Cant allow to buy empty slot");
+            return;
+        }
+        // player can buy item in slot
+        else
+        {
+            addOrUpdate(skillObjectSO);
+            loadDataFromPlayerInventory();
+            this.PostEvent(EventID.OnBuyingItem);
+        }
     }
 
-    public void BuyTurret()
+    public void buyTurret()
     {
         if (m_total_souls < m_price_turret)
         {
@@ -97,20 +112,64 @@ public class ShopSystem : MonoBehaviour
 
         //call event buying
         this.PostEvent(EventID.OnBuyingTurret);
-
     }
 
-    private void BindRandomData()
+    private void bindRandomData()
     {
-        int[] randomindex = GenerateRandomNumbersArrays();
+        int[] randomindex = generateRandomNumbersArrays();
         for (int i = 0; i < dataContainersSkill.Count; i++)
         {
-
             dataContainersSkill[i].Set(shopInventorySO.m_Inventory[randomindex[i]]);
         }
     }
 
-    private int[] GenerateRandomNumbersArrays()
+    private void addOrUpdate(SkillObjectSO skillObjectSO)
+    {
+
+        if (playerInventorySO.m_Inventory.Count < 3)
+        {
+            SkillObjectSO existingSkill = playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+            if (existingSkill != null)
+            {
+                int index = playerInventorySO.m_Inventory.IndexOf(existingSkill);
+                playerInventorySO.m_Inventory[index] = skillObjectSO;   
+                Debug.Log(skillObjectSO.name + " update");
+                onUpdateSkillPrice(skillObjectSO);
+            }
+            else
+            {
+                playerInventorySO.m_Inventory.Add(skillObjectSO);
+                onUpdateSkillPrice(skillObjectSO);
+                Debug.Log(skillObjectSO.name + " add new ");
+            }
+        }
+        else
+        {
+            SkillObjectSO existingSkill = playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+            if (existingSkill != null)
+            {
+                int index = playerInventorySO.m_Inventory.IndexOf(existingSkill);
+                playerInventorySO.m_Inventory[index] = skillObjectSO;
+                Debug.Log(skillObjectSO.name + " update ");
+                onUpdateSkillPrice(skillObjectSO);
+            }
+            else
+            {
+                Debug.Log("Cannot add more skills. Already have 3 skills.");
+            }
+        }
+
+    }
+
+    private void loadDataFromPlayerInventory()
+    {
+      for(int i = 0; i < playerInventorySO.m_Inventory.Count; i++)
+        {
+                dataContainerSellItem[i].Set(playerInventorySO.m_Inventory[i]);
+        }
+    }
+
+    private int[] generateRandomNumbersArrays()
     {
         System.Random random = new System.Random();
         int[] randomNumbers = new int[3];
@@ -118,10 +177,9 @@ public class ShopSystem : MonoBehaviour
         for (int i = 0; i < randomNumbers.Length; i++)
         {
             int randomNumber;
-            // Lặp cho đến khi có một số ngẫu nhiên không trùng
             do
             {
-                randomNumber = random.Next(0, maxValue: shopInventorySO.m_Inventory.Count); // Điều chỉnh phạm vi theo nhu cầu của bạn
+                randomNumber = random.Next(0, maxValue: shopInventorySO.m_Inventory.Count); 
             } while (Array.IndexOf(randomNumbers, randomNumber) != -1);
 
             randomNumbers[i] = randomNumber;
@@ -129,9 +187,21 @@ public class ShopSystem : MonoBehaviour
 
         return randomNumbers;
     }
-    #endregion
+    
+    private void onUpdateSkillPrice(SkillObjectSO skillObjectSO)
+    {
+        int price = skillObjectSO.price;
+        if (m_total_souls < price)
+        {
+            return;
+        }
+        m_total_souls -= price;
+        skillObjectSO.price += skillObjectSO.price_increasement;
+        skillObjectSO.is_upgraded = true;
+        skillObjectSO.level_skill++;
+        skillObjectSO.sellprice += 2;
+    }
+   
 
-
-
-
+    #endregion method
 }
