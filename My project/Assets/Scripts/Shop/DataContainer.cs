@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +19,7 @@ public class DataContainer : MonoBehaviour
         //load first time
         LoadScriptableObject();
         this.RegisterListener(EventID.OnRerolledShop, (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnBuyingItem, (param) => LoadScriptableObject());
         
     }
 

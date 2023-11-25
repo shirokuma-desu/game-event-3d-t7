@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 2
   skill_name: lava
-  level_skill: 8
+  level_skill: 12
   image: {fileID: 21300000, guid: dde9d15906ac30b4b8b0f298e95de66a, type: 3}
   image_upgrade: {fileID: 21300000, guid: 738f34b850f3c6b41812e1806a4ee709, type: 3}
   price: 27
-  price_increasement: 3
+  price_increase: 0
+  sell_price_increase: 0
   sellprice: 16
   description: 
   is_upgraded: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 4
   skill_name: meteor
-  level_skill: 1
+  level_skill: 2
   image: {fileID: 21300000, guid: 7827cf89e15dd5b4eabb2e854e8dd081, type: 3}
   image_upgrade: {fileID: 21300000, guid: f167f096fa6f39b4a92b53a43d59f03a, type: 3}
   price: 8

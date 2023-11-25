@@ -45,10 +45,7 @@ public class ShopSystem : MonoBehaviour
 
     private void Start()
     {
-        if(playerInventorySO.m_Inventory.Count > 0)
-        {
-            loadDataFromPlayerInventory();
-        }
+        bindDataFromPlayerInventory();
     }
 
     #endregion init
@@ -95,7 +92,8 @@ public class ShopSystem : MonoBehaviour
         else
         {
             addOrUpdate(skillObjectSO);
-            loadDataFromPlayerInventory();
+            datacontainer.Set(emptySlot);
+            bindDataFromPlayerInventory();
             this.PostEvent(EventID.OnBuyingItem);
         }
     }
@@ -136,7 +134,10 @@ public class ShopSystem : MonoBehaviour
                     {
                         if (shopInventorySO.m_Inventory[i].ID_Skill == skillObjectSO.ID_Skill)
                         {
-                            shopInventorySO.m_Inventory[i] = default_skill_object;
+                            shopInventorySO.m_Inventory[i].is_upgraded  =   default_skill_object.is_upgraded;
+                            shopInventorySO.m_Inventory[i].price        =   default_skill_object.price;
+                            shopInventorySO.m_Inventory[i].sellprice    =   default_skill_object.sellprice;
+                            shopInventorySO.m_Inventory[i].level_skill  =   default_skill_object.level_skill;
                         }
                     }
                     
@@ -144,7 +145,6 @@ public class ShopSystem : MonoBehaviour
                     playerInventorySO.m_Inventory.RemoveAt(index);
 
                     dataconainter.Set(emptySlot);
-
                     //call event
                     this.PostEvent(EventID.OnSellingItem);
                 }
@@ -205,13 +205,39 @@ public class ShopSystem : MonoBehaviour
 
     }
 
-    private void loadDataFromPlayerInventory()
+    private void bindDataFromPlayerInventory()
     {
-      for(int i = 0; i < playerInventorySO.m_Inventory.Count; i++)
+        if (playerInventorySO.m_Inventory.Count > 0)
         {
+            for (int i = 0; i < playerInventorySO.m_Inventory.Count; i++)
+            {
                 dataContainerSellItem[i].Set(playerInventorySO.m_Inventory[i]);
+            }
+
+            HashSet<int> encounteredSkillIDs = new();
+
+            for (int i = 0; i < dataContainerSellItem.Count; i++)
+            {
+                if (encounteredSkillIDs.Contains(dataContainerSellItem[i].m_datacontain.ID_Skill))
+                {
+                    dataContainerSellItem[i].Set(emptySlot);
+                }
+                else
+                {
+                    encounteredSkillIDs.Add(dataContainerSellItem[i].m_datacontain.ID_Skill);
+                }
+            }
         }
+        else
+        {
+            foreach(var item in dataContainerSellItem)
+            {
+                item.Set(emptySlot);
+            }
+        }
+       
     }
+
 
     private int[] generateRandomNumbersArrays()
     {

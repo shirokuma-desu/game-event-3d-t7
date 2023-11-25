@@ -22,4 +22,4 @@ MonoBehaviour:
   sell_price_increase: 2
   sellprice: 10
   description: 
-  is_upgraded: 1
+  is_upgraded: 0
