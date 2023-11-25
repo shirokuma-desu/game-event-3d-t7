@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 0
   skill_name: empty
+  level_skill: 0
   image: {fileID: 21300000, guid: 638ed91aab2b8b742a3b2aa2f4429b9b, type: 3}
   image_upgrade: {fileID: 0}
   price: 0
-  price_increasement: 0
+  price_increase: 0
+  sell_price_increase: 0
   sellprice: 0
   description: 
   is_upgraded: 0

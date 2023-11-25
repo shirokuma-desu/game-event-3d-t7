@@ -88,6 +88,11 @@ public class ShopSystem : MonoBehaviour
             Debug.Log("Cant allow to buy empty slot");
             return;
         }
+        if(playerInventorySO.m_Inventory.Count == 3)
+        {
+            Debug.Log("Cant allow to buy 4 skills");
+            return;
+        }
         // player can buy item in slot
         else
         {
@@ -149,9 +154,6 @@ public class ShopSystem : MonoBehaviour
                     this.PostEvent(EventID.OnSellingItem);
                 }
             }
-
-            
-           
         }
 
     }

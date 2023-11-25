@@ -8,7 +8,7 @@ public class SellDataContainer : MonoBehaviour
 {
     //component
     public Image image;
-
+    public TextMeshProUGUI level;
     public TextMeshProUGUI price;
     public Button button;
 
@@ -33,6 +33,7 @@ public class SellDataContainer : MonoBehaviour
     {
         image.sprite = m_datacontain.image;
         price.text = m_datacontain.sellprice.ToString();
+        level.text = "Level: " + m_datacontain.level_skill.ToString();
     }
 
     public void Set(SkillObjectSO skillObject)
