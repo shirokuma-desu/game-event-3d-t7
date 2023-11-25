@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 6
   skill_name: star fall
+  level_skill: 2
   image: {fileID: 21300000, guid: ddfc8fde9c707854f89051474c697eca, type: 3}
   image_upgrade: {fileID: 21300000, guid: 3b9eff5fd8edf3a4f831cb36333058d3, type: 3}
-  price: 12
+  price: 22
+  price_increasement: 10
   sellprice: 2
   description: 
-  is_upgraded: 0
+  is_upgraded: 1
