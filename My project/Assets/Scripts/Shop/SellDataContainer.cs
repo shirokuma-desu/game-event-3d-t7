@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,10 @@ public class SellDataContainer : MonoBehaviour
 
     //data
 
-    public ItemData m_datacontain;
+    public ItemDataSO m_datacontain;
+
+    //const
+    private const string prefix_text = "Lv: ";
 
     // Start is called before the first frame update
     private void Start()
@@ -33,15 +37,15 @@ public class SellDataContainer : MonoBehaviour
     {
         image.sprite =   m_datacontain.image;
         price.text   =   m_datacontain.sellprice.ToString();
-        level.text   = "Level: " + m_datacontain.level_skill.ToString();
+        level.text   =   prefix_text + m_datacontain.level_skill.ToString();
     }
 
-    public void Set(ItemData skillObject)
+    public void Set(ItemDataSO skillObject)
     {
         this.m_datacontain = skillObject;
     }
 
-    public ItemData Get()
+    public ItemDataSO Get()
     {
         return m_datacontain;
     }

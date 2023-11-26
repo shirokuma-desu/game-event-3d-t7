@@ -12,14 +12,14 @@ public class DataContainer : MonoBehaviour
 
     //data
     private int m_skill_id = 0;
-    public ItemData m_datacontain;
+    public ItemDataSO m_datacontain;
 
     void Start()
     {
         //load first time
         LoadScriptableObject();
         this.RegisterListener(EventID.OnRerolledShop, (param) => LoadScriptableObject());
-        this.RegisterListener(EventID.OnBuyingItem, (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnBuyingItem,   (param) => LoadScriptableObject());
         
     }
 
@@ -38,12 +38,12 @@ public class DataContainer : MonoBehaviour
     }
 
 
-    public void Set(ItemData skillObject)
+    public void Set(ItemDataSO skillObject)
     {
         this.m_datacontain = skillObject;
     }
 
-    public ItemData Get()
+    public ItemDataSO Get()
     {
         return m_datacontain;
     }
