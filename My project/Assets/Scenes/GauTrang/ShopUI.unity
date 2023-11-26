@@ -1084,7 +1084,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1129812487}
         m_TargetAssemblyTypeName: ShopSystem, Assembly-CSharp
-        m_MethodName: doBuySkill
+        m_MethodName: doBuyUpgrade
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 547785063}
@@ -1177,8 +1177,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1368330956}
   - {fileID: 2106985257}
+  - {fileID: 1368330956}
   m_Father: {fileID: 159321886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2359,7 +2359,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1129812487}
         m_TargetAssemblyTypeName: ShopSystem, Assembly-CSharp
-        m_MethodName: doBuySkill
+        m_MethodName: doBuyUpgrade
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2042691605}
@@ -5884,7 +5884,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1129812487}
         m_TargetAssemblyTypeName: ShopSystem, Assembly-CSharp
-        m_MethodName: doBuySkill
+        m_MethodName: doBuyUpgrade
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 386229681}

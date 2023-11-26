@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
   m_Name: Turret_Stun__Default
   m_EditorClassIdentifier: 
-  ID_Skill: 1
+  ID_Skill: 8
   skill_name: Stun Effect
   level_skill: 0
   image: {fileID: 21300000, guid: 50988475b8f068442a5e9a2fd23d32ee, type: 3}

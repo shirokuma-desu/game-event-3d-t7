@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
   m_Name: Turret_Damage
   m_EditorClassIdentifier: 
-  ID_Skill: 1
+  ID_Skill: 2
   skill_name: Increase Damage
-  level_skill: 0
+  level_skill: 3
   image: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
   image_upgrade: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
-  price: 10
+  price: 70
   price_increase: 20
   sell_price_increase: 2
-  sellprice: 2
+  sellprice: 8
   description: 
-  is_upgraded: 0
+  is_upgraded: 1
