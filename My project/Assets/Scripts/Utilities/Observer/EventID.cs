@@ -10,4 +10,5 @@ public enum EventID
     OnSellingItem,
     OnReclaimUpgrade,
     OnBuyingTurret,
+    OnBuyLimitSkill,
 }

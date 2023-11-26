@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -67,9 +68,9 @@ public class ShopSystem : MonoBehaviour
         this.PostEvent(EventID.OnRerolledShop);
     }
 
-    public void doBuySkill(DataContainer datacontainer)
+    public void doBuySkill(DataContainer dataContainer)
     {
-        ItemDataSO skillObjectSO = datacontainer.Get();
+        ItemDataSO skillObjectSO = dataContainer.Get();
         // player cant not buy empty slot 
         if (skillObjectSO.ID_Skill == 0)
         {
@@ -77,28 +78,9 @@ public class ShopSystem : MonoBehaviour
             return;
         }
         // player can buy item in slot
-        else
         {
-            List<ItemDataSO> list = new ();
-
-            if (shop_inventory.m_Inventory_Skill.Contains(skillObjectSO))
-            {
-                list = player_inventory_SO.m_Inventory_Skill;
-                addOrUpdate(list, skillObjectSO);
-                onUpdateSkillPrice(skillObjectSO);
-                datacontainer.Set(emptySlot);
+                addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
                 bindDataFromPlayerInventorySO();
-                this.PostEvent(EventID.OnBuyingItem);
-            }
-            else
-            {
-                list = player_inventory_SO.m_Inventory_Turret;
-                addOrUpdate(list, skillObjectSO);
-                onUpdateSkillPrice(skillObjectSO);
-                datacontainer.Set(emptySlot);
-                this.PostEvent(EventID.OnBuyingItem);
-            }
-            
         }
     }
 
@@ -184,22 +166,28 @@ public class ShopSystem : MonoBehaviour
         }
     }
 
-    private void addOrUpdate(List<ItemDataSO> playerInventory,ItemDataSO itemData)
+    private void addOrUpdate(List<ItemDataSO> playerInventory,ItemDataSO itemData,DataContainer dataContainer)
     {
         ItemDataSO existingSkill = playerInventory.Find(skill => skill.ID_Skill == itemData.ID_Skill);
         int index = playerInventory.IndexOf(existingSkill);
 
-        if (player_inventory_SO.m_Inventory_Skill.Count < 3)
+        if (playerInventory.Count < 3)
         {
             if (existingSkill != null)
             {
-                playerInventory[index] = itemData;   
+                playerInventory[index] = itemData;
+                onUpdateSkillPrice(itemData);
+                dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " update");
+                this.PostEvent(EventID.OnBuyingItem);
             }
             else
             {
                 playerInventory.Add(itemData);
+                onUpdateSkillPrice(itemData);
+                dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " add new ");
+                this.PostEvent(EventID.OnBuyingItem);
             }
         }
         else
@@ -207,17 +195,15 @@ public class ShopSystem : MonoBehaviour
             if (existingSkill != null)
             {
                 playerInventory[index] = itemData;
+                onUpdateSkillPrice(itemData);
+                dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " update ");
-            }
-            else if(player_inventory_SO.m_Inventory_Turret.Contains(itemData))
-            {
-                player_inventory_SO.m_Inventory_Turret.Add(itemData);
-                Debug.Log("add new turret data");
+                this.PostEvent(EventID.OnBuyingItem);
             }
             else
             {
-                Debug.Log("Cannot add more skills. Already have 3 skills.");
-                return;
+                this.PostEvent(EventID.OnBuyLimitSkill);
+                Debug.Log("cant not add 4th skill");
             }
         }
 

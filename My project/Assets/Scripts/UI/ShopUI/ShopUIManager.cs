@@ -34,6 +34,7 @@ public class ShopUIManager : MonoBehaviour
         this.RegisterListener(EventID.OnBuyingItem,   (param) => OnClickBuyItem());
         this.RegisterListener(EventID.OnRerolledShop, (param) => OnClickRerolled());
         this.RegisterListener(EventID.OnSellingItem,  (param) => UpdatePrice());
+        this.RegisterListener(EventID.OnBuyLimitSkill,(param) => showButton());
     }
 
     // Update is called once per frame
@@ -72,6 +73,14 @@ public class ShopUIManager : MonoBehaviour
             item.interactable = false;
         }
         UpdatePrice();
+    }
+
+    private void showButton()
+    {
+        foreach (var item in skill_buttons)
+        {
+            item.interactable = true;
+        }
     }
 
     private void OnClickRerolled()
