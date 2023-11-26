@@ -9,21 +9,20 @@ using UnityEngine.UI;
 
 public class ShopUIManager : MonoBehaviour
 {
-    public GameObject ShopUI;
-    public TextMeshProUGUI total_souls;
-    public TextMeshProUGUI reroll_price;
-    public GameObject open_button;
-
-    public ShopSystem shopSystem;
+    public GameObject           shop_ui;
+    public TextMeshProUGUI      total_souls;
+    public TextMeshProUGUI      reroll_price;
+    public GameObject           open_button;
+    public ShopSystem           shopSystem;
 
     //const
-    private const string PRICE_NAME = "Souls: ";
+    private const string        PRICE_NAME = "Souls: ";
 
     [SerializeField] public Button[] skill_buttons;
 
     private void Awake()
     {
-        ShopUI.gameObject.SetActive(false);
+        shop_ui.gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -32,9 +31,9 @@ public class ShopUIManager : MonoBehaviour
         UpdatePrice();
 
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
-        this.RegisterListener(EventID.OnBuyingItem, (param) => OnClickBuyItem());
+        this.RegisterListener(EventID.OnBuyingItem,   (param) => OnClickBuyItem());
         this.RegisterListener(EventID.OnRerolledShop, (param) => OnClickRerolled());
-        this.RegisterListener(EventID.OnSellingItem, (param) => UpdatePrice());
+        this.RegisterListener(EventID.OnSellingItem,  (param) => UpdatePrice());
     }
 
     // Update is called once per frame
@@ -44,20 +43,20 @@ public class ShopUIManager : MonoBehaviour
 
     public void Show()
     {
-        ShopUI.gameObject.SetActive(true);
+        shop_ui    .gameObject.SetActive(true);
         open_button.gameObject.SetActive(false);
     }
 
     public void Close()
     {
-        ShopUI.gameObject.SetActive(false);
+        shop_ui.gameObject.SetActive(false);
         open_button.gameObject.SetActive(true);
     }
 
     private void UpdatePrice()
     {
-        total_souls.text = PRICE_NAME + shopSystem.getTotalSouls().ToString();
-        reroll_price.text = shopSystem.getRerollPrice().ToString();
+        total_souls.text    = PRICE_NAME + shopSystem.getTotalSouls().ToString();
+        reroll_price.text   =              shopSystem.getRerollPrice().ToString();
     }
 
     private void OnClickBuyTurret()
