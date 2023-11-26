@@ -24,13 +24,8 @@ public class SellDataContainer : MonoBehaviour
     private void Start()
     {
         LoadScriptableObject();
-        this.RegisterListener(EventID.OnBuyingItem, (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnBuyingItem,  (param) => LoadScriptableObject());
         this.RegisterListener(EventID.OnSellingItem, (param) => LoadScriptableObject());
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
     }
 
     private void LoadScriptableObject()

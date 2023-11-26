@@ -81,6 +81,7 @@ public class ShopSystem : MonoBehaviour
         {
                 addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
                 bindDataFromPlayerInventorySO();
+                this.PostEvent(EventID.OnBuyingItem);
         }
     }
 
@@ -209,8 +210,9 @@ public class ShopSystem : MonoBehaviour
                 playerInventory[index] = itemData;
                 onUpdateSkillPrice(itemData);
                 dataContainer.Set(emptySlot);
+                //call event
                 Debug.Log(itemData.name + " update");
-                this.PostEvent(EventID.OnBuyingItem);
+               
             }
             else
             {
@@ -218,7 +220,7 @@ public class ShopSystem : MonoBehaviour
                 onUpdateSkillPrice(itemData);
                 dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " add new ");
-                this.PostEvent(EventID.OnBuyingItem);
+             
             }
         }
         else
@@ -228,8 +230,9 @@ public class ShopSystem : MonoBehaviour
                 playerInventory[index] = itemData;
                 onUpdateSkillPrice(itemData);
                 dataContainer.Set(emptySlot);
+
                 Debug.Log(itemData.name + " update ");
-                this.PostEvent(EventID.OnBuyingItem);
+               
             }
             else
             {
