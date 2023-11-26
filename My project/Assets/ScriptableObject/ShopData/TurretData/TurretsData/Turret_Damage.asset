@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
+  m_Name: Turret_Damage
+  m_EditorClassIdentifier: 
+  ID_Skill: 2
+  skill_name: Increase Damage
+  level_skill: 3
+  image: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
+  image_upgrade: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
+  price: 70
+  price_increase: 20
+  sell_price_increase: 2
+  sellprice: 8
+  description: 
+  is_upgraded: 1
