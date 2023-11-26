@@ -12,7 +12,7 @@ public class DataContainer : MonoBehaviour
 
     //data
     private int m_skill_id = 0;
-    public SkillObjectSO m_datacontain;
+    public ItemData m_datacontain;
 
     void Start()
     {
@@ -38,12 +38,12 @@ public class DataContainer : MonoBehaviour
     }
 
 
-    public void Set(SkillObjectSO skillObject)
+    public void Set(ItemData skillObject)
     {
         this.m_datacontain = skillObject;
     }
 
-    public SkillObjectSO Get()
+    public ItemData Get()
     {
         return m_datacontain;
     }

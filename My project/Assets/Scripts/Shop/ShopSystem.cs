@@ -15,7 +15,7 @@ public class ShopSystem : MonoBehaviour
 
     //scriptableobject
     public InventorySO shopInventorySO;
-    public SkillObjectSO emptySlot;
+    public ItemData emptySlot;
     public InventorySO playerInventorySO;
     public InventorySO defaulSkillsValueSO;
 
@@ -50,19 +50,7 @@ public class ShopSystem : MonoBehaviour
 
     #endregion init
 
-    
-
-    private int Sell(int soulToAdd)
-    {
-        m_total_souls += soulToAdd;
-        return m_total_souls;
-    }
-
-    private int Buy(int soulToMinus)
-    {
-        m_total_souls -= soulToMinus;
-        return m_total_souls;
-    }
+    #region call event on UI
 
     public void doReroll()
     {
@@ -80,7 +68,7 @@ public class ShopSystem : MonoBehaviour
 
     public void doBuySkill(DataContainer datacontainer)
     {
-        SkillObjectSO skillObjectSO = datacontainer.Get();
+        ItemData skillObjectSO = datacontainer.Get();
 
         // player cant not buy empty slot 
         if (skillObjectSO.ID_Skill == 0)
@@ -118,7 +106,7 @@ public class ShopSystem : MonoBehaviour
     }
 
     public void sellSkill(SellDataContainer dataconainter) {
-        SkillObjectSO skillObjectSO = dataconainter.Get();
+        ItemData skillObjectSO = dataconainter.Get();
         if(skillObjectSO.ID_Skill == 0)
         {
             Debug.Log("Cant allow to sell empty slot");
@@ -129,12 +117,11 @@ public class ShopSystem : MonoBehaviour
 
             if(playerInventorySO.m_Inventory.Count > 0)
             {
-                SkillObjectSO delete_skill_object  =  playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
-                SkillObjectSO default_skill_object =  defaulSkillsValueSO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+                ItemData delete_skill_object  =  playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+                ItemData default_skill_object =  defaulSkillsValueSO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
                 if (delete_skill_object != null && default_skill_object!= null)
                 {
-                    int sellprice = skillObjectSO.sellprice;
-                    m_total_souls += sellprice;
+                    Sell(skillObjectSO.sellprice);
                     for(int i = 0; i < shopInventorySO.m_Inventory.Count; i++)
                     {
                         if (shopInventorySO.m_Inventory[i].ID_Skill == skillObjectSO.ID_Skill)
@@ -157,9 +144,20 @@ public class ShopSystem : MonoBehaviour
         }
 
     }
+    #endregion
 
     #region logic method
+    private int Sell(int soulToAdd)
+    {
+        m_total_souls += soulToAdd;
+        return m_total_souls;
+    }
 
+    private int Buy(int soulToMinus)
+    {
+        m_total_souls -= soulToMinus;
+        return m_total_souls;
+    }
     private void bindRandomData()
     {
         int[] randomindex = generateRandomNumbersArrays();
@@ -169,12 +167,12 @@ public class ShopSystem : MonoBehaviour
         }
     }
 
-    private void addOrUpdate(SkillObjectSO skillObjectSO)
+    private void addOrUpdate(ItemData skillObjectSO)
     {
 
         if (playerInventorySO.m_Inventory.Count < 3)
         {
-            SkillObjectSO existingSkill = playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+            ItemData existingSkill = playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
             if (existingSkill != null)
             {
                 int index = playerInventorySO.m_Inventory.IndexOf(existingSkill);
@@ -191,7 +189,7 @@ public class ShopSystem : MonoBehaviour
         }
         else
         {
-            SkillObjectSO existingSkill = playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
+            ItemData existingSkill = playerInventorySO.m_Inventory.Find(skill => skill.ID_Skill == skillObjectSO.ID_Skill);
             if (existingSkill != null)
             {
                 int index = playerInventorySO.m_Inventory.IndexOf(existingSkill);
@@ -260,7 +258,7 @@ public class ShopSystem : MonoBehaviour
         return randomNumbers;
     }
     
-    private void onUpdateSkillPrice(SkillObjectSO skillObjectSO)
+    private void onUpdateSkillPrice(ItemData skillObjectSO)
     {
         int price = skillObjectSO.price;
         if (m_total_souls < price)

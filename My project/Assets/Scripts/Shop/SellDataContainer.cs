@@ -14,7 +14,7 @@ public class SellDataContainer : MonoBehaviour
 
     //data
 
-    public SkillObjectSO m_datacontain;
+    public ItemData m_datacontain;
 
     // Start is called before the first frame update
     private void Start()
@@ -31,17 +31,17 @@ public class SellDataContainer : MonoBehaviour
 
     private void LoadScriptableObject()
     {
-        image.sprite = m_datacontain.image;
-        price.text = m_datacontain.sellprice.ToString();
-        level.text = "Level: " + m_datacontain.level_skill.ToString();
+        image.sprite =   m_datacontain.image;
+        price.text   =   m_datacontain.sellprice.ToString();
+        level.text   = "Level: " + m_datacontain.level_skill.ToString();
     }
 
-    public void Set(SkillObjectSO skillObject)
+    public void Set(ItemData skillObject)
     {
         this.m_datacontain = skillObject;
     }
 
-    public SkillObjectSO Get()
+    public ItemData Get()
     {
         return m_datacontain;
     }

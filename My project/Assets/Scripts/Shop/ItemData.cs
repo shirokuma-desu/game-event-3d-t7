@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="SkillObjSO",menuName ="Scriptable Objects/Shop/Skill",order = 1)]
-public class SkillObjectSO : ScriptableObject
+[CreateAssetMenu(fileName ="SkillObjSO",menuName ="Scriptable Objects/Shop/Item",order = 1)]
+public class ItemData : ScriptableObject
 {
     public int ID_Skill;
     public string skill_name;
