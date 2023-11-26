@@ -47,4 +47,5 @@ public class PaladinEnemy : Enemy
 
     public override void TakeSlowEffect(float _ammount, float _duration) { }
     public override void TakeStunEffect(float _duration) { }
+    public override void TakeKnockbackEffect(float _ammount, float _duration) { }
 }

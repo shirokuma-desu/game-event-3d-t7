@@ -9,6 +9,7 @@ public class EnemyDebuff
         Stun,
         Vulnerable,
         Healing,
+        Knockback,
     }
 
     public DebuffType Type;
