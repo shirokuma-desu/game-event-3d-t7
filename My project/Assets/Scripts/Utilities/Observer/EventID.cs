@@ -5,10 +5,11 @@ using UnityEngine;
 public enum EventID
 {
     None = 0,
-    OnRerolledShop,
+    OnReroll,
     OnBuyingItem,
     OnSellingItem,
     OnReclaimUpgrade,
     OnBuyingTurret,
     OnBuyLimitSkill,
+    OnBuyUpgradeTurret,
 }

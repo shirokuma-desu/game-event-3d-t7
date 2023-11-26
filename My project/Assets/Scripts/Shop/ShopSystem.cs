@@ -65,7 +65,7 @@ public class ShopSystem : MonoBehaviour
         bindRandomData();
 
         //call event reroll
-        this.PostEvent(EventID.OnRerolledShop);
+        this.PostEvent(EventID.OnReroll);
     }
 
     public void doBuySkill(DataContainer dataContainer)
@@ -82,6 +82,37 @@ public class ShopSystem : MonoBehaviour
                 addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
                 bindDataFromPlayerInventorySO();
         }
+    }
+
+    public void doBuyUpgrade(DataContainer dataContainer)
+    {
+        ItemDataSO itemData = dataContainer.Get();
+        if(itemData.ID_Skill == 0)
+        {
+            Debug.Log("Cant allow to buy empty slot");
+            return;
+        }
+        {
+            ItemDataSO existingSkill = player_inventory_SO.m_Inventory_Turret.Find(skill => skill.ID_Skill == itemData.ID_Skill);
+            int index = player_inventory_SO.m_Inventory_Turret.IndexOf(existingSkill);
+
+            if(existingSkill != null)
+            {
+                player_inventory_SO.m_Inventory_Turret[index] = itemData;
+                onUpdateSkillPrice(itemData);
+                dataContainer.Set(emptySlot);
+                this.PostEvent(EventID.OnBuyUpgradeTurret);
+            }
+            else
+            {
+                player_inventory_SO.m_Inventory_Turret.Add(itemData);
+                onUpdateSkillPrice(itemData);
+                dataContainer.Set(emptySlot);
+                Debug.Log(itemData.name + " add new ");
+                this.PostEvent(EventID.OnBuyUpgradeTurret);
+            }
+        }
+
     }
 
     public void buyTurret()

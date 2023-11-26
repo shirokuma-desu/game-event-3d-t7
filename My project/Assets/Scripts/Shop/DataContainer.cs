@@ -18,8 +18,9 @@ public class DataContainer : MonoBehaviour
     {
         //load first time
         LoadScriptableObject();
-        this.RegisterListener(EventID.OnRerolledShop, (param) => LoadScriptableObject());
-        this.RegisterListener(EventID.OnBuyingItem,   (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnReroll,           (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnBuyingItem,       (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnBuyUpgradeTurret, (param) => LoadScriptableObject());    
         
     }
 

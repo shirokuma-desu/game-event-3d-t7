@@ -32,9 +32,10 @@ public class ShopUIManager : MonoBehaviour
 
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
         this.RegisterListener(EventID.OnBuyingItem,   (param) => OnClickBuyItem());
-        this.RegisterListener(EventID.OnRerolledShop, (param) => OnClickRerolled());
+        this.RegisterListener(EventID.OnReroll,       (param) => OnClickRerolled());
         this.RegisterListener(EventID.OnSellingItem,  (param) => UpdatePrice());
         this.RegisterListener(EventID.OnBuyLimitSkill,(param) => showButton());
+        this.RegisterListener(EventID.OnBuyUpgradeTurret, (param) => UpdatePrice());
     }
 
     // Update is called once per frame
