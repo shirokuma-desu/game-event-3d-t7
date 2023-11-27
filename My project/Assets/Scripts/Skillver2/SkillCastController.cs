@@ -10,14 +10,14 @@ public class SkillCastController : MonoBehaviour
     private float[] skillCooldown = new float[3];
     [HideInInspector] public float[] skillLastUsed = new float[3] { 0, 0, 0 };
 
+    private UISkill m_skillUI;
+
     private void Awake()
     {
         container = GameObject.Find("SkillManager").GetComponent<SkillThingContainer>();
         visualScript = GameObject.Find("SkillManager").GetComponent<SkillVisualScript>();
 
-        container.Skill1.onClick.AddListener(CastSkillOne);
-        container.Skill2.onClick.AddListener(CastSkillTwo);
-        container.Skill3.onClick.AddListener(CastSkillThree);
+        m_skillUI = UIManager.Instance.SkillUI;
     }
 
     private void Update()
@@ -64,128 +64,44 @@ public class SkillCastController : MonoBehaviour
     }
 
     #region Cast Skill
-    private void CastSkillOne()
-    {
-        if (isSkillAvailable(0))
-        {
-            switch (equippedSkillIndex[0])
-            {
-                case 0:
-                    visualScript.UseMeteorSkill();
-                    visualScript.skillPressedIndex = 0;
-                    visualScript.skillPrefabUsingIndex = 0;
-                    break;
-                case 1:
-                    visualScript.UseAcidRainSkill();
-                    visualScript.skillPressedIndex = 0;
-                    visualScript.skillPrefabUsingIndex = 1;
-                    break;
-                case 2:
-                    visualScript.UseLazerBeamSkill();
-                    visualScript.skillPressedIndex = 0;
-                    visualScript.skillPrefabUsingIndex = 2;
-                    break;
-                case 3:
-                    visualScript.UseStarFallSkill();
-                    visualScript.skillPressedIndex = 0;
-                    visualScript.skillPrefabUsingIndex = 3;
-                    break;
-                case 4:
-                    visualScript.UseShadeSkill();
-                    visualScript.skillPressedIndex = 0;
-                    visualScript.skillPrefabUsingIndex = 4;
-                    break;
-                case 5:
-                    visualScript.UseLavaSkill();
-                    visualScript.skillPressedIndex = 0;
-                    visualScript.skillPrefabUsingIndex = 5;
-                    break;
-                default:
-                    visualScript.skillPrefabUsingIndex = -1;
-                    visualScript.skillPressedIndex = -1;
-                    break;
-            }
-        }
-    }
 
-    private void CastSkillTwo()
+    public void CastSkill()
     {
-        if (isSkillAvailable(1))
-        {
-            switch (equippedSkillIndex[1])
-            {
-                case 0:
-                    visualScript.UseMeteorSkill();
-                    visualScript.skillPressedIndex = 1;
-                    visualScript.skillPrefabUsingIndex = 0;
-                    break;
-                case 1:
-                    visualScript.UseAcidRainSkill();
-                    visualScript.skillPressedIndex = 1;
-                    visualScript.skillPrefabUsingIndex = 1;
-                    break;
-                case 2:
-                    visualScript.UseLazerBeamSkill();
-                    visualScript.skillPressedIndex = 1;
-                    visualScript.skillPrefabUsingIndex = 2;
-                    break;
-                case 3:
-                    visualScript.UseStarFallSkill();
-                    visualScript.skillPressedIndex = 1;
-                    visualScript.skillPrefabUsingIndex = 3;
-                    break;
-                case 4:
-                    visualScript.UseShadeSkill();
-                    visualScript.skillPressedIndex = 1;
-                    visualScript.skillPrefabUsingIndex = 4;
-                    break;
-                case 5:
-                    visualScript.UseLavaSkill();
-                    visualScript.skillPressedIndex = 1;
-                    visualScript.skillPrefabUsingIndex = 5;
-                    break;
-                default:
-                    visualScript.skillPrefabUsingIndex = -1;
-                    visualScript.skillPressedIndex = -1;
-                    break;
-            }
-        }
-    }
+        int _index = m_skillUI.GetCurrentSkillCasted();
+        Debug.Log(_index);
 
-    private void CastSkillThree()
-    {
-        if (isSkillAvailable(2))
+        if (isSkillAvailable(_index))
         {
-            switch (equippedSkillIndex[2])
+            switch (equippedSkillIndex[_index])
             {
                 case 0:
                     visualScript.UseMeteorSkill();
-                    visualScript.skillPressedIndex = 2;
+                    visualScript.skillPressedIndex = _index;
                     visualScript.skillPrefabUsingIndex = 0;
                     break;
                 case 1:
                     visualScript.UseAcidRainSkill();
-                    visualScript.skillPressedIndex = 2;
+                    visualScript.skillPressedIndex = _index;
                     visualScript.skillPrefabUsingIndex = 1;
                     break;
                 case 2:
                     visualScript.UseLazerBeamSkill();
-                    visualScript.skillPressedIndex = 2;
+                    visualScript.skillPressedIndex = _index;
                     visualScript.skillPrefabUsingIndex = 2;
                     break;
                 case 3:
                     visualScript.UseStarFallSkill();
-                    visualScript.skillPressedIndex = 2;
+                    visualScript.skillPressedIndex = _index;
                     visualScript.skillPrefabUsingIndex = 3;
                     break;
                 case 4:
                     visualScript.UseShadeSkill();
-                    visualScript.skillPressedIndex = 2;
+                    visualScript.skillPressedIndex = _index;
                     visualScript.skillPrefabUsingIndex = 4;
                     break;
                 case 5:
                     visualScript.UseLavaSkill();
-                    visualScript.skillPressedIndex = 2;
+                    visualScript.skillPressedIndex = _index;
                     visualScript.skillPrefabUsingIndex = 5;
                     break;
                 default:
@@ -208,15 +124,7 @@ public class SkillCastController : MonoBehaviour
 
     private void CanPressSkill(int index, bool able)
     {
-        switch (index)
-        {
-            case 0:
-                container.Skill1.interactable = able; break;
-            case 1:
-                container.Skill2.interactable = able; break;
-            case 2:
-                container.Skill3.interactable = able; break;
-        }
+        m_skillUI.SkillButtons[index].interactable = able;
     }
 
     private bool isSkillAvailable(int index)

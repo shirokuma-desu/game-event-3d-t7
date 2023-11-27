@@ -34,7 +34,6 @@ public class NormalShooting : MonoBehaviour
             }
         }
 
-        Debug.Log(Vector3.Distance(transform.position, nearestEnemy.transform.position));
         return nearestEnemy;
     }
 

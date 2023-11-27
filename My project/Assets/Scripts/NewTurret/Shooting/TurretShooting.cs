@@ -31,7 +31,6 @@ public class TurretShooting : MonoBehaviour
         switch (m_shootType)
         {
             case 0:
-                Debug.Log("a");
                 ns.Shoot(); 
                 break;
             case 1:

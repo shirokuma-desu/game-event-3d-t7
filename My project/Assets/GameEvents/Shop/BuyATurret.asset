@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8480d3372b4732e479b72b979c0805f5, type: 3}
-  m_Name: PlayerInventorySO
+  m_Script: {fileID: 11500000, guid: aeccdb51a395ed9468ebf005d7a92332, type: 3}
+  m_Name: BuyATurret
   m_EditorClassIdentifier: 
-  m_Inventory_Skill:
-  - {fileID: 11400000, guid: 40f7a577697c2a347b1916e5a89ca855, type: 2}
-  - {fileID: 11400000, guid: d821149278eeac44db8c7a0a71c09410, type: 2}
-  m_Inventory_Turret: []
