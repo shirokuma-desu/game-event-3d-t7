@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6867297590855782702}
   - component: {fileID: 6277733647946796687}
   - component: {fileID: 4848813289535347481}
-  - component: {fileID: 3573969918188514888}
+  - component: {fileID: 4383934743767528467}
   - component: {fileID: 4210183308994863970}
   m_Layer: 0
   m_Name: SkillManager
@@ -78,7 +78,7 @@ MonoBehaviour:
   skillPressedIndex: 0
   skillPrefabUsingIndex: 0
   isUsingSkill: 0
---- !u!114 &3573969918188514888
+--- !u!114 &4383934743767528467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   responses:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3573969918188514888}
+      - m_Target: {fileID: 4383934743767528467}
         m_TargetAssemblyTypeName: HandleFloatingText, Assembly-CSharp
         m_MethodName: ShowFloatingText
         m_Mode: 1

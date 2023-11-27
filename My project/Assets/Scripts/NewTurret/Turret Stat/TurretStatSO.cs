@@ -8,4 +8,5 @@ public class TurretStatSO : ScriptableObject
     public int attackDamage;
     public float attackSpeed;
     public float attackRange;
+    public int maxJumps;
 }

@@ -23,14 +23,14 @@ public class HandleFloatingText : MonoBehaviour
 
         if (xText == null)
         {
-            xText = Instantiate(xTextPrefab);
+            xText = Instantiate(xTextPrefab, new Vector3(-6f, 10f, 0f), xTextPrefab.transform.rotation, transform);
             xText.SetActive(false);
             xAnimation = xText.GetComponent<Animation>();
         }
 
         if (multicastText == null)
         {
-            multicastText = Instantiate(multicastTextPrefab);
+            multicastText = Instantiate(multicastTextPrefab, new Vector3(2f, 10f, 0f), multicastTextPrefab.transform.rotation, transform);
             multicastText.SetActive(false);
             multicastAnimation = multicastText.GetComponent<Animation>();
         }
@@ -49,7 +49,7 @@ public class HandleFloatingText : MonoBehaviour
 
     private IEnumerator ShowText()
     {
-        if (multicastText.activeSelf || xText.activeSelf)
+        if (multicastText.activeSelf && xText.activeSelf)
         {
             xAnimation.Play("x_exit");
             multicastAnimation.Play("text_exit");

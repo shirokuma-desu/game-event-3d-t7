@@ -6,7 +6,7 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private TurretStatSO stat;
 
-    private TurretUpgradedStat tus;
+    private TurretManager tm;
 
     private int m_health;
     private int m_attackDamage;
@@ -31,6 +31,7 @@ public class Turret : MonoBehaviour
     public float AttackSpeed { get { return m_attackSpeed; } set { m_attackSpeed = value; } }
     public float AttackRange { get { return m_attackRange; } set { m_attackRange = value; } }
     public bool IsSettled { get { return m_isSettled; } set { m_isSettled = value; } }
+    public bool IsDead { get { return m_isDead; } set { m_isDead = value; } }
     public bool IsUpgraded { get {  return m_isUpgraded; } set { m_isUpgraded = value; } }
     public bool CanBeRestore { get { return m_canBeRestored; } set { m_canBeRestored = value; } }
     public int SpotIndex { get { return m_spotIndex; } set { m_spotIndex = value; } }
@@ -38,7 +39,7 @@ public class Turret : MonoBehaviour
 
     private void Awake()
     {
-        tus = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
+        tm = GameObject.Find("TurretManager").GetComponent<TurretManager>();
 
         m_health = stat.health;
         m_attackDamage = stat.attackDamage;
@@ -85,5 +86,6 @@ public class Turret : MonoBehaviour
         GameObject.Find("GameManager").GetComponent<TurretManager>().DeleteOccupied(m_spotIndex);
         GameObject.Find("GameManager").GetComponent<TurretManager>().TurretSpots[m_spotIndex].GetComponent<TurretSpot>().IsSettled = false;
         Destroy(gameObject);
+        tm.ATurretDestroyed.RaiseEvent();
     }
 }

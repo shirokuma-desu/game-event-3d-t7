@@ -19,7 +19,7 @@ public class EnemyObjectPool : GenericObjectPool<Enemy>
     protected override Enemy OnCreateInstance()
     {
         GameObject _enemyInstance = Instantiate(
-            m_spawner.EnemyPrototype, Vector3.zero, Quaternion.identity, transform
+            m_spawner.EnemyPrototype, Vector3.up * 1000f, Quaternion.identity, transform
         );
         _enemyInstance.GetComponent<Enemy>().Spawner = m_spawner;
 

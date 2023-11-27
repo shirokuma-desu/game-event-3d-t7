@@ -51,7 +51,7 @@ MonoBehaviour:
   cooldown: 2.5
   duration: 0
   numberOfPieces: 0
-  multicastRate: 0.15
+  multicastRate: 0.55
 --- !u!114 &7778963517824479514
 MonoBehaviour:
   m_ObjectHideFlags: 0
