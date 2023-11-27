@@ -105,7 +105,7 @@ public class TurretManager : MonoBehaviour
     {
         if (target != null)
         {
-            target.GetComponent<HandleShooting>().ShootType = type;
+            target.GetComponent<TurretShooting>().ShootType = type;
         }
     }
 

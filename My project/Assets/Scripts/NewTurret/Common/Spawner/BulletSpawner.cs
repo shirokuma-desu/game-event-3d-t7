@@ -11,26 +11,12 @@ public class BulletSpawner : MonoBehaviour
     [Space(15f)]
     [SerializeField]
     private float m_spawnYPosition = 0f;
-    [SerializeField]
-    private float m_spawningInterval = 1f;
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float m_spawningProbability = 1f;
 
     [Header("Pools")]
     [SerializeField]
     private BulletPooling m_bulletPool;
 
     public TurretManager Manager { get; set; }
-
-    public void SetSpawningInterval(float _value)
-    {
-        m_spawningInterval = _value;
-    }
-    public void SetSpawningProbability(float _value)
-    {
-        m_spawningProbability = _value;
-    }
 
     private void Start()
     {
