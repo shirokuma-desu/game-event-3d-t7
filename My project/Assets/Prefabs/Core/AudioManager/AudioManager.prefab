@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NotDestroy: 1
-  _initialPoolSize: 20
+  _initialPoolSize: 50
   _canGrowPool: 1
   _loggingType: 1
   _checkUnassignedSounds: 1

@@ -1,9 +1,9 @@
 using LeakyAbstraction;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShadeCasting : MonoBehaviour
 {
+    [SerializeField]
     private SkillStats stat;
     private Vector3 targetPos;
     private GameObject target;
@@ -12,11 +12,6 @@ public class ShadeCasting : MonoBehaviour
     private int damage;
     private float range;
     [SerializeField] private float speed;
-
-    private void Start()
-    {
-        stat = GetComponent<SkillStats>();
-    }
 
     public void Settarget(Vector3 targetPos)
     {
