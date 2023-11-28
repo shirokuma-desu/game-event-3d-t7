@@ -7986,17 +7986,17 @@ MonoBehaviour:
   default_data_item_inventory: {fileID: 11400000, guid: 62832c5929017494da52a02b9ff00a8b,
     type: 2}
   skills_container_buy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 180425013}
+  - {fileID: 750985735}
+  - {fileID: 2120026678}
   turrets_container_buy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 747604251}
+  - {fileID: 1786015212}
+  - {fileID: 1612528710}
   skills_container_sell:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 187919203}
+  - {fileID: 1079158027}
+  - {fileID: 1618741402}
   m_buyASkill: {fileID: 11400000, guid: 0a82c8bd1089d284e9e7c586ff2f55e8, type: 2}
   m_sellASkill: {fileID: 11400000, guid: 4d20157fbdf64a84c934a098b742f56b, type: 2}
   m_buyATurret: {fileID: 11400000, guid: aad60d30663cefb42b45b326ff3ec302, type: 2}

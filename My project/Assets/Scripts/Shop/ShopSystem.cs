@@ -51,11 +51,13 @@ public class ShopSystem : MonoBehaviour
 
     private void Awake()
     {
+        bindDataFromPlayerInventorySO();
     }
 
     private void Start()
     {
-        bindDataFromPlayerInventorySO();
+        
+        this.RegisterListener(EventID.OnSellingItem, (param) => bindDataFromPlayerInventorySO());
     }
 
     #endregion init
@@ -91,7 +93,6 @@ public class ShopSystem : MonoBehaviour
             bindDataFromPlayerInventorySO();
             this.PostEvent(EventID.OnBuyingItem);
 
-            m_buyASkill.RaiseEvent();
         }
     }
 
@@ -176,7 +177,6 @@ public class ShopSystem : MonoBehaviour
                     //call event
                     this.PostEvent(EventID.OnSellingItem);
 
-                    m_sellASkill.RaiseEvent();
                 }
             }
         }
