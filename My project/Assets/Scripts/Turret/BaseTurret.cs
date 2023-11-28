@@ -15,7 +15,7 @@ public class BaseTurret : MonoBehaviour
 
     public bool isDead = false;
 
-    private void Awake()
+    private void Start()
     {
         currentHealth = maxHealth;
         currentArmor = maxArmor;

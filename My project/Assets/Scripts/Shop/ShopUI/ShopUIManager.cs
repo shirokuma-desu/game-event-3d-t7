@@ -22,12 +22,14 @@ public class ShopUIManager : MonoBehaviour
 
     private void Awake()
     {
-        shop_ui.gameObject.SetActive(false);
+        
     }
 
     // Start is called before the first frame update
     private void Start()
     {
+        shop_ui.gameObject.SetActive(false);
+
         UpdatePrice();
 
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());

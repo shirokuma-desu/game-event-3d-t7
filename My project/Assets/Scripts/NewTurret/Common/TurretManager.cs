@@ -23,7 +23,7 @@ public class TurretManager : MonoBehaviour
     public GameEvent BuildANewTurret { get { return m_buildANewTurret; } }
     public GameEvent ATurretDestroyed { get { return m_ATurretDestroyed; } }
 
-    private void Awake()
+    private void Start()
     {
         tus = GetComponent<TurretUpgradedStat>();
 

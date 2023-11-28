@@ -12,7 +12,7 @@ public class SkillCastController : MonoBehaviour
 
     private UISkill m_skillUI;
 
-    private void Awake()
+    private void Start()
     {
         container = GameObject.Find("SkillManager").GetComponent<SkillThingContainer>();
         visualScript = GameObject.Find("SkillManager").GetComponent<SkillVisualScript>();

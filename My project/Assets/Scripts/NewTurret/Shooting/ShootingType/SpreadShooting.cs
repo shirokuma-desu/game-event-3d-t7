@@ -7,7 +7,7 @@ public class SpreadShooting : MonoBehaviour
 
     private float m_lastShoot = 0f;
 
-    private void Awake()
+    private void Start()
     {
         tm = GameObject.Find("TurretManager").GetComponent<TurretManager>();
         stat = GetComponentInParent<Turret>();

@@ -13,7 +13,7 @@ public class ShadeCasting : MonoBehaviour
     private float range;
     [SerializeField] private float speed;
 
-    private void Awake()
+    private void Start()
     {
         stat = GetComponent<SkillStats>();
     }

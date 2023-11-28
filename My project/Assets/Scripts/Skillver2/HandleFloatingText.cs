@@ -17,7 +17,7 @@ public class HandleFloatingText : MonoBehaviour
 
     private int multicastTimes;
 
-    private void Awake()
+    private void Start()
     {
         visualScript = GetComponent<SkillVisualScript>();
 

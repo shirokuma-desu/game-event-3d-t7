@@ -13,7 +13,7 @@ public class AcidRainCasting : MonoBehaviour
     private float skillStartT;
     private bool canDamaging = true;
 
-    private void Awake()
+    private void Start()
     {
         stat = GetComponent<SkillStats>();
         skillStartT = Time.time;
