@@ -8,6 +8,7 @@ public enum EventID
     OnReroll,
     OnBuyingItem,
     OnSellingItem,
+    OnSoldItem,
     OnReclaimUpgrade,
     OnBuyingTurret,
     OnBuyLimitSkill,

@@ -92,7 +92,7 @@ public class ShopSystem : MonoBehaviour
             addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
             bindDataFromPlayerInventorySO();
             this.PostEvent(EventID.OnBuyingItem);
-
+            m_buyASkill.RaiseEvent();
         }
     }
 
@@ -174,8 +174,11 @@ public class ShopSystem : MonoBehaviour
                     player_inventory_SO.m_Inventory_Skill.RemoveAt(index);
 
                     dataconainter.Set(emptySlot);
+                    
                     //call event
                     this.PostEvent(EventID.OnSellingItem);
+                    this.PostEvent(EventID.OnSoldItem);
+                    m_sellASkill.RaiseEvent();
 
                 }
             }

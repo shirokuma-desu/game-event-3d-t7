@@ -25,7 +25,7 @@ public class SellDataContainer : MonoBehaviour
     {
         LoadScriptableObject();
         this.RegisterListener(EventID.OnBuyingItem,  (param) => LoadScriptableObject());
-        this.RegisterListener(EventID.OnSellingItem, (param) => LoadScriptableObject());
+        this.RegisterListener(EventID.OnSoldItem, (param) => LoadScriptableObject());
     }
 
     private void LoadScriptableObject()
