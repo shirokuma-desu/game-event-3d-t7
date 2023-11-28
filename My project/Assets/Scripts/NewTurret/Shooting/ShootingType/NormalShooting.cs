@@ -3,22 +3,21 @@ using UnityEngine;
 public class NormalShooting : MonoBehaviour
 {
     private TurretManager tm;
-    private TurretShooting ts;
+    private Turret stat;
 
-    [SerializeField]
-    private GameObject bulletPrefab;
+    private GameObject nearestTarget;
 
     private float m_lastShoot = 0f;
 
     private void Awake()
     {
         tm = GameObject.Find("TurretManager").GetComponent<TurretManager>();
-        ts = GetComponentInParent<TurretShooting>();
+        stat = GetComponentInParent<Turret>();
     }
 
     private GameObject FindNearestEnemy()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, ts.AttackRange);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, stat.AttackRange);
         GameObject nearestEnemy = null;
         float nearestDistance = Mathf.Infinity;
 
@@ -40,12 +39,12 @@ public class NormalShooting : MonoBehaviour
 
     private void Attack(GameObject target, int damage)
     {
-        if (Time.time - m_lastShoot > (1 / ts.AttackSpeed))
+        if (Time.time - m_lastShoot > (1 / stat.AttackSpeed))
         {
             Vector3 bulletPosition = transform.position;
             bulletPosition.y = 1f;
 
-            NormalBulletScript bulletScript = tm.StartSpawner(0, bulletPosition);
+            Bullet bulletScript = tm.StartSpawner(0, bulletPosition);
 
             if (bulletScript != null)
             {
@@ -56,8 +55,12 @@ public class NormalShooting : MonoBehaviour
         }
     }
 
-    public void Shoot(int damage)
+    public void Shoot()
     {
-        Attack(FindNearestEnemy(), damage);
+        nearestTarget = FindNearestEnemy();
+        if (nearestTarget != null)
+        {
+            Attack(nearestTarget, stat.AttackDamage);
+        }
     }
 }

@@ -11,7 +11,7 @@ public class LazerBeamCasting : MonoBehaviour
     private int damage;
     private float range;
 
-    private void Awake()
+    private void Start()
     {
         stat = GetComponent<SkillStats>();
         basePos = transform.position;

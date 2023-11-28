@@ -15,7 +15,7 @@ public class TurretUpgradedStat : MonoBehaviour
     public float BonusAttackSpeed { get { return m_bonusAttackSpeed; } set { m_bonusAttackSpeed = value; } }
     public float BonusAttackRange { get { return m_bonusAttackRange; } set { m_bonusAttackRange = value; } }
 
-    private void Awake()
+    private void Start()
     {
         m_bonusHealth = ts.health;
         m_bonusAttackDamage = ts.attackDamage;

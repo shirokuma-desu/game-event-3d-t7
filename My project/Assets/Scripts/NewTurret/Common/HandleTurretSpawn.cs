@@ -18,7 +18,7 @@ public class HandleTurretSpawn : MonoBehaviour
     public GameObject TurretPrefab { get { return turretPrefab; } }
     public bool IsUsing {  get { return m_isUsing; } }
 
-    private void Awake()
+    private void Start()
     {
         tm = GetComponent<TurretManager>();
         m_turretSpots = new GameObject[tm.TurretSpots.Length];
@@ -54,6 +54,7 @@ public class HandleTurretSpawn : MonoBehaviour
                             m_currentTurret.GetComponent<Turret>().SpotIndex = m_snappedIndex;
                             tm.SetOccupied(m_snappedIndex);
                             m_currentTurret = null;
+                            tm.BuildANewTurret.RaiseEvent();
                         }
                         break;
                     }

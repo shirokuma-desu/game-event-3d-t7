@@ -1,13 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SkillThingContainer : MonoBehaviour
 {
-    [Header("Skill Button Container")]
-    [SerializeField] private Button skill1;
-    [SerializeField] private Button skill2;
-    [SerializeField] private Button skill3;
-
     [Header("Skill Prefabs Container")]
     [Space(10)]
     [SerializeField] private GameObject[] skillPrefabs;
@@ -20,9 +14,6 @@ public class SkillThingContainer : MonoBehaviour
     [SerializeField] private GameEvent castSkill;
     [SerializeField] private GameEvent useMulticast;
 
-    public Button Skill1 { get {  return skill1; } }
-    public Button Skill2 { get {  return skill2; } }
-    public Button Skill3 { get {  return skill3; } }
     public GameObject[] SkillPreview { get { return skillPreviewPrefabs; } }
     public GameObject[] SkillPrefabs { get { return skillPrefabs; } }
     public int[] EquippedSkill { get { return equippedSkill; } }

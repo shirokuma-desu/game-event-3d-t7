@@ -12,11 +12,18 @@ public class TurretManager : MonoBehaviour
     [SerializeField]
     private bool m_emptySpotAvai = true;
 
+    [SerializeField]
+    private GameEvent m_buildANewTurret;
+    [SerializeField]
+    private GameEvent m_ATurretDestroyed;
+
     public GameObject[] TurretSpots { get { return m_turretSpots; } }
     public bool[] IsSpotsOccupied { get { return m_isSpotsOccupied; } }
     public bool EmptySpotAvai { get { return m_emptySpotAvai; } }
+    public GameEvent BuildANewTurret { get { return m_buildANewTurret; } }
+    public GameEvent ATurretDestroyed { get { return m_ATurretDestroyed; } }
 
-    private void Awake()
+    private void Start()
     {
         tus = GetComponent<TurretUpgradedStat>();
 
@@ -25,6 +32,11 @@ public class TurretManager : MonoBehaviour
         for (int i = 0; i < m_isSpotsOccupied.Length; i++)
         {
             m_isSpotsOccupied[i] = false;
+        }
+
+        foreach (BulletSpawner _spawner in m_spawners)
+        {
+            _spawner.Manager = this;
         }
     }
 
@@ -98,7 +110,7 @@ public class TurretManager : MonoBehaviour
     {
         if (target != null)
         {
-            target.GetComponent<HandleShooting>().ShootType = type;
+            target.GetComponent<TurretShooting>().ShootType = type;
         }
     }
 
@@ -146,17 +158,9 @@ public class TurretManager : MonoBehaviour
         }
     }
 
-    public NormalBulletScript StartSpawner(int _index, Vector3 _position)
+    public Bullet StartSpawner(int _index, Vector3 _position)
     {
         return m_spawners[_index].SpawnBullet(_position);
-    }
-
-    private void Start()
-    {
-        foreach (BulletSpawner _spawner in m_spawners)
-        {
-            _spawner.Manager = this;
-        }
     }
     #endregion
 }

@@ -25,6 +25,14 @@ public class ShopSystem : MonoBehaviour
     public List<DataContainer>      turrets_container_buy   = new List<DataContainer>();
     public List<SellDataContainer>  skills_container_sell   = new List<SellDataContainer>();
 
+    [Header("Game Events")]
+    [SerializeField]
+    private GameEvent m_buyASkill;
+    [SerializeField]
+    private GameEvent m_sellASkill;
+    [SerializeField]
+    private GameEvent m_buyATurret;
+
     #region get
 
     public int getTotalSouls()
@@ -79,9 +87,11 @@ public class ShopSystem : MonoBehaviour
         }
         // player can buy item in slot
         {
-                addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
-                bindDataFromPlayerInventorySO();
-                this.PostEvent(EventID.OnBuyingItem);
+            addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
+            bindDataFromPlayerInventorySO();
+            this.PostEvent(EventID.OnBuyingItem);
+
+            m_buyASkill.RaiseEvent();
         }
     }
 
@@ -128,6 +138,7 @@ public class ShopSystem : MonoBehaviour
 
         //call event buying
         this.PostEvent(EventID.OnBuyingTurret);
+        m_buyATurret.RaiseEvent();
     }
 
     public void sellSkill(SellDataContainer dataconainter) {
@@ -164,6 +175,8 @@ public class ShopSystem : MonoBehaviour
                     dataconainter.Set(emptySlot);
                     //call event
                     this.PostEvent(EventID.OnSellingItem);
+
+                    m_sellASkill.RaiseEvent();
                 }
             }
         }
