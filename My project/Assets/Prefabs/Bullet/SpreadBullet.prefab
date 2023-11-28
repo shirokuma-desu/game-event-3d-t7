@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b787c8ff54544df4da1b6f06d64e28dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 10
+  m_speed: 55
   m_aBulletSpawn: {fileID: 11400000, guid: 683d08bf367038c47b24ffa6f7a5fb4d, type: 2}
   m_aBulletDespawn: {fileID: 11400000, guid: cad8701c7c699d4458bff4085e8e9652, type: 2}
   numberOfBullets: 5

@@ -21,7 +21,7 @@ public class SpreadShooting : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Enemy"))
+            if (collider.CompareTag("Enemy") && collider.gameObject.activeSelf)
             {
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
                 if (distance < nearestDistance)
@@ -46,7 +46,7 @@ public class SpreadShooting : MonoBehaviour
 
             if (bulletScript != null)
             {
-                bulletScript.SetTarget(target, damage);
+                bulletScript.SetTarget(target, damage, stat.NumberOfBullets, stat.SpreadAngle);
             }
 
             m_lastShoot = Time.time;
@@ -60,5 +60,11 @@ public class SpreadShooting : MonoBehaviour
         {
             Attack(nearestTarget, stat.AttackDamage);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, stat.AttackRange);
     }
 }

@@ -2,64 +2,54 @@
 
 public class SpreadBulletScript : Bullet
 {
-    [SerializeField]
-    private int numberOfBullets;
-    [SerializeField]
-    private float bulletSpreadAngle = 30f;
-    [SerializeField]
-    private GameObject spreadPrefab;
+    private TurretManager tm;
+
+    private int m_numberOfBullets;
+    private float m_bulletSpreadAngle;
+
+    private void Awake()
+    {
+        tm = GameObject.Find("TurretManager").GetComponent<TurretManager>();
+    }
+
+    public override void SetTarget(GameObject _target, int _damage, int _numberOfBullets, float _spreadAngle)
+    {
+        m_target = _target;
+        m_damage = _damage;
+        m_numberOfBullets = _numberOfBullets;
+        m_bulletSpreadAngle = _spreadAngle;
+    }
 
     protected override void HitTarget(GameObject _target)
     {
         Enemy enemy = m_target.GetComponent<Enemy>();
         if (enemy != null)
         {
+            SpreadBullets(_target);
             enemy.TakeDamage(m_damage);
-            SpreadBullets();
         }
 
         Spawner.DespawnBullet(this);
     }
-
-    //void SpreadBullets()
-    //{
-    //    // Get the direction from the current bullet to the target
-    //    Vector3 directionToTarget = m_target.transform.position - transform.position;
-    //    // Calculate the rotation angle based on the inverse direction
-    //    float baseAngle = Mathf.Atan2(directionToTarget.z, directionToTarget.x) * Mathf.Rad2Deg;
-
-    //    for (int i = 0; i < numberOfBullets; i++)
-    //    {
-    //        // Create a new bullet
-    //        GameObject newBullet = Instantiate(spreadPrefab, transform.position, Quaternion.identity);
-    //        MiniSpreadBulletScript miniScript = newBullet.GetComponent<MiniSpreadBulletScript>();
-
-    //        if (miniScript != null)
-    //        {
-    //            miniScript.SetDamage(m_damage);
-    //        }
-
-    //        // Calculate the angle for the spread based on the base angle
-    //        float angle = baseAngle + i * (bulletSpreadAngle / (numberOfBullets - 1)) - (bulletSpreadAngle / 2);
-    //        newBullet.transform.rotation = Quaternion.Euler(0f, angle, 0f);
-    //    }
-    //}
-
-    void SpreadBullets()
+    
+    private void SpreadBullets(GameObject _target)
     {
-        for (int i = 0; i < numberOfBullets; i++)
-        {
-            GameObject newBullet = Instantiate(spreadPrefab, transform.position, Quaternion.identity);
-            MiniSpreadBulletScript miniScript = newBullet.GetComponent<MiniSpreadBulletScript>();
+        float angleStep = m_bulletSpreadAngle / (m_numberOfBullets - 1);
+        float angle = -m_bulletSpreadAngle / 2f;
 
-            if (miniScript != null)
-            {
-                float angle = i * (bulletSpreadAngle / (numberOfBullets - 1)) - (bulletSpreadAngle / 2);
-                Vector3 dir = m_target.transform.position - basePos;
-                Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-                Vector3 dir2 = rotation * dir.normalized;
-                miniScript.SetDamage(dir2, m_damage);
-            }
+        Vector3 starterPoint = transform.position;
+        Vector3 fpoint = transform.position - basePos;
+        fpoint.y = 0f;
+        fpoint += fpoint.normalized;
+
+        for (int i = 0; i < m_numberOfBullets; i++)
+        {
+            Vector3 projectileMoveDir = Quaternion.Euler(0f, angle, 0f) * fpoint;
+
+            Bullet newBullet = tm.StartSpawner(5, starterPoint);
+            newBullet.SetTarget(projectileMoveDir.normalized, m_damage / 2, _target);
+
+            angle += angleStep;
         }
     }
 }

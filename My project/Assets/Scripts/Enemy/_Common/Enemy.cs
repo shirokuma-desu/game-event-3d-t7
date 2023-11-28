@@ -153,7 +153,7 @@ public class Enemy : MonoBehaviour
     public virtual void TakeKnockbackEffect(float _ammount, float _duration)
     {
         EnemyDebuff _debuff = new EnemyDebuff(
-            EnemyDebuff.DebuffType.Healing, _ammount, _duration
+            EnemyDebuff.DebuffType.Knockback, _ammount, _duration
         );
 
         if (!IsKnockback)

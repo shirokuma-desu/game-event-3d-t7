@@ -32,10 +32,35 @@ public class Bullet : MonoBehaviour
         transform.forward = m_target.transform.position - transform.position;
     }
 
+    public virtual void SetTarget(GameObject _target, int _damage, int _jumps)
+    {
+
+    }
+
+    public virtual void SetTarget(GameObject _target, int _damage, int _numberOfBullets, float _spreadAngle)
+    {
+
+    }
+
+    public virtual void SetTarget(Vector3 dir, int _damage, GameObject _ignoreTarget)
+    {
+
+    }
+
+    public virtual void SetTarget(GameObject _target, int _damage, float _duration)
+    {
+
+    }
+
+    public virtual void SetTarget(GameObject _target, int _damage, float _amount, float _duration)
+    {
+
+    }
+
     // ------ PROTECTED ------
     protected virtual void Update()
     {
-        if (m_target.activeSelf)
+        if (m_target != null && m_target.activeSelf)
         {
             Move();
         }

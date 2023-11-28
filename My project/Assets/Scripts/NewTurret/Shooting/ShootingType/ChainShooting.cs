@@ -7,9 +7,6 @@ public class ChainShooting : MonoBehaviour
     private TurretManager tm;
     private Turret stat;
 
-    [SerializeField]
-    private GameObject bulletPrefab;
-
     private float m_lastShoot = 0f;
 
     private void Awake()
@@ -26,7 +23,7 @@ public class ChainShooting : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Enemy"))
+            if (collider.CompareTag("Enemy") && collider.gameObject.activeSelf)
             {
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
                 if (distance < nearestDistance)
@@ -51,7 +48,7 @@ public class ChainShooting : MonoBehaviour
 
             if (bulletScript != null)
             {
-                bulletScript.SetTarget(target, damage);
+                bulletScript.SetTarget(target, damage, Random.Range(0, stat.MaxJumps));
             }
 
             m_lastShoot = Time.time;
@@ -60,6 +57,16 @@ public class ChainShooting : MonoBehaviour
 
     public void Shoot()
     {
-        Attack(FindNearestEnemy(), stat.AttackDamage);
+        GameObject nearestTarget = FindNearestEnemy();
+        if (nearestTarget != null)
+        {
+            Attack(nearestTarget, stat.AttackDamage);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, stat.AttackRange);
     }
 }

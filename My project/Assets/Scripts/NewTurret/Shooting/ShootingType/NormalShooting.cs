@@ -5,8 +5,6 @@ public class NormalShooting : MonoBehaviour
     private TurretManager tm;
     private Turret stat;
 
-    private GameObject nearestTarget;
-
     private float m_lastShoot = 0f;
 
     private void Awake()
@@ -23,7 +21,7 @@ public class NormalShooting : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Enemy"))
+            if (collider.CompareTag("Enemy") && collider.gameObject.activeSelf)
             {
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
                 if (distance < nearestDistance)
@@ -34,7 +32,6 @@ public class NormalShooting : MonoBehaviour
             }
         }
 
-        Debug.Log(Vector3.Distance(transform.position, nearestEnemy.transform.position));
         return nearestEnemy;
     }
 
@@ -58,10 +55,16 @@ public class NormalShooting : MonoBehaviour
 
     public void Shoot()
     {
-        nearestTarget = FindNearestEnemy();
+        GameObject nearestTarget = FindNearestEnemy();
         if (nearestTarget != null)
         {
             Attack(nearestTarget, stat.AttackDamage);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, stat.AttackRange);
     }
 }

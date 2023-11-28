@@ -1,48 +1,58 @@
 using JetBrains.Annotations;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
-public class MiniSpreadBulletScript : MonoBehaviour
+public class MiniSpreadBulletScript : Bullet
 {
-    [SerializeField]
-    private float m_speed;
-    private int damage;
-
-    private Vector3 distance = Vector3.zero;
-    private Vector3 basePos;
     private Vector3 dir;
+    private Vector3 pos;
 
-    private void Awake()
+    private List<GameObject> hitEnemies = new List<GameObject>();
+
+    public override void SetTarget(Vector3 _dir, int _damage, GameObject _ignoreTarget)
     {
-        basePos = transform.position;
+        dir = _dir;
+        m_damage = _damage;
+        pos = transform.position;
+        hitEnemies.Add(_ignoreTarget);
     }
 
-    public void SetDamage(Vector3 _direction, int _damage)
+    protected override void Update()
     {
-        damage = _damage;
-        dir = _direction;
-    }
-
-    private void Update()
-    {
-        DestroyThis();
-
-        transform.Translate(dir.normalized * m_speed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
+        if ((transform.position - pos).magnitude > 15f)
         {
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            Spawner.DespawnBullet(this);
+        }
+
+        CheckCollision();
+
+        transform.Translate(dir * m_speed * Time.deltaTime);
+    }
+
+    private void CheckCollision()
+    {
+        Collider[] colliders = Physics.OverlapBox(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(0.5f, 0.5f, 0.5f));
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Enemy") && !hitEnemies.Contains(collider.gameObject))
+            {
+                Enemy enemy = collider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(m_damage);
+                    hitEnemies.Add(collider.gameObject);
+                    m_damage /= 2;
+                }
+            }
         }
     }
 
-    private void DestroyThis()
+    protected override void ResetProperties()
     {
-        distance = transform.position - basePos;
-        if (distance.magnitude > 10f )
-        {
-            Destroy(gameObject);
-        }
+        base.ResetProperties();
+        hitEnemies.Clear();
     }
 }

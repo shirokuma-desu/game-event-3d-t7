@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3668997510733266844}
   - component: {fileID: 1465221459297207117}
+  - component: {fileID: 3238895560727110905}
   - component: {fileID: 887878171316619502}
+  - component: {fileID: 6119985056047482321}
+  - component: {fileID: 2630166772723034491}
   m_Layer: 0
   m_Name: TypeShoot
   m_TagString: Untagged
@@ -45,6 +48,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13cc771be4eff54ab86cd713264aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3238895560727110905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92640149696710290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b11f829ba9f5f4aa701434e110fb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &887878171316619502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,6 +70,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 808f1b99940e987408a666b303c06976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6119985056047482321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92640149696710290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9c3d962830b6c4d80be9d0ab6a2c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2630166772723034491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92640149696710290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38bd4ed1996839243aa4ae67ca2123e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &281757201343536907
@@ -786,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76f84f95dd8b24f8f9d16e86387899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shootType: 2
+  m_shootType: 1
 --- !u!114 &4928407925174472735
 MonoBehaviour:
   m_ObjectHideFlags: 0
