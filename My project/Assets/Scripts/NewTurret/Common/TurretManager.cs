@@ -33,6 +33,11 @@ public class TurretManager : MonoBehaviour
         {
             m_isSpotsOccupied[i] = false;
         }
+
+        foreach (BulletSpawner _spawner in m_spawners)
+        {
+            _spawner.Manager = this;
+        }
     }
 
     private void Update()
@@ -156,14 +161,6 @@ public class TurretManager : MonoBehaviour
     public Bullet StartSpawner(int _index, Vector3 _position)
     {
         return m_spawners[_index].SpawnBullet(_position);
-    }
-
-    private void Start()
-    {
-        foreach (BulletSpawner _spawner in m_spawners)
-        {
-            _spawner.Manager = this;
-        }
     }
     #endregion
 }

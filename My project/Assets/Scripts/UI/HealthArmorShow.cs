@@ -1,25 +1,26 @@
-using TMPro;
 using UnityEngine;
 
 public class HealthArmorShow : MonoBehaviour
 {
-    public GameObject baseTower;
-
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI armorText;
-
     private int maxHealth;
     private int maxArmor;
     private int currentHealth;
     private int currentArmor;
 
+    private UIManager m_UIMananger;
+
+    private void Start()
+    {
+        m_UIMananger = UIManager.Instance;
+    }
+
     private void Update()
     {
-        maxHealth = baseTower.GetComponent<BaseTurret>().maxHealth;
-        maxArmor = baseTower.GetComponent<BaseTurret>().maxArmor;
+        maxHealth = GetComponent<BaseTurret>().maxHealth;
+        maxArmor = GetComponent<BaseTurret>().maxArmor;
 
-        currentHealth = baseTower.GetComponent<BaseTurret>().currentHealth;
-        currentArmor = baseTower.GetComponent<BaseTurret>().currentArmor;
+        currentHealth = GetComponent<BaseTurret>().currentHealth;
+        currentArmor = GetComponent<BaseTurret>().currentArmor;
 
         UpdateHealthShow();
         UpdateArmorShow();
@@ -27,11 +28,11 @@ public class HealthArmorShow : MonoBehaviour
 
     void UpdateHealthShow()
     {
-        healthText.text = "Health: " + currentHealth.ToString() + "/" + maxArmor.ToString();
+        m_UIMananger.BaseTowerUI.SetHealthText(currentHealth.ToString() + "/" + maxHealth.ToString());
     }
 
     void UpdateArmorShow()
     {
-        armorText.text = "Armor: " + currentArmor.ToString() + "/" + maxArmor.ToString();
+        m_UIMananger.BaseTowerUI.SetArmorText(currentArmor.ToString() + "/" + maxArmor.ToString());
     }
 }

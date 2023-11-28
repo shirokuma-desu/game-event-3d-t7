@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 6631008873790084651}
   - component: {fileID: 4402306503691239824}
   - component: {fileID: -1380851498032842833}
+  - component: {fileID: 6994385011281468047}
   - component: {fileID: 5918689676237370714}
   m_Layer: 0
   m_Name: Base Tower
@@ -327,6 +328,21 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+--- !u!114 &6994385011281468047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101918828389589910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a29c4a3be6d6c44aa6953022ca49b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTower: {fileID: 8101918828389589910}
+  healthText: {fileID: 0}
+  armorText: {fileID: 0}
 --- !u!114 &5918689676237370714
 MonoBehaviour:
   m_ObjectHideFlags: 0

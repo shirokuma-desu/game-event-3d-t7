@@ -50,9 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ef380a6c5dc444c815a24b765e102e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill3: {fileID: 0}
   skillPrefabs:
   - {fileID: 5003740132303471860, guid: d9559fcbe9c5d8c4fa4456d5554e5807, type: 3}
   - {fileID: 7410124374663261416, guid: ebd6f5bfd4ec55b41a37ecfc8152528d, type: 3}
