@@ -9,12 +9,11 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     private GameObject m_player;
     public GameObject Player { get => m_player; }
     [SerializeField]
-    private GameObject[] m_towerSpot = new GameObject[4];
+    private TurretSpot[] m_towerSpots;
+
     [SerializeField]
     private EnemySpawnZone m_enemySpawnZone;
     public EnemySpawnZone EnemySpawnZone { get => m_enemySpawnZone; }
-
-    private bool[] m_settledTower = new bool[4];
 
     private int m_currentTowerNumber;
 
@@ -28,12 +27,12 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
 
     public Vector3 GetTowerPosition(int _index)
     {
-        return m_towerSpot[_index].transform.position;
+        return m_towerSpots[_index].transform.position;
     }
 
     public bool IsTowerSettled(int _index)
     {
-        return m_settledTower[_index];
+        return m_towerSpots[_index].IsSettled;
     }
 
     //

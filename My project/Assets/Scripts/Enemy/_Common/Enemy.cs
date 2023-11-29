@@ -22,12 +22,15 @@ public class Enemy : MonoBehaviour
     private const float SPEEDSCALE = 0.0005f;
 
     [SerializeField]
-    private float m_attackDamage;
-    public float AttackDamage { get => m_attackDamage; }
+    private int m_attackDamage;
+    public int AttackDamage { get => m_attackDamage; }
 
     [SerializeField]
     private float m_bounty;
     public float Bounty { get => m_bounty; }
+
+    [SerializeField]
+    private float m_attackRayLength;
 
     [Header("GameEvents")]
     [SerializeField]
@@ -83,7 +86,18 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
-        EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(1);
+        EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(m_attackDamage);
+        
+        IsDied = true;
+
+        if (Spawner != null)
+        {
+            Spawner.DespawnEnemy(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         m_anEnemyAttacking.RaiseEvent();
     }
@@ -170,6 +184,7 @@ public class Enemy : MonoBehaviour
     {
         m_body = GetComponent<Rigidbody>();
     }
+
     protected virtual void FixedUpdate()
     {
         m_body.velocity = Vector3.zero;
@@ -184,6 +199,21 @@ public class Enemy : MonoBehaviour
             );
         }
     }
+
+    protected virtual void Update()
+    {
+        RaycastHit[] _hits = Physics.RaycastAll(transform.position, transform.forward, m_attackRayLength);
+        foreach (RaycastHit _hit in _hits)
+        {
+            if (_hit.collider.tag == "BaseTower" || _hit.collider.tag == "Turret")
+            {
+                Attack();
+
+                break;
+            }
+        }
+    }
+
     protected virtual void SetupProperties()
     {
         IsSpawned = true;
