@@ -7,6 +7,10 @@ public class Enemy : MonoBehaviour
 {
     protected Rigidbody m_body;
 
+    [Header("Reference")]
+    [SerializeField]
+    protected EnemyVisual m_visual;
+
     [Header("Stats")]
     [SerializeField]
     private float m_maxHealth;
@@ -34,21 +38,21 @@ public class Enemy : MonoBehaviour
 
     [Header("GameEvents")]
     [SerializeField]
-    private GameEvent m_anEnemyDie;
+    protected GameEvent m_anEnemyDie;
     [SerializeField]
-    private GameEvent m_anEnemyAttacking;
+    protected GameEvent m_anEnemyAttacking;
 
     public EnemySpawner Spawner { get; set; }
 
     //
-    public bool IsSpawned { get; private set; }
-    public bool IsDied { get; private set; }
+    public bool IsSpawned { get; protected set; }
+    public bool IsDied { get; protected set; }
 
-    public bool IsSlowed { get; private set; }
-    public bool IsStun { get; private set; }
-    public bool IsVulnerable { get; private set; }
-    public bool IsHealing { get; private set; }
-    public bool IsKnockback { get; private set; }
+    public bool IsSlowed { get; protected set; }
+    public bool IsStun { get; protected set; }
+    public bool IsVulnerable { get; protected set; }
+    public bool IsHealing { get; protected set; }
+    public bool IsKnockback { get; protected set; }
 
     private List<EnemyDebuff> m_currentDebuffs = new List<EnemyDebuff>();
     private float m_speedModifyScale;
@@ -64,13 +68,24 @@ public class Enemy : MonoBehaviour
 
         if (m_currentHealth <= 0)
         {
-            Die();
+            if (!IsDied)
+            {
+                StartCoroutine(Die());
+            }
+        }
+        else 
+        {
+            m_visual.StartBeHitEffect();
         }
     }
 
-    protected virtual void Die()
+    protected virtual IEnumerator Die()
     {
+        m_visual.StartDeadEffect();
+
         IsDied = true;
+
+        yield return new WaitUntil(() => m_visual.ReadyToDie);
 
         if (Spawner != null)
         {
@@ -183,6 +198,9 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         m_body = GetComponent<Rigidbody>();
+
+        m_currentHealth = m_maxHealth;
+        m_currentMoveSpeed = m_moveSpeed;
     }
 
     protected virtual void FixedUpdate()
@@ -218,9 +236,6 @@ public class Enemy : MonoBehaviour
     {
         IsSpawned = true;
 
-        m_currentHealth = m_maxHealth;
-        m_currentMoveSpeed = m_moveSpeed;
-
         SetDebuffStatus();
 
         SetTarget();
@@ -243,7 +258,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Move()
     {
-        if (!IsStun)
+        if (!IsStun && !IsDied)
         {
             Vector3 _direction = (m_target - transform.position).normalized;
             _direction.y = 0;
