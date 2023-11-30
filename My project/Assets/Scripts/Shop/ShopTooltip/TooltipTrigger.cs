@@ -6,34 +6,23 @@ using UnityEngine.EventSystems;
 public class TooltipTrigger : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     public DataContainer dataContainer;
-    private IEnumerator tooltipCoroutine;
+
+    private static LTDescr delay;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (tooltipCoroutine != null)
+        delay = LeanTween.delayedCall(1.5f, () =>
         {
-            StopCoroutine(tooltipCoroutine);
-        }
-
-        tooltipCoroutine = ShowTooltipAfterDelay(1.0f);
-        StartCoroutine(tooltipCoroutine);
+            TooltipSystem.Show(dataContainer);
+        });
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (tooltipCoroutine != null)
-        {
-            StopCoroutine(tooltipCoroutine);
-        }
+        LeanTween.cancel(delay.uniqueId);
         TooltipSystem.Hide();
     }
 
-    private IEnumerator ShowTooltipAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        TooltipSystem.Show(dataContainer);
-    }
 
 
 }
