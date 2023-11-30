@@ -53,6 +53,13 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
         if (m_currentTowerNumber == 0) m_isAnyTowerLeft = false;
     }
 
+    public void SpawnParticle(GameObject _particle, Vector3 _position)
+    {
+        _position.y = 0f;
+
+        Instantiate(_particle.gameObject, _position, Quaternion.identity);
+    }
+
     //
     private void Start()
     {

@@ -206,6 +206,7 @@ public class SkillVisualScript : MonoBehaviour
         LazerBeamCasting lazerScript = lazer.GetComponent<LazerBeamCasting>();
         if (lazerScript != null)
         {
+            lazerScript.SetUp();
             lazerScript.SetTarget(targetPos);
         }
 

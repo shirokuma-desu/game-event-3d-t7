@@ -7781,16 +7781,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 577062946156741425, guid: 42d9cef15773d78438006b2e68b26953,
-        type: 3}
-      propertyPath: _canGrowPool
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 577062946156741425, guid: 42d9cef15773d78438006b2e68b26953,
-        type: 3}
-      propertyPath: _initialPoolSize
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 1748928753827645982, guid: 42d9cef15773d78438006b2e68b26953,
         type: 3}
       propertyPath: m_Name

@@ -621,7 +621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &70781795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,7 +2093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &232365278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4107,7 +4107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &711205712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4170,6 +4170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnvironmentManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526079965378109949, guid: 507dada1523d67244aabc101b7ffccea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5742990375757045770, guid: 507dada1523d67244aabc101b7ffccea,
         type: 3}
@@ -4588,7 +4593,7 @@ PrefabInstance:
     - target: {fileID: 1748928753827645982, guid: 42d9cef15773d78438006b2e68b26953,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8014413904659154455, guid: 42d9cef15773d78438006b2e68b26953,
         type: 3}
@@ -5115,6 +5120,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 8101918828389589910, guid: 97d09cafeccf6fa4eb7629a38fb1ef1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5402,6 +5412,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5879538020066047380, guid: 48460dd7bedc10f458295a8cb048bc0c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5488,7 +5503,7 @@ PrefabInstance:
     - target: {fileID: 5415239153357042631, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5884963183525506941, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
@@ -6338,6 +6353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SkillManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008003361518152291, guid: 781fc50812f42404fa77f0737c251d96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10210,7 +10230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1882115865
 RectTransform:
   m_ObjectHideFlags: 0

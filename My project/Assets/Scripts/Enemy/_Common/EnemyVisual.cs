@@ -17,12 +17,14 @@ public class EnemyVisual : MonoBehaviour
 
     [Header("Dead Effect")]
     [SerializeField]
-    private GameObject m_deadPartical;
-    [SerializeField]
-    private float m_deadKnockback;
+    private GameObject m_deadParticle;
     [SerializeField]
     private float m_deadTime;
     public bool ReadyToDie { get; private set; }
+
+    [Header("Attack Effect")]
+    [SerializeField]
+    private GameObject m_attackParticle;
 
     public void StartBeHitEffect()
     {
@@ -34,11 +36,14 @@ public class EnemyVisual : MonoBehaviour
         StartCoroutine(DeadEffect());
     }
 
+    public void StartAttackEffect()
+    {
+        EnvironmentManager.Instance.SpawnParticle(m_attackParticle, transform.position);
+    }
+
     // ============================================
     private void Start()
     {
-        m_deadPartical.SetActive(false);
-
         ReadyToDie = false;
     }
 
@@ -49,8 +54,6 @@ public class EnemyVisual : MonoBehaviour
 
     private void ResetProperties()
     {
-        m_deadPartical.SetActive(false);
-
         ReadyToDie = false;
     }
 
@@ -69,7 +72,7 @@ public class EnemyVisual : MonoBehaviour
 
     private IEnumerator DeadEffect()
     {
-        m_deadPartical.SetActive(true);
+        EnvironmentManager.Instance.SpawnParticle(m_deadParticle, transform.position);
 
         yield return new WaitForSeconds(m_deadTime);
 

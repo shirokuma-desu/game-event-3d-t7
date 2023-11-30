@@ -101,6 +101,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
+        m_visual.StartAttackEffect();
+
         EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(m_attackDamage);
         
         IsDied = true;

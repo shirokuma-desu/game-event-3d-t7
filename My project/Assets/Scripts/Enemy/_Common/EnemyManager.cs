@@ -107,7 +107,7 @@ public class EnemyManager : MonoBehaviour
             }
         }
 
-        Debug.LogWarning("No Formation has such name");
+        Debug.LogWarning($"EnemyManager: No Formation has such name '{_name}', spawn cancelled");
     }
 
     private void Start()

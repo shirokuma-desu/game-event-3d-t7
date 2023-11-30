@@ -17,6 +17,12 @@ public class LazerBeamCasting : MonoBehaviour
         basePos = transform.position;
     }
 
+    public void SetUp()
+    {
+        stat = GetComponent<SkillStats>();
+        basePos = transform.position;
+    }
+
     public void SetTarget(Vector3 targetPos)
     {
         this.targetPos = targetPos;
