@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 2
   skill_name: acid
-  level_skill: 1
+  level_skill: 0
   image: {fileID: 21300000, guid: 8642f4fbe088d99439107093bc044b55, type: 3}
   image_upgrade: {fileID: 21300000, guid: 0975fd1d16c72b74bbcaab2fd1c08b4b, type: 3}
   price: 10

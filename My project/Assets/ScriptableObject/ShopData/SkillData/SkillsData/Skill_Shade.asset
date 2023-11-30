@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 5
   skill_name: shade
-  level_skill: 4
+  level_skill: 0
   image: {fileID: 21300000, guid: ddc261c15d5b7e345a51651e8ccf83ad, type: 3}
   image_upgrade: {fileID: 21300000, guid: 8c86a8d42467a434eaa31d0fd6666994, type: 3}
   price: 35

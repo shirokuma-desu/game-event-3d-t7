@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using LeakyAbstraction;
 using UnityEngine;
@@ -197,11 +199,6 @@ public class SkillVisualScript : MonoBehaviour
     private void HandleLazerBeamSkill(Vector3 targetPos)
     {
         GameObject lazer = Instantiate(container.SkillPrefabs[2], transform.position, Quaternion.identity);
-        float scaleSkill = container.SkillPrefabs[2].GetComponent<SkillStats>().Range;
-        lazer.transform.localScale = new Vector3(0.5f, 0.5f, scaleSkill);
-        lazer.transform.position = (targetPos - transform.position).normalized * (scaleSkill / 2f);
-        lazer.transform.position = new Vector3(lazer.transform.position.x, 1.5f, lazer.transform.position.z);
-        lazer.transform.forward = (targetPos - transform.position).normalized;
 
         LazerBeamCasting lazerScript = lazer.GetComponent<LazerBeamCasting>();
         if (lazerScript != null)
@@ -411,7 +408,29 @@ public class SkillVisualScript : MonoBehaviour
                         while (random2 <= container.SkillPrefabs[2].GetComponent<SkillStats>().MulticastRate && multiCastTimes < 4)
                         {
                             multiCastTimes++;
-                            Vector3 newTargetPos = new Vector3(Random.value, transform.position.y, Random.value).normalized;
+                            
+                            int _rayNum = Mathf.Min(multiCastTimes, EnvironmentManager.Instance.EnemyManager.GetEnemies().Count);
+                            List<Enemy> _closetEnemies = new();
+                            for (int _num = 0; _num < _rayNum; _num++)
+                            {
+                                Enemy _closetEnemy = null;
+                                float _minDistance = Mathf.Infinity;
+                                foreach (Enemy _enemy in EnvironmentManager.Instance.EnemyManager.GetEnemies())
+                                {
+                                    if (_closetEnemies.Contains(_enemy)) continue;
+
+                                    Vector3 _tempPos = _enemy.transform.position;
+                                    float _tempDistance = Vector3.Distance(transform.position, _tempPos);
+                                    if (_tempDistance < _minDistance)
+                                    {
+                                        _closetEnemy = _enemy;
+                                        _minDistance = _tempDistance;
+                                    }
+                                }
+                                _closetEnemies.Add(_closetEnemy);
+                            }
+
+                            Vector3 newTargetPos = _closetEnemies.Last().transform.position;
                             HandleLazerBeamSkill(newTargetPos);
                             random2 = Random.value;
                         }

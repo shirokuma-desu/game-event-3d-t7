@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [Header("Reference")]
     [SerializeField]
     protected EnemyVisual m_visual;
+    [SerializeField]
+    protected Collider m_collider;
 
     [Header("Stats")]
     [SerializeField]
@@ -82,6 +84,7 @@ public class Enemy : MonoBehaviour
     protected virtual IEnumerator Die()
     {
         m_visual.StartDeadEffect();
+        m_collider.enabled = false;
 
         IsDied = true;
 
@@ -201,8 +204,9 @@ public class Enemy : MonoBehaviour
     {
         m_body = GetComponent<Rigidbody>();
 
-        m_currentHealth = m_maxHealth;
-        m_currentMoveSpeed = m_moveSpeed;
+        ResetProperties();
+        
+        SetupProperties();
     }
 
     protected virtual void FixedUpdate()
@@ -245,6 +249,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual void ResetProperties()
     {
+        m_collider.enabled = true;
+        
         m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 

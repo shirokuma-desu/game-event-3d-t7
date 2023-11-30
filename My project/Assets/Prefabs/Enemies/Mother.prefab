@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visual: {fileID: 4903824553211684384}
+  m_collider: {fileID: 4910694905073305850}
   m_maxHealth: 300
   m_moveSpeed: 40
   m_attackDamage: 200

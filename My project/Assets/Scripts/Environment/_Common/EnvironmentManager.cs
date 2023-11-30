@@ -7,9 +7,14 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     [Header("References")]
     [SerializeField]
     private GameObject m_player;
+
     public GameObject Player { get => m_player; }
     [SerializeField]
     private TurretSpot[] m_towerSpots;
+
+    [SerializeField]
+    private EnemyManager m_enemyManager;
+    public EnemyManager EnemyManager { get => m_enemyManager; }
 
     [SerializeField]
     private EnemySpawnZone m_enemySpawnZone;
