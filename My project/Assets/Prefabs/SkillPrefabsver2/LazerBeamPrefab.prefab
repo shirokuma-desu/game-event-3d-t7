@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 300
   range: 15
-  cooldown: 0.5
+  cooldown: 0.1
   duration: 0
   numberOfPieces: 0
   multicastRate: 0.5

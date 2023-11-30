@@ -95,6 +95,13 @@ MonoBehaviour:
     type: 3}
   xTextPrefab: {fileID: 9116005820580296804, guid: dce0f9d13d74ae74bb48763f870088ce,
     type: 3}
+  m_effectPosition: {x: -6, y: 9, z: 1}
+  m_normalMulticastEffect: {fileID: 2222333999545644361, guid: a4f740c1acccc914095153ff39a0ee62,
+    type: 3}
+  m_x3MulticastEffect: {fileID: 5038538599253275788, guid: f4190303b37a2cf4e800b13560fd83c0,
+    type: 3}
+  m_x4MulticastEffect: {fileID: 2839923194162497948, guid: fdb73be40bcecfb4a82a97d5e80d29b0,
+    type: 3}
 --- !u!114 &383009829550809294
 MonoBehaviour:
   m_ObjectHideFlags: 0
