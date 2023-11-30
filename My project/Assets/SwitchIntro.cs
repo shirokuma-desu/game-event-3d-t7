@@ -32,14 +32,25 @@ public class SwitchIntro : MonoBehaviour
             float t = (Mathf.Sin(Time.time - startTime) * speed);
 			GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, t);
         }
-        Invoke("SetActive", sec);
-        Destroy(gameObject, sec);
+        Invoke("SetActive1", sec);
+        Invoke("planeModifi", sec+1);
 	}
 
 
-    void SetActive()
+    void SetActive1()
     {
         gameObject1.SetActive(true);
+    }
+
+    void SetActive2()
+    {
         gameObject2.SetActive(true);
+    }
+
+    void planeModifi()
+    {
+        transform.position = new Vector3(0, 0, -18);
+        Invoke("SetActive2", sec);
+        Destroy(gameObject, sec+1);
     }
 }
