@@ -12,7 +12,9 @@ public class ShopUIManager : MonoBehaviour
     public GameObject shop_ui;
     public TextMeshProUGUI total_souls;
     public TextMeshProUGUI reroll_price;
+    public TextMeshProUGUI open_button_text;
     public GameObject open_button;
+   
     public ShopSystem shopSystem;
 
     [SerializeField] public Button[] skill_buttons;
@@ -25,7 +27,6 @@ public class ShopUIManager : MonoBehaviour
     private void Start()
     {
         shop_ui.gameObject.SetActive(false);
-
         UpdatePrice();
 
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
@@ -55,8 +56,9 @@ public class ShopUIManager : MonoBehaviour
 
     private void UpdatePrice()
     {
-        total_souls.text    =  shopSystem.getTotalSouls().ToString();
-        reroll_price.text   =  shopSystem.getRerollPrice().ToString();
+        total_souls.text        =  shopSystem.getTotalSouls().ToString();
+        reroll_price.text       =  shopSystem.getRerollPrice().ToString();
+        open_button_text.text   =  shopSystem.getTotalSouls().ToString();
     }
 
     private void OnClickBuyTurret()
