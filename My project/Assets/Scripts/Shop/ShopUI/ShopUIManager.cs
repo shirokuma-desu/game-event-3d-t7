@@ -9,20 +9,16 @@ using UnityEngine.UI;
 
 public class ShopUIManager : MonoBehaviour
 {
-    public GameObject           shop_ui;
-    public TextMeshProUGUI      total_souls;
-    public TextMeshProUGUI      reroll_price;
-    public GameObject           open_button;
-    public ShopSystem           shopSystem;
-
-    //const
-    private const string        PRICE_NAME = "Souls: ";
+    public GameObject shop_ui;
+    public TextMeshProUGUI total_souls;
+    public TextMeshProUGUI reroll_price;
+    public GameObject open_button;
+    public ShopSystem shopSystem;
 
     [SerializeField] public Button[] skill_buttons;
 
     private void Awake()
     {
-        
     }
 
     // Start is called before the first frame update
@@ -33,10 +29,10 @@ public class ShopUIManager : MonoBehaviour
         UpdatePrice();
 
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
-        this.RegisterListener(EventID.OnBuyingItem,   (param) => OnClickBuyItem());
-        this.RegisterListener(EventID.OnReroll,       (param) => OnClickRerolled());
-        this.RegisterListener(EventID.OnSellingItem,  (param) => UpdatePrice());
-        this.RegisterListener(EventID.OnBuyLimitSkill,(param) => showButton());
+        this.RegisterListener(EventID.OnBuyingItem, (param) => OnClickBuyItem());
+        this.RegisterListener(EventID.OnReroll, (param) => OnClickRerolled());
+        this.RegisterListener(EventID.OnSellingItem, (param) => UpdatePrice());
+        this.RegisterListener(EventID.OnBuyLimitSkill, (param) => showButton());
         this.RegisterListener(EventID.OnBuyUpgradeTurret, (param) => UpdatePrice());
     }
 
@@ -47,7 +43,7 @@ public class ShopUIManager : MonoBehaviour
 
     public void Show()
     {
-        shop_ui    .gameObject.SetActive(true);
+        shop_ui.gameObject.SetActive(true);
         open_button.gameObject.SetActive(false);
     }
 
@@ -59,8 +55,8 @@ public class ShopUIManager : MonoBehaviour
 
     private void UpdatePrice()
     {
-        total_souls.text    = PRICE_NAME + shopSystem.getTotalSouls().ToString();
-        reroll_price.text   =              shopSystem.getRerollPrice().ToString();
+        total_souls.text    =  shopSystem.getTotalSouls().ToString();
+        reroll_price.text   =  shopSystem.getRerollPrice().ToString();
     }
 
     private void OnClickBuyTurret()
@@ -70,8 +66,7 @@ public class ShopUIManager : MonoBehaviour
 
     private void OnClickBuyItem()
     {
-
-        foreach(var item in skill_buttons)
+        foreach (var item in skill_buttons)
         {
             item.interactable = false;
         }
@@ -94,5 +89,4 @@ public class ShopUIManager : MonoBehaviour
             item.interactable = true;
         }
     }
-
 }

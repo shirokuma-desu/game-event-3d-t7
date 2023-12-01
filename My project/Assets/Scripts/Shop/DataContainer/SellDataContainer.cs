@@ -9,7 +9,6 @@ public class SellDataContainer : MonoBehaviour
 {
     //component
     public Image image;
-    public TextMeshProUGUI level;
     public TextMeshProUGUI price;
     public Button button;
 
@@ -17,8 +16,6 @@ public class SellDataContainer : MonoBehaviour
 
     public ItemDataSO m_datacontain;
 
-    //const
-    private const string prefix_text = "Lv: ";
 
     // Start is called before the first frame update
     private void Start()
@@ -32,7 +29,6 @@ public class SellDataContainer : MonoBehaviour
     {
         image.sprite =   m_datacontain.image;
         price.text   =   m_datacontain.sellprice.ToString();
-        level.text   =   prefix_text + m_datacontain.level_skill.ToString();
     }
 
     public void Set(ItemDataSO skillObject)

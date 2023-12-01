@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Skill_Meteor
   m_EditorClassIdentifier: 
   ID_Skill: 1
-  skill_name: meteor
-  level_skill: 11
+  skill_name: Meteor
+  level_skill: 0
   image: {fileID: 21300000, guid: 7827cf89e15dd5b4eabb2e854e8dd081, type: 3}
   image_upgrade: {fileID: 21300000, guid: f167f096fa6f39b4a92b53a43d59f03a, type: 3}
-  price: 28
+  price: 8
   price_increase: 5
   sell_price_increase: 2
-  sellprice: 10
-  description: 
+  sellprice: 2
+  description: Calls down a meteor from outer space that deals damage in an area.
   is_upgraded: 0
