@@ -621,7 +621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &70781795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,7 +2093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &232365278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4107,7 +4107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &711205712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4171,11 +4171,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnvironmentManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3526079965378109949, guid: 507dada1523d67244aabc101b7ffccea,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5742990375757045770, guid: 507dada1523d67244aabc101b7ffccea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4226,11 +4221,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6504550057669223877, guid: 507dada1523d67244aabc101b7ffccea,
+        type: 3}
+      propertyPath: m_mainRadius
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504550057669223877, guid: 507dada1523d67244aabc101b7ffccea,
+        type: 3}
+      propertyPath: m_mainMaxAngle
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 7377702755778964649, guid: 507dada1523d67244aabc101b7ffccea,
         type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 967952571}
+    - target: {fileID: 7377702755778964649, guid: 507dada1523d67244aabc101b7ffccea,
+        type: 3}
+      propertyPath: m_enemyManager
+      value: 
+      objectReference: {fileID: 1093200179}
     - target: {fileID: 7377702755778964649, guid: 507dada1523d67244aabc101b7ffccea,
         type: 3}
       propertyPath: m_towerSpots.Array.data[0]
@@ -4589,11 +4599,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748928753827645982, guid: 42d9cef15773d78438006b2e68b26953,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8014413904659154455, guid: 42d9cef15773d78438006b2e68b26953,
         type: 3}
@@ -5120,11 +5125,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Tower
       objectReference: {fileID: 0}
-    - target: {fileID: 8101918828389589910, guid: 97d09cafeccf6fa4eb7629a38fb1ef1c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5412,11 +5412,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5879538020066047380, guid: 48460dd7bedc10f458295a8cb048bc0c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5482,44 +5477,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 905012673316039866, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
-      propertyPath: m_spawningProbability
-      value: 0
+      propertyPath: m_spawningInterval
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3627570375480353409, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
-      propertyPath: m_spawningProbability
-      value: 0
+      propertyPath: m_spawningInterval
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3920464048201328750, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
-      propertyPath: m_spawningProbability
-      value: 0
+      propertyPath: m_spawningInterval
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5415239153357042631, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
       propertyPath: m_Name
       value: EnemyManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5415239153357042631, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5884963183525506941, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
-      propertyPath: m_spawningProbability
-      value: 0
+      propertyPath: m_spawningInterval
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6403970765636280943, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
         type: 3}
-      propertyPath: m_spawningProbability
-      value: 1
+      propertyPath: m_spawningInterval
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f74d9dd0f7323924c9cbf2130e5ea21b, type: 3}
+--- !u!114 &1093200179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6492208768976478865, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1093200178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526657c94d061614f89ba4c8ad37f671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1098451941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6353,11 +6355,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SkillManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008003361518152291, guid: 781fc50812f42404fa77f0737c251d96,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9297,7 +9294,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.11
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10230,7 +10227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1882115865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11676,11 +11673,11 @@ SceneRoots:
   - {fileID: 1875171130}
   - {fileID: 232365279}
   - {fileID: 70781796}
+  - {fileID: 719786250}
   - {fileID: 766242406}
   - {fileID: 1062651847}
   - {fileID: 967952570}
   - {fileID: 1181422776}
-  - {fileID: 719786250}
   - {fileID: 1093200178}
   - {fileID: 872145344}
   - {fileID: 1059590574}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MotherEnemy : Enemy
 {
+    [SerializeField]
+    private GameObject m_motherDeadParticle;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -14,12 +17,14 @@ public class MotherEnemy : Enemy
     protected override IEnumerator Die()
     {
         m_visual.StartDeadEffect();
-
+    
         IsDied = true;
 
         Spawner.Manager.SpawnDrop(transform.position, Bounty);
 
         yield return new WaitUntil(() => m_visual.ReadyToDie);
+
+        EnvironmentManager.Instance.SpawnParticle(m_motherDeadParticle, transform.position);
 
         Spawner.Manager.SpawnEnemyForm("MotherDeadFormation", transform.position);
 

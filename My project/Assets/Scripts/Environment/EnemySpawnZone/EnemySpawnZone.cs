@@ -5,18 +5,23 @@ using UnityEngine;
 public class EnemySpawnZone : MonoBehaviour
 {
     [SerializeField]
-    private List<Transform> m_spawnPoints;
-
-    [Header("Configs")]
+    public Vector3 m_mainPivot;
     [SerializeField]
-    private float m_spawnPointRadius;
+    public float m_mainRadius;
+    [SerializeField]
+    public float m_mainMaxAngle;
+
+    [SerializeField]
+    public float m_zoneRadius;
 
     public Vector3 GetSpawnPoint()
     {
-        int _pointIndex = Random.Range(0, m_spawnPoints.Count);
+        float _randomMainAngle = Random.Range(-m_mainMaxAngle, m_mainMaxAngle);
+        Vector3 _randomZonePivot = m_mainPivot + new Vector3(Mathf.Sin(_randomMainAngle * Mathf.Deg2Rad) * m_mainRadius, 0f, Mathf.Cos(_randomMainAngle * Mathf.Deg2Rad) * -m_mainRadius);
 
-        Vector3 _targetSpawnPoint = m_spawnPoints[_pointIndex].position;
-        Vector2 _randomCircleSpawn = Random.insideUnitCircle * Random.Range(0f, m_spawnPointRadius);
+        Vector2 _randomCircleSpawn = Random.insideUnitCircle * Random.Range(0f, m_zoneRadius);
+
+        Vector3 _targetSpawnPoint = _randomZonePivot;
         _targetSpawnPoint.x += _randomCircleSpawn.x;
         _targetSpawnPoint.z += _randomCircleSpawn.y;
 

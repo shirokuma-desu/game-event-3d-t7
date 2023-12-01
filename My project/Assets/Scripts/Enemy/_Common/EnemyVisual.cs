@@ -1,11 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyVisual : MonoBehaviour
 {
+    [Header("Reference")]
     [SerializeField]
     private GameObject m_model;
+    [SerializeField]
+    private Animator m_animator;
+    [SerializeField]
+    private AnimationClip[] m_aniClips;
+
+    [Header("Spawn Effect")]
+    [SerializeField]
+    private GameObject m_spawnParticle;
 
     [Header("BeHit Effect")]
     [SerializeField]
@@ -25,6 +35,11 @@ public class EnemyVisual : MonoBehaviour
     [Header("Attack Effect")]
     [SerializeField]
     private GameObject m_attackParticle;
+
+    public void StartSpawnEffect()
+    {
+        EnvironmentManager.Instance.SpawnParticle(m_spawnParticle, transform.position);
+    }
 
     public void StartBeHitEffect()
     {
@@ -49,12 +64,15 @@ public class EnemyVisual : MonoBehaviour
 
     private void SetupProperties()
     {
-
+        m_animator.SetBool("Reset", false);
     }
 
     private void ResetProperties()
     {
         ReadyToDie = false;
+        
+        m_animator.SetBool("Reset", true);
+        m_animator.SetBool("Die", false);
     }
 
     private IEnumerator BeHitEffect()
@@ -72,6 +90,8 @@ public class EnemyVisual : MonoBehaviour
 
     private IEnumerator DeadEffect()
     {
+        m_animator.SetBool("Die", true);
+
         EnvironmentManager.Instance.SpawnParticle(m_deadParticle, transform.position);
 
         yield return new WaitForSeconds(m_deadTime);

@@ -123,6 +123,11 @@ public class Enemy : MonoBehaviour
         m_anEnemyAttacking.RaiseEvent();
     }
 
+    public virtual void Spawned()
+    {
+        m_visual.StartSpawnEffect();
+    }
+
     public virtual void SetTarget()
     {
         m_target = GetTarget();
