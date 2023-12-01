@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,17 @@ public class ToolTip : MonoBehaviour
     public LayoutElement layoutElement;
 
     public int characterWrapLimit;
+
+    public RectTransform rectTransform;
+
+
+    private const string PREFIX_LEVEL = " Current Lv.";
+    private const string PREFIX_TITLE = "Upgrade ";
+
+    private void Awake()
+    {
+       rectTransform = GetComponent<RectTransform>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +54,6 @@ public class ToolTip : MonoBehaviour
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;
 
-        RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.pivot = new Vector2(pivotX, pivotY);
         transform.position = position;
 
@@ -51,7 +62,9 @@ public class ToolTip : MonoBehaviour
 
     public void SetText(DataContainer dataContainer)
     {
-        if (dataContainer.Get().ID_Skill == 0)
+        ItemDataSO itemdata = dataContainer.Get();
+
+        if (itemdata.ID_Skill == 0)
         {
             gameObject.SetActive(false);
         }
@@ -60,7 +73,27 @@ public class ToolTip : MonoBehaviour
             gameObject.SetActive(true);
         }
 
-        headerField.text = dataContainer.Get().skill_name +" " + dataContainer.Get().level_skill;
+
+        headerField.text  = itemdata.is_upgraded? PREFIX_TITLE+itemdata.skill_name + PREFIX_LEVEL + itemdata.level_skill+"+" : "Buy "+itemdata.skill_name;
+        contentField.text = itemdata.description;
         
+    }
+
+    public void SetText(SellDataContainer sellDataContainer)
+    {
+        ItemDataSO itemdata = sellDataContainer.Get();
+
+        if (itemdata.ID_Skill == 0)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+
+
+        headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name + PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
+        contentField.text = itemdata.description;
     }
 }

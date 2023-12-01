@@ -5,15 +5,24 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
-    public DataContainer dataContainer;
+    public DataContainer dataContainer ;
+
+    public SellDataContainer selldataContainer ;
 
     private static LTDescr delay;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        delay = LeanTween.delayedCall(1.5f, () =>
+        delay = LeanTween.delayedCall(1.0f, () =>
         {
-            TooltipSystem.Show(dataContainer);
+            if (dataContainer is not null)
+            {
+                TooltipSystem.Show(dataContainer);
+            }
+            if(selldataContainer is not null)
+            {
+                TooltipSystem.Show(selldataContainer);
+            }
         });
     }
 
