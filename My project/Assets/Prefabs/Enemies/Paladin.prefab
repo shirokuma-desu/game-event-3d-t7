@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1696476630126702509}
   - component: {fileID: 2444953885751394564}
   - component: {fileID: 2552418493621885343}
+  - component: {fileID: 2490948103893713767}
   - component: {fileID: 7963081172566181015}
   - component: {fileID: 2584836668948692484}
   m_Layer: 0
@@ -57,7 +58,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1696476630126702509
 Rigidbody:
@@ -119,14 +120,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbb7ba3197712f41b8671432e2b6777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_visual: {fileID: 2490948103893713767}
+  m_collider: {fileID: 173651175107665158}
   m_maxHealth: 300
   m_moveSpeed: 50
   m_attackDamage: 200
   m_bounty: 300
+  m_attackRayLength: 2.8
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
   m_anEnemyAttacking: {fileID: 11400000, guid: 6b08b8d4680f9e84c8fc7793499e72d6, type: 2}
   m_walkDuration: 0.8333333
   m_walkDelay: 0.7083333
+--- !u!114 &2490948103893713767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353811381822490567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90161e88d80cb6640ac9fe22f2904212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_model: {fileID: 8353334793957783223}
+  m_beHitColor: {r: 0, g: 0, b: 0, a: 0}
+  m_beHitKnockback: 0.05
+  m_beHitTime: 0.1
+  m_deadParticle: {fileID: 1157739271372782778, guid: e7813b0d7fcfc12408e9e5c1f47f61dc,
+    type: 3}
+  m_deadTime: 1
+  m_attackParticle: {fileID: 7119868745576029501, guid: fbca9a0751a15504b8d9c067bddb7abd,
+    type: 3}
 --- !u!114 &7963081172566181015
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 7445610403672495919, guid: 60d40dd7b9ff35b43847866231d2a146,
     type: 3}
-  m_spawningInterval: 3
-  m_spawningProbability: 1
+  m_spawningInterval: 0.5
+  m_spawningProbability: 0.1
   m_enemyPool: {fileID: 8580840391340076406}
 --- !u!1 &583153321595939562
 GameObject:
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 8696727463069981470, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
     type: 3}
-  m_spawningInterval: 1
-  m_spawningProbability: 1
+  m_spawningInterval: 0.5
+  m_spawningProbability: 0.7
   m_enemyPool: {fileID: 5666596036922987100}
 --- !u!1 &2067762295219661679
 GameObject:
@@ -237,8 +237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 1042512131213641592, guid: 42af9798cc9e5c3439f6d0aa964fb9da,
     type: 3}
-  m_spawningInterval: 5
-  m_spawningProbability: 1
+  m_spawningInterval: 1
+  m_spawningProbability: 0.1
   m_enemyPool: {fileID: 1908414176702211532}
 --- !u!1 &4259556847722410531
 GameObject:
@@ -320,6 +320,7 @@ Transform:
   - {fileID: 4006430662830530962}
   - {fileID: 6924490870883606143}
   - {fileID: 8635894649756749471}
+  - {fileID: 7800487952541853908}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6492208768976478865
@@ -334,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526657c94d061614f89ba4c8ad37f671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spawners:
+  m_enemySpawners:
   - {fileID: 905012673316039866}
   - {fileID: 3920464048201328750}
   - {fileID: 5884963183525506941}
@@ -342,6 +343,7 @@ MonoBehaviour:
   - {fileID: 3627570375480353409}
   m_forms:
   - {fileID: 7499351125817401996, guid: 6ca7ee342a23ff84fa5764aed573b83c, type: 3}
+  m_soulSpawner: {fileID: 4417768214483252838}
 --- !u!1 &6716592036913372048
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +482,7 @@ MonoBehaviour:
   m_enemyPrototype: {fileID: 8929820607503745687, guid: 04e31b5b09534d04499ae9a6898367d0,
     type: 3}
   m_spawningInterval: 0.5
-  m_spawningProbability: 1
+  m_spawningProbability: 0.3
   m_enemyPool: {fileID: 2989393162531208109}
 --- !u!1 &8648271585790435428
 GameObject:
@@ -529,6 +531,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 7353811381822490567, guid: b3921407206ea214a9bdfc9f09775fdb,
     type: 3}
-  m_spawningInterval: 2
-  m_spawningProbability: 1
+  m_spawningInterval: 0.5
+  m_spawningProbability: 0.3
   m_enemyPool: {fileID: 3858319145760042730}
+--- !u!1 &8721203478545866936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7800487952541853908}
+  - component: {fileID: 4417768214483252838}
+  m_Layer: 0
+  m_Name: SoulSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7800487952541853908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721203478545866936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9076237470695701134}
+  m_Father: {fileID: 565496610093606182}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4417768214483252838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721203478545866936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ac87c052adf8d4d9c95f13c31ca3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_prototype: {fileID: 6380911872273676585, guid: 459a973645d03f34e8488179b07f5cff,
+    type: 3}
+  m_enemyPool: {fileID: 1015256778269338603}
+--- !u!1 &9150853826230121730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9076237470695701134}
+  - component: {fileID: 1015256778269338603}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9076237470695701134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150853826230121730}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7800487952541853908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1015256778269338603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150853826230121730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fd437d12adaba47968637be5ef0746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MaxSize: 200

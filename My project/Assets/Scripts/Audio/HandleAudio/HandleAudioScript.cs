@@ -1,4 +1,5 @@
 using LeakyAbstraction;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
@@ -8,8 +9,17 @@ public class HandleAudioScript : MonoBehaviour
 {
     private void Start()
     {
-        SoundManager.Instance.PlaySound(GameSound.BGM).loop = true;
+        PlayingBGM();
+        PlayingAmbient();
+    }
 
-        SoundManager.Instance.PlaySound(GameSound.Ambient).loop = true;
+    private void PlayingBGM()
+    {
+        SoundManager.Instance.PlaySound(GameSound.BGM, (GameSound _loop) => PlayingBGM());
+    }
+
+    private void PlayingAmbient()
+    {
+        SoundManager.Instance.PlaySound(GameSound.Ambient, (GameSound _loop) => PlayingAmbient());
     }
 }

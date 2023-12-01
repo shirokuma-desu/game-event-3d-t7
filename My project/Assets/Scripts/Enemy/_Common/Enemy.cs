@@ -7,6 +7,13 @@ public class Enemy : MonoBehaviour
 {
     protected Rigidbody m_body;
 
+    [Header("Reference")]
+    [SerializeField]
+    protected EnemyVisual m_visual;
+    [SerializeField]
+    protected Collider m_collider;
+    public EnemySpawner Spawner { get; set; }
+
     [Header("Stats")]
     [SerializeField]
     private float m_maxHealth;
@@ -22,30 +29,31 @@ public class Enemy : MonoBehaviour
     private const float SPEEDSCALE = 0.0005f;
 
     [SerializeField]
-    private float m_attackDamage;
-    public float AttackDamage { get => m_attackDamage; }
+    private int m_attackDamage;
+    public int AttackDamage { get => m_attackDamage; }
 
     [SerializeField]
     private float m_bounty;
     public float Bounty { get => m_bounty; }
 
+    [SerializeField]
+    private float m_attackRayLength;
+
     [Header("GameEvents")]
     [SerializeField]
-    private GameEvent m_anEnemyDie;
+    protected GameEvent m_anEnemyDie;
     [SerializeField]
-    private GameEvent m_anEnemyAttacking;
-
-    public EnemySpawner Spawner { get; set; }
+    protected GameEvent m_anEnemyAttacking;
 
     //
-    public bool IsSpawned { get; private set; }
-    public bool IsDied { get; private set; }
+    public bool IsSpawned { get; protected set; }
+    public bool IsDied { get; protected set; }
 
-    public bool IsSlowed { get; private set; }
-    public bool IsStun { get; private set; }
-    public bool IsVulnerable { get; private set; }
-    public bool IsHealing { get; private set; }
-    public bool IsKnockback { get; private set; }
+    public bool IsSlowed { get; protected set; }
+    public bool IsStun { get; protected set; }
+    public bool IsVulnerable { get; protected set; }
+    public bool IsHealing { get; protected set; }
+    public bool IsKnockback { get; protected set; }
 
     private List<EnemyDebuff> m_currentDebuffs = new List<EnemyDebuff>();
     private float m_speedModifyScale;
@@ -61,13 +69,27 @@ public class Enemy : MonoBehaviour
 
         if (m_currentHealth <= 0)
         {
-            Die();
+            if (!IsDied)
+            {
+                StartCoroutine(Die());
+            }
+        }
+        else 
+        {
+            m_visual.StartBeHitEffect();
         }
     }
 
-    protected virtual void Die()
+    protected virtual IEnumerator Die()
     {
+        m_visual.StartDeadEffect();
+        m_collider.enabled = false;
+
         IsDied = true;
+
+        Spawner.Manager.SpawnDrop(transform.position, Bounty);
+
+        yield return new WaitUntil(() => m_visual.ReadyToDie);
 
         if (Spawner != null)
         {
@@ -83,7 +105,20 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
-        EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(1);
+        m_visual.StartAttackEffect();
+
+        EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(m_attackDamage);
+        
+        IsDied = true;
+
+        if (Spawner != null)
+        {
+            Spawner.DespawnEnemy(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         m_anEnemyAttacking.RaiseEvent();
     }
@@ -169,7 +204,12 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         m_body = GetComponent<Rigidbody>();
+
+        ResetProperties();
+        
+        SetupProperties();
     }
+
     protected virtual void FixedUpdate()
     {
         m_body.velocity = Vector3.zero;
@@ -184,12 +224,24 @@ public class Enemy : MonoBehaviour
             );
         }
     }
+
+    protected virtual void Update()
+    {
+        RaycastHit[] _hits = Physics.RaycastAll(transform.position, transform.forward, m_attackRayLength);
+        foreach (RaycastHit _hit in _hits)
+        {
+            if (_hit.collider.tag == "BaseTower" || _hit.collider.tag == "Turret")
+            {
+                Attack();
+
+                break;
+            }
+        }
+    }
+
     protected virtual void SetupProperties()
     {
         IsSpawned = true;
-
-        m_currentHealth = m_maxHealth;
-        m_currentMoveSpeed = m_moveSpeed;
 
         SetDebuffStatus();
 
@@ -198,6 +250,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual void ResetProperties()
     {
+        m_collider.enabled = true;
+        
         m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 
@@ -213,7 +267,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Move()
     {
-        if (!IsStun)
+        if (!IsStun && !IsDied)
         {
             Vector3 _direction = (m_target - transform.position).normalized;
             _direction.y = 0;

@@ -11,10 +11,27 @@ public class MotherEnemy : Enemy
         Move();
     }
 
-    protected override void Die()
+    protected override IEnumerator Die()
     {
+        m_visual.StartDeadEffect();
+
+        IsDied = true;
+
+        Spawner.Manager.SpawnDrop(transform.position, Bounty);
+
+        yield return new WaitUntil(() => m_visual.ReadyToDie);
+
         Spawner.Manager.SpawnEnemyForm("MotherDeadFormation", transform.position);
 
-        base.Die();
+        if (Spawner != null)
+        {
+            Spawner.DespawnEnemy(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        m_anEnemyDie.RaiseEvent();
     }
 }

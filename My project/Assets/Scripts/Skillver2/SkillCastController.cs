@@ -68,7 +68,6 @@ public class SkillCastController : MonoBehaviour
     public void CastSkill()
     {
         int _index = m_skillUI.GetCurrentSkillCasted();
-        Debug.Log(_index);
 
         if (isSkillAvailable(_index))
         {

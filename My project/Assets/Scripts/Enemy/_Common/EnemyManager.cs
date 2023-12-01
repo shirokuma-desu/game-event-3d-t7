@@ -6,15 +6,19 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Spawn")]
     [SerializeField]
-    private List<EnemySpawner> m_spawners;
+    private List<EnemySpawner> m_enemySpawners;
 
     [SerializeField]
     private List<GameObject> m_forms;
 
+    [Header("Drop")]
+    [SerializeField]
+    private SoulSpawner m_soulSpawner;
+
     public int EnemyCount()
     {
         int _count = 0;
-        foreach (EnemySpawner _spawner in m_spawners)
+        foreach (EnemySpawner _spawner in m_enemySpawners)
         {
             _count += _spawner.Pool.GetActiveEnemies().Count;
         }
@@ -25,7 +29,7 @@ public class EnemyManager : MonoBehaviour
     public List<Enemy> GetEnemies()
     {
         List<Enemy> _result = new();
-        foreach (EnemySpawner _spawner in m_spawners)
+        foreach (EnemySpawner _spawner in m_enemySpawners)
         {
             _result.AddRange(_spawner.Pool.GetActiveEnemies());
         }
@@ -35,7 +39,7 @@ public class EnemyManager : MonoBehaviour
 
     public void StartAllSpawner()
     {
-        foreach (EnemySpawner _spawner in m_spawners)
+        foreach (EnemySpawner _spawner in m_enemySpawners)
         {
             _spawner.StartSpawning();
         }
@@ -43,7 +47,7 @@ public class EnemyManager : MonoBehaviour
 
     public void StartSpawner(int _index)
     {
-        m_spawners[_index].StartSpawning();
+        m_enemySpawners[_index].StartSpawning();
     }
 
     public void SpawnEnemyForm(int _index)
@@ -53,7 +57,7 @@ public class EnemyManager : MonoBehaviour
             int _templateID = _templateTransform.GetComponent<EnemyFormTemplate>().ID;
 
             Vector3 _spawnPosition = EnvironmentManager.Instance.EnemySpawnZone.GetSpawnPoint() + _templateTransform.position;
-            m_spawners[_templateID].SpawnEnemy(_spawnPosition);
+            m_enemySpawners[_templateID].SpawnEnemy(_spawnPosition);
         }
     }
 
@@ -68,7 +72,7 @@ public class EnemyManager : MonoBehaviour
                     int _templateID = _templateTransform.GetComponent<EnemyFormTemplate>().ID;
 
                     Vector3 _spawnPosition = EnvironmentManager.Instance.EnemySpawnZone.GetSpawnPoint() + _templateTransform.position;
-                    m_spawners[_templateID].SpawnEnemy(_spawnPosition);
+                    m_enemySpawners[_templateID].SpawnEnemy(_spawnPosition);
                 }
 
                 return;
@@ -85,7 +89,7 @@ public class EnemyManager : MonoBehaviour
             int _templateID = _templateTransform.GetComponent<EnemyFormTemplate>().ID;
 
             Vector3 _spawnPosition = _position + _templateTransform.position;
-            m_spawners[_templateID].SpawnEnemy(_spawnPosition);
+            m_enemySpawners[_templateID].SpawnEnemy(_spawnPosition);
         }
     }
 
@@ -100,19 +104,25 @@ public class EnemyManager : MonoBehaviour
                     int _templateID = _templateTransform.GetComponent<EnemyFormTemplate>().ID;
 
                     Vector3 _spawnPosition = _position + _templateTransform.position;
-                    m_spawners[_templateID].SpawnEnemy(_spawnPosition);
+                    m_enemySpawners[_templateID].SpawnEnemy(_spawnPosition);
                 }
 
                 return;
             }
         }
 
-        Debug.LogWarning("No Formation has such name");
+        Debug.LogWarning($"EnemyManager: No Formation has such name '{_name}', spawn cancelled");
+    }
+
+    public void SpawnDrop(Vector3 _position, float _bounty)
+    {
+        _position.y = 0f;
+        m_soulSpawner.SpawnSoul(_position, _bounty);
     }
 
     private void Start()
     {
-        foreach (EnemySpawner _spawner in m_spawners)
+        foreach (EnemySpawner _spawner in m_enemySpawners)
         {
             _spawner.Manager = this;
         }

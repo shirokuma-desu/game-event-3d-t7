@@ -8,13 +8,17 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     [SerializeField]
     private GameObject m_player;
     public GameObject Player { get => m_player; }
+    
     [SerializeField]
-    private GameObject[] m_towerSpot = new GameObject[4];
+    private TurretSpot[] m_towerSpots;
+
+    [SerializeField]
+    private EnemyManager m_enemyManager;
+    public EnemyManager EnemyManager { get => m_enemyManager; }
+
     [SerializeField]
     private EnemySpawnZone m_enemySpawnZone;
     public EnemySpawnZone EnemySpawnZone { get => m_enemySpawnZone; }
-
-    private bool[] m_settledTower = new bool[4];
 
     private int m_currentTowerNumber;
 
@@ -28,12 +32,12 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
 
     public Vector3 GetTowerPosition(int _index)
     {
-        return m_towerSpot[_index].transform.position;
+        return m_towerSpots[_index].transform.position;
     }
 
     public bool IsTowerSettled(int _index)
     {
-        return m_settledTower[_index];
+        return m_towerSpots[_index].IsSettled;
     }
 
     //
@@ -52,6 +56,13 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
 
         m_currentTowerNumber--;
         if (m_currentTowerNumber == 0) m_isAnyTowerLeft = false;
+    }
+
+    public void SpawnParticle(GameObject _particle, Vector3 _position)
+    {
+        _position.y = 0f;
+
+        Instantiate(_particle.gameObject, _position, Quaternion.identity);
     }
 
     //

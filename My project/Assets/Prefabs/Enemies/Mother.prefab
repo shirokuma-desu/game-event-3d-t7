@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5173688309462943365}
   - component: {fileID: 385512110597313191}
   - component: {fileID: 9028340810869331451}
+  - component: {fileID: 4903824553211684384}
   - component: {fileID: 1257556626741740341}
   - component: {fileID: 5094069842721003511}
   m_Layer: 0
@@ -119,12 +120,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecabf4a08a5c5724c9e0d8d228c5b898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_visual: {fileID: 4903824553211684384}
+  m_collider: {fileID: 4910694905073305850}
   m_maxHealth: 300
   m_moveSpeed: 40
   m_attackDamage: 200
   m_bounty: 500
+  m_attackRayLength: 1
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
   m_anEnemyAttacking: {fileID: 11400000, guid: 6b08b8d4680f9e84c8fc7793499e72d6, type: 2}
+--- !u!114 &4903824553211684384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042512131213641592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90161e88d80cb6640ac9fe22f2904212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_model: {fileID: 8901542921855009394}
+  m_beHitColor: {r: 0, g: 0, b: 0, a: 0}
+  m_beHitKnockback: 0.1
+  m_beHitTime: 0.1
+  m_deadParticle: {fileID: 1157739271372782778, guid: e7813b0d7fcfc12408e9e5c1f47f61dc,
+    type: 3}
+  m_deadTime: 1
+  m_attackParticle: {fileID: 7119868745576029501, guid: fbca9a0751a15504b8d9c067bddb7abd,
+    type: 3}
 --- !u!114 &1257556626741740341
 MonoBehaviour:
   m_ObjectHideFlags: 0

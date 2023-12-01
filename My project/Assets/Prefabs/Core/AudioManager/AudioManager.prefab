@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NotDestroy: 1
-  _initialPoolSize: 20
+  _initialPoolSize: 60
   _canGrowPool: 1
-  _loggingType: 1
+  _loggingType: 0
   _checkUnassignedSounds: 1
   _soundList:
   - Name: MeteorCast
