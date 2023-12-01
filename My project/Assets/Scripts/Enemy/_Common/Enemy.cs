@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     protected EnemyVisual m_visual;
     [SerializeField]
     protected Collider m_collider;
+    public EnemySpawner Spawner { get; set; }
 
     [Header("Stats")]
     [SerializeField]
@@ -43,8 +44,6 @@ public class Enemy : MonoBehaviour
     protected GameEvent m_anEnemyDie;
     [SerializeField]
     protected GameEvent m_anEnemyAttacking;
-
-    public EnemySpawner Spawner { get; set; }
 
     //
     public bool IsSpawned { get; protected set; }
@@ -87,6 +86,8 @@ public class Enemy : MonoBehaviour
         m_collider.enabled = false;
 
         IsDied = true;
+
+        Spawner.Manager.SpawnDrop(transform.position, Bounty);
 
         yield return new WaitUntil(() => m_visual.ReadyToDie);
 

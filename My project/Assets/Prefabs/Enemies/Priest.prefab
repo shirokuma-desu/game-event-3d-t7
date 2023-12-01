@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_model: {fileID: 4177657552109547923}
   m_beHitColor: {r: 0, g: 0, b: 0, a: 0}
-  m_beHitKnockback: 0.2
+  m_beHitKnockback: 0.1
   m_beHitTime: 0.1
   m_deadParticle: {fileID: 1157739271372782778, guid: e7813b0d7fcfc12408e9e5c1f47f61dc,
     type: 3}

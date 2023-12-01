@@ -17,6 +17,8 @@ public class MotherEnemy : Enemy
 
         IsDied = true;
 
+        Spawner.Manager.SpawnDrop(transform.position, Bounty);
+
         yield return new WaitUntil(() => m_visual.ReadyToDie);
 
         Spawner.Manager.SpawnEnemyForm("MotherDeadFormation", transform.position);
