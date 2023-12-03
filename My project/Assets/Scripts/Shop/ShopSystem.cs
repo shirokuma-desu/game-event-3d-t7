@@ -111,14 +111,14 @@ public class ShopSystem : MonoBehaviour
             if(existingSkill != null)
             {
                 player_inventory_SO.m_Inventory_Turret[index] = itemData;
-                onUpdateSkillPrice(itemData);
+                onUpdatePrice(itemData);
                 dataContainer.Set(emptySlot);
                 this.PostEvent(EventID.OnBuyUpgradeTurret);
             }
             else
             {
                 player_inventory_SO.m_Inventory_Turret.Add(itemData);
-                onUpdateSkillPrice(itemData);
+                onUpdatePrice(itemData);
                 dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " add new ");
                 this.PostEvent(EventID.OnBuyUpgradeTurret);
@@ -224,7 +224,7 @@ public class ShopSystem : MonoBehaviour
             if (existingSkill != null)
             {
                 playerInventory[index] = itemData;
-                onUpdateSkillPrice(itemData);
+                onUpdatePrice(itemData);
                 dataContainer.Set(emptySlot);
                 //call event
                 Debug.Log(itemData.name + " update");
@@ -233,7 +233,7 @@ public class ShopSystem : MonoBehaviour
             else
             {
                 playerInventory.Add(itemData);
-                onUpdateSkillPrice(itemData);
+                onUpdatePrice(itemData);
                 dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " add new ");
              
@@ -244,7 +244,7 @@ public class ShopSystem : MonoBehaviour
             if (existingSkill != null)
             {
                 playerInventory[index] = itemData;
-                onUpdateSkillPrice(itemData);
+                onUpdatePrice(itemData);
                 dataContainer.Set(emptySlot);
 
                 Debug.Log(itemData.name + " update ");
@@ -316,7 +316,7 @@ public class ShopSystem : MonoBehaviour
         return randomNumbers;
     }
     
-    private void onUpdateSkillPrice(ItemDataSO skillObjectSO)
+    private void onUpdatePrice(ItemDataSO skillObjectSO)
     {
         int price = skillObjectSO.price;
         if (m_total_souls < price)
