@@ -112,6 +112,7 @@ public class ShopSystem : MonoBehaviour
             {
                 player_inventory_SO.m_Inventory_Turret[index] = itemData;
                 onUpdatePrice(itemData);
+                onUpgradeTurret(itemData);
                 dataContainer.Set(emptySlot);
                 this.PostEvent(EventID.OnBuyUpgradeTurret);
             }
@@ -119,6 +120,7 @@ public class ShopSystem : MonoBehaviour
             {
                 player_inventory_SO.m_Inventory_Turret.Add(itemData);
                 onUpdatePrice(itemData);
+                onUpgradeTurret(itemData);
                 dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " add new ");
                 this.PostEvent(EventID.OnBuyUpgradeTurret);
@@ -225,6 +227,7 @@ public class ShopSystem : MonoBehaviour
             {
                 playerInventory[index] = itemData;
                 onUpdatePrice(itemData);
+                onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
                 //call event
                 Debug.Log(itemData.name + " update");
@@ -234,6 +237,7 @@ public class ShopSystem : MonoBehaviour
             {
                 playerInventory.Add(itemData);
                 onUpdatePrice(itemData);
+                onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
                 Debug.Log(itemData.name + " add new ");
              
@@ -245,6 +249,7 @@ public class ShopSystem : MonoBehaviour
             {
                 playerInventory[index] = itemData;
                 onUpdatePrice(itemData);
+                onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
 
                 Debug.Log(itemData.name + " update ");
@@ -329,7 +334,23 @@ public class ShopSystem : MonoBehaviour
         skillObjectSO.level_skill++;
         skillObjectSO.sellprice += skillObjectSO.sell_price_increase;
     }
-   
+    
+    private void onUpgradeSkill(ItemDataSO data)
+    {
+        data.damage += data.damage_increase;
+        data.radius += data.radius_increase;
+        data.cooldown -= data.cooldown_decrease;
+        data.debuff_duration += data.debuff_duration_increase;
+        data.debuff_effective += data.debuff_effective_increase;
+        data.instance_per_cast += data.instance_increase;
+    }
 
+    private void onUpgradeTurret(ItemDataSO data)
+    {
+        data.damage += data.damage_increase;
+        data.range += data.range_increase;
+        data.fire_rate += data.fire_rate_increase;
+        data.hp += data.hp_increase;
+    }
     #endregion method
 }
