@@ -13,13 +13,29 @@ MonoBehaviour:
   m_Name: Turret_Range
   m_EditorClassIdentifier: 
   ID_Skill: 6
-  skill_name: Increase Range
-  level_skill: 4
   image: {fileID: 21300000, guid: d492218d00706664daf46d46cdc22f49, type: 3}
   image_upgrade: {fileID: 21300000, guid: d492218d00706664daf46d46cdc22f49, type: 3}
+  skill_name: Range+
+  description: Increase Range
+  multi_cast_chance: 0
   price: 11
+  sellprice: 5
   price_increase: 2
   sell_price_increase: 1
-  sellprice: 5
-  description: 
+  level_skill: 4
+  damage: 0
+  radius: 0
+  cooldown: 0
+  instance_per_cast: 0
+  debuff_duration: 0
+  debuff_effective: 0
+  damage_increase: 0
+  radius_increase: 0
+  cooldown_decrease: 0
+  instance_increase: 0
+  debuff_duration_increase: 0
+  debuff_effective_increase: 0
+  range_increase: 0
+  fire_rate_increase: 0
+  hp_increase: 0
   is_upgraded: 1
