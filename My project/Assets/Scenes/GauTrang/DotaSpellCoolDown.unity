@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 229526388}
   - component: {fileID: 229526387}
   - component: {fileID: 229526386}
-  - component: {fileID: 229526390}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -227,21 +226,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &229526390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 229526385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a6bc7a241b86b4fb59b8826288ad57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageCooldown: {fileID: 1882920801}
-  textCooldown: {fileID: 503611478}
-  imageEdge: {fileID: 849456644}
 --- !u!1 &301256323
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,9 +585,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 548898595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7364848b135fb7418b6fb69a6bbc74f, type: 3}
+  m_Script: {fileID: 11500000, guid: 97a6bc7a241b86b4fb59b8826288ad57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imageCooldown: {fileID: 1882920801}
+  textCooldown: {fileID: 503611478}
+  imageEdge: {fileID: 730446984}
 --- !u!850595691 &626136705
 LightingSettings:
   m_ObjectHideFlags: 0
