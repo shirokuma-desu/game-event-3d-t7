@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +15,11 @@ public class SkillManager : MonoBehaviour
     private Skill m_currentSkillSelected;
     public Skill CurrentSkillSelected { get => m_currentSkillSelected; }
     private bool m_isSelectingASkill;
+
+    [SerializeField]
+    private int m_maxMulticastTime;
+    private int m_multicastTime;
+    private float m_multicastRateScale;
 
     [Header("GameEvents")]
     [SerializeField]
@@ -48,7 +52,7 @@ public class SkillManager : MonoBehaviour
         m_isSelectingASkill = true;
     }
 
-    public void CastSkill()
+    public void CastSelectSkillInit()
     {
         if (m_currentSkillSelected == null)
         {
@@ -56,11 +60,25 @@ public class SkillManager : MonoBehaviour
             return;
         }
 
-        m_currentSkillSelected.Cast();
+        m_multicastTime = GetMulticastTime(m_currentSkillSelected);
+        m_currentSkillSelected.CastInit(GetMousePoint(), m_multicastTime);
 
         ResetCurrentSkillSelect();
 
         m_castASkill.RaiseEvent();
+    }
+
+    public void CastSkillRaw(Skill _skill, Vector3 _position)
+    {
+        Skill _instance = Instantiate(_skill);
+        _instance.CastRaw(_position);
+    }
+    public void CastSkillRaw(int _id, Vector3 _position)
+    {
+        Skill _skill = GetSkillByID(_id);
+
+        Skill _instance = Instantiate(_skill);
+        _instance.CastRaw(_position);
     }
 
     public void DiscardSkill()
@@ -94,6 +112,8 @@ public class SkillManager : MonoBehaviour
     private void Start()
     {
         ResetCurrentSkillSelect();
+
+        m_multicastRateScale = 1f;
     }
 
     private void Update()
@@ -104,13 +124,26 @@ public class SkillManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                CastSkill();
+                CastSelectSkillInit();
             }
             if (Input.GetMouseButtonDown(1))
             {
                 DiscardSkill();
             }
         }
+    }
+
+    private int GetMulticastTime(Skill _skill)
+    {
+        for (int i = 0; i < m_maxMulticastTime; i++)
+        {
+            if (Random.Range(0f, 100f) > _skill.MulticastRate * m_multicastRateScale)
+            {
+                return i;
+            }
+        }
+
+        return m_maxMulticastTime;
     }
 
     private void SetAvaiableSkills()

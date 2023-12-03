@@ -34,13 +34,22 @@ public class Skill : MonoBehaviour
     protected float m_expireTime;
     public float ExpireTime { get => m_expireTime; }
 
+    [Header("Multicast")]
+    [SerializeField]
+    protected float m_multicastOffset;
+    public float MulticastOffset { get => m_multicastOffset; }
+    [SerializeField]
+    protected float m_multicastDelay;
+    public float MulticastDelay { get => m_multicastDelay; }
+
     protected Vector3 m_castPosition;
     public Vector3 CastPosition { get => m_castPosition; }
 
     enum SkillState 
     {
         Preview,
-        Cast,
+        CastRaw,
+        CastInit,
         Impact,
         Expire
     } 
@@ -58,13 +67,49 @@ public class Skill : MonoBehaviour
         Destroy(this);
     }
 
-    public virtual void Cast()
+    public virtual void CastRaw(Vector3 _position)
     {
-        m_castPosition = Manager.GetMousePoint();
+        if (m_state == SkillState.CastInit)
+        {
+            Debug.LogWarning("Skill: This skill is cast to be 'INIT', cannot cast raw");
+            return;
+        }
 
-        m_state = SkillState.Cast;
+        m_castPosition = _position;
+
+        m_state = SkillState.CastRaw;
 
         StartCoroutine(Casting());
+    }
+    public virtual void CastInit(Vector3 _position, int _multicastTime)
+    {
+        if (m_state == SkillState.CastRaw)
+        {
+            Debug.LogWarning("Skill: This skill is cast to be 'RAW', cannot cast init");
+            return;
+        }
+
+        m_expireTime += m_multicastDelay * _multicastTime;
+        StartCoroutine(HandleMulticast(_multicastTime, _position));
+
+        m_castPosition = _position;
+
+        m_state = SkillState.CastInit;
+
+        StartCoroutine(Casting());
+    }
+    protected virtual IEnumerator HandleMulticast(int _num, Vector3 _position)
+    {
+        for (int i = 0; i < _num; i++)
+        {
+            Vector2 _random = Random.insideUnitCircle;
+            Vector3 _target = _position;
+            _target.x += _random.x * m_multicastOffset;
+            _target.z += _random.y * m_multicastOffset;
+
+            yield return new WaitForSeconds(m_multicastDelay);
+            Manager.CastSkillRaw(m_ID, _target);
+        }
     }
     protected virtual IEnumerator Casting()
     {
@@ -74,6 +119,7 @@ public class Skill : MonoBehaviour
 
         Impact();
     }
+
     protected virtual void Impact()
     {
         m_state = SkillState.Impact;
@@ -101,7 +147,8 @@ public class Skill : MonoBehaviour
             case (SkillState.Preview):
                 m_visual.PreviewVisual();
                 break;
-            case (SkillState.Cast):
+            case (SkillState.CastRaw):
+            case (SkillState.CastInit):
                 m_visual.CastVisual();
                 break;
             case (SkillState.Impact):

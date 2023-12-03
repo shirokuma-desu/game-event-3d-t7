@@ -13,13 +13,29 @@ MonoBehaviour:
   m_Name: Turret_Damage
   m_EditorClassIdentifier: 
   ID_Skill: 2
-  skill_name: Increase Damage
-  level_skill: 3
   image: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
   image_upgrade: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
+  skill_name: Damage+
+  description: Increases damage.
+  multi_cast_chance: 0
   price: 70
+  sellprice: 8
   price_increase: 20
   sell_price_increase: 2
-  sellprice: 8
-  description: 
+  level_skill: 0
+  damage: 0
+  radius: 0
+  cooldown: 0
+  instance_per_cast: 0
+  debuff_duration: 0
+  debuff_effective: 0
+  damage_increase: 10
+  radius_increase: 0
+  cooldown_decrease: 0
+  instance_increase: 0
+  debuff_duration_increase: 0
+  debuff_effective_increase: 0
+  range_increase: 0
+  fire_rate_increase: 0
+  hp_increase: 0
   is_upgraded: 1

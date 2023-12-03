@@ -50,10 +50,11 @@ MonoBehaviour:
   m_ID: 5
   m_damage: 300
   m_range: 5
-  m_multicastRate: 20
+  m_multicastRate: 80
   m_cooldown: 0
   m_castDelay: 0.5
   m_expireTime: 0
+  m_multicastOffset: 10
   m_obstacleNumber: 10
   m_explodeRange: 1
   m_chaseRange: 10

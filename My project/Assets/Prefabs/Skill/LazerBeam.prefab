@@ -281,10 +281,13 @@ MonoBehaviour:
   m_visual: {fileID: 7298976119105898200}
   m_ID: 3
   m_damage: 100
-  m_range: 40
-  m_multicastRate: 20
+  m_range: 80
+  m_multicastRate: 100
   m_cooldown: 0.5
-  m_delay: 0.3
+  m_castDelay: 0.2
+  m_expireTime: 0.5
+  m_multicastOffset: 30
+  m_multicastDelay: 0.1
   m_radius: 1
 --- !u!114 &7298976119105898200
 MonoBehaviour:
