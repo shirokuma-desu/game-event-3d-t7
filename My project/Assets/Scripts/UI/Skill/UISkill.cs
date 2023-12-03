@@ -18,11 +18,11 @@ public class UISkill : MonoBehaviour
     [SerializeField]
     private InventorySO m_inventory;
 
-    private int m_currentSkillCasted; 
+    private int m_currentSkillSelected; 
 
     [Header("Game Events")]
     [SerializeField]
-    private GameEvent m_aSkillIsCasted;
+    private GameEvent m_aSkillIsSelect;
 
     public void UpdateInventorySkillUI()
     {
@@ -40,14 +40,14 @@ public class UISkill : MonoBehaviour
     }
     public void SelectSkill(int _index)
     {
-        m_currentSkillCasted = _index;
+        m_currentSkillSelected = _index;
         
-        m_aSkillIsCasted.RaiseEvent();
+        m_aSkillIsSelect.RaiseEvent();
     }
 
-    public int GetCurrentSkillCasted()
+    public int GetCurrentSkillSelect()
     {
-        return m_currentSkillCasted;
+        return m_currentSkillSelected;
     }
 
     private void Start()

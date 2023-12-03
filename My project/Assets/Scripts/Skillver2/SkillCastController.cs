@@ -8,7 +8,10 @@ public class SkillCastController : MonoBehaviour
     private int[] equippedSkillIndex = new int[3];
 
     private float[] skillCooldown = new float[3];
+    public float[] SkillCooldown { get => skillCooldown; }
     [HideInInspector] public float[] skillLastUsed = new float[3] { 0, 0, 0 };
+    private float[] skillCDLeft = new float[3];
+    public float[] SkillCDLeft { get => skillCooldown; }
 
     private UISkill m_skillUI;
 
@@ -23,6 +26,7 @@ public class SkillCastController : MonoBehaviour
     private void Update()
     {
         #region Is Interactable Skill
+        UpdateSkillCooldown();
         if (visualScript.isUsingSkill)
         {
             CanPressSkill(0, false);
@@ -67,7 +71,7 @@ public class SkillCastController : MonoBehaviour
 
     public void CastSkill()
     {
-        int _index = m_skillUI.GetCurrentSkillCasted();
+        int _index = m_skillUI.GetCurrentSkillSelect();
 
         if (isSkillAvailable(_index))
         {
@@ -113,9 +117,23 @@ public class SkillCastController : MonoBehaviour
     #endregion
 
     #region Handle Interactable Skill
+    public void PutSkillOnCooldown(int _index)
+    {
+        skillCDLeft[_index] = skillCooldown[_index];
+    }
+
+    private void UpdateSkillCooldown()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            skillCDLeft[i] -= Time.deltaTime;
+        }
+    }
+
     private void HandleCooldownSkill(int index)
     {
-        if (Time.time - skillLastUsed[index] < skillCooldown[index])
+        // if (Time.time - skillLastUsed[index] < skillCooldown[index])
+        if (skillCDLeft[index] > 0f)
         {
             CanPressSkill(index, false);
         }
@@ -128,8 +146,9 @@ public class SkillCastController : MonoBehaviour
 
     private bool isSkillAvailable(int index)
     {
-        float currentTime = Time.time;
-        return currentTime - skillLastUsed[index] >= skillCooldown[index];
+        // float currentTime = Time.time;
+        // return currentTime - skillLastUsed[index] >= skillCooldown[index];
+        return skillCDLeft[index] <= 0f;
     }
 
     private void HandePropertiesSkillIndex()
