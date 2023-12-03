@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
+using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class ShopSystem : MonoBehaviour
 {
@@ -90,7 +88,7 @@ public class ShopSystem : MonoBehaviour
         // player can buy item in slot
         {
             addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
-            bindDataFromPlayerInventorySO();
+           
             m_buyASkill.RaiseEvent();
         }
     }
@@ -233,8 +231,9 @@ public class ShopSystem : MonoBehaviour
                 onUpdatePrice(itemData);
                 onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
-                this.PostEvent(EventID.OnBuyingItem);
                 //call event
+                bindDataFromPlayerInventorySO();
+                this.PostEvent(EventID.OnBuyingItem);
                 Debug.Log(itemData.name + " update");
                
             }
@@ -244,6 +243,7 @@ public class ShopSystem : MonoBehaviour
                 onUpdatePrice(itemData);
                 onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
+                bindDataFromPlayerInventorySO();
                 this.PostEvent(EventID.OnBuyingItem);
                 Debug.Log(itemData.name + " add new ");
              
@@ -257,6 +257,7 @@ public class ShopSystem : MonoBehaviour
                 onUpdatePrice(itemData);
                 onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
+                bindDataFromPlayerInventorySO();
                 this.PostEvent(EventID.OnBuyingItem);
                 Debug.Log(itemData.name + " update ");
                
@@ -264,7 +265,6 @@ public class ShopSystem : MonoBehaviour
             else
             {
                 this.PostEvent(EventID.OnBuyLimitSkill);
-                Debug.Log("cant not add 4th skill");
             }
         }
 
