@@ -54,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
     {
         _position.y = 0f;
         var _enemy = m_enemyPool.Get(_position);
+        _enemy.Spawned();
     }
 
     public void DespawnEnemy(Enemy _enemy)
