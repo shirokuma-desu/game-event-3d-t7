@@ -91,7 +91,6 @@ public class ShopSystem : MonoBehaviour
         {
             addOrUpdate(player_inventory_SO.m_Inventory_Skill, skillObjectSO,dataContainer);
             bindDataFromPlayerInventorySO();
-            this.PostEvent(EventID.OnBuyingItem);
             m_buyASkill.RaiseEvent();
         }
     }
@@ -169,9 +168,14 @@ public class ShopSystem : MonoBehaviour
                             shop_inventory.m_Inventory_Skill[i].price        =   default_skill_object.price;
                             shop_inventory.m_Inventory_Skill[i].sellprice    =   default_skill_object.sellprice;
                             shop_inventory.m_Inventory_Skill[i].level_skill  =   default_skill_object.level_skill;
+                            shop_inventory.m_Inventory_Skill[i].damage = default_skill_object.damage;
+                            shop_inventory.m_Inventory_Skill[i].radius = default_skill_object.radius;
+                            shop_inventory.m_Inventory_Skill[i].instance_per_cast = default_skill_object.instance_per_cast;
+                            shop_inventory.m_Inventory_Skill[i].debuff_duration = default_skill_object.debuff_duration;
+                            shop_inventory.m_Inventory_Skill[i].cooldown = default_skill_object.cooldown;
+                            shop_inventory.m_Inventory_Skill[i].debuff_effective = default_skill_object.debuff_effective;
                         }
                     }
-                    
                     int index = player_inventory_SO.m_Inventory_Skill.IndexOf(delete_skill_object);
                     player_inventory_SO.m_Inventory_Skill.RemoveAt(index);
 
@@ -229,6 +233,7 @@ public class ShopSystem : MonoBehaviour
                 onUpdatePrice(itemData);
                 onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
+                this.PostEvent(EventID.OnBuyingItem);
                 //call event
                 Debug.Log(itemData.name + " update");
                
@@ -239,6 +244,7 @@ public class ShopSystem : MonoBehaviour
                 onUpdatePrice(itemData);
                 onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
+                this.PostEvent(EventID.OnBuyingItem);
                 Debug.Log(itemData.name + " add new ");
              
             }
@@ -251,7 +257,7 @@ public class ShopSystem : MonoBehaviour
                 onUpdatePrice(itemData);
                 onUpgradeSkill(itemData);
                 dataContainer.Set(emptySlot);
-
+                this.PostEvent(EventID.OnBuyingItem);
                 Debug.Log(itemData.name + " update ");
                
             }
@@ -295,6 +301,31 @@ public class ShopSystem : MonoBehaviour
             }
         }
        
+    }
+
+
+    public void resetShop()
+    {
+        clearInventory(player_inventory_SO.m_Inventory_Skill);
+        clearInventory(player_inventory_SO.m_Inventory_Turret);
+        for(int i = 0; i < shop_inventory.m_Inventory_Skill.Count; i++)
+        {
+            for(int j = 0; j < default_data_item_inventory.m_Inventory_Skill.Count; j++)
+            {
+                if (shop_inventory.m_Inventory_Skill[i].ID_Skill == default_data_item_inventory.m_Inventory_Skill[j].ID_Skill)
+                {
+                    shop_inventory.m_Inventory_Skill[i].damage = default_data_item_inventory.m_Inventory_Skill[j].damage;
+                    shop_inventory.m_Inventory_Skill[i].debuff_duration = default_data_item_inventory.m_Inventory_Skill[j].debuff_duration;
+                    shop_inventory.m_Inventory_Skill[i].debuff_effective = default_data_item_inventory.m_Inventory_Skill[j].debuff_effective;
+                    shop_inventory.m_Inventory_Skill[i].sellprice = default_data_item_inventory.m_Inventory_Skill[j].sellprice;
+                    shop_inventory.m_Inventory_Skill[i].price = default_data_item_inventory.m_Inventory_Skill[j].price;
+                    shop_inventory.m_Inventory_Skill[i].radius = default_data_item_inventory.m_Inventory_Skill[j].radius;
+                    shop_inventory.m_Inventory_Skill[i].level_skill = default_data_item_inventory.m_Inventory_Skill[j].level_skill;
+                    shop_inventory.m_Inventory_Skill[i].cooldown = default_data_item_inventory.m_Inventory_Skill[j].cooldown;
+                    shop_inventory.m_Inventory_Skill[i].is_upgraded = default_data_item_inventory.m_Inventory_Skill[j].is_upgraded;
+                }
+            }
+        }
     }
 
     private void clearInventory(List<ItemDataSO> anyInventory)
