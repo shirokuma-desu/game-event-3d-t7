@@ -283,7 +283,7 @@ MonoBehaviour:
   m_damage: 100
   m_range: 80
   m_multicastRate: 100
-  m_cooldown: 1
+  m_cooldown: 10
   m_castDelay: 0.2
   m_expireTime: 0.5
   m_multicastOffset: 30

@@ -77,7 +77,8 @@ public class SkillManager : MonoBehaviour
 
         for (int i = 0; i < m_availableSkillNumber; i++) 
         {
-            m_skillCooldownLeft[i] = m_skillCooldownLeft[i + 1];
+            SetSkillFullCooldown(i, m_skillCooldownFull[i + 1]);
+            SetSkillLeftCooldown(_index, m_skillCooldownLeft[i + 1]);
         }
     }
     public void SetupAvailableSkills()
