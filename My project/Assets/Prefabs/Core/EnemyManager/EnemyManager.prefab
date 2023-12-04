@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 7445610403672495919, guid: 60d40dd7b9ff35b43847866231d2a146,
     type: 3}
-  m_spawningInterval: 0.5
+  m_spawningInterval: 0.1
   m_spawningProbability: 0.1
   m_enemyPool: {fileID: 8580840391340076406}
 --- !u!1 &583153321595939562
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 8696727463069981470, guid: 8d0756c8f1bb1e74a9cf56bfedea4f1d,
     type: 3}
-  m_spawningInterval: 0.5
+  m_spawningInterval: 0.1
   m_spawningProbability: 0.7
   m_enemyPool: {fileID: 5666596036922987100}
 --- !u!1 &2067762295219661679
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 1042512131213641592, guid: 42af9798cc9e5c3439f6d0aa964fb9da,
     type: 3}
-  m_spawningInterval: 1
+  m_spawningInterval: 0.1
   m_spawningProbability: 0.1
   m_enemyPool: {fileID: 1908414176702211532}
 --- !u!1 &4259556847722410531
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 8929820607503745687, guid: 04e31b5b09534d04499ae9a6898367d0,
     type: 3}
-  m_spawningInterval: 0.5
+  m_spawningInterval: 0.1
   m_spawningProbability: 0.3
   m_enemyPool: {fileID: 2989393162531208109}
 --- !u!1 &8648271585790435428
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrototype: {fileID: 7353811381822490567, guid: b3921407206ea214a9bdfc9f09775fdb,
     type: 3}
-  m_spawningInterval: 0.5
+  m_spawningInterval: 0.1
   m_spawningProbability: 0.3
   m_enemyPool: {fileID: 3858319145760042730}
 --- !u!1 &8721203478545866936

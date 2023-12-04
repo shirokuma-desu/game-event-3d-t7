@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerInventorySO
   m_EditorClassIdentifier: 
   m_Inventory_Skill:
-  - {fileID: 11400000, guid: d821149278eeac44db8c7a0a71c09410, type: 2}
-  - {fileID: 11400000, guid: 67739b9d698e5b6459cc2eebcae77281, type: 2}
   - {fileID: 11400000, guid: 40f7a577697c2a347b1916e5a89ca855, type: 2}
+  - {fileID: 11400000, guid: 5ea35c002d521114f95f2a547dab908d, type: 2}
+  - {fileID: 11400000, guid: d821149278eeac44db8c7a0a71c09410, type: 2}
   m_Inventory_Turret: []

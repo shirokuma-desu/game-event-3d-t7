@@ -78,7 +78,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lockSkillPos = currentPreview.transform.position;
             isUsingSkill = false;
-            controller.skillLastUsed[skillPressedIndex] = Time.time;
+            // controller.skillLastUsed[skillPressedIndex] = Time.time;
+            controller.PutSkillOnCooldown(skillPressedIndex);
             Destroy(currentPreview);
             HandleMeteorSkill(lockSkillPos);
             multiCastTimes = 0;
@@ -130,7 +131,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lockSkillPos = currentPreview.transform.position;
             isUsingSkill = false;
-            controller.skillLastUsed[skillPressedIndex] = Time.time;
+            // controller.skillLastUsed[skillPressedIndex] = Time.time;
+            controller.PutSkillOnCooldown(skillPressedIndex);
             Destroy(currentPreview);
             HandleAcidRainSkill();
             multiCastTimes = 0;
@@ -183,7 +185,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lockSkillPos = currentPreview.transform.position;
             isUsingSkill = false;
-            controller.skillLastUsed[skillPressedIndex] = Time.time;
+            // controller.skillLastUsed[skillPressedIndex] = Time.time;
+            controller.PutSkillOnCooldown(skillPressedIndex);
             Destroy(currentPreview);
             HandleLazerBeamSkill(lockSkillPos);
             multiCastTimes = 0;
@@ -232,7 +235,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lockSkillPos = currentPreview.transform.position;
             isUsingSkill = false;
-            controller.skillLastUsed[skillPressedIndex] = Time.time;
+            // controller.skillLastUsed[skillPressedIndex] = Time.time;
+            controller.PutSkillOnCooldown(skillPressedIndex);
             Destroy(currentPreview);
             HandleStarFallSkill(container.SkillPrefabs[3].GetComponent<SkillStats>().NumberOfPieces);
             multiCastTimes = 0;
@@ -284,7 +288,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lockSkillPos = currentPreview.transform.position;
             isUsingSkill = false;
-            controller.skillLastUsed[skillPressedIndex] = Time.time;
+            // controller.skillLastUsed[skillPressedIndex] = Time.time;
+            controller.PutSkillOnCooldown(skillPressedIndex);
             Destroy(currentPreview);
             HandleShadeSkill(lockSkillPos);
             multiCastTimes = 0;
@@ -332,7 +337,8 @@ public class SkillVisualScript : MonoBehaviour
         {
             lockSkillPos = currentPreview.transform.position;
             isUsingSkill = false;
-            controller.skillLastUsed[skillPressedIndex] = Time.time;
+            // controller.skillLastUsed[skillPressedIndex] = Time.time;
+            controller.PutSkillOnCooldown(skillPressedIndex);
             Destroy(currentPreview);
             HandleLavaSkill();
             multiCastTimes = 0;
@@ -366,7 +372,8 @@ public class SkillVisualScript : MonoBehaviour
     {
         if (skillPressedIndex != -1)
         {
-            if (controller.skillLastUsed[skillPressedIndex] != 0 && (Time.time - controller.skillLastUsed[skillPressedIndex] < 0.2f) && multiCastTimes < 4)
+            // if (controller.skillLastUsed[skillPressedIndex] != 0 && (Time.time - controller.skillLastUsed[skillPressedIndex] < 0.2f) && multiCastTimes < 4)
+            if (multiCastTimes < 4)
             {
                 switch (skillPrefabUsingIndex)
                 {

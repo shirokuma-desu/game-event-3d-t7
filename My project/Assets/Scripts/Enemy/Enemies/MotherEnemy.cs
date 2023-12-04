@@ -24,7 +24,7 @@ public class MotherEnemy : Enemy
 
         yield return new WaitUntil(() => m_visual.ReadyToDie);
 
-        EnvironmentManager.Instance.SpawnParticle(m_motherDeadParticle, transform.position);
+        Instantiate(m_motherDeadParticle, transform.position, transform.rotation);
 
         Spawner.Manager.SpawnEnemyForm("MotherDeadFormation", transform.position);
 

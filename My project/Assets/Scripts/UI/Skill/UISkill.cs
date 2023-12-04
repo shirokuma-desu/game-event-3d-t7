@@ -18,11 +18,15 @@ public class UISkill : MonoBehaviour
     [SerializeField]
     private InventorySO m_inventory;
 
-    private int m_currentSkillCasted; 
+    private int m_currentSkillSelected; 
+
+    [SerializeField]
+    private SkillManager m_skillManager;
+    private float[] m_cooldownPercentive = new float[3];
 
     [Header("Game Events")]
     [SerializeField]
-    private GameEvent m_aSkillIsCasted;
+    private GameEvent m_aSkillIsSelect;
 
     public void UpdateInventorySkillUI()
     {
@@ -40,18 +44,34 @@ public class UISkill : MonoBehaviour
     }
     public void SelectSkill(int _index)
     {
-        m_currentSkillCasted = _index;
+        m_currentSkillSelected = _index;
         
-        m_aSkillIsCasted.RaiseEvent();
+        m_aSkillIsSelect.RaiseEvent();
     }
 
-    public int GetCurrentSkillCasted()
+    public int GetCurrentSkillSelect()
     {
-        return m_currentSkillCasted;
+        return m_currentSkillSelected;
     }
 
     private void Start()
     {
         UpdateInventorySkillUI();
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < m_skillManager.AvailableSkillNumber; i++)
+        {
+            m_cooldownPercentive[i] = m_skillManager.SkillCooldownLeft[i] / m_skillManager.SkillCooldownFull[i];
+
+            if (m_cooldownPercentive[i] > 0) m_skillButtons[i].interactable = false;
+            else m_skillButtons[i].interactable = true;
+        }
+
+        for (int i = m_skillManager.AvailableSkillNumber; i < 3; i++)
+        {
+            m_skillButtons[i].interactable = false;
+        }
     }
 }

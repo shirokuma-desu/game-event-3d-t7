@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_mainPivot: {x: 0, y: 0, z: 0}
-  m_mainRadius: 35
+  m_mainRadius: 45
   m_mainMaxAngle: 60
   m_zoneRadius: 5
 --- !u!1 &3526079965378109949
