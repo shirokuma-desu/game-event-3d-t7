@@ -55,7 +55,7 @@ public class Skill : MonoBehaviour
     } 
     private SkillState m_state;
 
-    public virtual void Select()
+    public virtual void Preview()
     {
         m_visual.SetUp();
 
@@ -64,7 +64,7 @@ public class Skill : MonoBehaviour
 
     public virtual void Discard()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public virtual void CastRaw(Vector3 _position)

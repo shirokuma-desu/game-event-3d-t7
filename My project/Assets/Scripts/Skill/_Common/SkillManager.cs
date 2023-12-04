@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SkillManager : MonoBehaviour
 {
@@ -10,10 +12,18 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     private InventorySO m_inventoryData;
     private Skill[] m_availableSkills = new Skill[3];
-    public bool IsAvailableSkill(int _index) => m_availableSkills != null;
+    private int m_availableSkillNumber;
+    public int AvailableSkillNumber { get => m_availableSkillNumber; }
+
+    private float[] m_skillCooldownFull = new float[3];
+    public float[] SkillCooldownFull { get => m_skillCooldownFull; }
+    private float[] m_skillCooldownLeft = new float[3];
+    public float[] SkillCooldownLeft { get => m_skillCooldownLeft; }
 
     private Skill m_currentSkillSelected;
     public Skill CurrentSkillSelected { get => m_currentSkillSelected; }
+    private int m_currentSkillSelectedIndex;
+    private int CurrentSkillSelectedIndex {get => m_currentSkillSelectedIndex; }
     private bool m_isSelectingASkill;
 
     [SerializeField]
@@ -24,6 +34,64 @@ public class SkillManager : MonoBehaviour
     [Header("GameEvents")]
     [SerializeField]
     private GameEvent m_castASkill;
+    
+    public void GetANewSkill()
+    {
+        if (m_availableSkillNumber >= 3) 
+        {
+            Debug.LogWarning($"SkillManager: Skill slot are full"); 
+            return;
+        }
+
+        int _index = m_availableSkillNumber;
+        m_availableSkills[_index] = GetSkillByID(m_inventoryData.m_Inventory_Skill[_index].ID_Skill);
+
+        m_availableSkillNumber++;
+
+        SetSkillFullCooldown(_index, m_availableSkills[_index].Cooldown);
+        SetSkillLeftCooldown(_index, 0f);
+    }
+    public void ReleaseASkill()
+    {
+        List<int> _currentAvailableSkillID = new();
+        for (int i = 0; i < m_availableSkillNumber; i++)
+        {
+            _currentAvailableSkillID.Add(m_availableSkills[i].ID);
+        }
+
+        int _index = 0;
+        while (_index < m_inventoryData.m_Inventory_Skill.Count)
+        {
+            if (_currentAvailableSkillID[_index] != m_inventoryData.m_Inventory_Skill[_index].ID_Skill) break;
+
+            _index++;
+        }
+
+        for (int i = _index; i < m_availableSkillNumber - 1; i++)
+        {
+            m_availableSkills[i] = m_availableSkills[i + 1];
+        }
+        m_availableSkills[m_availableSkillNumber - 1] = null;
+
+        m_availableSkillNumber--;
+
+        for (int i = 0; i < m_availableSkillNumber; i++) 
+        {
+            m_skillCooldownLeft[i] = m_skillCooldownLeft[i + 1];
+        }
+    }
+    public void SetupAvailableSkills()
+    {
+        for (int i = 0; i < m_inventoryData.m_Inventory_Skill.Count; i++)
+        {
+            m_availableSkills[i] = GetSkillByID(m_inventoryData.m_Inventory_Skill[i].ID_Skill);
+
+            m_availableSkillNumber++;
+
+            SetSkillFullCooldown(i, m_availableSkills[i].Cooldown);
+            SetSkillLeftCooldown(i, 0f);
+        }
+    }
 
     public void SelectSkill()
     {
@@ -39,15 +107,16 @@ public class SkillManager : MonoBehaviour
 
     public void SelectSkill(int _index)
     {
-        if (!IsAvailableSkill(_index))
+        if (_index >= m_availableSkillNumber)
         {
             Debug.LogWarning($"SkillManager: Skill {_index} is not available or not exist"); 
             return;
         }
 
+        m_currentSkillSelectedIndex = _index;
         m_currentSkillSelected = Instantiate(m_availableSkills[_index]);
         m_currentSkillSelected.Manager = this;
-        m_currentSkillSelected.Select();
+        m_currentSkillSelected.Preview();
 
         m_isSelectingASkill = true;
     }
@@ -62,6 +131,8 @@ public class SkillManager : MonoBehaviour
 
         m_multicastTime = GetMulticastTime(m_currentSkillSelected);
         m_currentSkillSelected.CastInit(GetMousePoint(), m_multicastTime);
+
+        ResetSkillCooldownToFull(m_currentSkillSelectedIndex);
 
         ResetCurrentSkillSelect();
 
@@ -113,12 +184,14 @@ public class SkillManager : MonoBehaviour
     {
         ResetCurrentSkillSelect();
 
+        SetupAvailableSkills();
+
         m_multicastRateScale = 1f;
     }
 
     private void Update()
     {
-        SetAvaiableSkills();
+        UpdateSkillsCoolDown();
 
         if (m_isSelectingASkill)
         {
@@ -131,6 +204,33 @@ public class SkillManager : MonoBehaviour
                 DiscardSkill();
             }
         }
+    }
+
+    private void UpdateSkillsCoolDown()
+    {
+        for (int i = 0; i < m_availableSkillNumber; i++)
+        {
+            m_skillCooldownLeft[i] -= Time.deltaTime;
+            if (m_skillCooldownLeft[i] < 0) m_skillCooldownLeft[i] = 0f;
+        }
+    }
+    private void ResetSkillCooldownToFull(int _index)
+    {
+        if (_index >= m_availableSkillNumber)
+        {
+            Debug.LogWarning($"SkillManager: Skill {_index} is not available or not exist"); 
+            return;
+        }
+
+        m_skillCooldownLeft[_index] = m_skillCooldownFull[_index];
+    }
+    private void SetSkillFullCooldown(int _index, float _time)
+    {
+        m_skillCooldownFull[_index] = _time;
+    }
+    private void SetSkillLeftCooldown(int _index, float _time)
+    {
+        m_skillCooldownLeft[_index] = _time;
     }
 
     private int GetMulticastTime(Skill _skill)
@@ -146,16 +246,9 @@ public class SkillManager : MonoBehaviour
         return m_maxMulticastTime;
     }
 
-    private void SetAvaiableSkills()
-    {
-        for (int i = 0; i < m_inventoryData.m_Inventory_Skill.Count; i++)
-        {
-            m_availableSkills[i] = GetSkillByID(m_inventoryData.m_Inventory_Skill[i].ID_Skill);
-        }
-    }
-
     private void ResetCurrentSkillSelect()
     {
+        m_currentSkillSelectedIndex = -1;
         m_currentSkillSelected = null;
         m_isSelectingASkill = false;
     }

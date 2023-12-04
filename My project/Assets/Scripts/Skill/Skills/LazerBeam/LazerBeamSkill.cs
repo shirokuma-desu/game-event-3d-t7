@@ -50,7 +50,6 @@ public class LazerBeamSkill : Skill
 
     protected override IEnumerator HandleMulticast(int _num, Vector3 _position)
     {
-        Debug.Log(_num);
         int _enemyNum = Mathf.Min(_num, EnvironmentManager.Instance.EnemyManager.GetEnemies().Count);
         List<Enemy> _closetEnemies = new();
         for (int i = 0; i < _enemyNum; i++)
@@ -75,7 +74,15 @@ public class LazerBeamSkill : Skill
         for (int i = 0; i < _closetEnemies.Count; i++)
         {
             yield return new WaitForSeconds(m_multicastDelay);
-            Manager.CastSkillRaw(m_ID, _closetEnemies[i].transform.position);
+            Vector3 _target = _closetEnemies[i].transform.position;
+            if (_closetEnemies[i] == null || _closetEnemies[i].IsDied || _closetEnemies[i].transform.position == Vector3.zero) 
+            {
+                Vector2 _random = Random.insideUnitCircle;
+                _target = _position;
+                _target.x += _random.x * m_multicastOffset;
+                _target.z += _random.y * m_multicastOffset;
+            }
+            Manager.CastSkillRaw(m_ID, _target);
         }
 
         for (int i = _closetEnemies.Count; i < _num; i++)

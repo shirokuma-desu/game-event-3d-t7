@@ -40,15 +40,21 @@ public class LazerBeamSkillVisual : SkillVisual
         base.PrepareCastVisual();
 
         m_prepareBeamObject.SetActive(true);
+
+        Vector3 _direction = m_skillData.CastPosition - EnvironmentManager.Instance.PlayerPosition;
+        m_prepareBeamObject.transform.forward = _direction;
+
+        m_prepareBeamObject.transform.position = EnvironmentManager.Instance.PlayerPosition;
+
+        Vector3 _scale = m_prepareBeamObject.transform.localScale;
+        _scale.z = m_skillData.Range;
+        m_prepareBeamObject.transform.localScale = _scale;
     }
     public override void CastVisual()
     {
         base.CastVisual();
 
         m_prepareBeamObject.transform.position = EnvironmentManager.Instance.PlayerPosition;
-
-        Vector3 _direction = m_skillData.CastPosition - transform.position;
-        m_prepareBeamObject.transform.forward = _direction;
 
         Vector3 _scale = m_prepareBeamObject.transform.localScale;
         _scale.z = m_skillData.Range;
@@ -63,7 +69,7 @@ public class LazerBeamSkillVisual : SkillVisual
 
         m_beamObject.transform.position = EnvironmentManager.Instance.PlayerPosition;
 
-        Vector3 _direction = m_skillData.CastPosition - transform.position;
+        Vector3 _direction = m_skillData.CastPosition - EnvironmentManager.Instance.PlayerPosition;
         m_beamObject.transform.forward = _direction;
 
         Vector3 _scale = m_beamObject.transform.localScale;

@@ -20,6 +20,10 @@ public class UISkill : MonoBehaviour
 
     private int m_currentSkillSelected; 
 
+    [SerializeField]
+    private SkillManager m_skillManager;
+    private float[] m_cooldownPercentive = new float[3];
+
     [Header("Game Events")]
     [SerializeField]
     private GameEvent m_aSkillIsSelect;
@@ -53,5 +57,21 @@ public class UISkill : MonoBehaviour
     private void Start()
     {
         UpdateInventorySkillUI();
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < m_skillManager.AvailableSkillNumber; i++)
+        {
+            m_cooldownPercentive[i] = m_skillManager.SkillCooldownLeft[i] / m_skillManager.SkillCooldownFull[i];
+
+            if (m_cooldownPercentive[i] > 0) m_skillButtons[i].interactable = false;
+            else m_skillButtons[i].interactable = true;
+        }
+
+        for (int i = m_skillManager.AvailableSkillNumber; i < 3; i++)
+        {
+            m_skillButtons[i].interactable = false;
+        }
     }
 }
