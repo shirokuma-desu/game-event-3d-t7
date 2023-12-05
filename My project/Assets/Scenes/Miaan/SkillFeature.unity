@@ -3925,7 +3925,7 @@ MonoBehaviour:
   - {fileID: -1101350879898109176, guid: fde44a0a4f502be4085cce52d5d163d4, type: 3}
   - {fileID: 8917691504324003511, guid: 2ffff2cdacb45ff4b86773de13ae9777, type: 3}
   m_inventoryData: {fileID: 11400000, guid: 338bda6eabc5d97418589377757545ff, type: 2}
-  m_maxMulticastTime: 100
+  m_maxMulticastTime: 4
   m_castASkill: {fileID: 11400000, guid: 6d0d512971f49bf44a2adf8bbb3d6f4d, type: 2}
 --- !u!4 &626210303
 Transform:
