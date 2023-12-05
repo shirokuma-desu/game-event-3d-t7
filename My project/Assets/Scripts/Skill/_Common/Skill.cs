@@ -12,21 +12,20 @@ public class Skill : MonoBehaviour
 
     [Header("Basic Stats")]
     [SerializeField]
+    protected ItemDataSO m_statData;
+
     protected int m_ID;
     public int ID { get => m_ID; }
-    [SerializeField]
     protected float m_damage;
     public float Damage { get => m_damage; }
-    [SerializeField]
     protected float m_range;
     public float Range { get => m_range; }
-    [SerializeField]
     protected float m_multicastRate;
     public float MulticastRate { get => m_multicastRate; }
-    [SerializeField]
     protected float m_cooldown;
     public float Cooldown { get => m_cooldown; }
-    [Space(10)]
+
+    [Header("Casting")]
     [SerializeField]
     protected float m_castDelay;
     public float CastDelay { get => m_castDelay; }
@@ -54,6 +53,16 @@ public class Skill : MonoBehaviour
         Expire
     } 
     private SkillState m_state;
+
+    protected virtual void SetUp()
+    {
+        m_ID = m_statData.ID_Skill;
+        m_damage = m_statData.damage;
+        m_range = m_statData.radius;
+        m_multicastRate = m_statData.multi_cast_chance;
+        m_cooldown = m_statData.cooldown;
+    }
+
 
     public virtual void Preview()
     {

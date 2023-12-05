@@ -130,11 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visual: {fileID: 7523592037788725573}
-  m_ID: 4
-  m_damage: 300
-  m_range: 10
-  m_multicastRate: 80
-  m_cooldown: 10
+  m_statData: {fileID: 11400000, guid: a80ff605f31de1247ac51a6cd46bcede, type: 2}
   m_castDelay: 0.5
   m_expireTime: 0
   m_multicastOffset: 10
