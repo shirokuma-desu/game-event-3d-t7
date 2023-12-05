@@ -42,7 +42,7 @@ public class StunShooting : MonoBehaviour
             Vector3 bulletPosition = transform.position;
             bulletPosition.y = 1f;
 
-            Bullet bulletScript = tm.StartSpawner(2, bulletPosition);
+            Bullet bulletScript = tm.StartSpawner(1, bulletPosition);
 
             if (bulletScript != null)
             {
