@@ -5,7 +5,6 @@ using UnityEngine;
 public class LavaSkill : Skill
 {
     [Header("Lava")]
-    [SerializeField]
     private float m_duration;
     public float Duration { get => m_duration; }
 
@@ -14,6 +13,15 @@ public class LavaSkill : Skill
     public float EffectInterval { get => m_effectInterval; }
 
     private bool m_endDuration = false;
+
+    public override void SetUp()
+    {
+        base.SetUp();
+
+        m_duration = m_statData.debuff_duration;
+
+        m_duration += m_statData.debuff_duration_increase * m_level;
+    }
 
     protected override void Impact()
     {

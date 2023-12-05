@@ -214,7 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visual: {fileID: 5221079893134860576}
-  m_statData: {fileID: 11400000, guid: 40f7a577697c2a347b1916e5a89ca855, type: 2}
+  m_statData: {fileID: 11400000, guid: e1da49316f1a22f469a2b3edc2ac540a, type: 2}
+  m_ID: 6
   m_castDelay: 0
   m_expireTime: 0
   m_multicastOffset: 10

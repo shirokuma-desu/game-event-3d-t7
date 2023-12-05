@@ -5,7 +5,6 @@ using UnityEngine;
 public class AcidRainSkill : Skill
 {
     [Header("Acid Rain")]
-    [SerializeField]
     private float m_duration;
     public float Duration { get => m_duration; }
 
@@ -13,12 +12,22 @@ public class AcidRainSkill : Skill
     private float m_effectInterval;
     public float EffectInterval { get => m_effectInterval; }
 
-    [SerializeField]
     private float m_slowAmmout;
-    [SerializeField]
     private float m_vulnerableAmmout;
 
     private bool m_endDuration = false;
+
+    public override void SetUp()
+    {
+        base.SetUp();
+
+        m_duration = m_statData.debuff_duration;
+        m_slowAmmout = m_vulnerableAmmout = m_statData.debuff_effective;
+
+        m_duration += m_statData.debuff_duration_increase * m_level;
+        m_slowAmmout += m_statData.debuff_duration_increase * m_level;
+        m_vulnerableAmmout += m_statData.debuff_duration_increase * m_level;
+    }
 
     protected override void Impact()
     {

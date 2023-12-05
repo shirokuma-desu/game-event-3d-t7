@@ -130,12 +130,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visual: {fileID: 7523592037788725573}
-  m_statData: {fileID: 11400000, guid: a80ff605f31de1247ac51a6cd46bcede, type: 2}
+  m_statData: {fileID: 11400000, guid: db057e6ceb5f2c84db9d4912a5f1a50d, type: 2}
+  m_ID: 4
   m_castDelay: 0.5
   m_expireTime: 0
   m_multicastOffset: 10
   m_multicastDelay: 0
-  m_obstacleNumber: 10
+  m_obstacleNumber: 3
   m_explodeRange: 1
   m_starfallObstacle: {fileID: 5051500522474788527, guid: 0ec5e3532e1031941bdb687214146335,
     type: 3}

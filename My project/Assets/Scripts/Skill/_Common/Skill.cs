@@ -14,8 +14,13 @@ public class Skill : MonoBehaviour
     [SerializeField]
     protected ItemDataSO m_statData;
 
+    [SerializeField]
     protected int m_ID;
     public int ID { get => m_ID; }
+
+    protected int m_level;
+    public int Level { get => m_level; }
+
     protected float m_damage;
     public float Damage { get => m_damage; }
     protected float m_range;
@@ -54,15 +59,20 @@ public class Skill : MonoBehaviour
     } 
     private SkillState m_state;
 
-    protected virtual void SetUp()
+    public virtual void SetUp()
     {
-        m_ID = m_statData.ID_Skill;
+        // m_ID = m_statData.ID_Skill;
+        m_level = m_statData.level_skill;
+
         m_damage = m_statData.damage;
         m_range = m_statData.radius;
         m_multicastRate = m_statData.multi_cast_chance;
         m_cooldown = m_statData.cooldown;
-    }
 
+        m_damage += m_statData.damage_increase * m_level;
+        m_range += m_statData.radius_increase * m_level;
+        m_cooldown -= m_statData.cooldown_decrease * m_level;
+    }
 
     public virtual void Preview()
     {

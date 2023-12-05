@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visual: {fileID: -3813464907327849472}
-  m_statData: {fileID: 11400000, guid: 5ea35c002d521114f95f2a547dab908d, type: 2}
+  m_statData: {fileID: 11400000, guid: 85ca990720c616b44acfa2c1fa76cc38, type: 2}
+  m_ID: 5
   m_castDelay: 0.5
   m_expireTime: 0
   m_multicastOffset: 10
   m_multicastDelay: 0
-  m_obstacleNumber: 10
   m_explodeRange: 1
   m_chaseRange: 10
   m_chaseSpeed: 5

@@ -29,6 +29,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     private int m_maxMulticastTime;
     private int m_multicastTime;
+    public int MulticastTime { get => m_multicastTime; }
     private float m_multicastRateScale;
 
     [Header("GameEvents")]
@@ -47,6 +48,8 @@ public class SkillManager : MonoBehaviour
         m_availableSkills[_index] = GetSkillByID(m_inventoryData.m_Inventory_Skill[_index].ID_Skill);
 
         m_availableSkillNumber++;
+
+        UpdateAvailableSkillsProperties(_index);
 
         SetSkillFullCooldown(_index, m_availableSkills[_index].Cooldown);
         SetSkillLeftCooldown(_index, 0f);
@@ -77,6 +80,8 @@ public class SkillManager : MonoBehaviour
 
         for (int i = 0; i < m_availableSkillNumber; i++) 
         {
+            UpdateAvailableSkillsProperties(i);
+
             SetSkillFullCooldown(i, m_skillCooldownFull[i + 1]);
             SetSkillLeftCooldown(_index, m_skillCooldownLeft[i + 1]);
         }
@@ -89,9 +94,15 @@ public class SkillManager : MonoBehaviour
 
             m_availableSkillNumber++;
 
+            UpdateAvailableSkillsProperties(i);
+
             SetSkillFullCooldown(i, m_availableSkills[i].Cooldown);
             SetSkillLeftCooldown(i, 0f);
         }
+    }
+    public void UpdateAvailableSkillsProperties(int _index)
+    {
+        m_availableSkills[_index].SetUp();
     }
 
     public void SelectSkill()
@@ -115,7 +126,9 @@ public class SkillManager : MonoBehaviour
         }
 
         m_currentSkillSelectedIndex = _index;
+
         m_currentSkillSelected = Instantiate(m_availableSkills[_index]);
+        m_currentSkillSelected.SetUp();
         m_currentSkillSelected.Manager = this;
         m_currentSkillSelected.Preview();
 
@@ -143,6 +156,7 @@ public class SkillManager : MonoBehaviour
     public void CastSkillRaw(Skill _skill, Vector3 _position)
     {
         Skill _instance = Instantiate(_skill);
+        _instance.SetUp();
         _instance.CastRaw(_position);
     }
     public void CastSkillRaw(int _id, Vector3 _position)
@@ -150,6 +164,7 @@ public class SkillManager : MonoBehaviour
         Skill _skill = GetSkillByID(_id);
 
         Skill _instance = Instantiate(_skill);
+        _instance.SetUp();
         _instance.CastRaw(_position);
     }
 
