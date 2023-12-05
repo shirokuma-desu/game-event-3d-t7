@@ -13,6 +13,9 @@ public class UISkill : MonoBehaviour
     private Image[] m_skillImages = new Image[3];
 
     [SerializeField]
+    private SpellCooldown[] m_skillCooldown = new SpellCooldown[3];
+
+    [SerializeField]
     private Sprite m_emptySprite;
 
     [SerializeField]
@@ -22,7 +25,6 @@ public class UISkill : MonoBehaviour
 
     [SerializeField]
     private SkillManager m_skillManager;
-    private float[] m_cooldownPercentive = new float[3];
 
     [Header("Game Events")]
     [SerializeField]
@@ -63,15 +65,19 @@ public class UISkill : MonoBehaviour
     {
         for (int i = 0; i < m_skillManager.AvailableSkillNumber; i++)
         {
-            m_cooldownPercentive[i] = m_skillManager.SkillCooldownLeft[i] / m_skillManager.SkillCooldownFull[i];
-
-            if (m_cooldownPercentive[i] > 0) m_skillButtons[i].interactable = false;
+            if (m_skillManager.SkillCooldownLeft[i] > 0) m_skillButtons[i].interactable = false;
             else m_skillButtons[i].interactable = true;
+
+            m_skillCooldown[i].SetCooldownTime(m_skillManager.SkillCooldownFull[i]);
+            m_skillCooldown[i].SetCooldownTimer(m_skillManager.SkillCooldownLeft[i]);
         }
 
         for (int i = m_skillManager.AvailableSkillNumber; i < 3; i++)
         {
             m_skillButtons[i].interactable = false;
+
+            m_skillCooldown[i].SetCooldownTime(0f);
+            m_skillCooldown[i].SetCooldownTimer(0f);
         }
     }
 }
