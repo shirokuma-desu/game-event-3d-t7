@@ -9035,7 +9035,7 @@ MonoBehaviour:
   - {fileID: -1101350879898109176, guid: fde44a0a4f502be4085cce52d5d163d4, type: 3}
   - {fileID: 446278452669044470, guid: 0a676b2092618174c8721120a1df9bf6, type: 3}
   m_inventoryData: {fileID: 11400000, guid: 338bda6eabc5d97418589377757545ff, type: 2}
-  m_maxMulticastTime: 5
+  m_maxMulticastTime: 50
   m_castASkill: {fileID: 11400000, guid: 6d0d512971f49bf44a2adf8bbb3d6f4d, type: 2}
 --- !u!4 &1864966582
 Transform:
@@ -11162,9 +11162,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.86965, y: 682.8405}
+  m_AnchoredPosition: {x: 40.291832, y: 657.393}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5169584, y: 1.1264591}
+  m_Pivot: {x: 0.5207878, y: 1.1031128}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,13 +17,13 @@ MonoBehaviour:
   image_upgrade: {fileID: 21300000, guid: 8c86a8d42467a434eaa31d0fd6666994, type: 3}
   skill_name: shade
   description: 
-  multi_cast_chance: 0
+  multi_cast_chance: 100
   price: 35
   sellprice: 26
   price_increase: 5
   sell_price_increase: 2
   level_skill: 0
-  damage: 100
+  damage: 10
   radius: 10
   cooldown: 2
   instance_per_cast: 5

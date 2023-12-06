@@ -9,6 +9,9 @@ public class EnemyVisual : MonoBehaviour
     [SerializeField]
     private GameObject m_model;
     [SerializeField]
+    private Renderer m_renderer;
+    private Material m_modelMaterial;
+    [SerializeField]
     private Animator m_animator;
     [SerializeField]
     private AnimationClip[] m_aniClips;
@@ -20,6 +23,7 @@ public class EnemyVisual : MonoBehaviour
     [Header("BeHit Effect")]
     [SerializeField]
     private Color m_beHitColor;
+    private Color m_defaultColor;
     [SerializeField]
     private float m_beHitKnockback;
     [SerializeField]
@@ -65,6 +69,9 @@ public class EnemyVisual : MonoBehaviour
     private void SetupProperties()
     {
         m_animator.SetBool("Reset", false);
+
+        m_modelMaterial = m_renderer.material;
+        m_defaultColor = m_modelMaterial.color;
     }
 
     private void ResetProperties()
@@ -81,11 +88,13 @@ public class EnemyVisual : MonoBehaviour
 
         _position.z -= m_beHitKnockback;
         m_model.transform.localPosition = _position;
+        m_modelMaterial.color = m_beHitColor;
 
         yield return new WaitForSeconds(m_beHitTime);
 
         _position.z += m_beHitKnockback;
         m_model.transform.localPosition = _position;
+        m_modelMaterial.color = m_defaultColor;
     }
 
     private IEnumerator DeadEffect()

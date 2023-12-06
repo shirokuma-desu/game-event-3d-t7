@@ -123,12 +123,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_model: {fileID: 6512494101746724194}
+  m_renderer: {fileID: 335126551472069555}
   m_animator: {fileID: 8974514166515447868}
   m_aniClips: []
   m_spawnParticle: {fileID: 649129948237149841, guid: a3e6acef583f71b4dab1acbbace07043,
     type: 3}
-  m_beHitColor: {r: 0, g: 0, b: 0, a: 0}
-  m_beHitKnockback: 0.1
+  m_beHitColor: {r: 0.39215687, g: 0.39215687, b: 1, a: 1}
+  m_beHitKnockback: 0.15
   m_beHitTime: 0.1
   m_deadParticle: {fileID: 1157739271372782778, guid: e7813b0d7fcfc12408e9e5c1f47f61dc,
     type: 3}
@@ -268,6 +269,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8974514166515447868}
   m_SourcePrefab: {fileID: 100100000, guid: f5725c8b0142b534fad69b022ba63fd5, type: 3}
+--- !u!137 &335126551472069555 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3312691220975268992, guid: f5725c8b0142b534fad69b022ba63fd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6242111337170571315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5848722692743690200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5725c8b0142b534fad69b022ba63fd5,
