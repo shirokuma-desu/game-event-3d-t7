@@ -1,56 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class SwitchIntro : MonoBehaviour
 {
-    public float speed = 1.0f;
-    public Color startColor;
-    public Color endColor;
-    public bool repeatable = false;
-    float startTime;
-    public float sec = 14f;
+    private bool isTransitioning = false;
+    private float currentTime = 0f;
+    public GameObject UIcanvas;
+    public VideoPlayer videoPlayer;
 
-    public GameObject gameObject1;
-    public GameObject gameObject2;
-
-
-	// Use this for initialization
-	void Start () {
-        startTime = Time.time;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (!repeatable)
-        {
-            float t = (Time.time - startTime) * speed;
-            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, t);
-        }
-        else
-        {
-            float t = (Mathf.Sin(Time.time - startTime) * speed);
-			GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, t);
-        }
-        Invoke("SetActive1", sec);
-        Invoke("planeModifi", sec+1);
-	}
-
-
-    void SetActive1()
+    public float transitionDuration = 3.0f;
+    // Use this for initialization
+    void Start()
     {
-        gameObject1.SetActive(true);
+        UIcanvas.SetActive(false);
+        videoPlayer.targetCameraAlpha = 0f;
+        StartTransition();
     }
-
-    void SetActive2()
+    // Update is called once per frame
+    void Update()
     {
-        gameObject2.SetActive(true);
+        if (isTransitioning)
+        {
+            // Check if the transition is still in progress
+            if (currentTime < transitionDuration)
+            {
+                currentTime += Time.deltaTime;
+                videoPlayer.targetCameraAlpha = Mathf.Lerp(0f, 1f, currentTime / transitionDuration);
+            }
+            else
+            {
+                // The transition is complete
+                videoPlayer.targetCameraAlpha = 1f;
+                isTransitioning = false;
+                // Turn on the UI canvas
+                UIcanvas.SetActive(true);
+            }
+        }
     }
-
-    void planeModifi()
+    void SetActive()
     {
-        transform.position = new Vector3(0, 0, -18);
-        Invoke("SetActive2", sec);
-        Destroy(gameObject, sec+1);
+        UIcanvas.SetActive(true);
+    }
+    void StartTransition()
+    {
+        isTransitioning = true;
+        currentTime = 0f;
     }
 }
+
