@@ -1607,6 +1607,7 @@ GameObject:
   - component: {fileID: 277136976}
   - component: {fileID: 277136977}
   - component: {fileID: 277136978}
+  - component: {fileID: 277136979}
   m_Layer: 5
   m_Name: ShopUI
   m_TagString: Untagged
@@ -1675,6 +1676,34 @@ MonoBehaviour:
       - m_Target: {fileID: 277136977}
         m_TargetAssemblyTypeName: ShopUIManager, Assembly-CSharp
         m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &277136979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277136975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48507b39cec06be448f32f4b2853e460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: ba6c455ff16332941b0d03dbefb60274, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 277136977}
+        m_TargetAssemblyTypeName: ShopUIManager, Assembly-CSharp
+        m_MethodName: UpdatePrice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6494,7 +6523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86879fd3c3399fe44852526e4054506a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_total_souls: 1000000000
+  m_total_souls: 100
   m_reroll_price: 0
   m_price_to_increase: 10
   m_price_turret: 50
@@ -9035,7 +9064,7 @@ MonoBehaviour:
   - {fileID: -1101350879898109176, guid: fde44a0a4f502be4085cce52d5d163d4, type: 3}
   - {fileID: 446278452669044470, guid: 0a676b2092618174c8721120a1df9bf6, type: 3}
   m_inventoryData: {fileID: 11400000, guid: 338bda6eabc5d97418589377757545ff, type: 2}
-  m_maxMulticastTime: 50
+  m_maxMulticastTime: 5
   m_castASkill: {fileID: 11400000, guid: 6d0d512971f49bf44a2adf8bbb3d6f4d, type: 2}
 --- !u!4 &1864966582
 Transform:
@@ -9781,6 +9810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8addff6c8c61249b4edf9f7d605ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NotDestroy: 0
+  m_shop: {fileID: 1391151270}
 --- !u!4 &1930993371
 Transform:
   m_ObjectHideFlags: 0
@@ -11162,9 +11193,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.291832, y: 657.393}
+  m_AnchoredPosition: {x: 6.361868, y: 659.5136}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5207878, y: 1.1031128}
+  m_Pivot: {x: 0.50328225, y: 1.1050583}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0

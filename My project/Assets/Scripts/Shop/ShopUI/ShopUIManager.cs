@@ -54,7 +54,7 @@ public class ShopUIManager : MonoBehaviour
         open_button.gameObject.SetActive(true);
     }
 
-    private void UpdatePrice()
+    public void UpdatePrice()
     {
         total_souls.text        =  shopSystem.getTotalSouls().ToString();
         reroll_price.text       =  shopSystem.getRerollPrice().ToString();

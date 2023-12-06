@@ -9,7 +9,7 @@ public class Soul : MonoBehaviour
     [SerializeField]
     private TrailRenderer m_trail;
 
-    private float m_bounty;
+    private int m_bounty;
 
     [SerializeField]
     private float m_acceleration;
@@ -29,7 +29,7 @@ public class Soul : MonoBehaviour
         m_direction = (EnvironmentManager.Instance.PlayerPosition - transform.position).normalized;
     }
 
-    public void SetBounty(float _amount)
+    public void SetBounty(int _amount)
     {
         m_bounty = _amount;
     }
@@ -57,7 +57,7 @@ public class Soul : MonoBehaviour
 
         m_collectSoul.RaiseEvent();
 
-        //
+        GameManager.Instance.Shop.Gain(m_bounty);
 
         StartCoroutine(Despawn());
     }

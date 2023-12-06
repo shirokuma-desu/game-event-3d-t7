@@ -103,7 +103,7 @@ MonoBehaviour:
   m_maxHealth: 300
   m_moveSpeed: 40
   m_attackDamage: 200
-  m_bounty: 500
+  m_bounty: 50
   m_attackRayLength: 1
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
   m_anEnemyAttacking: {fileID: 11400000, guid: 6b08b8d4680f9e84c8fc7793499e72d6, type: 2}

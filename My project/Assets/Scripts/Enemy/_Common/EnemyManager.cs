@@ -114,7 +114,7 @@ public class EnemyManager : MonoBehaviour
         Debug.LogWarning($"EnemyManager: No Formation has such name '{_name}', spawn cancelled");
     }
 
-    public void SpawnDrop(Vector3 _position, float _bounty)
+    public void SpawnDrop(Vector3 _position, int _bounty)
     {
         _position.y = 0f;
         m_soulSpawner.SpawnSoul(_position, _bounty);

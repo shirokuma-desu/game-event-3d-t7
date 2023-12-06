@@ -17,7 +17,7 @@ public class SoulSpawner : MonoBehaviour
         m_enemyPool.Spawner = this;
     }
 
-    public void SpawnSoul(Vector3 _position, float _bounty)
+    public void SpawnSoul(Vector3 _position, int _bounty)
     {
         _position.y = 0f;
         var _soul = m_enemyPool.Get(_position);

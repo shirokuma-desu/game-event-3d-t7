@@ -192,6 +192,11 @@ public class ShopSystem : MonoBehaviour
     #endregion
 
     #region logic method
+    public int Gain(int _ammount)
+    {
+        m_total_souls += _ammount;
+        return m_total_souls;
+    }
     private int Sell(int soulToAdd)
     {
         m_total_souls += soulToAdd;
