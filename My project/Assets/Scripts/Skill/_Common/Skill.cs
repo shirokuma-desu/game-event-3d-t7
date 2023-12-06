@@ -173,6 +173,7 @@ public class Skill : MonoBehaviour
             case (SkillState.Impact):
                 break;
             case (SkillState.Expire):
+                m_visual.ExpireVisual();
                 break;
             default:
                 break;

@@ -37,7 +37,7 @@ public class AcidRainSkill : Skill
 
     private IEnumerator DealEffect()
     {
-        Collider[] colliders = Physics.OverlapSphere(CastPosition, m_range / 2);
+        Collider[] colliders = Physics.OverlapSphere(CastPosition, m_range);
 
         foreach (Collider collider in colliders)
         {

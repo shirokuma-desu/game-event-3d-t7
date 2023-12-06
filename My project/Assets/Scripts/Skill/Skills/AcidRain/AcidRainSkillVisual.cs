@@ -7,7 +7,7 @@ public class AcidRainSkillVisual : SkillVisual
     [SerializeField]
     private AcidRainSkill m_skillData;
 
-    [Header("Meteor")]
+    [Header("Acid Rain")]
     [SerializeField]
     private GameObject m_acidRainObject;
 
@@ -22,11 +22,13 @@ public class AcidRainSkillVisual : SkillVisual
     {
         base.PreviewVisual();
 
-        m_previewObject.transform.position = m_skillData.Manager.GetMousePoint();
+        Vector3 _position = m_skillData.Manager.GetMousePoint();
+        _position.y = m_previewObject.transform.position.y;
+        m_previewObject.transform.position = _position;
 
         Vector3 _scale = m_previewObject.transform.localScale;
-        _scale.x = m_skillData.Range * 2f;
-        _scale.z = m_skillData.Range * 2f;
+        _scale.x = m_skillData.Range;
+        _scale.y = m_skillData.Range;
         m_previewObject.transform.localScale = _scale;
     }
 
@@ -36,7 +38,9 @@ public class AcidRainSkillVisual : SkillVisual
 
         m_acidRainObject.SetActive(true);
         
-        m_acidRainObject.transform.position = m_skillData.CastPosition;
+        Vector3 _position = m_skillData.CastPosition;
+        _position.y = m_acidRainObject.transform.position.y;
+        m_acidRainObject.transform.position = _position;
 
         Vector3 _scale = m_acidRainObject.transform.localScale;
         _scale.x = m_skillData.Range * 2f;

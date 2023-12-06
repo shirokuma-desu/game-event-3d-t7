@@ -25,9 +25,11 @@ public class LazerBeamSkillVisual : SkillVisual
     {
         base.PreviewVisual();
 
-        m_previewObject.transform.position = EnvironmentManager.Instance.PlayerPosition;
+        Vector3 _position = EnvironmentManager.Instance.PlayerPosition;
+        _position.y = m_previewObject.transform.position.y;
+        m_previewObject.transform.position = _position;
 
-        Vector3 _direction = m_skillData.Manager.GetMousePoint() - m_previewObject.transform.position;
+        Vector3 _direction = m_skillData.Manager.GetMousePoint() - m_previewObject.transform.position + Vector3.up * m_previewObject.transform.position.y;
         m_previewObject.transform.forward = _direction;
 
         Vector3 _scale = m_previewObject.transform.localScale;
@@ -41,10 +43,12 @@ public class LazerBeamSkillVisual : SkillVisual
 
         m_prepareBeamObject.SetActive(true);
 
+        Vector3 _position = EnvironmentManager.Instance.PlayerPosition;
+        _position.y = m_prepareBeamObject.transform.position.y;
+        m_prepareBeamObject.transform.position = _position;
+
         Vector3 _direction = m_skillData.CastPosition - EnvironmentManager.Instance.PlayerPosition;
         m_prepareBeamObject.transform.forward = _direction;
-
-        m_prepareBeamObject.transform.position = EnvironmentManager.Instance.PlayerPosition;
 
         Vector3 _scale = m_prepareBeamObject.transform.localScale;
         _scale.z = m_skillData.Range;
@@ -65,6 +69,7 @@ public class LazerBeamSkillVisual : SkillVisual
     {
         base.ImpactVisual();
 
+        m_prepareBeamObject.SetActive(false);
         m_beamObject.SetActive(true);
 
         m_beamObject.transform.position = EnvironmentManager.Instance.PlayerPosition;
@@ -76,5 +81,10 @@ public class LazerBeamSkillVisual : SkillVisual
         _scale.z = m_skillData.Range;
         _scale.x = m_skillData.Radius * .7f;
         m_beamObject.transform.localScale = _scale;
+    }
+
+    public override void ExpireVisual()
+    {
+        m_beamObject.SetActive(false);
     }
 }
