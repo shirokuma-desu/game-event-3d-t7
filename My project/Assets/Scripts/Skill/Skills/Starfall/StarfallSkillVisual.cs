@@ -11,11 +11,13 @@ public class StarfallSkillVisual : SkillVisual
     {
         base.PreviewVisual();
 
-        m_previewObject.transform.position = m_skillData.Manager.GetMousePoint();
+        Vector3 _position = m_skillData.Manager.GetMousePoint();
+        _position.y = m_previewObject.transform.position.y;
+        m_previewObject.transform.position = _position;
 
         Vector3 _scale = m_previewObject.transform.localScale;
-        _scale.x = m_skillData.Range * 2f;
-        _scale.z = m_skillData.Range * 2f;
+        _scale.x = m_skillData.Range;
+        _scale.y = m_skillData.Range;
         m_previewObject.transform.localScale = _scale;
     }
 

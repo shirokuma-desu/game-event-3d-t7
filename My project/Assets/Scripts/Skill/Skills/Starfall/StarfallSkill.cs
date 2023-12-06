@@ -12,6 +12,15 @@ public class StarfallSkill : Skill
     [SerializeField]
     private GameObject m_starfallObstacle;
 
+    public override void SetUp()
+    {
+        base.SetUp();
+
+        m_obstacleNumber = m_statData.instance_per_cast;
+
+        m_obstacleNumber += m_statData.instance_increase * m_level;
+    }
+
     protected override void Impact()
     {
         for (int i = 0; i < m_obstacleNumber; i++)

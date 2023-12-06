@@ -33,6 +33,11 @@ public class SkillVisual : MonoBehaviour
 
     }
 
+    public virtual void ExpireVisual()
+    {
+
+    }
+
     public virtual void ShowPreview()
     {
         PreviewObject.SetActive(true);

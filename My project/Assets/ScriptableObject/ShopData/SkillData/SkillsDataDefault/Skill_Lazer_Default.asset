@@ -13,13 +13,32 @@ MonoBehaviour:
   m_Name: Skill_Lazer_Default
   m_EditorClassIdentifier: 
   ID_Skill: 3
-  skill_name: lazer
-  level_skill: 0
   image: {fileID: 21300000, guid: e45f0c6ceb6c3d04ca83f8f568784fe8, type: 3}
   image_upgrade: {fileID: 21300000, guid: 298ac6473af8aa04ea1b8cdad37bf75b, type: 3}
+  skill_name: lazer
+  description: 
+  multi_cast_chance: 100
   price: 16
+  sellprice: 3
   price_increase: 0
   sell_price_increase: 0
-  sellprice: 3
-  description: 
+  level_skill: 0
+  damage: 10
+  radius: 45
+  cooldown: 2
+  instance_per_cast: 0
+  debuff_duration: 0
+  debuff_effective: 0
+  damage_increase: 0
+  radius_increase: 0
+  cooldown_decrease: 0
+  instance_increase: 0
+  debuff_duration_increase: 0
+  debuff_effective_increase: 0
+  range: 0
+  fire_rate: 0
+  hp: 0
+  range_increase: 0
+  fire_rate_increase: 0
+  hp_increase: 0
   is_upgraded: 0

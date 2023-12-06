@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShadeSkill : Skill
 {
     [Header("Shade")]
-    [SerializeField]
     private int m_obstacleNumber;
     [SerializeField]
     private float m_explodeRange;
@@ -15,6 +14,15 @@ public class ShadeSkill : Skill
     private float m_chaseSpeed;
     [SerializeField]
     private GameObject m_shadeObstacle;
+
+    public override void SetUp()
+    {
+        base.SetUp();
+
+        m_obstacleNumber = m_statData.instance_per_cast;
+
+        m_obstacleNumber += m_statData.instance_increase * m_level;
+    }
 
     protected override void Impact()
     {

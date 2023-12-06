@@ -122,12 +122,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_model: {fileID: 7370503778236129036}
+  m_renderer: {fileID: 4385800465727851871}
   m_animator: {fileID: 7496014846686787663}
   m_aniClips: []
   m_spawnParticle: {fileID: 649129948237149841, guid: a3e6acef583f71b4dab1acbbace07043,
     type: 3}
-  m_beHitColor: {r: 0, g: 0, b: 0, a: 0}
-  m_beHitKnockback: 0.05
+  m_beHitColor: {r: 0.39215687, g: 0.39215687, b: 1, a: 1}
+  m_beHitKnockback: 0.1
   m_beHitTime: 0.1
   m_deadParticle: {fileID: 1157739271372782778, guid: e7813b0d7fcfc12408e9e5c1f47f61dc,
     type: 3}
@@ -267,6 +268,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7496014846686787663}
   m_SourcePrefab: {fileID: 100100000, guid: 7ebafd736368e824fb94279ace26e77e, type: 3}
+--- !u!137 &4385800465727851871 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6220981513829150466, guid: 7ebafd736368e824fb94279ace26e77e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7676425092938424925}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7370503778236129036 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ebafd736368e824fb94279ace26e77e,
