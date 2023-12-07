@@ -59,6 +59,28 @@ public class TurretManager : MonoBehaviour
         {
             m_emptySpotAvai = true;
         }
+
+        UpgradeStatTurret();
+    }
+
+    private void UpgradeStatTurret()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 30f);
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Turret"))
+            {
+                Turret stat = collider.gameObject.GetComponent<Turret>();
+                if (stat != null)
+                {
+                    stat.Health = tus.BonusHealth;
+                    stat.AttackDamage = tus.BonusAttackDamage;
+                    stat.AttackSpeed = tus.BonusAttackSpeed;
+                    stat.AttackRange = tus.BonusAttackRange;
+                }
+            }
+        }
     }
 
     public void IncreaseStat(string statName, float value)
