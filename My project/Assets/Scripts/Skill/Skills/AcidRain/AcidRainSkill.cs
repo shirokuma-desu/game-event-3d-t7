@@ -24,9 +24,9 @@ public class AcidRainSkill : Skill
         m_duration = m_statData.debuff_duration;
         m_slowAmmout = m_vulnerableAmmout = m_statData.debuff_effective;
 
-        m_duration += m_statData.debuff_duration_increase * m_level;
-        m_slowAmmout += m_statData.debuff_duration_increase * m_level;
-        m_vulnerableAmmout += m_statData.debuff_duration_increase * m_level;
+        // m_duration += m_statData.debuff_duration_increase * m_level;
+        // m_slowAmmout += m_statData.debuff_duration_increase * m_level;
+        // m_vulnerableAmmout += m_statData.debuff_duration_increase * m_level;
     }
 
     protected override void Impact()

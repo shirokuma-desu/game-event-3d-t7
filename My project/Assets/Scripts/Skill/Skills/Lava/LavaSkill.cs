@@ -20,7 +20,7 @@ public class LavaSkill : Skill
 
         m_duration = m_statData.debuff_duration;
 
-        m_duration += m_statData.debuff_duration_increase * m_level;
+        // m_duration += m_statData.debuff_duration_increase * m_level;
     }
 
     protected override void Impact()

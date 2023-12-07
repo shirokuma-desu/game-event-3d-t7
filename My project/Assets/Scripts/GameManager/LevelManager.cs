@@ -75,7 +75,7 @@ public class LevelManager : MonoBehaviour
         
         _spawnData.Spawner.ChangeSpawningProbability(_spawnData.ProbabilityIncrease);
 
-        if (_spawnData.Spawner.SpawningProbability < _spawnData.ProbabilityTerminal)
+        if (_spawnData.Spawner.SpawningProbability > _spawnData.ProbabilityTerminal)
         {
             _spawnData.Spawner.SetSpawningProbability(_spawnData.ProbabilityTerminal);
 
