@@ -22,11 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a80ff605f31de1247ac51a6cd46bcede, type: 2}
   m_Inventory_Turret:
   - {fileID: 11400000, guid: c25c52d347342d448baa2661fa4982d6, type: 2}
-  - {fileID: 11400000, guid: 9758039add446d843b6a16828c972376, type: 2}
   - {fileID: 11400000, guid: c450a31f4ea47b94796712e286e9e6da, type: 2}
   - {fileID: 11400000, guid: c1f1efe7302e9ef43b94bac6795c979e, type: 2}
   - {fileID: 11400000, guid: f7ab651fac812124a9c416f49be62b90, type: 2}
-  - {fileID: 11400000, guid: fcf5fcb1ef370184fb1f9b3402e2b02a, type: 2}
   - {fileID: 11400000, guid: 40e21f3b78e8a794db3a9892f6014f43, type: 2}
-  - {fileID: 11400000, guid: ddd00469d636b00408bca783e67f5030, type: 2}
-  - {fileID: 11400000, guid: 25ced4108b5e3ff49bb8aa4e2b5555d4, type: 2}

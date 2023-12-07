@@ -32,6 +32,8 @@ public class ToolTip : MonoBehaviour
 
     public RectTransform rectTransform;
 
+    [SerializeField] private TurretUpgradedStat baseTurretStatsSO;
+
     //const string for text
     private const string PREFIX_LEVEL = "Lv.";
     private const string PREFIX_TITLE = "Upgrade ";
@@ -48,6 +50,12 @@ public class ToolTip : MonoBehaviour
     private const string SKILL_MEOTEOR = "Meteor";
     private const string SKILL_SHADE = "Shade";
     private const string SKILL_STARFALL = "Ghostflame";
+    private const string TURRET_UPGRADE_HP = "HP";
+    private const string TURRET_UPGRADE_DAMAGE = "Damage";
+    private const string TURRET_UPGRADE_FIRERATE = "Fire rate";
+    private const string TURRET_UPGRADE_RANGE = "Range";
+
+
 
 
     private void Awake()
@@ -182,7 +190,25 @@ public class ToolTip : MonoBehaviour
                 durationField.gameObject.SetActive(false);
                 EffectvieText.gameObject.SetActive(false);
                 break;
+            case TURRET_UPGRADE_DAMAGE:
+                
+                break;
+            case TURRET_UPGRADE_FIRERATE:
 
+                break;
+            case TURRET_UPGRADE_HP:
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "HP: " + baseTurretStatsSO.BonusHealth.ToString() + " ( + "+data.hp_increase+" /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);    
+                break;
+            case TURRET_UPGRADE_RANGE:
+
+                break;
         }
     }
 }
