@@ -18,10 +18,14 @@ public class ShopSystem : MonoBehaviour
     public InventorySO  player_inventory_SO;
     public InventorySO  default_data_item_inventory;
 
+
     //datacontainer
     public List<DataContainer>      skills_container_buy    = new List<DataContainer>();
     public List<DataContainer>      turrets_container_buy   = new List<DataContainer>();
     public List<SellDataContainer>  skills_container_sell   = new List<SellDataContainer>();
+
+    public TurretUpgradedStat turretUpgradedStat = new TurretUpgradedStat();
+
 
     [Header("Game Events")]
     [SerializeField]
@@ -383,10 +387,10 @@ public class ShopSystem : MonoBehaviour
 
     private void onUpgradeTurret(ItemDataSO data)
     {
-        data.damage += data.damage_increase;
-        data.range += data.range_increase;
-        data.fire_rate += data.fire_rate_increase;
-        data.hp += data.hp_increase;
+        turretUpgradedStat.BonusHealth += data.hp_increase;
+        turretUpgradedStat.BonusAttackSpeed += data.fire_rate_increase;
+        turretUpgradedStat.BonusAttackDamage += data.damage_increase;
+        turretUpgradedStat.BonusAttackRange += data.range_increase;
     }
     #endregion method
 }
