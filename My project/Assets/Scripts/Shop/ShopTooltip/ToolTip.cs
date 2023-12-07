@@ -33,7 +33,7 @@ public class ToolTip : MonoBehaviour
     public RectTransform rectTransform;
 
     //const string for text
-    private const string PREFIX_LEVEL = " Current Lv.";
+    private const string PREFIX_LEVEL = "Lv.";
     private const string PREFIX_TITLE = "Upgrade ";
     private const string PREFIX_COOLDOWN = "Cooldown: ";
     private const string PREFIX_RADIUS = "Radius: ";
@@ -96,7 +96,7 @@ public class ToolTip : MonoBehaviour
             gameObject.SetActive(true);
         }
 
-        headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name + PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
+        headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name.Trim() + "\n"+ PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
         contentField.text = itemdata.description;
         handleDisplayText(itemdata);
     }

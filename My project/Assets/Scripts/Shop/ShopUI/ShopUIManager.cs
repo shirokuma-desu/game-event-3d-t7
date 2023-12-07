@@ -12,6 +12,7 @@ public class ShopUIManager : MonoBehaviour
     public GameObject shop_ui;
     public TextMeshProUGUI total_souls;
     public TextMeshProUGUI reroll_price;
+    public TextMeshProUGUI buy_turret_price;
     public TextMeshProUGUI open_button_text;
     public GameObject open_button;
    
@@ -59,6 +60,7 @@ public class ShopUIManager : MonoBehaviour
         total_souls.text        =  shopSystem.getTotalSouls().ToString();
         reroll_price.text       =  shopSystem.getRerollPrice().ToString();
         open_button_text.text   =  shopSystem.getTotalSouls().ToString();
+        buy_turret_price.text   =  shopSystem.getTotalTurretPrice().ToString();
     }
 
     private void OnClickBuyTurret()
