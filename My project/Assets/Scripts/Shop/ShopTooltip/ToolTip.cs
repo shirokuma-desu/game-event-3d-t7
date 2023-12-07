@@ -191,10 +191,24 @@ public class ToolTip : MonoBehaviour
                 EffectvieText.gameObject.SetActive(false);
                 break;
             case TURRET_UPGRADE_DAMAGE:
-                
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "Damage: " + baseTurretStatsSO.BonusAttackDamage.ToString() + " ( + " + data.hp_increase + " /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
                 break;
             case TURRET_UPGRADE_FIRERATE:
-
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "Fire Rate: " + baseTurretStatsSO.BonusAttackSpeed.ToString() + " ( + " + data.hp_increase + " /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
                 break;
             case TURRET_UPGRADE_HP:
                 chanceField.gameObject.SetActive(false);
@@ -207,7 +221,14 @@ public class ToolTip : MonoBehaviour
                 InstaceText.gameObject.SetActive(false);    
                 break;
             case TURRET_UPGRADE_RANGE:
-
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "Range: " + baseTurretStatsSO.BonusAttackRange.ToString() + " ( + " + data.hp_increase + " /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
                 break;
         }
     }
