@@ -69,9 +69,9 @@ public class Skill : MonoBehaviour
         m_multicastRate = m_statData.multi_cast_chance;
         m_cooldown = m_statData.cooldown;
 
-        m_damage += m_statData.damage_increase * m_level;
-        m_range += m_statData.radius_increase * m_level;
-        m_cooldown -= m_statData.cooldown_decrease * m_level;
+        // m_damage += m_statData.damage_increase * m_level;
+        // m_range += m_statData.radius_increase * m_level;
+        // m_cooldown -= m_statData.cooldown_decrease * m_level;
     }
 
     public virtual void Preview()

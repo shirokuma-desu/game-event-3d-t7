@@ -33,8 +33,8 @@ public class Enemy : MonoBehaviour
     public int AttackDamage { get => m_attackDamage; }
 
     [SerializeField]
-    private float m_bounty;
-    public float Bounty { get => m_bounty; }
+    private int m_bounty;
+    public int Bounty { get => m_bounty; }
 
     [SerializeField]
     private float m_attackRayLength;

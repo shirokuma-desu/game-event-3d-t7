@@ -18,7 +18,7 @@ public class StarfallSkill : Skill
 
         m_obstacleNumber = m_statData.instance_per_cast;
 
-        m_obstacleNumber += m_statData.instance_increase * m_level;
+        // m_obstacleNumber += m_statData.instance_increase * m_level;
     }
 
     protected override void Impact()

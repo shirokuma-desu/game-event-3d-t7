@@ -37,6 +37,15 @@ public class EnemyManager : MonoBehaviour
         return _result;
     }
 
+    public void SetSpawnInterval(int _index, float _amount)
+    {
+        m_enemySpawners[_index].SetSpawningInterval(_amount);
+    }
+    public void SetSpawningProbability(int _index, float _amount)
+    {
+        m_enemySpawners[_index].SetSpawningProbability(_amount);
+    }
+
     public void StartAllSpawner()
     {
         foreach (EnemySpawner _spawner in m_enemySpawners)
@@ -114,7 +123,7 @@ public class EnemyManager : MonoBehaviour
         Debug.LogWarning($"EnemyManager: No Formation has such name '{_name}', spawn cancelled");
     }
 
-    public void SpawnDrop(Vector3 _position, float _bounty)
+    public void SpawnDrop(Vector3 _position, int _bounty)
     {
         _position.y = 0f;
         m_soulSpawner.SpawnSoul(_position, _bounty);
@@ -127,6 +136,6 @@ public class EnemyManager : MonoBehaviour
             _spawner.Manager = this;
         }
 
-        StartAllSpawner();
+        // StartAllSpawner();
     }
 }

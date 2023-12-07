@@ -13,10 +13,6 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     private TurretSpot[] m_towerSpots;
 
     [SerializeField]
-    private EnemyManager m_enemyManager;
-    public EnemyManager EnemyManager { get => m_enemyManager; }
-
-    [SerializeField]
     private EnemySpawnZone m_enemySpawnZone;
     public EnemySpawnZone EnemySpawnZone { get => m_enemySpawnZone; }
 

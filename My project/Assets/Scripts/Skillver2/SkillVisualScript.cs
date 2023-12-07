@@ -416,13 +416,13 @@ public class SkillVisualScript : MonoBehaviour
                         {
                             multiCastTimes++;
                             
-                            int _rayNum = Mathf.Min(multiCastTimes, EnvironmentManager.Instance.EnemyManager.GetEnemies().Count);
+                            int _rayNum = Mathf.Min(multiCastTimes, GameManager.Instance.EnemyManager.GetEnemies().Count);
                             List<Enemy> _closetEnemies = new();
                             for (int _num = 0; _num < _rayNum; _num++)
                             {
                                 Enemy _closetEnemy = null;
                                 float _minDistance = Mathf.Infinity;
-                                foreach (Enemy _enemy in EnvironmentManager.Instance.EnemyManager.GetEnemies())
+                                foreach (Enemy _enemy in GameManager.Instance.EnemyManager.GetEnemies())
                                 {
                                     if (_closetEnemies.Contains(_enemy)) continue;
 
