@@ -12,6 +12,9 @@ public class GameManager : GenericSingleton<GameManager>
 
     [Header("References")]
     [SerializeField]
+    private EnemyManager m_enemyManager;
+    public EnemyManager EnemyManager { get => m_enemyManager; }
+    [SerializeField]
     private ShopSystem m_shop;
     public ShopSystem Shop { get => m_shop; }
     

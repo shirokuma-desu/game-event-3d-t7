@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -10,9 +11,11 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn")]
     [Space(15f)]
     [SerializeField]
-    private float m_spawningInterval = 1f;
+    private float m_spawningInterval;
+    public float SpawningInterval { get => m_spawningInterval; }
     [Range(0f, 1f)] [SerializeField]
     private float m_spawningProbability = 1f;
+    public float SpawningProbability { get => m_spawningProbability; }
 
     [Header("Pools")]
     [SerializeField]
@@ -29,6 +32,14 @@ public class EnemySpawner : MonoBehaviour
     {
         m_spawningProbability = _value;
     }
+    public void ChangeSpawningInterval(float _value)
+    {
+        m_spawningInterval += _value;
+    }
+    public void ChangeSpawningProbability(float _value)
+    {
+        m_spawningInterval += _value;
+    }
 
     private void Start()
     {
@@ -37,17 +48,25 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartSpawning()
     {
+        StartCoroutine(SpawnRepeating());
         InvokeRepeating(nameof(SpawnRandomPosition), 0f, m_spawningInterval);
+    }
+
+    private IEnumerator SpawnRepeating()
+    {
+        float _probability = Random.Range(0f, 1f);
+        if (_probability < m_spawningProbability)
+            SpawnRandomPosition();
+
+        yield return new WaitForSeconds(m_spawningInterval);
+
+        StartCoroutine(SpawnRepeating());
     }
 
     private void SpawnRandomPosition()
     {
-        float _probability = Random.Range(0f, 1f);
-        if (_probability < m_spawningProbability)
-        {
-            Vector3 position = EnvironmentManager.Instance.EnemySpawnZone.GetSpawnPoint();
-            SpawnEnemy(position);
-        }
+        Vector3 position = EnvironmentManager.Instance.EnemySpawnZone.GetSpawnPoint();
+        SpawnEnemy(position);
     }
 
     public void SpawnEnemy(Vector3 _position)

@@ -50,13 +50,13 @@ public class LazerBeamSkill : Skill
 
     protected override IEnumerator HandleMulticast(int _num, Vector3 _position)
     {
-        int _enemyNum = Mathf.Min(_num, EnvironmentManager.Instance.EnemyManager.GetEnemies().Count);
+        int _enemyNum = Mathf.Min(_num, GameManager.Instance.EnemyManager.GetEnemies().Count);
         List<Enemy> _closetEnemies = new();
         for (int i = 0; i < _enemyNum; i++)
         {
             Enemy _closetEnemy = null;
             float _minDistance = Mathf.Infinity;
-            foreach (Enemy _enemy in EnvironmentManager.Instance.EnemyManager.GetEnemies())
+            foreach (Enemy _enemy in GameManager.Instance.EnemyManager.GetEnemies())
             {
                 if (_closetEnemies.Contains(_enemy)) continue;
 
