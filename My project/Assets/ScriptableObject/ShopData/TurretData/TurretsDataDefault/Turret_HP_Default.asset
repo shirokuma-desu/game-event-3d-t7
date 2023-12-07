@@ -13,13 +13,32 @@ MonoBehaviour:
   m_Name: Turret_HP_Default
   m_EditorClassIdentifier: 
   ID_Skill: 4
-  skill_name: Increase HP
-  level_skill: 0
   image: {fileID: 21300000, guid: 78eb62a09decdd44885cd0bffe3168fa, type: 3}
   image_upgrade: {fileID: 21300000, guid: 78eb62a09decdd44885cd0bffe3168fa, type: 3}
+  skill_name: Increase HP
+  description: 
+  multi_cast_chance: 0
   price: 2
+  sellprice: 1
   price_increase: 2
   sell_price_increase: 2
-  sellprice: 1
-  description: 
+  level_skill: 0
+  damage: 0
+  radius: 0
+  cooldown: 0
+  instance_per_cast: 0
+  debuff_duration: 0
+  debuff_effective: 0
+  damage_increase: 0
+  radius_increase: 0
+  cooldown_decrease: 0
+  instance_increase: 0
+  debuff_duration_increase: 0
+  debuff_effective_increase: 0
+  range: 0
+  fire_rate: 0
+  hp: 0
+  range_increase: 0
+  fire_rate_increase: 0
+  hp_increase: 20
   is_upgraded: 0
