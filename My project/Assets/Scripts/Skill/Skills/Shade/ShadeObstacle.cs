@@ -32,13 +32,13 @@ public class ShadeObstacle : SkillObstacle
         {
             if (m_target == null)
             {
-                SetTarget();
+                m_target = SetTarget();
             }
             else 
             {
                 if (m_target.IsDied)
                 {
-                    SetTarget();
+                    m_target = SetTarget();
                 }
 
                 ChaseEnemy();
@@ -46,10 +46,11 @@ public class ShadeObstacle : SkillObstacle
         }
     }
 
-    private void SetTarget()
+    private Enemy SetTarget()
     {
-        float _tempDistance = Mathf.Infinity;
+        float _tempDistance = m_chaseRange;
 
+        Enemy _target = null;
         Collider[] _colliders = Physics.OverlapSphere(transform.position, m_chaseRange);
         foreach (Collider collider in _colliders)
         {
@@ -58,10 +59,12 @@ public class ShadeObstacle : SkillObstacle
                 if (!collider.GetComponent<Enemy>().IsDied && Vector3.Distance(transform.position, collider.transform.position) < _tempDistance)
                 {
                     _tempDistance = Vector3.Distance(transform.position, collider.transform.position);
-                    m_target = collider.GetComponent<Enemy>();
+                    _target = collider.GetComponent<Enemy>();
                 }
             }
         }
+
+        return _target;
     }
 
     private void ChaseEnemy()
