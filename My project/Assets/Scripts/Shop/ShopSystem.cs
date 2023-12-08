@@ -65,7 +65,7 @@ public class ShopSystem : MonoBehaviour
 
     private void Start()
     {
-        tus = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
+        turretUpgradedStat = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
 
 
         this.RegisterListener(EventID.OnSellingItem, (param) => bindDataFromPlayerInventorySO());
@@ -395,6 +395,8 @@ public class ShopSystem : MonoBehaviour
 
     private void onUpgradeTurret(ItemDataSO data)
     {
+        
+
         turretUpgradedStat.BonusHealth += data.hp_increase;
         turretUpgradedStat.BonusAttackSpeed += data.fire_rate_increase;
         turretUpgradedStat.BonusAttackDamage += data.damage_increase;
