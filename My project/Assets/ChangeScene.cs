@@ -7,19 +7,12 @@ public class ChangeScene : MonoBehaviour
 {
     public string playScene;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void changeScenePlay()
+    {
+        LoadAsync.Instance.LoadScene(playScene);
+    }
+
+    public void ChangeScenePlayRaw()
     {
         SceneManager.LoadScene(playScene);
     }

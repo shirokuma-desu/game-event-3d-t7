@@ -12,6 +12,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private Sprite[] m_images;
 
+    [SerializeField]
+    private string m_playSceneName;
+
     private int m_currentImage;
     private int m_imageNumber;
 
@@ -48,6 +51,6 @@ public class TutorialManager : MonoBehaviour
 
     private void PlayGame()
     {
-        Debug.Log("PLAY!");
+        LoadAsync.Instance.LoadScene(m_playSceneName);
     }
 }

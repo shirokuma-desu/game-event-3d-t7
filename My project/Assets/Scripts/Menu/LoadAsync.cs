@@ -20,8 +20,10 @@ public class LoadAsync : GenericSingleton<LoadAsync>
     private IEnumerator LoadSceneCoroutine(string _sceneName)
     {
         m_animator.SetBool("Start", true);
+        yield return new WaitForEndOfFrame();
+        m_animator.SetBool("Start", false);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         AsyncOperation _loadOperation = SceneManager.LoadSceneAsync(_sceneName);
 
@@ -36,6 +38,8 @@ public class LoadAsync : GenericSingleton<LoadAsync>
         yield return new WaitForSeconds(.5f);
 
         m_animator.SetBool("End", true);
+        yield return new WaitForEndOfFrame();
+        m_animator.SetBool("End", false);
 
         yield return null;
     }
