@@ -5,8 +5,6 @@ public class NormalShooting : MonoBehaviour
     private TurretManager tm;
     private Turret stat;
 
-    private GameObject nearestTarget;
-
     private float m_lastShoot = 0f;
 
     private void Awake()
@@ -57,7 +55,7 @@ public class NormalShooting : MonoBehaviour
 
     public void Shoot()
     {
-        nearestTarget = FindNearestEnemy();
+        GameObject nearestTarget = FindNearestEnemy();
         if (nearestTarget != null)
         {
             Attack(nearestTarget, stat.AttackDamage);

@@ -6,6 +6,8 @@ using Debug = UnityEngine.Debug;
 
 public class ShopSystem : MonoBehaviour
 {
+    private TurretUpgradedStat tus;
+
     //data
     [SerializeField] private int m_total_souls              =   1000;
     [SerializeField] private int m_reroll_price             =   0;
@@ -63,7 +65,9 @@ public class ShopSystem : MonoBehaviour
 
     private void Start()
     {
-        
+        tus = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
+
+
         this.RegisterListener(EventID.OnSellingItem, (param) => bindDataFromPlayerInventorySO());
     }
 

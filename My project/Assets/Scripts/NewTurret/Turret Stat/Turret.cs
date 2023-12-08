@@ -13,6 +13,10 @@ public class Turret : MonoBehaviour
     private float m_attackSpeed;
     private float m_attackRange;
 
+    private float m_stunDuration;
+    private float m_knockbackAmount;
+    private float m_knockbackDuration;
+
     [SerializeField]
     private bool m_isSettled = false;
     private bool m_isDead = false;
@@ -30,6 +34,9 @@ public class Turret : MonoBehaviour
     public int AttackDamage { get { return m_attackDamage; } set { m_attackDamage = value; } }
     public float AttackSpeed { get { return m_attackSpeed; } set { m_attackSpeed = value; } }
     public float AttackRange { get { return m_attackRange; } set { m_attackRange = value; } }
+    public float StunDuration { get { return m_stunDuration; } set { m_stunDuration = value; } }
+    public float KnockbackAmount { get { return m_knockbackAmount; } set { m_knockbackAmount = value; } }
+    public float KnockbackDuration { get { return m_knockbackDuration; } set { m_knockbackDuration = value; } }
     public bool IsSettled { get { return m_isSettled; } set { m_isSettled = value; } }
     public bool IsDead { get { return m_isDead; } set { m_isDead = value; } }
     public bool IsUpgraded { get {  return m_isUpgraded; } set { m_isUpgraded = value; } }
@@ -45,6 +52,10 @@ public class Turret : MonoBehaviour
         m_attackDamage = stat.attackDamage;
         m_attackSpeed = stat.attackSpeed;
         m_attackRange = stat.attackRange;
+
+        m_stunDuration = stat.stunDuration;
+        m_knockbackAmount = stat.knockbackAmount;
+        m_knockbackDuration = stat.knockbackDuration;
 
         m_currentHealth = m_health;
     }
