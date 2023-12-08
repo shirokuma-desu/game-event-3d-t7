@@ -89,7 +89,7 @@ public class ShopSystem : MonoBehaviour
     {
         ItemDataSO skillObjectSO = dataContainer.Get();
         // player cant not buy empty slot 
-        if (skillObjectSO.ID_Skill == 0)
+        if (skillObjectSO.ID_Skill == 0 || skillObjectSO.price > m_total_souls)
         {
             Debug.Log("Cant allow to buy empty slot");
             return;
@@ -105,7 +105,7 @@ public class ShopSystem : MonoBehaviour
     public void doBuyUpgrade(DataContainer dataContainer)
     {
         ItemDataSO itemData = dataContainer.Get();
-        if(itemData.ID_Skill == 0)
+        if(itemData.ID_Skill == 0 || itemData.price > m_total_souls)
         {
             Debug.Log("Cant allow to buy empty slot");
             return;
