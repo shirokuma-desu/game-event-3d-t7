@@ -9,10 +9,11 @@ public class ShopSystem : MonoBehaviour
     private TurretUpgradedStat tus;
 
     //data
-    [SerializeField] private int m_total_souls          =   1000;
-    [SerializeField] private int m_reroll_price         =   0;
-    [SerializeField] private int m_price_to_increase    =   10;
-    [SerializeField] private int m_price_turret         =   50;
+    [SerializeField] private int m_total_souls              =   1000;
+    [SerializeField] private int m_reroll_price             =   0;
+    [SerializeField] private int m_price_reroll_increase    =   10;
+    [SerializeField] private int m_price_turret_increase    =   10;
+    [SerializeField] private int m_price_turret             =   50;
 
     //scriptableobject
     public InventorySO  shop_inventory;
@@ -20,10 +21,14 @@ public class ShopSystem : MonoBehaviour
     public InventorySO  player_inventory_SO;
     public InventorySO  default_data_item_inventory;
 
+
     //datacontainer
     public List<DataContainer>      skills_container_buy    = new List<DataContainer>();
     public List<DataContainer>      turrets_container_buy   = new List<DataContainer>();
     public List<SellDataContainer>  skills_container_sell   = new List<SellDataContainer>();
+
+    public TurretUpgradedStat turretUpgradedStat;
+
 
     [Header("Game Events")]
     [SerializeField]
@@ -43,6 +48,10 @@ public class ShopSystem : MonoBehaviour
     public int getRerollPrice()
     {
         return m_reroll_price;
+    }
+
+    public int getTotalTurretPrice() {
+        return m_price_turret; 
     }
 
     #endregion get
@@ -73,7 +82,7 @@ public class ShopSystem : MonoBehaviour
             return;
         }
         Buy(m_reroll_price);
-        m_reroll_price += m_price_to_increase;
+        m_reroll_price += m_price_reroll_increase;
         bindRandomData();
 
         //call event reroll
@@ -137,8 +146,7 @@ public class ShopSystem : MonoBehaviour
             return;
         }
         Buy(m_price_turret);
-        m_price_to_increase = 20;
-        m_price_turret += m_price_to_increase;
+        m_price_turret += m_price_turret_increase;
 
         //call event buying
         this.PostEvent(EventID.OnBuyingTurret);
@@ -387,10 +395,10 @@ public class ShopSystem : MonoBehaviour
 
     private void onUpgradeTurret(ItemDataSO data)
     {
-        tus.BonusAttackDamage += data.damage_increase;
-        tus.BonusAttackRange += data.range_increase;
-        tus.BonusAttackSpeed += data.fire_rate_increase;
-        tus.BonusHealth += data.hp_increase;
+        turretUpgradedStat.BonusHealth += data.hp_increase;
+        turretUpgradedStat.BonusAttackSpeed += data.fire_rate_increase;
+        turretUpgradedStat.BonusAttackDamage += data.damage_increase;
+        turretUpgradedStat.BonusAttackRange += data.range_increase;
     }
     #endregion method
 }

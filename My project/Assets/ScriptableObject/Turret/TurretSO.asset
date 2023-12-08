@@ -16,4 +16,4 @@ MonoBehaviour:
   attackDamage: 20
   attackSpeed: 5
   attackRange: 20
-  maxJumps: 3
+  maxJumps: 0

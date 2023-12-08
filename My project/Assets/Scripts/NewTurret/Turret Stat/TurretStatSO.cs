@@ -11,4 +11,5 @@ public class TurretStatSO : ScriptableObject
     public float stunDuration;
     public float knockbackAmount;
     public float knockbackDuration;
+
 }

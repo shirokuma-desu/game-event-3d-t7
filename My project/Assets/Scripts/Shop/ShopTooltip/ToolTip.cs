@@ -32,8 +32,10 @@ public class ToolTip : MonoBehaviour
 
     public RectTransform rectTransform;
 
+    [SerializeField] private TurretUpgradedStat baseTurretStatsSO;
+
     //const string for text
-    private const string PREFIX_LEVEL = " Current Lv.";
+    private const string PREFIX_LEVEL = "Lv.";
     private const string PREFIX_TITLE = "Upgrade ";
     private const string PREFIX_COOLDOWN = "Cooldown: ";
     private const string PREFIX_RADIUS = "Radius: ";
@@ -48,6 +50,12 @@ public class ToolTip : MonoBehaviour
     private const string SKILL_MEOTEOR = "Meteor";
     private const string SKILL_SHADE = "Shade";
     private const string SKILL_STARFALL = "Ghostflame";
+    private const string TURRET_UPGRADE_HP = "HP";
+    private const string TURRET_UPGRADE_DAMAGE = "Damage";
+    private const string TURRET_UPGRADE_FIRERATE = "Fire rate";
+    private const string TURRET_UPGRADE_RANGE = "Range";
+
+
 
 
     private void Awake()
@@ -96,7 +104,7 @@ public class ToolTip : MonoBehaviour
             gameObject.SetActive(true);
         }
 
-        headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name + PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
+        headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name.Trim() + "\n"+ PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
         contentField.text = itemdata.description;
         handleDisplayText(itemdata);
     }
@@ -182,7 +190,46 @@ public class ToolTip : MonoBehaviour
                 durationField.gameObject.SetActive(false);
                 EffectvieText.gameObject.SetActive(false);
                 break;
-
+            case TURRET_UPGRADE_DAMAGE:
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "Damage: " + baseTurretStatsSO.BonusAttackDamage.ToString() + " ( + " + data.hp_increase + " /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
+                break;
+            case TURRET_UPGRADE_FIRERATE:
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "Fire Rate: " + baseTurretStatsSO.BonusAttackSpeed.ToString() + " ( + " + data.hp_increase + " /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
+                break;
+            case TURRET_UPGRADE_HP:
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "HP: " + baseTurretStatsSO.BonusHealth.ToString() + " ( + "+data.hp_increase+" /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);    
+                break;
+            case TURRET_UPGRADE_RANGE:
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "Range: " + baseTurretStatsSO.BonusAttackRange.ToString() + " ( + " + data.hp_increase + " /lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
+                break;
         }
     }
 }

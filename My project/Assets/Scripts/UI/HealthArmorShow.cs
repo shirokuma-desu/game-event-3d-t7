@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class HealthArmorShow : MonoBehaviour
@@ -29,10 +30,12 @@ public class HealthArmorShow : MonoBehaviour
     void UpdateHealthShow()
     {
         m_UIMananger.BaseTowerUI.SetHealthText(currentHealth.ToString() + "/" + maxHealth.ToString());
+        m_UIMananger.BaseTowerUI.SetHealthImage((float)currentHealth/100);
     }
 
     void UpdateArmorShow()
     {
         m_UIMananger.BaseTowerUI.SetArmorText(currentArmor.ToString() + "/" + maxArmor.ToString());
+        m_UIMananger.BaseTowerUI.SetArmorImage((float)currentArmor /100);
     }
 }
