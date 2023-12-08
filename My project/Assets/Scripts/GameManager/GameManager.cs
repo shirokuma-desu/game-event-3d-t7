@@ -7,7 +7,8 @@ public class GameManager : GenericSingleton<GameManager>
     public enum State
     {
         Running,
-        Paused
+        Paused,
+        GameOver,
     }
 
     [Header("References")]
@@ -20,6 +21,9 @@ public class GameManager : GenericSingleton<GameManager>
     
     private State m_gameState;
     public State GameState { get => m_gameState; }
+
+    [SerializeField]
+    private GameEvent m_gameOver;
 
     public void PauseGame()
     {
@@ -39,5 +43,10 @@ public class GameManager : GenericSingleton<GameManager>
         }
 
         m_gameState = State.Running;
+    }
+    
+    public void GameOver()
+    {
+        m_gameState = State.GameOver;
     }
 }

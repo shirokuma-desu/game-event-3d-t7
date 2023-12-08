@@ -23,10 +23,13 @@ public class PaladinEnemy : Enemy
     {
         base.FixedUpdate();
 
-        if (m_canMoving)
+        if (GameManager.Instance.GameState != GameManager.State.GameOver)
         {
-            Move();
-        } 
+            if (m_canMoving)
+            {
+                Move();
+            } 
+        }
     }
 
     private IEnumerator WalkingCircle()

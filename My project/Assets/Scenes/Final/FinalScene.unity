@@ -1924,6 +1924,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &358536314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3920464048201328750, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1593230888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f8b3c7e5417304a9948bd63d9241d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &360810791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3556,6 +3568,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639211143}
   m_CullTransparentMesh: 1
+--- !u!114 &660646305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6403970765636280943, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1593230888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f8b3c7e5417304a9948bd63d9241d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &706802945
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,6 +3845,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739328184}
   m_CullTransparentMesh: 1
+--- !u!114 &739908430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5884963183525506941, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1593230888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f8b3c7e5417304a9948bd63d9241d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &747492352
 GameObject:
   m_ObjectHideFlags: 0
@@ -10835,6 +10871,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1918668448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 905012673316039866, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1593230888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f8b3c7e5417304a9948bd63d9241d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1928307923
 GameObject:
   m_ObjectHideFlags: 0
@@ -10921,6 +10969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930993371}
   - component: {fileID: 1930993370}
+  - component: {fileID: 1930993372}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -10941,8 +10990,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NotDestroy: 0
-  m_enemyManager: {fileID: 0}
+  m_enemyManager: {fileID: 1593230889}
   m_shop: {fileID: 1391151270}
+  m_gameOver: {fileID: 11400000, guid: b617a9f0e57a3e841b2e129f0e0f7a65, type: 2}
 --- !u!4 &1930993371
 Transform:
   m_ObjectHideFlags: 0
@@ -10958,6 +11008,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1930993372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930993369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7477543c149c14fab6db173d96703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spawmData:
+  - Name: Soldier
+    Spawner: {fileID: 1918668448}
+    StartSpawnTime: 0
+    StartInterval: 1
+    IntervalDecrease: 0.05
+    IntervalTerminal: 0.5
+    SpawnProbability: 1
+    ProbabilityIncrease: 0
+    ProbabilityTerminal: 0
+  - Name: Angel
+    Spawner: {fileID: 739908430}
+    StartSpawnTime: 60
+    StartInterval: 2
+    IntervalDecrease: 0.05
+    IntervalTerminal: 0.3
+    SpawnProbability: 1
+    ProbabilityIncrease: 0
+    ProbabilityTerminal: 0
+  - Name: Paladin
+    Spawner: {fileID: 358536314}
+    StartSpawnTime: 120
+    StartInterval: 2
+    IntervalDecrease: 0.02
+    IntervalTerminal: 2
+    SpawnProbability: 1
+    ProbabilityIncrease: 0
+    ProbabilityTerminal: 0
+  - Name: Priest
+    Spawner: {fileID: 1939454621}
+    StartSpawnTime: 240
+    StartInterval: 4
+    IntervalDecrease: 0.02
+    IntervalTerminal: 3
+    SpawnProbability: 1
+    ProbabilityIncrease: 0
+    ProbabilityTerminal: 0
+  - Name: Mother
+    Spawner: {fileID: 660646305}
+    StartSpawnTime: 360
+    StartInterval: 5
+    IntervalDecrease: 0.02
+    IntervalTerminal: 3
+    SpawnProbability: 1
+    ProbabilityIncrease: 0
+    ProbabilityTerminal: 0
+--- !u!114 &1939454621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3627570375480353409, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1593230888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f8b3c7e5417304a9948bd63d9241d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955498467
 GameObject:
   m_ObjectHideFlags: 0
@@ -12197,9 +12317,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1306.5068, y: -892.6908}
+  m_AnchoredPosition: {x: 12.723736, y: 657.393}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: -0.17455947, y: -0.3189824}
+  m_Pivot: {x: 0.50656456, y: 1.1031128}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0
