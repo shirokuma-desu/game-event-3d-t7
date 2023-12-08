@@ -3620,6 +3620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_healthText: {fileID: 1290817417}
   m_armorText: {fileID: 1719499443}
+  image_Health: {fileID: 2136815812}
+  image_Armor: {fileID: 1859893437}
 --- !u!1 &713671995
 GameObject:
   m_ObjectHideFlags: 0
@@ -12341,9 +12343,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 459.6771, y: -707.11346}
+  m_AnchoredPosition: {x: -969.01, y: -545}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.7373348, y: -0.14872798}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0
