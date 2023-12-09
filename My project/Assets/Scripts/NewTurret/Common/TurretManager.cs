@@ -5,6 +5,9 @@ public class TurretManager : MonoBehaviour
 {
     private TurretUpgradedStat tus;
 
+    private bool m_isStunEnabled = false;
+    private bool m_isKnockbackEnabled = false;
+
     [SerializeField]
     private GameObject[] m_turretSpots;
     [SerializeField]
@@ -17,6 +20,8 @@ public class TurretManager : MonoBehaviour
     [SerializeField]
     private GameEvent m_ATurretDestroyed;
 
+    public bool IsStunEnabled { get { return m_isStunEnabled; } set { m_isStunEnabled = value; } }
+    public bool IsKnockbackEnabled { get { return m_isKnockbackEnabled; } set { m_isKnockbackEnabled= value; } }
     public GameObject[] TurretSpots { get { return m_turretSpots; } }
     public bool[] IsSpotsOccupied { get { return m_isSpotsOccupied; } }
     public bool EmptySpotAvai { get { return m_emptySpotAvai; } }
@@ -128,20 +133,16 @@ public class TurretManager : MonoBehaviour
         }
     }
 
-    public void ChangeShootType(int type)
+    public void ToggleShootType(int type) //1: Stun, 2: Knockback. both is on, bullet knock then stun
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 30f);
-
-        foreach (Collider collider in colliders)
+        if (type == 1)
         {
-            if (collider.CompareTag("Turret"))
-            {
-                TurretShooting shootingType = collider.gameObject.GetComponent<TurretShooting>();
-                if (shootingType != null)
-                {
-                    shootingType.ShootType = type;
-                }
-            }
+            m_isStunEnabled = !m_isStunEnabled;
+        }
+
+        if (type == 2)
+        {
+            m_isKnockbackEnabled = !m_isKnockbackEnabled;
         }
     }
 

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StunShooting : MonoBehaviour
+public class StunAndKnockShooting : MonoBehaviour
 {
     private TurretManager tm;
     private Turret stat;
@@ -44,11 +42,11 @@ public class StunShooting : MonoBehaviour
             Vector3 bulletPosition = transform.position;
             bulletPosition.y = 1f;
 
-            Bullet bulletScript = tm.StartSpawner(1, bulletPosition);
+            Bullet bulletScript = tm.StartSpawner(3, bulletPosition);
 
             if (bulletScript != null)
             {
-                bulletScript.SetTarget(target, damage, stat.StunDuration);
+                bulletScript.SetTarget(target, damage, stat.StunDuration, stat.KnockbackAmount, stat.KnockbackDuration);
             }
 
             m_lastShoot = Time.time;
