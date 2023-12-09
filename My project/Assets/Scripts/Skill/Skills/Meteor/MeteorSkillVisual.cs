@@ -12,6 +12,8 @@ public class MeteorSkillVisual : SkillVisual
     private GameObject m_meteorObject;
     [SerializeField]
     private GameObject m_guideObject;
+    [SerializeField]
+    private GameObject m_impactObject;
 
     [SerializeField]
     private float m_meteorAccelerate;
@@ -85,5 +87,8 @@ public class MeteorSkillVisual : SkillVisual
         
         m_meteorObject.SetActive(false);
         m_guideObject.SetActive(false);
+        
+        GameObject _obj = Instantiate(m_impactObject, m_skillData.CastPosition, Quaternion.identity);
+        _obj.GetComponent<ParticleSystem>().startSize = m_skillData.Range / 3f;
     }
 }

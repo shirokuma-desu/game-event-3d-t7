@@ -154,6 +154,8 @@ MonoBehaviour:
   m_skillData: {fileID: 1400992620088152289}
   m_meteorObject: {fileID: 6745661500221828871}
   m_guideObject: {fileID: 6681292237700835932}
+  m_impactObject: {fileID: 1385526870972659905, guid: 34a5c7eeeb196a84190dbf672ee061e8,
+    type: 3}
   m_meteorAccelerate: 40
   m_meteorAngle: 65
   m_meteorOffset: 0.6
