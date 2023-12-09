@@ -24,7 +24,7 @@ public abstract class GenericObjectPool<T> : MonoBehaviour where T : Component
     public virtual T Get()
     {
         var instance = _pool.Get();
-        instance.transform.localPosition = Vector2.zero;
+        instance.transform.localPosition = Vector3.up * 1000f;
 
         return instance;
     }
@@ -42,7 +42,7 @@ public abstract class GenericObjectPool<T> : MonoBehaviour where T : Component
         try
         {
             _pool.Release(instance);
-            instance.transform.localPosition = Vector2.zero;
+            instance.transform.localPosition = Vector3.up * 1000f;
         }
         catch (Exception)
         {

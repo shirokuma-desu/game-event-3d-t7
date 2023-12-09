@@ -69,13 +69,16 @@ public class ShadeObstacle : SkillObstacle
 
     private void ChaseEnemy()
     {
-        transform.forward = (m_target.transform.position - transform.position).normalized;
-
-        transform.position += transform.forward * m_chaseSpeed * Time.deltaTime;
-
-        if (Vector3.Distance(transform.position, m_target.transform.position) <= m_activeRange) 
+        if (m_target != null)
         {
-            Explode();
+            transform.forward = (m_target.transform.position - transform.position).normalized;
+
+            transform.position += transform.forward * m_chaseSpeed * Time.deltaTime;
+
+            if (Vector3.Distance(transform.position, m_target.transform.position) <= m_activeRange) 
+            {
+                Explode();
+            }
         }
     }
 
