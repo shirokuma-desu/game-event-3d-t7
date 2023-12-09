@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour
     private TurretStatSO stat;
 
     private TurretManager tm;
+    private TurretUpgradedStat tus;
 
     private int m_health;
     private int m_attackDamage;
@@ -47,6 +48,7 @@ public class Turret : MonoBehaviour
     private void Awake()
     {
         tm = GameObject.Find("TurretManager").GetComponent<TurretManager>();
+        tus = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
 
         m_health = stat.health;
         m_attackDamage = stat.attackDamage;
@@ -72,6 +74,19 @@ public class Turret : MonoBehaviour
         {
             transform.position = m_lockPos;
         }
+
+        UpdateStat();
+    }
+
+    private void UpdateStat()
+    {
+        m_health = tus.BonusHealth;
+        m_attackDamage = tus.BonusAttackDamage;
+        m_attackSpeed = tus.BonusAttackSpeed;
+        m_attackRange = tus.BonusAttackRange;
+        m_stunDuration = tus.BonusStunDuration;
+        m_knockbackAmount = tus.BonusKnockbackAmout;
+        m_knockbackDuration = tus.BonusKnockbackDuration;
     }
 
     public void TakeDamage(int damage)

@@ -44,7 +44,7 @@ public class KnockbackShooting : MonoBehaviour
             Vector3 bulletPosition = transform.position;
             bulletPosition.y = 1f;
 
-            Bullet bulletScript = tm.StartSpawner(0, bulletPosition);
+            Bullet bulletScript = tm.StartSpawner(2, bulletPosition);
 
             if (bulletScript != null)
             {
