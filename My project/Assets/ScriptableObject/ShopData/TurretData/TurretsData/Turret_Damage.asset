@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
   m_Name: Turret_Damage
   m_EditorClassIdentifier: 
-  ID_Skill: 2
-  image: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
-  image_upgrade: {fileID: 21300000, guid: cd2bdcbb2854c5d42ae45a02180ebca4, type: 3}
-  skill_name: Damage+
-  description: Increases damage.
+  ID_Skill: 1
+  image: {fileID: 21300000, guid: 207f2eeb7c0c34e4db961f8fff3c15dd, type: 3}
+  image_upgrade: {fileID: 21300000, guid: d7caa96058173d44bb453866e95665d8, type: 3}
+  skill_name: Damage
+  description: Increase Damage
   multi_cast_chance: 0
-  price: 70
-  sellprice: 8
+  price: 10
+  sellprice: 2
   price_increase: 20
   sell_price_increase: 2
   level_skill: 0
@@ -29,13 +29,17 @@ MonoBehaviour:
   instance_per_cast: 0
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 10
+  damage_increase: 20
   radius_increase: 0
   cooldown_decrease: 0
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
+  ID_Effect: 0
+  stun_duration_increase: 0
+  knockback_distance_increase: 0
+  knockback_duration_increase: 0
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0
-  is_upgraded: 1
+  is_upgraded: 0
