@@ -84,6 +84,9 @@ public class TurretManager : MonoBehaviour
                     stat.AttackDamage = tus.BonusAttackDamage;
                     stat.AttackSpeed = tus.BonusAttackSpeed;
                     stat.AttackRange = tus.BonusAttackRange;
+                    stat.StunDuration = tus.BonusStunDuration;
+                    stat.KnockbackAmount = tus.BonusKnockbackAmout;
+                    stat.KnockbackDuration = tus.BonusKnockbackDuration;
                 }
             }
         }
