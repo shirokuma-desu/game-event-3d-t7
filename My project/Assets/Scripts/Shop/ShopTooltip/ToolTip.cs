@@ -59,16 +59,10 @@ public class ToolTip : MonoBehaviour
 
 
 
-
-    private void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
-
     // Start is called before the first frame update
     private void Start()
     {
-
+        rectTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
