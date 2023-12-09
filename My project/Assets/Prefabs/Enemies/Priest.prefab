@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52af80b5c943c84991c28289b0b3796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FloatingDamageText: {fileID: 3786000079742809024, guid: cb980b471a82d89409a9c0f04a9fce89,
+    type: 3}
   m_visual: {fileID: 5522819284237837353}
   m_collider: {fileID: -8411340846021458048}
   m_maxHealth: 300

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
     protected Rigidbody m_body;
+
+    [SerializeField]
+    protected GameObject FloatingDamageText;
 
     [Header("Reference")]
     [SerializeField]
@@ -78,6 +82,9 @@ public class Enemy : MonoBehaviour
         {
             m_visual.StartBeHitEffect();
         }
+
+        var go = Instantiate(FloatingDamageText, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMeshPro>().text = _ammount.ToString();
     }
 
     protected virtual IEnumerator Die()
