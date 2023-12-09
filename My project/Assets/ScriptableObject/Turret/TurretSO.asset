@@ -15,7 +15,7 @@ MonoBehaviour:
   health: 100
   attackDamage: 1
   attackSpeed: 5
-  attackRange: 20
+  attackRange: 30
   stunDuration: 0
-  knockbackAmount: 0
-  knockbackDuration: 0
+  knockbackAmount: 200
+  knockbackDuration: 0.1

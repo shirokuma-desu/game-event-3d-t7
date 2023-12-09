@@ -18,11 +18,11 @@ MonoBehaviour:
   skill_name: Knockback
   description: Turret now can apply knockback effect
   multi_cast_chance: 0
-  price: 7
-  sellprice: 3
+  price: 29
+  sellprice: 14
   price_increase: 2
   sell_price_increase: 1
-  level_skill: 2
+  level_skill: 13
   damage: 0
   radius: 0
   cooldown: 0
@@ -37,8 +37,8 @@ MonoBehaviour:
   debuff_effective_increase: 0
   ID_Effect: 2
   stun_duration_increase: 0
-  knockback_distance_increase: 10
-  knockback_duration_increase: 10
+  knockback_distance_increase: 400
+  knockback_duration_increase: 0.05
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0

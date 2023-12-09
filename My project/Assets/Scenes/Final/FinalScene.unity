@@ -12750,6 +12750,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6504550057669223877, guid: 507dada1523d67244aabc101b7ffccea,
+        type: 3}
+      propertyPath: m_mainRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7377702755778964649, guid: 507dada1523d67244aabc101b7ffccea,
         type: 3}
       propertyPath: m_player
@@ -21018,6 +21023,8 @@ MonoBehaviour:
   NotDestroy: 0
   m_enemyManager: {fileID: 1593230889}
   m_shop: {fileID: 1391151270}
+  m_turretManager: {fileID: 1644347156}
+  m_gameOverCover: {fileID: 0}
   m_gameOver: {fileID: 11400000, guid: b617a9f0e57a3e841b2e129f0e0f7a65, type: 2}
 --- !u!4 &1159067241
 Transform:
@@ -37221,9 +37228,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 777.50476, y: -1144.3933}
+  m_AnchoredPosition: {x: 541.8191, y: -856.73157}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.9012353, y: -0.5499022}
+  m_Pivot: {x: 0.7795405, y: -0.2859922}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0
