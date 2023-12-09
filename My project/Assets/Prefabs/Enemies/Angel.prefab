@@ -122,12 +122,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_model: {fileID: 2090841050646147482}
+  m_originalModelPosition: {x: 0, y: 2, z: 0}
   m_renderer: {fileID: 8295573720064197525}
   m_animator: {fileID: 1249042890212722171}
   m_aniClips: []
   m_spawnParticle: {fileID: 649129948237149841, guid: a3e6acef583f71b4dab1acbbace07043,
     type: 3}
-  m_beHitColor: {r: 0.39215687, g: 0.39215687, b: 1, a: 1}
+  m_beHitColor: {r: 0.8867924, g: 0.28862584, b: 0.28862584, a: 1}
   m_beHitKnockback: 0.2
   m_beHitTime: 0.1
   m_deadParticle: {fileID: 1157739271372782778, guid: e7813b0d7fcfc12408e9e5c1f47f61dc,

@@ -300,6 +300,8 @@ public class Enemy : MonoBehaviour
         m_speedModifyScale = 1f;
         m_damageTakenModifyScale = 1f;
 
+        m_visual.Reset();
+
         StopAllCoroutines();
     }
 

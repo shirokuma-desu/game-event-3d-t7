@@ -7,6 +7,8 @@ public class EnemyVisual : MonoBehaviour
     [SerializeField]
     private GameObject m_model;
     [SerializeField]
+    private Vector3 m_originalModelPosition;
+    [SerializeField]
     private Renderer m_renderer;
     private Material m_modelMaterial;
     [SerializeField]
@@ -37,6 +39,12 @@ public class EnemyVisual : MonoBehaviour
     [Header("Attack Effect")]
     [SerializeField]
     private GameObject m_attackParticle;
+
+    public void Reset()
+    {
+        m_modelMaterial.color = m_defaultColor;
+        m_model.transform.localPosition = m_originalModelPosition;
+    }
 
     public void StartSpawnEffect()
     {
@@ -99,9 +107,13 @@ public class EnemyVisual : MonoBehaviour
     {
         m_animator.SetBool("Die", true);
 
+        m_modelMaterial.color = m_beHitColor;
+
         EnvironmentManager.Instance.SpawnParticle(m_deadParticle, transform.position);
 
         yield return new WaitForSeconds(m_deadTime);
+
+        m_modelMaterial.color = m_defaultColor;
 
         ReadyToDie = true;
     }

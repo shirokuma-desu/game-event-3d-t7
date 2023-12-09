@@ -36,6 +36,9 @@ public class GameManager : GenericSingleton<GameManager>
     private float m_time;
     public float GameTime { get => m_time; }
 
+    [SerializeField]
+    private TimeScore m_timeScoreSave;
+
     public void Start()
     {
         m_time = 0f;
@@ -88,12 +91,18 @@ public class GameManager : GenericSingleton<GameManager>
     
     public void GameOver()
     {
+        if (m_gameState == State.GameOver) return;
+
         m_gameState = State.GameOver;
 
         Time.timeScale = .1f;
 
         StartCoroutine(BlackCoverScreen());
         StartCoroutine(GameOverZoomScreen());
+
+        m_timeScoreSave.CurrentTime = GameTime;
+        if (m_timeScoreSave.BestTime < m_timeScoreSave.CurrentTime) 
+            m_timeScoreSave.BestTime = m_timeScoreSave.CurrentTime;
 
         m_gameOver.RaiseEvent();
     }
