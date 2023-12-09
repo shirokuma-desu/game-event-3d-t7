@@ -41,8 +41,8 @@ public class MeteorSkillVisual : SkillVisual
         m_previewObject.transform.position = _position;
 
         Vector3 _scale = m_previewObject.transform.localScale;
-        _scale.x = m_skillData.Range;
-        _scale.y = m_skillData.Range;
+        _scale.x = m_skillData.Range / 4f;
+        _scale.z = m_skillData.Range / 4f;
         m_previewObject.transform.localScale = _scale;
     }
 
