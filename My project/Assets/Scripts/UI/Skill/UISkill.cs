@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class UISkill : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class UISkill : MonoBehaviour
 
     [SerializeField]
     private Image[] m_skillImages = new Image[3];
+
+    [SerializeField]
+    private TextMeshProUGUI[] m_skillLevel = new TextMeshProUGUI[3];
 
     [SerializeField]
     private SpellCooldown[] m_skillCooldown = new SpellCooldown[3];
@@ -37,10 +41,12 @@ public class UISkill : MonoBehaviour
             if (i >= m_inventory.m_Inventory_Skill.Count)
             {
                 m_skillImages[i].sprite = m_emptySprite;
+                m_skillLevel[i].text = string.Empty;
             }   
             else 
             {
                 m_skillImages[i].sprite = m_inventory.m_Inventory_Skill[i].image;
+                m_skillLevel[i].text = m_inventory.m_Inventory_Skill[i].level_skill.ToString();
             }
         }
     }

@@ -13,7 +13,9 @@ public class TooltipTrigger : MonoBehaviour,IPointerEnterHandler,IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        delay = LeanTween.delayedCall(1.0f, () =>
+        float _time = 1f;
+        if (GameManager.Instance.GameState == GameManager.State.Paused) _time *= .1f;
+        delay = LeanTween.delayedCall(_time, () =>
         {
             if (dataContainer is not null)
             {

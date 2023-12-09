@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : GenericSingleton<GameManager>
 {
     public enum State
     {
         Running,
-        Paused
+        Paused,
+        GameOver,
     }
 
     [Header("References")]
@@ -21,23 +23,47 @@ public class GameManager : GenericSingleton<GameManager>
     private State m_gameState;
     public State GameState { get => m_gameState; }
 
+    [SerializeField]
+    private GameEvent m_gameOver;
+
     public void PauseGame()
     {
+        if (m_gameState == State.GameOver) 
+        {
+            Debug.LogWarning("GameManager: The game is over");
+            return;
+        }
+
         if (m_gameState == State.Running) 
         {
             Debug.LogWarning("GameManager: The game is already paused");
         }
+
+        Time.timeScale = .1f;
 
         m_gameState = State.Paused;
     }
 
     public void ResumeGame()
     {
+        if (m_gameState == State.GameOver) 
+        {
+            Debug.LogWarning("GameManager: The game is over");
+            return;
+        }
+
         if (m_gameState == State.Running) 
         {
             Debug.LogWarning("GameManager: The game is already running");
         }
 
+        Time.timeScale = 1f;
+
         m_gameState = State.Running;
+    }
+    
+    public void GameOver()
+    {
+        m_gameState = State.GameOver;
     }
 }
