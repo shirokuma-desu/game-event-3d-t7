@@ -34,10 +34,11 @@ public class ItemDataSO : ScriptableObject
     public int instance_increase;
     public float debuff_duration_increase;
     public float debuff_effective_increase;
-    [Header("Turret Stats")]
-    public int range;
-    public int fire_rate;
-    public int hp;
+    [Header("Turret Effect")]
+    public int ID_Effect;
+    public float stun_duration_increase;
+    public float knockback_distance_increase;
+    public float knockback_duration_increase;
     [Header("Turret Stats Per Level")]
     public int range_increase;
     public int fire_rate_increase;

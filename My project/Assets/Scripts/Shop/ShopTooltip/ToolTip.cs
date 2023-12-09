@@ -54,6 +54,8 @@ public class ToolTip : MonoBehaviour
     private const string TURRET_UPGRADE_DAMAGE = "Damage";
     private const string TURRET_UPGRADE_FIRERATE = "Fire rate";
     private const string TURRET_UPGRADE_RANGE = "Range";
+    private const string TURRET_UPGRADE_KNOCK_BACK = "Knockback";
+    private const string TURRE_UPGRADE_STUN = "Stun";
 
 
 
@@ -213,7 +215,7 @@ public class ToolTip : MonoBehaviour
             case TURRET_UPGRADE_HP:
                 chanceField.gameObject.SetActive(false);
                 contentField.text = data.description;
-                damageField.text = "HP: " + baseTurretStatsSO.BonusHealth.ToString() + " ( + "+data.hp_increase+" /lv)";
+                damageField.text = "HP: " + baseTurretStatsSO.BonusHealth.ToString() + " ( + "+data.hp_increase+" HP/lv)";
                 RadiusField.gameObject.SetActive(false);
                 cooldownField.gameObject.SetActive(false);
                 durationField.gameObject.SetActive(false);
@@ -229,6 +231,10 @@ public class ToolTip : MonoBehaviour
                 durationField.gameObject.SetActive(false);
                 EffectvieText.gameObject.SetActive(false);
                 InstaceText.gameObject.SetActive(false);
+                break;
+            case TURRE_UPGRADE_STUN:
+                break;
+            case TURRET_UPGRADE_KNOCK_BACK:
                 break;
         }
     }

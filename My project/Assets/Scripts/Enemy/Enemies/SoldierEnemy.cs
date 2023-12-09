@@ -8,6 +8,9 @@ public class SoldierEnemy : Enemy
     {
         base.FixedUpdate();
 
-        Move();
+        if (GameManager.Instance.GameState != GameManager.State.GameOver)
+        {
+            Move();
+        }
     }
 }

@@ -16,7 +16,10 @@ public class PriestEnemy : Enemy
     {
         base.FixedUpdate();
         
-        Move();
+        if (GameManager.Instance.GameState != GameManager.State.GameOver)
+        {
+            Move();
+        }
     }
 
     protected override void SetupProperties()

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
+  m_Name: Turret_Knockback_Default
+  m_EditorClassIdentifier: 
+  ID_Skill: 4
+  image: {fileID: 21300000, guid: bf82837b4ddca87468edf2976c078f7f, type: 3}
+  image_upgrade: {fileID: 21300000, guid: 5bbfa5d92498aeb45ad2257e931d7b0c, type: 3}
+  skill_name: Knockback
+  description: Turret now can apply knockback effect
+  multi_cast_chance: 0
+  price: 3
+  sellprice: 1
+  price_increase: 2
+  sell_price_increase: 1
+  level_skill: 0
+  damage: 0
+  radius: 0
+  cooldown: 0
+  instance_per_cast: 0
+  debuff_duration: 0
+  debuff_effective: 0
+  damage_increase: 0
+  radius_increase: 0
+  cooldown_decrease: 0
+  instance_increase: 0
+  debuff_duration_increase: 0
+  debuff_effective_increase: 0
+  ID_Effect: 0
+  stun_duration_increase: 0
+  knockback_distance_increase: 0
+  knockback_duration_increase: 0
+  range_increase: 0
+  fire_rate_increase: 0
+  hp_increase: 0
+  is_upgraded: 0

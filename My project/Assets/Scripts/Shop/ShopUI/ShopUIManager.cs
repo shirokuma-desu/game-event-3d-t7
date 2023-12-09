@@ -18,6 +18,12 @@ public class ShopUIManager : MonoBehaviour
    
     public ShopSystem shopSystem;
 
+    [Header("Game Event")]
+    [SerializeField]
+    private GameEvent m_openShop;
+    [SerializeField]
+    private GameEvent m_closeShop;
+
     [SerializeField] public Button[] skill_buttons;
 
     private void Awake()
@@ -31,7 +37,7 @@ public class ShopUIManager : MonoBehaviour
         UpdatePrice();
 
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
-        this.RegisterListener(EventID.OnBuyingItem, (param) => OnClickBuyItem());
+        this.RegisterListener(EventID.OnBuyingItem, (param) => UpdatePrice());
         this.RegisterListener(EventID.OnReroll, (param) => OnClickRerolled());
         this.RegisterListener(EventID.OnSellingItem, (param) => UpdatePrice());
         this.RegisterListener(EventID.OnBuyLimitSkill, (param) => showButton());
@@ -47,12 +53,16 @@ public class ShopUIManager : MonoBehaviour
     {
         shop_ui.gameObject.SetActive(true);
         open_button.gameObject.SetActive(false);
+
+        m_openShop.RaiseEvent();
     }
 
     public void Close()
     {
         shop_ui.gameObject.SetActive(false);
         open_button.gameObject.SetActive(true);
+
+        m_closeShop.RaiseEvent();
     }
 
     public void UpdatePrice()

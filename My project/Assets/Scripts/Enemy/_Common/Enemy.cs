@@ -268,7 +268,7 @@ public class Enemy : MonoBehaviour
         m_currentMoveSpeed = m_moveSpeed;
 
         IsSpawned = false;
-        IsDied = false; 
+        IsDied = false;
 
         m_currentDebuffs.Clear();
         m_speedModifyScale = 1f;
