@@ -37,7 +37,7 @@ public class ShopUIManager : MonoBehaviour
         UpdatePrice();
 
         this.RegisterListener(EventID.OnBuyingTurret, (param) => OnClickBuyTurret());
-        this.RegisterListener(EventID.OnBuyingItem, (param) => OnClickBuyItem());
+        this.RegisterListener(EventID.OnBuyingItem, (param) => UpdatePrice());
         this.RegisterListener(EventID.OnReroll, (param) => OnClickRerolled());
         this.RegisterListener(EventID.OnSellingItem, (param) => UpdatePrice());
         this.RegisterListener(EventID.OnBuyLimitSkill, (param) => showButton());

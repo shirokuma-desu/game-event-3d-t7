@@ -102,7 +102,7 @@ MonoBehaviour:
   m_collider: {fileID: 2997404885335666538}
   m_maxHealth: 100
   m_moveSpeed: 50
-  m_attackDamage: 100
+  m_attackDamage: 20
   m_bounty: 10
   m_attackRayLength: 0.8
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}

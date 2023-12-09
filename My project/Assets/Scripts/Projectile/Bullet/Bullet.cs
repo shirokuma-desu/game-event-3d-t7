@@ -32,6 +32,16 @@ public class Bullet : MonoBehaviour
         transform.forward = m_target.transform.position - transform.position;
     }
 
+    public virtual void SetTarget(GameObject _target, int _damage, float _amount, float _duration)
+    {
+
+    }
+
+    public virtual void SetTarget(GameObject _target, int _damage, float _duration)
+    {
+
+    }
+
     // ------ PROTECTED ------
     protected virtual void Update()
     {

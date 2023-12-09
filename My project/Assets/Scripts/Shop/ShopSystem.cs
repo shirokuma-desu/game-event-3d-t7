@@ -6,6 +6,8 @@ using Debug = UnityEngine.Debug;
 
 public class ShopSystem : MonoBehaviour
 {
+    private TurretUpgradedStat tus;
+
     //data
     [SerializeField] private int m_total_souls              =   1000;
     [SerializeField] private int m_reroll_price             =   0;
@@ -63,7 +65,9 @@ public class ShopSystem : MonoBehaviour
 
     private void Start()
     {
-        
+        turretUpgradedStat = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
+
+
         this.RegisterListener(EventID.OnSellingItem, (param) => bindDataFromPlayerInventorySO());
     }
 
@@ -89,7 +93,7 @@ public class ShopSystem : MonoBehaviour
     {
         ItemDataSO skillObjectSO = dataContainer.Get();
         // player cant not buy empty slot 
-        if (skillObjectSO.ID_Skill == 0)
+        if (skillObjectSO.ID_Skill == 0 || skillObjectSO.price > m_total_souls)
         {
             Debug.Log("Cant allow to buy empty slot");
             return;
@@ -105,7 +109,7 @@ public class ShopSystem : MonoBehaviour
     public void doBuyUpgrade(DataContainer dataContainer)
     {
         ItemDataSO itemData = dataContainer.Get();
-        if(itemData.ID_Skill == 0)
+        if(itemData.ID_Skill == 0 || itemData.price > m_total_souls)
         {
             Debug.Log("Cant allow to buy empty slot");
             return;
@@ -391,6 +395,8 @@ public class ShopSystem : MonoBehaviour
 
     private void onUpgradeTurret(ItemDataSO data)
     {
+        
+
         turretUpgradedStat.BonusHealth += data.hp_increase;
         turretUpgradedStat.BonusAttackSpeed += data.fire_rate_increase;
         turretUpgradedStat.BonusAttackDamage += data.damage_increase;
