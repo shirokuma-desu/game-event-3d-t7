@@ -42,6 +42,11 @@ public class Bullet : MonoBehaviour
 
     }
 
+    public virtual void SetTarget(GameObject _target, int _damage, float _sduration, float _kamount, float _kduration)
+    {
+
+    }
+
     // ------ PROTECTED ------
     protected virtual void Update()
     {

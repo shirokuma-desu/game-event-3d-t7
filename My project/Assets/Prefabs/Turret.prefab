@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1465221459297207117}
   - component: {fileID: 842636884673563706}
   - component: {fileID: 662147980623018333}
+  - component: {fileID: 4705993777215438255}
   m_Layer: 0
   m_Name: TypeShoot
   m_TagString: Untagged
@@ -68,6 +69,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38bd4ed1996839243aa4ae67ca2123e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4705993777215438255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92640149696710290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4764546c42523f945b44035dbc0232ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &281757201343536907
@@ -723,7 +736,6 @@ GameObject:
   - component: {fileID: 4370993054895046697}
   - component: {fileID: 4364842403688286145}
   - component: {fileID: 8124008123104834396}
-  - component: {fileID: 4928407925174472735}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Turret
@@ -800,18 +812,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shootType: 0
---- !u!114 &4928407925174472735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6291903787343292546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00713ddddf493e14d9f1fc8b45c8977a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6528628491060681172
 GameObject:
   m_ObjectHideFlags: 0
