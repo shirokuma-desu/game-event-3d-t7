@@ -11579,6 +11579,8 @@ MonoBehaviour:
   open_button_text: {fileID: 613990771}
   open_button: {fileID: 1558278701}
   shopSystem: {fileID: 1391151270}
+  m_openShop: {fileID: 11400000, guid: cfbb9a6df33b57849b673296d2617148, type: 2}
+  m_closeShop: {fileID: 11400000, guid: c5b71a8a7414f444788e925cb5f9552f, type: 2}
   skill_buttons:
   - {fileID: 212559979}
   - {fileID: 600088085}
@@ -35745,6 +35747,8 @@ GameObject:
   - component: {fileID: 1930993371}
   - component: {fileID: 1930993370}
   - component: {fileID: 1930993372}
+  - component: {fileID: 1930993374}
+  - component: {fileID: 1930993373}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -35841,6 +35845,62 @@ MonoBehaviour:
     SpawnProbability: 1
     ProbabilityIncrease: 0
     ProbabilityTerminal: 1
+--- !u!114 &1930993373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930993369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48507b39cec06be448f32f4b2853e460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: c5b71a8a7414f444788e925cb5f9552f, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1930993370}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1930993374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930993369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48507b39cec06be448f32f4b2853e460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: cfbb9a6df33b57849b673296d2617148, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1930993370}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1939454621 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3627570375480353409, guid: f74d9dd0f7323924c9cbf2130e5ea21b,
@@ -37127,9 +37187,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43.472763, y: 648.9105}
+  m_AnchoredPosition: {x: 13.784047, y: 648.9105}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5224289, y: 1.0953307}
+  m_Pivot: {x: 0.5071116, y: 1.0953307}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0

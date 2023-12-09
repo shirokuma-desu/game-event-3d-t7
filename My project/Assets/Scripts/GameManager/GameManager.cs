@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : GenericSingleton<GameManager>
 {
@@ -27,20 +28,36 @@ public class GameManager : GenericSingleton<GameManager>
 
     public void PauseGame()
     {
+        if (m_gameState == State.GameOver) 
+        {
+            Debug.LogWarning("GameManager: The game is over");
+            return;
+        }
+
         if (m_gameState == State.Running) 
         {
             Debug.LogWarning("GameManager: The game is already paused");
         }
+
+        Time.timeScale = .1f;
 
         m_gameState = State.Paused;
     }
 
     public void ResumeGame()
     {
+        if (m_gameState == State.GameOver) 
+        {
+            Debug.LogWarning("GameManager: The game is over");
+            return;
+        }
+
         if (m_gameState == State.Running) 
         {
             Debug.LogWarning("GameManager: The game is already running");
         }
+
+        Time.timeScale = 1f;
 
         m_gameState = State.Running;
     }
