@@ -28,6 +28,7 @@ public class ShopSystem : MonoBehaviour
     public List<SellDataContainer>  skills_container_sell   = new List<SellDataContainer>();
 
     public TurretUpgradedStat turretUpgradedStat;
+    public TurretManager turretManager;
 
 
     [Header("Game Events")]
@@ -141,7 +142,7 @@ public class ShopSystem : MonoBehaviour
 
     public void buyTurret()
     {
-        if (m_total_souls < m_price_turret)
+        if (m_total_souls < m_price_turret || !turretManager.EmptySpotAvai)
         {
             return;
         }
