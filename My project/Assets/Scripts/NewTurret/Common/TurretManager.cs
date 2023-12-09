@@ -128,11 +128,20 @@ public class TurretManager : MonoBehaviour
         }
     }
 
-    public void ChangeShootType(GameObject target, int type)
+    public void ChangeShootType(int type)
     {
-        if (target != null)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 30f);
+
+        foreach (Collider collider in colliders)
         {
-            target.GetComponent<TurretShooting>().ShootType = type;
+            if (collider.CompareTag("Turret"))
+            {
+                TurretShooting shootingType = collider.gameObject.GetComponent<TurretShooting>();
+                if (shootingType != null)
+                {
+                    shootingType.ShootType = type;
+                }
+            }
         }
     }
 
