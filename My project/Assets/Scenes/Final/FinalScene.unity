@@ -22286,6 +22286,7 @@ MonoBehaviour:
   - {fileID: 227823947}
   - {fileID: 1638730466}
   turretUpgradedStat: {fileID: 1644347153}
+  turretManager: {fileID: 1644347156}
   m_buyASkill: {fileID: 11400000, guid: 0a82c8bd1089d284e9e7c586ff2f55e8, type: 2}
   m_sellASkill: {fileID: 11400000, guid: 4d20157fbdf64a84c934a098b742f56b, type: 2}
   m_buyATurret: {fileID: 11400000, guid: aad60d30663cefb42b45b326ff3ec302, type: 2}
@@ -23741,6 +23742,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2072f9760d6f27a44abe467a41c98fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1644347156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4139961433247034343, guid: 48460dd7bedc10f458295a8cb048bc0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 625007793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcccd62c011bef4fabdf23fe0f94525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1662047009
@@ -37208,9 +37221,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.990273, y: 657.393}
+  m_AnchoredPosition: {x: 777.50476, y: -1144.3933}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5180525, y: 1.1031128}
+  m_Pivot: {x: 0.9012353, y: -0.5499022}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0

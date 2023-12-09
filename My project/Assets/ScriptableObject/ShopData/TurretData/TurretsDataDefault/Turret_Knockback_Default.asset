@@ -35,10 +35,10 @@ MonoBehaviour:
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
-  ID_Effect: 0
+  ID_Effect: 2
   stun_duration_increase: 0
-  knockback_distance_increase: 0
-  knockback_duration_increase: 0
+  knockback_distance_increase: 10
+  knockback_duration_increase: 10
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0

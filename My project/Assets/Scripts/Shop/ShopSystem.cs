@@ -28,7 +28,7 @@ public class ShopSystem : MonoBehaviour
     public List<SellDataContainer>  skills_container_sell   = new List<SellDataContainer>();
 
     public TurretUpgradedStat turretUpgradedStat;
-
+    public TurretManager turretManager;
 
     [Header("Game Events")]
     [SerializeField]
@@ -396,11 +396,19 @@ public class ShopSystem : MonoBehaviour
     private void onUpgradeTurret(ItemDataSO data)
     {
         
-
+        //increase basic stats
         turretUpgradedStat.BonusHealth += data.hp_increase;
         turretUpgradedStat.BonusAttackSpeed += data.fire_rate_increase;
         turretUpgradedStat.BonusAttackDamage += data.damage_increase;
         turretUpgradedStat.BonusAttackRange += data.range_increase;
+        //increase stun and knockback stats
+        if (data.ID_Effect != 0)
+        {
+            turretManager.ToggleShootType(data.ID_Effect);
+            turretUpgradedStat.BonusKnockbackAmout += data.knockback_distance_increase;
+            turretUpgradedStat.BonusKnockbackDuration += data.knockback_distance_increase;
+            turretUpgradedStat.BonusStunDuration += data.stun_duration_increase;
+        }
     }
     #endregion method
 }

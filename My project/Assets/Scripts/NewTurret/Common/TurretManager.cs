@@ -30,6 +30,7 @@ public class TurretManager : MonoBehaviour
 
     private void Start()
     {
+        
         tus = GetComponent<TurretUpgradedStat>();
 
         m_isSpotsOccupied = new bool[m_turretSpots.Length];
