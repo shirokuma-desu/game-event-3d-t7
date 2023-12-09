@@ -36,6 +36,10 @@ public class GameManager : GenericSingleton<GameManager>
     public void Start()
     {
         m_time = 0f;
+
+        m_shop.resetShop();
+        UIManager.Instance.SkillUI.UpdateInventorySkillUI();
+        m_shop.ResetInventoryUIEmpty();
     }
 
     public void Update()

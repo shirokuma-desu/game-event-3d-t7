@@ -25,7 +25,7 @@ public class SellDataContainer : MonoBehaviour
         this.RegisterListener(EventID.OnSoldItem, (param) => LoadScriptableObject());
     }
 
-    private void LoadScriptableObject()
+    public void LoadScriptableObject()
     {
         image.sprite =   m_datacontain.image;
         price.text   =   m_datacontain.sellprice.ToString();

@@ -6601,6 +6601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 227823946}
   - component: {fileID: 227823947}
+  - component: {fileID: 227823948}
   m_Layer: 5
   m_Name: Sell_Skill_Slot_2
   m_TagString: Untagged
@@ -6646,6 +6647,34 @@ MonoBehaviour:
   price: {fileID: 88803541}
   button: {fileID: 1628419423}
   m_datacontain: {fileID: 11400000, guid: c25c52d347342d448baa2661fa4982d6, type: 2}
+--- !u!114 &227823948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227823945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48507b39cec06be448f32f4b2853e460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: cfbb9a6df33b57849b673296d2617148, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 227823947}
+        m_TargetAssemblyTypeName: SellDataContainer, Assembly-CSharp
+        m_MethodName: LoadScriptableObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &277136975
 GameObject:
   m_ObjectHideFlags: 0
@@ -6776,6 +6805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 360810792}
   - component: {fileID: 360810793}
+  - component: {fileID: 360810794}
   m_Layer: 5
   m_Name: Sell_Skill_Slot_1
   m_TagString: Untagged
@@ -6821,6 +6851,34 @@ MonoBehaviour:
   price: {fileID: 1291663275}
   button: {fileID: 1355075003}
   m_datacontain: {fileID: 11400000, guid: c25c52d347342d448baa2661fa4982d6, type: 2}
+--- !u!114 &360810794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360810791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48507b39cec06be448f32f4b2853e460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: cfbb9a6df33b57849b673296d2617148, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 227823947}
+        m_TargetAssemblyTypeName: SellDataContainer, Assembly-CSharp
+        m_MethodName: LoadScriptableObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &376478247
 GameObject:
   m_ObjectHideFlags: 0
@@ -12749,11 +12807,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504550057669223877, guid: 507dada1523d67244aabc101b7ffccea,
-        type: 3}
-      propertyPath: m_mainRadius
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7377702755778964649, guid: 507dada1523d67244aabc101b7ffccea,
         type: 3}
@@ -23721,6 +23774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1638730467}
   - component: {fileID: 1638730466}
+  - component: {fileID: 1638730468}
   m_Layer: 5
   m_Name: Sell_Skill_Slot_3
   m_TagString: Untagged
@@ -23766,6 +23820,34 @@ RectTransform:
   m_AnchoredPosition: {x: -25.5, y: 8.9}
   m_SizeDelta: {x: 106, y: 102}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1638730468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638730465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48507b39cec06be448f32f4b2853e460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: cfbb9a6df33b57849b673296d2617148, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 227823947}
+        m_TargetAssemblyTypeName: SellDataContainer, Assembly-CSharp
+        m_MethodName: LoadScriptableObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1644347153 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5269546997828266200, guid: 48460dd7bedc10f458295a8cb048bc0c,
@@ -37318,9 +37400,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56.1965, y: 670.11676}
+  m_AnchoredPosition: {x: -1778.1421, y: 188.73541}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5289934, y: 1.114786}
+  m_Pivot: {x: -0.41739607, y: 0.67315173}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0

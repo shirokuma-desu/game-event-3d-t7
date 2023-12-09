@@ -287,7 +287,7 @@ public class ShopSystem : MonoBehaviour
 
     }
 
-    private void bindDataFromPlayerInventorySO()
+    public void bindDataFromPlayerInventorySO()
     {
         if (player_inventory_SO.m_Inventory_Skill.Count > 0)
         {
@@ -318,6 +318,14 @@ public class ShopSystem : MonoBehaviour
             }
         }
        
+    }
+
+    public void ResetInventoryUIEmpty()
+    {
+        foreach(var item in skills_container_sell)
+        {
+            item.Set(emptySlot);
+        }
     }
 
 
