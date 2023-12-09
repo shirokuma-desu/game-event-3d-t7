@@ -110,11 +110,32 @@ public class Enemy : MonoBehaviour
         m_anEnemyDie.RaiseEvent();
     }
 
-    public virtual void Attack()
+    public virtual void AttackBaseTower()
     {
         m_visual.StartAttackEffect();
 
         EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(m_attackDamage);
+        
+        IsDied = true;
+
+        if (Spawner != null)
+        {
+            Spawner.DespawnEnemy(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        m_anEnemyAttacking.RaiseEvent();
+    }
+
+    public virtual void AttackTurret(Turret _turret)
+    {
+        m_visual.StartAttackEffect();
+
+        Debug.Log(_turret);
+        _turret.TakeDamage(m_attackDamage);
         
         IsDied = true;
 
@@ -242,10 +263,14 @@ public class Enemy : MonoBehaviour
         RaycastHit[] _hits = Physics.RaycastAll(transform.position, transform.forward, m_attackRayLength);
         foreach (RaycastHit _hit in _hits)
         {
-            if (_hit.collider.tag == "BaseTower" || _hit.collider.tag == "Turret")
+            if (_hit.collider.tag == "BaseTower")
             {
-                Attack();
-
+                AttackBaseTower();
+                break;
+            }
+            if (_hit.collider.tag == "Turret")
+            {
+                AttackTurret(_hit.collider.GetComponent<Turret>());
                 break;
             }
         }
@@ -297,6 +322,7 @@ public class Enemy : MonoBehaviour
         Vector3 _target = EnvironmentManager.Instance.PlayerPosition;
 
         float _tempDistance = Vector3.Distance(transform.position, _target);
+        if (EnvironmentManager.Instance.IsAnyTurretLeft) _tempDistance = Mathf.Infinity;
         for (int i = 0; i < 4; i++)
         {
             if (EnvironmentManager.Instance.IsTowerSettled(i))

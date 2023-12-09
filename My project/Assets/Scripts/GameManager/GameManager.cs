@@ -20,6 +20,9 @@ public class GameManager : GenericSingleton<GameManager>
     [SerializeField]
     private ShopSystem m_shop;
     public ShopSystem Shop { get => m_shop; }
+    [SerializeField]
+    private TurretManager m_turretManager;
+    public TurretManager TurretManager { get => m_turretManager; }
 
     [SerializeField]
     private Image m_gameOverCover;

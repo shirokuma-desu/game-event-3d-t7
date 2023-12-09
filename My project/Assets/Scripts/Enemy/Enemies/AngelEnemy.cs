@@ -11,6 +11,11 @@ public class AngelEnemy : Enemy
         Move();
     }
 
+    public override void AttackTurret(Turret _turret)
+    {
+
+    }
+
     protected override Vector3 GetTarget()
     {
         return EnvironmentManager.Instance.PlayerPosition;

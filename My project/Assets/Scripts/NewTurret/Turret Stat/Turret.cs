@@ -94,8 +94,8 @@ public class Turret : MonoBehaviour
 
     private void Die()
     {
-        GameObject.Find("GameManager").GetComponent<TurretManager>().DeleteOccupied(m_spotIndex);
-        GameObject.Find("GameManager").GetComponent<TurretManager>().TurretSpots[m_spotIndex].GetComponent<TurretSpot>().IsSettled = false;
+        GameManager.Instance.TurretManager.DeleteOccupied(m_spotIndex);
+        GameManager.Instance.TurretManager.TurretSpots[m_spotIndex].GetComponent<TurretSpot>().IsSettled = false;
         Destroy(gameObject);
         tm.ATurretDestroyed.RaiseEvent();
     }

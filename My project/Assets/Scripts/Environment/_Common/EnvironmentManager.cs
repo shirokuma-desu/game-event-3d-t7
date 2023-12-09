@@ -19,7 +19,7 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     private int m_currentTowerNumber;
 
     private bool m_isAnyTowerLeft;
-    public bool IsAnyTowerLeft { get => m_isAnyTowerLeft; }
+    public bool IsAnyTurretLeft { get => m_isAnyTowerLeft; }
 
     public Vector3 PlayerPosition
     {
