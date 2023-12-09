@@ -8,10 +8,7 @@ public class AngelEnemy : Enemy
     {
         base.FixedUpdate();
 
-        if (GameManager.Instance.GameState != GameManager.State.GameOver)
-        {
-            Move();
-        }
+        Move();
     }
 
     protected override Vector3 GetTarget()

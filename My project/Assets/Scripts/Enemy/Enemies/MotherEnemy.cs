@@ -10,10 +10,8 @@ public class MotherEnemy : Enemy
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (GameManager.Instance.GameState != GameManager.State.GameOver)
-        {
-            Move();
-        }
+
+        Move();
     }
 
     protected override IEnumerator Die()
