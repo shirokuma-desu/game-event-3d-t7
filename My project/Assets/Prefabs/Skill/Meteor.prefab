@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visual: {fileID: 6416268983847761660}
-  m_statData: {fileID: 11400000, guid: 8b4afc23945a29745a6b5c39a4640851, type: 2}
+  m_statData: {fileID: 11400000, guid: 67739b9d698e5b6459cc2eebcae77281, type: 2}
   m_ID: 1
   m_castDelay: 1.5
   m_expireTime: 0
