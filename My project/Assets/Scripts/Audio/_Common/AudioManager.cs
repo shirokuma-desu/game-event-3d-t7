@@ -75,7 +75,7 @@ namespace LeakyAbstraction
         private bool _initialized = false;
         private readonly Vector3 _zeroVector = Vector3.zero;
 
-        private const float RELEASE_MARGIN = 0.5f;
+        private const float RELEASE_MARGIN = 0.1f;
         private const float RETRYRELEASE_WAIT = 0.1f;
         private const string SOUNDPLAYER_GO_NAMEBASE = "SoundPlayer";
         private int _soundPlayerNameIndex = 0;

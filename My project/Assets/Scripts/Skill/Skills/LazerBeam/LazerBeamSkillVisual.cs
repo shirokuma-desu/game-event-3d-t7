@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class LazerBeamSkillVisual : SkillVisual
 {
@@ -32,7 +33,7 @@ public class LazerBeamSkillVisual : SkillVisual
         Vector3 _direction = m_skillData.Manager.GetMousePoint() - m_previewObject.transform.position + Vector3.up * m_previewObject.transform.position.y;
         m_previewObject.transform.forward = _direction;
 
-        Vector3 _scale = m_previewObject.transform.localScale;
+        Vector3 _scale = m_previewObject.transform.localScale;  
         _scale.z = m_skillData.Range;
         m_previewObject.transform.localScale = _scale;
     }
@@ -53,6 +54,8 @@ public class LazerBeamSkillVisual : SkillVisual
         Vector3 _scale = m_prepareBeamObject.transform.localScale;
         _scale.z = m_skillData.Range;
         m_prepareBeamObject.transform.localScale = _scale;
+
+        SoundManager.Instance.PlaySound(GameSound.LazerCast);
     }
     public override void CastVisual()
     {
@@ -83,7 +86,7 @@ public class LazerBeamSkillVisual : SkillVisual
         m_beamObject.transform.localScale = _scale;
     }
 
-    public override void ExpireVisual()
+    public override void EndExpireVisual()
     {
         m_beamObject.SetActive(false);
     }

@@ -17,7 +17,7 @@ MonoBehaviour:
   image_upgrade: {fileID: 21300000, guid: 3b9eff5fd8edf3a4f831cb36333058d3, type: 3}
   skill_name: Ghostflame
   description: 
-  multi_cast_chance: 0
+  multi_cast_chance: 100
   price: 22
   sellprice: 2
   price_increase: 0

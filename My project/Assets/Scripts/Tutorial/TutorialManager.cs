@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using LeakyAbstraction;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -40,17 +41,24 @@ public class TutorialManager : MonoBehaviour
             }
 
             m_imageShow.sprite = m_images[m_currentImage];
+
+            SoundManager.Instance.PlaySound(GameSound.UIClick);
         }
         if (Input.GetMouseButtonDown(1))
         {
             if (m_currentImage > 0) m_currentImage--;
 
             m_imageShow.sprite = m_images[m_currentImage];
+
+            SoundManager.Instance.PlaySound(GameSound.UIClick);
+
         }
     }
 
     private void PlayGame()
     {
+        SoundManager.Instance.PlaySound(GameSound.UIClick);
+
         LoadAsync.Instance.LoadScene(m_playSceneName);
     }
 }

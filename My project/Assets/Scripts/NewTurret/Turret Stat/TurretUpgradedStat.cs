@@ -23,14 +23,32 @@ public class TurretUpgradedStat : MonoBehaviour
 
     public float BonusKnockbackAmout { get { return m_bonusKnockbackAmount; } set { m_bonusKnockbackAmount = value; } }
 
-    private void Start()
+    // private void Start()
+    // {
+    //     m_bonusHealth += ts.health;
+    //     m_bonusAttackDamage = ts.attackDamage;
+    //     m_bonusAttackSpeed += ts.attackSpeed;
+    //     m_bonusAttackRange += ts.attackRange;
+    //     m_bonusStunDuration += ts.stunDuration;
+    //     m_bonusKnockbackAmount += ts.knockbackAmount;
+    //     m_bonusKnockbackDuration += ts.knockbackDuration;
+    // }
+
+    private bool m_oneTime = true;
+
+    public void SetUp()
     {
-        m_bonusHealth += ts.health;
-        m_bonusAttackDamage = ts.attackDamage;
-        m_bonusAttackSpeed += ts.attackSpeed;
-        m_bonusAttackRange += ts.attackRange;
-        m_bonusStunDuration += ts.stunDuration;
-        m_bonusKnockbackAmount += ts.knockbackAmount;
-        m_bonusKnockbackDuration += ts.knockbackDuration;
+        if (m_oneTime)
+        {
+            m_bonusHealth += ts.health;
+            m_bonusAttackDamage = ts.attackDamage;
+            m_bonusAttackSpeed += ts.attackSpeed;
+            m_bonusAttackRange += ts.attackRange;
+            m_bonusStunDuration += ts.stunDuration;
+            m_bonusKnockbackAmount += ts.knockbackAmount;
+            m_bonusKnockbackDuration += ts.knockbackDuration;
+
+            m_oneTime = false;
+        }
     }
 }

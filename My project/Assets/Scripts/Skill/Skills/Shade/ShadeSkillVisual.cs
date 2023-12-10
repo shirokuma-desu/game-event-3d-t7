@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class ShadeSkillVisual : SkillVisual
 {
@@ -25,10 +26,12 @@ public class ShadeSkillVisual : SkillVisual
     {
         base.PrepareCastVisual();
 
-
+        SoundManager.Instance.PlaySound(GameSound.ShadeCast);
     }
     public override void CastVisual()
     {
         base.CastVisual();
+
+        
     }
 }

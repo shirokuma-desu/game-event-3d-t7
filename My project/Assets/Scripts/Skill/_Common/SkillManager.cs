@@ -125,6 +125,12 @@ public class SkillManager : MonoBehaviour
             return;
         }
 
+        if (m_isSelectingASkill)
+        {
+            Debug.LogWarning($"SkillManager: Already selected a skill"); 
+            return;
+        }
+
         m_currentSkillSelectedIndex = _index;
 
         m_currentSkillSelected = Instantiate(m_availableSkills[_index]);
@@ -153,15 +159,10 @@ public class SkillManager : MonoBehaviour
         m_castASkill.RaiseEvent();
     }
 
-    public void CastSkil(int _index)
-    {
-        SelectSkill(_index);
-        CastSelectSkillInit();
-    }
-
     public void CastSkillRaw(Skill _skill, Vector3 _position)
     {
         Skill _instance = Instantiate(_skill);
+        _instance.Visual.HidePreview();
         _instance.SetUp();
         _instance.CastRaw(_position);
     }
@@ -170,6 +171,7 @@ public class SkillManager : MonoBehaviour
         Skill _skill = GetSkillByID(_id);
 
         Skill _instance = Instantiate(_skill);
+        _instance.Visual.HidePreview();
         _instance.SetUp();
         _instance.CastRaw(_position);
     }
@@ -228,19 +230,19 @@ public class SkillManager : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && m_skillCooldownLeft[0] <= 0f)
         {
-            CastSkil(0);
+            SelectSkill(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && m_skillCooldownLeft[1] <= 0f)
         {
-            CastSkil(1);
+            SelectSkill(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && m_skillCooldownLeft[2] <= 0f)
         {
-            CastSkil(2);
+            SelectSkill(2);
         }
     }
 

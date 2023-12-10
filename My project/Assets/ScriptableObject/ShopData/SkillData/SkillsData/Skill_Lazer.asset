@@ -17,15 +17,15 @@ MonoBehaviour:
   image_upgrade: {fileID: 21300000, guid: 298ac6473af8aa04ea1b8cdad37bf75b, type: 3}
   skill_name: Arcane Beam
   description: 'Focused energy in the form of a piercing ray. '
-  multi_cast_chance: 0
+  multi_cast_chance: 100
   price: 16
   sellprice: 3
   price_increase: 0
   sell_price_increase: 0
-  level_skill: 1
-  damage: 0
-  radius: 0
-  cooldown: 0
+  level_skill: 0
+  damage: 10
+  radius: 60
+  cooldown: 2
   instance_per_cast: 0
   debuff_duration: 0
   debuff_effective: 0
@@ -35,10 +35,11 @@ MonoBehaviour:
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
-  range: 0
-  fire_rate: 0
-  hp: 0
+  ID_Effect: 0
+  stun_duration_increase: 0
+  knockback_distance_increase: 0
+  knockback_duration_increase: 0
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0
-  is_upgraded: 1
+  is_upgraded: 0

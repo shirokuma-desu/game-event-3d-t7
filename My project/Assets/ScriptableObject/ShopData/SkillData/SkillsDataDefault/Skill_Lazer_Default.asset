@@ -24,7 +24,7 @@ MonoBehaviour:
   sell_price_increase: 0
   level_skill: 0
   damage: 10
-  radius: 45
+  radius: 60
   cooldown: 2
   instance_per_cast: 0
   debuff_duration: 0
@@ -35,9 +35,10 @@ MonoBehaviour:
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
-  range: 0
-  fire_rate: 0
-  hp: 0
+  ID_Effect: 0
+  stun_duration_increase: 0
+  knockback_distance_increase: 0
+  knockback_duration_increase: 0
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0

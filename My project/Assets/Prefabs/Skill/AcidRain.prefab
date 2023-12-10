@@ -9943,11 +9943,11 @@ MonoBehaviour:
   m_visual: {fileID: 135739655474225285}
   m_statData: {fileID: 11400000, guid: c5d3409e44449a74799b89e375698b14, type: 2}
   m_ID: 2
-  m_castDelay: 0.5
+  m_castDelay: 0
   m_expireTime: 0.5
   m_multicastOffset: 20
-  m_multicastDelay: 0
-  m_effectInterval: 0.1
+  m_multicastDelay: 0.1
+  m_effectInterval: 0.2
 --- !u!114 &135739655474225285
 MonoBehaviour:
   m_ObjectHideFlags: 0

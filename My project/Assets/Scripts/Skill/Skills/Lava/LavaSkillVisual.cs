@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class LavaSkillVisual : SkillVisual
 {
@@ -46,10 +47,14 @@ public class LavaSkillVisual : SkillVisual
         _scale.x = m_skillData.Range * 2f;
         _scale.z = m_skillData.Range * 2f;
         m_lavaObject.transform.localScale = _scale;
+
+        SoundManager.Instance.PlaySound(GameSound.LavaCast);
     }
     public override void CastVisual()
     {
         base.CastVisual();
+
+
     }
 
     public override void ImpactVisual()

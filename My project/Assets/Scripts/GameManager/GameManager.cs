@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using LeakyAbstraction;
 
 public class GameManager : GenericSingleton<GameManager>
 {
@@ -11,6 +12,7 @@ public class GameManager : GenericSingleton<GameManager>
         Running,
         Paused,
         GameOver,
+        Victory,
     }
 
     [Header("References")]
@@ -39,9 +41,18 @@ public class GameManager : GenericSingleton<GameManager>
     [SerializeField]
     private TimeScore m_timeScoreSave;
 
+    [SerializeField]
+    private GameObject m_endShockwave;
+
+    [SerializeField]
+    private int m_maxTime;
+    public int MaxTime { get => m_maxTime; }
+
     public void Start()
     {
         m_time = 0f;
+
+        ResumeGame();
 
         m_shop.resetShop();
         UIManager.Instance.SkillUI.UpdateInventorySkillUI();
@@ -51,11 +62,16 @@ public class GameManager : GenericSingleton<GameManager>
     public void Update()
     {
         m_time += Time.deltaTime;
+
+        if (m_time > m_maxTime)
+        {
+            Victory();
+        }
     }
 
     public void PauseGame()
     {
-        if (m_gameState == State.GameOver) 
+        if (m_gameState == State.GameOver || m_gameState == State.Victory) 
         {
             Debug.LogWarning("GameManager: The game is over");
             return;
@@ -73,7 +89,7 @@ public class GameManager : GenericSingleton<GameManager>
 
     public void ResumeGame()
     {
-        if (m_gameState == State.GameOver) 
+        if (m_gameState == State.GameOver || m_gameState == State.Victory) 
         {
             Debug.LogWarning("GameManager: The game is over");
             return;
@@ -92,19 +108,54 @@ public class GameManager : GenericSingleton<GameManager>
     public void GameOver()
     {
         if (m_gameState == State.GameOver) return;
+        if (m_gameState == State.Victory) return;
 
         m_gameState = State.GameOver;
 
         Time.timeScale = .1f;
 
-        StartCoroutine(BlackCoverScreen());
-        StartCoroutine(GameOverZoomScreen());
+        SoundManager.Instance.PlaySound(GameSound.Rizz);
 
-        m_timeScoreSave.CurrentTime = GameTime;
-        if (m_timeScoreSave.BestTime < m_timeScoreSave.CurrentTime) 
-            m_timeScoreSave.BestTime = m_timeScoreSave.CurrentTime;
+        SaveScore();
 
         m_gameOver.RaiseEvent();
+
+        StartCoroutine(BlackCoverScreen());
+        StartCoroutine(GameOverZoomScreen());
+    }
+
+    public void Victory()
+    {
+        if (m_gameState == State.GameOver) return;
+        if (m_gameState == State.Victory) return;
+
+        m_gameState = State.Victory;
+
+        Time.timeScale = .1f;
+
+        Instantiate(m_endShockwave, Vector3.up * .1f, Quaternion.identity);
+
+        EnemyManager.StopAllSpawner();
+        foreach (Enemy _enemy in EnemyManager.GetEnemies())
+        {
+            _enemy.Kill();
+        }
+
+        UIManager.Instance.ShopUI.Close();
+
+        SoundManager.Instance.PlaySound(GameSound.MeteorImpact);
+
+        SaveScore();
+
+        StartCoroutine(BlackCoverScreen());
+        StartCoroutine(GameOverZoomScreen());
+    }
+
+    private void SaveScore()
+    {
+        m_timeScoreSave.CurrentTime = MaxTime - GameTime;
+        if (m_timeScoreSave.BestTime > m_timeScoreSave.CurrentTime) 
+            m_timeScoreSave.BestTime = m_timeScoreSave.CurrentTime;
     }
 
     private IEnumerator BlackCoverScreen()

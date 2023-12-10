@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class StarfallSkillVisual : SkillVisual
 {
@@ -25,10 +26,12 @@ public class StarfallSkillVisual : SkillVisual
     {
         base.PrepareCastVisual();
 
-
+        SoundManager.Instance.PlaySound(GameSound.StarCast);
     }
     public override void CastVisual()
     {
         base.CastVisual();
+
+
     }
 }

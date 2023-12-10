@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using LeakyAbstraction;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
@@ -83,8 +84,16 @@ public class Enemy : MonoBehaviour
             m_visual.StartBeHitEffect();
         }
 
-        var go = Instantiate(FloatingDamageText, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TextMeshPro>().text = _ammount.ToString();
+        if (!IsDied)
+        {
+            var go = Instantiate(FloatingDamageText, transform.position + Random.insideUnitSphere, Quaternion.identity, transform);
+            go.GetComponent<TextMeshPro>().text = _ammount.ToString();
+        }
+    }
+
+    public void Kill()
+    {
+        StartCoroutine(Die());
     }
 
     protected virtual IEnumerator Die()
@@ -95,6 +104,8 @@ public class Enemy : MonoBehaviour
         IsDied = true;
 
         Spawner.Manager.SpawnDrop(transform.position, Bounty);
+
+        SoundManager.Instance.PlaySound(GameSound.EnemyDie);
 
         yield return new WaitUntil(() => m_visual.ReadyToDie);
 
@@ -128,6 +139,7 @@ public class Enemy : MonoBehaviour
         }
 
         m_anEnemyAttacking.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.BeAttacked);
     }
 
     public virtual void AttackTurret(Turret _turret)
@@ -149,6 +161,7 @@ public class Enemy : MonoBehaviour
         }
 
         m_anEnemyAttacking.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.BeAttacked);
     }
 
     public virtual void Spawned()
@@ -220,7 +233,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeKnockbackEffect(float _ammount, float _duration)
     {
-        Debug.Log(_duration);
         EnemyDebuff _debuff = new EnemyDebuff(
             EnemyDebuff.DebuffType.Knockback, _ammount, _duration
         );

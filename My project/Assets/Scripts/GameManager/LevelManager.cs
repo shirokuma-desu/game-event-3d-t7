@@ -15,8 +15,6 @@ public class LevelManager : MonoBehaviour
         public float IntervalDecrease;
         public float IntervalTerminal;
         public float SpawnProbability;
-        public float ProbabilityIncrease;
-        public float ProbabilityTerminal;
     }
     
     [SerializeField]
@@ -41,7 +39,6 @@ public class LevelManager : MonoBehaviour
                 StartSpawning(_spawnData);
 
                 StartCoroutine(DeceaseIntervalCountdown(_spawnData, 60f));
-                StartCoroutine(InceaseProbabilityCountdown(_spawnData, 60f));
             }
         }             
     }
@@ -67,21 +64,5 @@ public class LevelManager : MonoBehaviour
         }
 
         StartCoroutine(DeceaseIntervalCountdown(_spawnData, 60f));
-    }
-
-    private IEnumerator InceaseProbabilityCountdown(EnemySpawnData _spawnData, float _time)
-    {
-        yield return new WaitForSeconds(_time);
-        
-        _spawnData.Spawner.ChangeSpawningProbability(_spawnData.ProbabilityIncrease);
-
-        if (_spawnData.Spawner.SpawningProbability > _spawnData.ProbabilityTerminal)
-        {
-            _spawnData.Spawner.SetSpawningProbability(_spawnData.ProbabilityTerminal);
-
-            yield return null;
-        }
-
-        StartCoroutine(InceaseProbabilityCountdown(_spawnData, 60f));
     }
 }
