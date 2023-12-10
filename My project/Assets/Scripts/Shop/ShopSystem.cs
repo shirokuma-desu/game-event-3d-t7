@@ -6,7 +6,6 @@ using Debug = UnityEngine.Debug;
 
 public class ShopSystem : MonoBehaviour
 {
-    private TurretUpgradedStat tus;
 
     //data
     [SerializeField] private int m_total_souls              =   1000;
@@ -60,14 +59,13 @@ public class ShopSystem : MonoBehaviour
 
     private void Awake()
     {
-        bindDataFromPlayerInventorySO();
+        
     }
 
     private void Start()
     {
+        bindDataFromPlayerInventorySO();
         turretUpgradedStat = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
-
-
         this.RegisterListener(EventID.OnSellingItem, (param) => bindDataFromPlayerInventorySO());
     }
 
@@ -348,8 +346,16 @@ public class ShopSystem : MonoBehaviour
                     shop_inventory.m_Inventory_Skill[i].level_skill = default_data_item_inventory.m_Inventory_Skill[j].level_skill;
                     shop_inventory.m_Inventory_Skill[i].cooldown = default_data_item_inventory.m_Inventory_Skill[j].cooldown;
                     shop_inventory.m_Inventory_Skill[i].is_upgraded = default_data_item_inventory.m_Inventory_Skill[j].is_upgraded;
+                    //rebind for instance
+                    shop_inventory.m_Inventory_Skill[i].instance_per_cast = default_data_item_inventory.m_Inventory_Skill[j].instance_per_cast;
                 }
             }
+        }
+
+        foreach(ItemDataSO itemDataSO in shop_inventory.m_Inventory_Turret)
+        {
+            itemDataSO.is_upgraded = false;
+            itemDataSO.level_skill = 0;
         }
     }
 
