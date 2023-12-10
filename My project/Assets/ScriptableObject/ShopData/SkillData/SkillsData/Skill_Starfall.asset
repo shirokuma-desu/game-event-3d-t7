@@ -15,7 +15,7 @@ MonoBehaviour:
   ID_Skill: 4
   image: {fileID: 21300000, guid: ddfc8fde9c707854f89051474c697eca, type: 3}
   image_upgrade: {fileID: 21300000, guid: 3b9eff5fd8edf3a4f831cb36333058d3, type: 3}
-  skill_name: star fall
+  skill_name: Ghostflame
   description: 
   multi_cast_chance: 0
   price: 22
