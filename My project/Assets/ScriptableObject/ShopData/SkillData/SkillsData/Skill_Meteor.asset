@@ -18,14 +18,14 @@ MonoBehaviour:
   skill_name: Meteor
   description: Calls down a meteor from outer space that deals damage in an area.
   multi_cast_chance: 100
-  price: 8
-  sellprice: 2
+  price: 13
+  sellprice: 4
   price_increase: 5
   sell_price_increase: 2
-  level_skill: 0
-  damage: 10
+  level_skill: 1
+  damage: 60
   radius: 10
-  cooldown: 1
+  cooldown: 0.8
   instance_per_cast: 0
   debuff_duration: 0
   debuff_effective: 0
@@ -42,4 +42,4 @@ MonoBehaviour:
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0
-  is_upgraded: 0
+  is_upgraded: 1

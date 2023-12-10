@@ -37,7 +37,7 @@ public class ShadeObstacle : SkillObstacle
             }
             else 
             {
-                if (m_target.IsDied)
+                if (m_target.IsDied || Vector3.Distance(transform.position, m_target.transform.position) > m_chaseRange)
                 {
                     m_target = SetTarget();
                 }

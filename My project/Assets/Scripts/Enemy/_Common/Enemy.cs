@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
             m_visual.StartBeHitEffect();
         }
 
-        var go = Instantiate(FloatingDamageText, transform.position, Quaternion.identity, transform);
+        var go = Instantiate(FloatingDamageText, transform.position + Random.insideUnitSphere, Quaternion.identity, transform);
         go.GetComponent<TextMeshPro>().text = _ammount.ToString();
     }
 

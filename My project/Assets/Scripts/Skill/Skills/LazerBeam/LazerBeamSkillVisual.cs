@@ -86,7 +86,7 @@ public class LazerBeamSkillVisual : SkillVisual
         m_beamObject.transform.localScale = _scale;
     }
 
-    public override void ExpireVisual()
+    public override void EndExpireVisual()
     {
         m_beamObject.SetActive(false);
     }

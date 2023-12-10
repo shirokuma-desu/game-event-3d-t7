@@ -61,9 +61,9 @@ MonoBehaviour:
   - Name: MeteorImpact
     soundType: 5
     audioClip: {fileID: 8300000, guid: 8b0eedbffa0a56842926aa71a0f0fed3, type: 3}
-    volumeLow: 0.1
-    volumeHigh: 0.2
-    pitchLow: 0.6
+    volumeLow: 0.3
+    volumeHigh: 0.5
+    pitchLow: 1
     pitchHigh: 1
   - Name: AcidCast
     soundType: 6

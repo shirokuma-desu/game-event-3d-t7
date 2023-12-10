@@ -8,6 +8,7 @@ public class Skill : MonoBehaviour
     [Header("References")]
     [SerializeField]
     protected SkillVisual m_visual;
+    public SkillVisual Visual { get => m_visual; }
     public SkillManager Manager { get; set; }
 
     [Header("Basic Stats")]
@@ -155,6 +156,8 @@ public class Skill : MonoBehaviour
     protected virtual IEnumerator Expiring()
     {
         yield return new WaitForSeconds(m_expireTime);
+
+        m_visual.EndExpireVisual();
 
         Destroy(gameObject);
     }

@@ -162,6 +162,7 @@ public class SkillManager : MonoBehaviour
     public void CastSkillRaw(Skill _skill, Vector3 _position)
     {
         Skill _instance = Instantiate(_skill);
+        _instance.Visual.HidePreview();
         _instance.SetUp();
         _instance.CastRaw(_position);
     }
@@ -170,6 +171,7 @@ public class SkillManager : MonoBehaviour
         Skill _skill = GetSkillByID(_id);
 
         Skill _instance = Instantiate(_skill);
+        _instance.Visual.HidePreview();
         _instance.SetUp();
         _instance.CastRaw(_position);
     }

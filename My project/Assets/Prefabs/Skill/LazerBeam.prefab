@@ -366,7 +366,7 @@ MonoBehaviour:
   m_statData: {fileID: 11400000, guid: d821149278eeac44db8c7a0a71c09410, type: 2}
   m_ID: 3
   m_castDelay: 0.5
-  m_expireTime: 0.5
+  m_expireTime: 0.2
   m_multicastOffset: 30
   m_multicastDelay: 0.15
   m_radius: 1
