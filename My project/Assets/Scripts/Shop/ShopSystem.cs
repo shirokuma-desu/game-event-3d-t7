@@ -60,14 +60,13 @@ public class ShopSystem : MonoBehaviour
 
     private void Awake()
     {
-        bindDataFromPlayerInventorySO();
+        
     }
 
     private void Start()
     {
+        bindDataFromPlayerInventorySO();
         turretUpgradedStat = GameObject.Find("TurretManager").GetComponent<TurretUpgradedStat>();
-
-
         this.RegisterListener(EventID.OnSellingItem, (param) => bindDataFromPlayerInventorySO());
     }
 
