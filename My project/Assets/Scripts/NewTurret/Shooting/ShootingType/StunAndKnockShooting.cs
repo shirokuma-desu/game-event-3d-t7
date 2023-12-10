@@ -1,4 +1,5 @@
 using UnityEngine;
+using LeakyAbstraction;
 
 public class StunAndKnockShooting : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class StunAndKnockShooting : MonoBehaviour
             }
 
             m_lastShoot = Time.time;
+
+            SoundManager.Instance.PlaySound(GameSound.TurretShoot);
         }
     }
 

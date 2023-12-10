@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bulletPrefab: {fileID: 3788152666998012854, guid: 92f49252c95a24a4a913e3224e15eaa8,
     type: 3}
-  m_spawnYPosition: 0
+  m_spawnYPosition: 3
   m_bulletPool: {fileID: 3336496861454272633}
 --- !u!1 &4402635720685762849
 GameObject:
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bulletPrefab: {fileID: 3788152666998012854, guid: b330a2579a0fc3144bbe1f54b30bcd45,
     type: 3}
-  m_spawnYPosition: 0
+  m_spawnYPosition: 3
   m_bulletPool: {fileID: 215855266644119728}
 --- !u!1 &4596518368648445028
 GameObject:
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bulletPrefab: {fileID: 3788152666998012854, guid: a80a2d5d28625ca4dbc6701f1b6bf6dc,
     type: 3}
-  m_spawnYPosition: 0
+  m_spawnYPosition: 3
   m_bulletPool: {fileID: 8192242065451389625}
 --- !u!1 &4758415498478874555
 GameObject:
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bulletPrefab: {fileID: 3788152666998012854, guid: ffb604c1e7ce5fc47930e035d854ff91,
     type: 3}
-  m_spawnYPosition: 0
+  m_spawnYPosition: 3
   m_bulletPool: {fileID: 6450942989532081086}
 --- !u!1001 &1692860729788818781
 PrefabInstance:

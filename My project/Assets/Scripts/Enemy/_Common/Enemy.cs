@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using LeakyAbstraction;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
@@ -99,6 +100,8 @@ public class Enemy : MonoBehaviour
 
         Spawner.Manager.SpawnDrop(transform.position, Bounty);
 
+        SoundManager.Instance.PlaySound(GameSound.EnemyDie);
+
         yield return new WaitUntil(() => m_visual.ReadyToDie);
 
         if (Spawner != null)
@@ -131,6 +134,7 @@ public class Enemy : MonoBehaviour
         }
 
         m_anEnemyAttacking.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.BeAttacked);
     }
 
     public virtual void AttackTurret(Turret _turret)
@@ -152,6 +156,7 @@ public class Enemy : MonoBehaviour
         }
 
         m_anEnemyAttacking.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.BeAttacked);
     }
 
     public virtual void Spawned()

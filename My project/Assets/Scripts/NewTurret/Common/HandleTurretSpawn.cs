@@ -1,4 +1,5 @@
 using UnityEngine;
+using LeakyAbstraction;
 
 public class HandleTurretSpawn : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class HandleTurretSpawn : MonoBehaviour
                             tm.SetOccupied(m_snappedIndex);
                             m_currentTurret = null;
                             tm.BuildANewTurret.RaiseEvent();
+                            SoundManager.Instance.PlaySound(GameSound.TurretPlace);
                         }
                         break;
                     }

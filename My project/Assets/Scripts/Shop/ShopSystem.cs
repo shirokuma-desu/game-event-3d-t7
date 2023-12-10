@@ -36,6 +36,10 @@ public class ShopSystem : MonoBehaviour
     private GameEvent m_sellASkill;
     [SerializeField]
     private GameEvent m_buyATurret;
+    [SerializeField]
+    private GameEvent m_buyAUpgrade;
+    [SerializeField]
+    private GameEvent m_reroll;
 
     #region get
 
@@ -85,6 +89,7 @@ public class ShopSystem : MonoBehaviour
 
         //call event reroll
         this.PostEvent(EventID.OnReroll);
+        m_reroll.RaiseEvent();
     }
 
     public void doBuySkill(DataContainer dataContainer)
@@ -135,6 +140,7 @@ public class ShopSystem : MonoBehaviour
             }
         }
 
+        m_buyAUpgrade.RaiseEvent();
     }
 
     public void buyTurret()

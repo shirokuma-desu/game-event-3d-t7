@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
+
 
 public class StunShooting : MonoBehaviour
 {
@@ -52,6 +54,8 @@ public class StunShooting : MonoBehaviour
             }
 
             m_lastShoot = Time.time;
+
+            SoundManager.Instance.PlaySound(GameSound.TurretShoot);
         }
     }
 

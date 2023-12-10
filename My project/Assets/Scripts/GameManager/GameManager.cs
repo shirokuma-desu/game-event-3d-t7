@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using LeakyAbstraction;
 
 public class GameManager : GenericSingleton<GameManager>
 {
@@ -99,6 +100,8 @@ public class GameManager : GenericSingleton<GameManager>
 
         StartCoroutine(BlackCoverScreen());
         StartCoroutine(GameOverZoomScreen());
+
+        SoundManager.Instance.PlaySound(GameSound.Rizz);
 
         m_timeScoreSave.CurrentTime = GameTime;
         if (m_timeScoreSave.BestTime < m_timeScoreSave.CurrentTime) 
