@@ -83,8 +83,11 @@ public class Enemy : MonoBehaviour
             m_visual.StartBeHitEffect();
         }
 
-        var go = Instantiate(FloatingDamageText, transform.position + Random.insideUnitSphere, Quaternion.identity, transform);
-        go.GetComponent<TextMeshPro>().text = _ammount.ToString();
+        if (!IsDied)
+        {
+            var go = Instantiate(FloatingDamageText, transform.position + Random.insideUnitSphere, Quaternion.identity, transform);
+            go.GetComponent<TextMeshPro>().text = _ammount.ToString();
+        }
     }
 
     protected virtual IEnumerator Die()
@@ -220,7 +223,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeKnockbackEffect(float _ammount, float _duration)
     {
-        Debug.Log(_duration);
         EnemyDebuff _debuff = new EnemyDebuff(
             EnemyDebuff.DebuffType.Knockback, _ammount, _duration
         );
