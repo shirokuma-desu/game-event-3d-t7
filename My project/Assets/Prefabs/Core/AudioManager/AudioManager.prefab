@@ -55,63 +55,63 @@ MonoBehaviour:
     soundType: 4
     audioClip: {fileID: 8300000, guid: 76790fdece036004e9b55801e9d59155, type: 3}
     volumeLow: 0.05
-    volumeHigh: 0.2
+    volumeHigh: 0.12
     pitchLow: 0.6
     pitchHigh: 1
   - Name: MeteorImpact
     soundType: 5
     audioClip: {fileID: 8300000, guid: 8b0eedbffa0a56842926aa71a0f0fed3, type: 3}
-    volumeLow: 0.3
-    volumeHigh: 0.5
+    volumeLow: 0.1
+    volumeHigh: 0.3
     pitchLow: 1
     pitchHigh: 1
   - Name: AcidCast
     soundType: 6
     audioClip: {fileID: 8300000, guid: 435d95b74a666ab47b68c479d160f4e8, type: 3}
     volumeLow: 0.1
-    volumeHigh: 0.3
+    volumeHigh: 0.25
     pitchLow: 0.5
     pitchHigh: 1
   - Name: LazerCast
     soundType: 7
     audioClip: {fileID: 8300000, guid: 33ae634a286babc4fafbd2679c4c7c0f, type: 3}
-    volumeLow: 0.1
-    volumeHigh: 0.2
+    volumeLow: 0.15
+    volumeHigh: 0.25
     pitchLow: 0.8
     pitchHigh: 1
   - Name: LavaCast
     soundType: 8
     audioClip: {fileID: 8300000, guid: 2595445454e98c745b0242f01a17272d, type: 3}
-    volumeLow: 0.2
-    volumeHigh: 0.3
+    volumeLow: 0.15
+    volumeHigh: 0.2
     pitchLow: 0.5
     pitchHigh: 1
   - Name: ShadeCast
     soundType: 9
     audioClip: {fileID: 8300000, guid: c216a5a2313eb4b44b6f82518d3239de, type: 3}
-    volumeLow: 0.2
-    volumeHigh: 0.3
+    volumeLow: 0.08
+    volumeHigh: 0.15
     pitchLow: 0.5
     pitchHigh: 1
   - Name: ShadeImpact
     soundType: 10
     audioClip: {fileID: 8300000, guid: 8239f2963df8680429485c85e2653766, type: 3}
-    volumeLow: 0.1
-    volumeHigh: 0.2
+    volumeLow: 0.04
+    volumeHigh: 0.08
     pitchLow: 0.5
     pitchHigh: 1
   - Name: StarCast
     soundType: 11
     audioClip: {fileID: 8300000, guid: 1771a774519e5e741be6dff5c99fa9fe, type: 3}
-    volumeLow: 0.1
-    volumeHigh: 0.2
+    volumeLow: 0.05
+    volumeHigh: 0.1
     pitchLow: 0.5
     pitchHigh: 1
   - Name: StarImpact
     soundType: 12
     audioClip: {fileID: 8300000, guid: 460dc9775759fe741906f8f3726193ba, type: 3}
-    volumeLow: 0.1
-    volumeHigh: 0.2
+    volumeLow: 0.05
+    volumeHigh: 0.1
     pitchLow: 0.7
     pitchHigh: 1
   - Name: Ambient
@@ -138,8 +138,8 @@ MonoBehaviour:
   - Name: Multicast01
     soundType: 13
     audioClip: {fileID: 8300000, guid: 6873ec2187111b342ac3806425be53c6, type: 3}
-    volumeLow: 0.3
-    volumeHigh: 0.3
+    volumeLow: 0.4
+    volumeHigh: 0.4
     pitchLow: 1
     pitchHigh: 1
   - Name: Multicast02
@@ -179,16 +179,16 @@ MonoBehaviour:
     pitchHigh: 0.3
   - Name: EnemyDie
     soundType: 19
-    audioClip: {fileID: 8300000, guid: c4aac9c1456226040b4cdf312a44df26, type: 3}
-    volumeLow: 0.5
-    volumeHigh: 1
+    audioClip: {fileID: 8300000, guid: 3d95366af8b66644bbd6cf47f1e6ce64, type: 3}
+    volumeLow: 0.1
+    volumeHigh: 0.2
     pitchLow: 0.6
     pitchHigh: 0.8
   - Name: SoulCollect
     soundType: 20
     audioClip: {fileID: 8300000, guid: 7424578cd4865c2458516d9f24965fbb, type: 3}
     volumeLow: 0.1
-    volumeHigh: 0.1
+    volumeHigh: 0.2
     pitchLow: 0.1
     pitchHigh: 0.5
   - Name: Rizz

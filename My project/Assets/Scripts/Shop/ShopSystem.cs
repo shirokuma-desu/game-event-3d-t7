@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using LeakyAbstraction;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -211,6 +212,7 @@ public class ShopSystem : MonoBehaviour
     public int Gain(int _ammount)
     {
         m_total_souls += _ammount;
+        SoundManager.Instance.PlaySound(GameSound.SoulCollect);
         return m_total_souls;
     }
     private int Sell(int soulToAdd)

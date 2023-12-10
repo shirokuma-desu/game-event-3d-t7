@@ -24,7 +24,7 @@ MonoBehaviour:
   sell_price_increase: 0
   level_skill: 0
   damage: 10
-  radius: 45
+  radius: 60
   cooldown: 2
   instance_per_cast: 0
   debuff_duration: 0

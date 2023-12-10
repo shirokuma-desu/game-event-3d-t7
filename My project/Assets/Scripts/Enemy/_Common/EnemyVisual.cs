@@ -92,14 +92,14 @@ public class EnemyVisual : MonoBehaviour
     {
         Vector3 _position = m_model.transform.localPosition;
 
+        m_model.transform.localPosition = m_originalModelPosition;
         _position.z -= m_beHitKnockback;
         m_model.transform.localPosition = _position;
         m_modelMaterial.color = m_beHitColor;
 
         yield return new WaitForSeconds(m_beHitTime);
 
-        _position.z += m_beHitKnockback;
-        m_model.transform.localPosition = _position;
+        m_model.transform.localPosition = m_originalModelPosition;
         m_modelMaterial.color = m_defaultColor;
     }
 
