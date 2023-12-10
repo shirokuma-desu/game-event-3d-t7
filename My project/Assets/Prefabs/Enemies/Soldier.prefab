@@ -98,14 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa397547c6a50146bb9deab48d89bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloatingDamageText: {fileID: 3786000079742809024, guid: cb980b471a82d89409a9c0f04a9fce89,
-    type: 3}
   m_visual: {fileID: 2735798427601010063}
   m_collider: {fileID: 2997404885335666538}
   m_maxHealth: 100
-  m_moveSpeed: 50
+  m_moveSpeed: 60
   m_attackDamage: 20
-  m_bounty: 10
+  m_bounty: 6
   m_attackRayLength: 0.8
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
   m_anEnemyAttacking: {fileID: 11400000, guid: 6b08b8d4680f9e84c8fc7793499e72d6, type: 2}
@@ -127,7 +125,7 @@ MonoBehaviour:
   m_aniClips: []
   m_spawnParticle: {fileID: 649129948237149841, guid: a3e6acef583f71b4dab1acbbace07043,
     type: 3}
-  m_beHitColor: {r: 0.8867924, g: 0.28862584, b: 0.28862584, a: 1}
+  m_beHitColor: {r: 0.39215687, g: 0.39215687, b: 1, a: 1}
   m_beHitKnockback: 0.2
   m_beHitTime: 0.1
   m_deadParticle: {fileID: 1157739271372782778, guid: e7813b0d7fcfc12408e9e5c1f47f61dc,

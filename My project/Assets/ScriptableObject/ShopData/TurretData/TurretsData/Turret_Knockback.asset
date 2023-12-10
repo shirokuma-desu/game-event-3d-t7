@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 4
   image: {fileID: 21300000, guid: bf82837b4ddca87468edf2976c078f7f, type: 3}
-  image_upgrade: {fileID: 21300000, guid: 5bbfa5d92498aeb45ad2257e931d7b0c, type: 3}
+  image_upgrade: {fileID: 21300000, guid: bf82837b4ddca87468edf2976c078f7f, type: 3}
   skill_name: Knockback
   description: Turret now can apply knockback effect
   multi_cast_chance: 0
-  price: 29
-  sellprice: 14
+  price: 3
+  sellprice: 1
   price_increase: 2
   sell_price_increase: 1
-  level_skill: 13
+  level_skill: 0
   damage: 0
   radius: 0
   cooldown: 0
@@ -35,11 +35,11 @@ MonoBehaviour:
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
-  ID_Effect: 2
+  ID_Effect: 0
   stun_duration_increase: 0
-  knockback_distance_increase: 400
-  knockback_duration_increase: 0.05
+  knockback_distance_increase: 0
+  knockback_duration_increase: 0
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0
-  is_upgraded: 1
+  is_upgraded: 0

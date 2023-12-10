@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
   m_Name: Turret_Firerate_Default
   m_EditorClassIdentifier: 
-  ID_Skill: 2
-  image: {fileID: 21300000, guid: 3f367bcca4ae1e64b94c40ef3009e71b, type: 3}
-  image_upgrade: {fileID: 21300000, guid: e5ebcd5fd067d1840887034f451e427e, type: 3}
-  skill_name: Fire rate
-  description: Increase Firerate
+  ID_Skill: 3
+  image: {fileID: 21300000, guid: 466e03f988792324a99637e7fc06c5d4, type: 3}
+  image_upgrade: {fileID: 21300000, guid: 466e03f988792324a99637e7fc06c5d4, type: 3}
+  skill_name: Increase Firerate
+  description: 
   multi_cast_chance: 0
-  price: 2
-  sellprice: 1
-  price_increase: 2
-  sell_price_increase: 2
+  price: 400
+  sellprice: 0
+  price_increase: 0
+  sell_price_increase: 0
   level_skill: 0
   damage: 0
   radius: 0
@@ -35,11 +35,10 @@ MonoBehaviour:
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
-  ID_Effect: 0
-  stun_duration_increase: 0
-  knockback_distance_increase: 0
-  knockback_duration_increase: 0
+  range: 0
+  fire_rate: 0
+  hp: 0
   range_increase: 0
-  fire_rate_increase: 20
+  fire_rate_increase: 1
   hp_increase: 0
-  is_upgraded: 0
+  is_upgraded: 1

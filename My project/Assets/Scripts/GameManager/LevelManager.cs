@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < m_spawmData.Length; i++)
         {
             EnemySpawnData _spawnData = m_spawmData[i];
-            if (!m_isSpawning[i] && GameManager.Instance.GameTime >= _spawnData.StartSpawnTime)
+            if (!m_isSpawning[i] && Time.time >= _spawnData.StartSpawnTime)
             {
                 m_isSpawning[i] = true;
 

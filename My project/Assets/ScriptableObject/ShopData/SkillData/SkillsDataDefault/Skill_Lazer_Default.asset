@@ -17,21 +17,21 @@ MonoBehaviour:
   image_upgrade: {fileID: 21300000, guid: 298ac6473af8aa04ea1b8cdad37bf75b, type: 3}
   skill_name: lazer
   description: 
-  multi_cast_chance: 100
-  price: 16
+  multi_cast_chance: 33
+  price: 500
   sellprice: 3
-  price_increase: 0
+  price_increase: 50
   sell_price_increase: 0
   level_skill: 0
-  damage: 10
-  radius: 45
-  cooldown: 2
+  damage: 100
+  radius: 100
+  cooldown: 6
   instance_per_cast: 0
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 0
+  damage_increase: 50
   radius_increase: 0
-  cooldown_decrease: 0
+  cooldown_decrease: 0.1
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0

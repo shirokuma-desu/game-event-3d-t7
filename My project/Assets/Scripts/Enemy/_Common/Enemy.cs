@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
     protected Rigidbody m_body;
-
-    [SerializeField]
-    protected GameObject FloatingDamageText;
 
     [Header("Reference")]
     [SerializeField]
@@ -82,9 +78,6 @@ public class Enemy : MonoBehaviour
         {
             m_visual.StartBeHitEffect();
         }
-
-        var go = Instantiate(FloatingDamageText, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TextMeshPro>().text = _ammount.ToString();
     }
 
     protected virtual IEnumerator Die()
@@ -110,32 +103,11 @@ public class Enemy : MonoBehaviour
         m_anEnemyDie.RaiseEvent();
     }
 
-    public virtual void AttackBaseTower()
+    public virtual void Attack()
     {
         m_visual.StartAttackEffect();
 
         EnvironmentManager.Instance.Player.GetComponent<BaseTurret>().TakeDamage(m_attackDamage);
-        
-        IsDied = true;
-
-        if (Spawner != null)
-        {
-            Spawner.DespawnEnemy(this);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        m_anEnemyAttacking.RaiseEvent();
-    }
-
-    public virtual void AttackTurret(Turret _turret)
-    {
-        m_visual.StartAttackEffect();
-
-        Debug.Log(_turret);
-        _turret.TakeDamage(m_attackDamage);
         
         IsDied = true;
 
@@ -220,9 +192,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeKnockbackEffect(float _ammount, float _duration)
     {
-        Debug.Log(_duration);
         EnemyDebuff _debuff = new EnemyDebuff(
-            EnemyDebuff.DebuffType.Knockback, _ammount, _duration
+            EnemyDebuff.DebuffType.Healing, _ammount, _duration
         );
 
         if (!IsKnockback)
@@ -264,14 +235,10 @@ public class Enemy : MonoBehaviour
         RaycastHit[] _hits = Physics.RaycastAll(transform.position, transform.forward, m_attackRayLength);
         foreach (RaycastHit _hit in _hits)
         {
-            if (_hit.collider.tag == "BaseTower")
+            if (_hit.collider.tag == "BaseTower" || _hit.collider.tag == "Turret")
             {
-                AttackBaseTower();
-                break;
-            }
-            if (_hit.collider.tag == "Turret")
-            {
-                AttackTurret(_hit.collider.GetComponent<Turret>());
+                Attack();
+
                 break;
             }
         }
@@ -300,8 +267,6 @@ public class Enemy : MonoBehaviour
         m_speedModifyScale = 1f;
         m_damageTakenModifyScale = 1f;
 
-        m_visual.Reset();
-
         StopAllCoroutines();
     }
 
@@ -325,7 +290,6 @@ public class Enemy : MonoBehaviour
         Vector3 _target = EnvironmentManager.Instance.PlayerPosition;
 
         float _tempDistance = Vector3.Distance(transform.position, _target);
-        if (EnvironmentManager.Instance.IsAnyTurretLeft) _tempDistance = Mathf.Infinity;
         for (int i = 0; i < 4; i++)
         {
             if (EnvironmentManager.Instance.IsTowerSettled(i))

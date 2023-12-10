@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8480d3372b4732e479b72b979c0805f5, type: 3}
   m_Name: PlayerInventorySO
   m_EditorClassIdentifier: 
-  m_Inventory_Skill: []
+  m_Inventory_Skill:
+  - {fileID: 11400000, guid: 67739b9d698e5b6459cc2eebcae77281, type: 2}
+  - {fileID: 11400000, guid: a80ff605f31de1247ac51a6cd46bcede, type: 2}
+  - {fileID: 11400000, guid: 40f7a577697c2a347b1916e5a89ca855, type: 2}
   m_Inventory_Turret: []

@@ -7,10 +7,11 @@ public class TurretShooting : MonoBehaviour
     private NormalShooting ns;
     private StunShooting ss;
     private KnockbackShooting ks;
-    private StunAndKnockShooting saks;
 
-    private bool isStun;
-    private bool isKnock;
+
+    [SerializeField, Tooltip("Shoot Type:\n0: Normal\n1: Stun\n2: Knockback")]
+    private int m_shootType = 0;
+    public int ShootType { get { return m_shootType; } set { m_shootType = value; } }
 
     private void Awake()
     {
@@ -18,14 +19,10 @@ public class TurretShooting : MonoBehaviour
         ns = GetComponentInChildren<NormalShooting>();
         ss = GetComponentInChildren<StunShooting>();
         ks = GetComponentInChildren<KnockbackShooting>();
-        saks = GetComponentInChildren<StunAndKnockShooting>();
     }
 
     private void Update()
     {
-        isStun = GameObject.Find("TurretManager").GetComponent<TurretManager>().IsStunEnabled;
-        isKnock = GameObject.Find("TurretManager").GetComponent<TurretManager>().IsKnockbackEnabled;
-
         if (m_turret.IsSettled)
         {
             Shoot();
@@ -34,24 +31,18 @@ public class TurretShooting : MonoBehaviour
 
     public void Shoot()
     {
-        if (isKnock && isStun)
+        switch (m_shootType)
         {
-            saks.Shoot();
-        }
+            case 0:
+                ns.Shoot(); 
+                break;
+            case 1:
+                ss.Shoot();
+                break;
+            case 2:
+                ks.Shoot();
+                break;
 
-        if (isStun && !isKnock)
-        {
-            ss.Shoot();
-        }
-
-        if (!isStun && isKnock)
-        {
-            ks.Shoot();
-        }
-
-        if (!isStun && !isKnock)
-        {
-            ns.Shoot();
         }
     }
 }

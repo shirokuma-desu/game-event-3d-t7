@@ -153,12 +153,6 @@ public class SkillManager : MonoBehaviour
         m_castASkill.RaiseEvent();
     }
 
-    public void CastSkil(int _index)
-    {
-        SelectSkill(_index);
-        CastSelectSkillInit();
-    }
-
     public void CastSkillRaw(Skill _skill, Vector3 _position)
     {
         Skill _instance = Instantiate(_skill);
@@ -225,22 +219,6 @@ public class SkillManager : MonoBehaviour
             {
                 DiscardSkill();
             }
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            CastSkil(0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            CastSkil(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            CastSkil(2);
         }
     }
 

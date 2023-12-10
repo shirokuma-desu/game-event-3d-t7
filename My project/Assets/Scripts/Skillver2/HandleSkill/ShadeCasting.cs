@@ -20,6 +20,7 @@ public class ShadeCasting : MonoBehaviour
         range = stat.Range;
     }
 
+  
     private void Update()
     {
         if (!isLockedTarget)
@@ -39,6 +40,7 @@ public class ShadeCasting : MonoBehaviour
             }
 
             transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+          
         }
     }
 

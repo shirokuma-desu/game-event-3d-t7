@@ -8,12 +8,10 @@ public class AngelEnemy : Enemy
     {
         base.FixedUpdate();
 
-        Move();
-    }
-
-    public override void AttackTurret(Turret _turret)
-    {
-
+        if (GameManager.Instance.GameState != GameManager.State.GameOver)
+        {
+            Move();
+        }
     }
 
     protected override Vector3 GetTarget()

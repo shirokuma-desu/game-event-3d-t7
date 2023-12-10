@@ -5,9 +5,6 @@ public class TurretManager : MonoBehaviour
 {
     private TurretUpgradedStat tus;
 
-    private bool m_isStunEnabled = false;
-    private bool m_isKnockbackEnabled = false;
-
     [SerializeField]
     private GameObject[] m_turretSpots;
     [SerializeField]
@@ -20,8 +17,6 @@ public class TurretManager : MonoBehaviour
     [SerializeField]
     private GameEvent m_ATurretDestroyed;
 
-    public bool IsStunEnabled { get { return m_isStunEnabled; } set { m_isStunEnabled = value; } }
-    public bool IsKnockbackEnabled { get { return m_isKnockbackEnabled; } set { m_isKnockbackEnabled= value; } }
     public GameObject[] TurretSpots { get { return m_turretSpots; } }
     public bool[] IsSpotsOccupied { get { return m_isSpotsOccupied; } }
     public bool EmptySpotAvai { get { return m_emptySpotAvai; } }
@@ -30,7 +25,6 @@ public class TurretManager : MonoBehaviour
 
     private void Start()
     {
-        
         tus = GetComponent<TurretUpgradedStat>();
 
         m_isSpotsOccupied = new bool[m_turretSpots.Length];
@@ -84,9 +78,6 @@ public class TurretManager : MonoBehaviour
                     stat.AttackDamage = tus.BonusAttackDamage;
                     stat.AttackSpeed = tus.BonusAttackSpeed;
                     stat.AttackRange = tus.BonusAttackRange;
-                    stat.StunDuration = tus.BonusStunDuration;
-                    stat.KnockbackAmount = tus.BonusKnockbackAmout;
-                    stat.KnockbackDuration = tus.BonusKnockbackDuration;
                 }
             }
         }
@@ -137,16 +128,11 @@ public class TurretManager : MonoBehaviour
         }
     }
 
-    public void ToggleShootType(int type) //1: Stun, 2: Knockback. both is on, bullet knock then stun
+    public void ChangeShootType(GameObject target, int type)
     {
-        if (type == 1)
+        if (target != null)
         {
-            m_isStunEnabled = !m_isStunEnabled;
-        }
-
-        if (type == 2)
-        {
-            m_isKnockbackEnabled = !m_isKnockbackEnabled;
+            target.GetComponent<TurretShooting>().ShootType = type;
         }
     }
 

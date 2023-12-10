@@ -60,8 +60,6 @@ public class BaseTurret : MonoBehaviour
             }
         }
 
-        if (currentHealth <= 0f) GameManager.Instance.GameOver();
-
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;

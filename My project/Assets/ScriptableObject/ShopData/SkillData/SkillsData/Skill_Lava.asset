@@ -18,28 +18,27 @@ MonoBehaviour:
   skill_name: Lava Pool
   description: 'Erupts magma from the earth to hinder enemies movement and burn them
     to ashes.   '
-  multi_cast_chance: 0
-  price: 27
+  multi_cast_chance: 33
+  price: 400
   sellprice: 16
-  price_increase: 0
+  price_increase: 50
   sell_price_increase: 0
   level_skill: 0
-  damage: 10
-  radius: 10
-  cooldown: 6
+  damage: 200
+  radius: 5
+  cooldown: 10
   instance_per_cast: 0
   debuff_duration: 2
   debuff_effective: 0
-  damage_increase: 0
-  radius_increase: 0
-  cooldown_decrease: 0
+  damage_increase: 20
+  radius_increase: 5
+  cooldown_decrease: 0.25
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
-  ID_Effect: 0
-  stun_duration_increase: 0
-  knockback_distance_increase: 0
-  knockback_duration_increase: 0
+  range: 0
+  fire_rate: 0
+  hp: 0
   range_increase: 0
   fire_rate_increase: 0
   hp_increase: 0

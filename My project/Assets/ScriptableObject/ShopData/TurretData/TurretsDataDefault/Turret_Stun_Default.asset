@@ -35,8 +35,8 @@ MonoBehaviour:
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0
-  ID_Effect: 1
-  stun_duration_increase: 1.5
+  ID_Effect: 0
+  stun_duration_increase: 0
   knockback_distance_increase: 0
   knockback_duration_increase: 0
   range_increase: 0
