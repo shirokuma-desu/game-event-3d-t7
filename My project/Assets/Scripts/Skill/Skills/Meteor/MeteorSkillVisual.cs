@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class MeteorSkillVisual : SkillVisual
 {
@@ -73,6 +74,8 @@ public class MeteorSkillVisual : SkillVisual
         
         m_meteorObject.transform.position = _position;
         m_meteorDirection = (m_skillData.CastPosition - m_meteorObject.transform.position).normalized;
+
+        SoundManager.Instance.PlaySound(GameSound.MeteorCast);
     }
     public override void CastVisual()
     {
@@ -90,5 +93,7 @@ public class MeteorSkillVisual : SkillVisual
         
         GameObject _obj = Instantiate(m_impactObject, m_skillData.CastPosition, Quaternion.identity);
         _obj.GetComponent<ParticleSystem>().startSize = m_skillData.Range / 3f;
+
+        SoundManager.Instance.PlaySound(GameSound.MeteorImpact);
     }
 }

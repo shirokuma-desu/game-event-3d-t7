@@ -136,8 +136,8 @@ MonoBehaviour:
   m_castDelay: 0
   m_expireTime: 0
   m_multicastOffset: 10
-  m_multicastDelay: 0
-  m_effectInterval: 0.1
+  m_multicastDelay: 0.1
+  m_effectInterval: 0.2
 --- !u!114 &5221079893134860576
 MonoBehaviour:
   m_ObjectHideFlags: 0

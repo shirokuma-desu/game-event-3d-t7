@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class StarfallObstacle : SkillObstacle
 {
@@ -43,6 +44,8 @@ public class StarfallObstacle : SkillObstacle
                 collider.gameObject.GetComponent<Enemy>().TakeDamage(m_damage);
             }
         }
+
+        SoundManager.Instance.PlaySound(GameSound.StarImpact);
 
         Expire();
     }

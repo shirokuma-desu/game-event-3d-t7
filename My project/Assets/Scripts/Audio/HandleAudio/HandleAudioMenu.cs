@@ -13,6 +13,6 @@ public class HandleAudioMenu : MonoBehaviour
 
     private void PlayingMenuBGM()
     {
-        SoundManager.Instance.PlaySound(GameSound.MenuBGM, (GameSound _loop) => PlayingMenuBGM());
+        // SoundManager.Instance.PlaySound(GameSound.MenuBGM, (GameSound _loop) => PlayingMenuBGM());
     }
 }

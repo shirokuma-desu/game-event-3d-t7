@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using LeakyAbstraction;
 using UnityEngine;
 
 public class AcidRainSkillVisual : SkillVisual
@@ -46,10 +47,14 @@ public class AcidRainSkillVisual : SkillVisual
         _scale.x = m_skillData.Range * 2f;
         _scale.z = m_skillData.Range * 2f;
         m_acidRainObject.transform.localScale = _scale;
+
+        SoundManager.Instance.PlaySound(GameSound.AcidCast);
     }
     public override void CastVisual()
     {
         base.CastVisual();
+
+        
     }
 
     public override void ImpactVisual()

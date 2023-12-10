@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using LeakyAbstraction;
+
 
 public class ShadeObstacle : SkillObstacle
 {
@@ -107,6 +108,8 @@ public class ShadeObstacle : SkillObstacle
                 collider.gameObject.GetComponent<Enemy>().TakeDamage(m_damage);
             }
         }
+
+        SoundManager.Instance.PlaySound(GameSound.ShadeImpact);
 
         Expire();
     }
