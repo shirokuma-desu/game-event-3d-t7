@@ -172,11 +172,11 @@ MonoBehaviour:
     pitchHigh: 1
   - Name: TurretShoot
     soundType: 18
-    audioClip: {fileID: 8300000, guid: c4aac9c1456226040b4cdf312a44df26, type: 3}
-    volumeLow: 0.1
-    volumeHigh: 0.3
-    pitchLow: 0.1
-    pitchHigh: 0.3
+    audioClip: {fileID: 8300000, guid: 092132b769e3306488d913584b5cdb47, type: 3}
+    volumeLow: 0.2
+    volumeHigh: 0.4
+    pitchLow: 0.8
+    pitchHigh: 1
   - Name: EnemyDie
     soundType: 19
     audioClip: {fileID: 8300000, guid: 3d95366af8b66644bbd6cf47f1e6ce64, type: 3}

@@ -66,7 +66,7 @@ public class TurretManager : MonoBehaviour
             m_emptySpotAvai = true;
         }
 
-        UpgradeStatTurret();
+        //UpgradeStatTurret();
     }
 
     private void UpgradeStatTurret()
