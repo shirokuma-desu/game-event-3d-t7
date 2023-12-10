@@ -6,7 +6,6 @@ using Debug = UnityEngine.Debug;
 
 public class ShopSystem : MonoBehaviour
 {
-    private TurretUpgradedStat tus;
 
     //data
     [SerializeField] private int m_total_souls              =   1000;
