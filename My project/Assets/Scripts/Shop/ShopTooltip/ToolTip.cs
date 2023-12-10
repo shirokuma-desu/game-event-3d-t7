@@ -219,7 +219,7 @@ public class ToolTip : MonoBehaviour
             case TURRET_UPGRADE_RANGE:
                 chanceField.gameObject.SetActive(false);
                 contentField.text = data.description;
-                damageField.text = "Range: " + baseTurretStatsSO.BonusAttackRange.ToString() + " ( + " + data.hp_increase + " /lv)";
+                damageField.text = "Range: " + baseTurretStatsSO.BonusAttackRange + " ( + " + data.hp_increase + " /lv)";
                 RadiusField.gameObject.SetActive(false);
                 cooldownField.gameObject.SetActive(false);
                 durationField.gameObject.SetActive(false);
@@ -227,8 +227,23 @@ public class ToolTip : MonoBehaviour
                 InstaceText.gameObject.SetActive(false);
                 break;
             case TURRE_UPGRADE_STUN:
+                chanceField.gameObject.SetActive(false);
+                contentField.text = data.description;
+                damageField.text = "Stun duration: " + baseTurretStatsSO.BonusStunDuration + " ( + " + data.stun_duration_increase + "s/lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
                 break;
             case TURRET_UPGRADE_KNOCK_BACK:
+                chanceField.gameObject.SetActive(false);
+                contentField.text = "Knockback distance: "+ baseTurretStatsSO.BonusKnockbackAmout + " ( + " + data.knockback_distance_increase + "/lv)";
+                RadiusField.gameObject.SetActive(false);
+                cooldownField.gameObject.SetActive(false);
+                durationField.gameObject.SetActive(false);
+                EffectvieText.gameObject.SetActive(false);
+                InstaceText.gameObject.SetActive(false);
                 break;
         }
     }
