@@ -46,6 +46,14 @@ public class EnemyManager : MonoBehaviour
         m_enemySpawners[_index].SetSpawningProbability(_amount);
     }
 
+    public void StopAllSpawner()
+    {
+        for (int i = 0; i < m_enemySpawners.Count; i++)
+        {
+            SetSpawningProbability(i, 0f);
+        }
+    }
+
     public void StartAllSpawner()
     {
         foreach (EnemySpawner _spawner in m_enemySpawners)

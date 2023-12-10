@@ -91,6 +91,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Kill()
+    {
+        StartCoroutine(Die());
+    }
+
     protected virtual IEnumerator Die()
     {
         m_visual.StartDeadEffect();

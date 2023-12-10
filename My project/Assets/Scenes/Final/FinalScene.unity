@@ -976,6 +976,7 @@ MonoBehaviour:
   NotDestroy: 0
   m_skillUI: {fileID: 404491159}
   m_baseTowerUI: {fileID: 706802947}
+  m_shopUI: {fileID: 277136977}
 --- !u!114 &136765918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21173,6 +21174,9 @@ MonoBehaviour:
   m_gameOverCover: {fileID: 1728320201}
   m_gameOver: {fileID: 11400000, guid: b617a9f0e57a3e841b2e129f0e0f7a65, type: 2}
   m_timeScoreSave: {fileID: 11400000, guid: 25cdb9d3b6503ad43be886c9f7e92173, type: 2}
+  m_endShockwave: {fileID: 4360717307163777143, guid: fa6215c0357bdce4eafedaa0171871a0,
+    type: 3}
+  m_maxTime: 900
 --- !u!4 &1159067241
 Transform:
   m_ObjectHideFlags: 0
@@ -37624,9 +37628,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.115044, y: 651.1062}
+  m_AnchoredPosition: {x: 37.61947, y: 656.8938}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5124502, y: 1.0973451}
+  m_Pivot: {x: 0.5194223, y: 1.1026548}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0
