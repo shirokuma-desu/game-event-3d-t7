@@ -346,6 +346,8 @@ public class ShopSystem : MonoBehaviour
                     shop_inventory.m_Inventory_Skill[i].level_skill = default_data_item_inventory.m_Inventory_Skill[j].level_skill;
                     shop_inventory.m_Inventory_Skill[i].cooldown = default_data_item_inventory.m_Inventory_Skill[j].cooldown;
                     shop_inventory.m_Inventory_Skill[i].is_upgraded = default_data_item_inventory.m_Inventory_Skill[j].is_upgraded;
+                    //rebind for instance
+                    shop_inventory.m_Inventory_Skill[i].instance_per_cast = default_data_item_inventory.m_Inventory_Skill[j].instance_per_cast;
                 }
             }
         }
