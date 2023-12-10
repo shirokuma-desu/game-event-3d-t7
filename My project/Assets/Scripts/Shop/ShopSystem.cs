@@ -351,6 +351,12 @@ public class ShopSystem : MonoBehaviour
                 }
             }
         }
+
+        foreach(ItemDataSO itemDataSO in shop_inventory.m_Inventory_Turret)
+        {
+            itemDataSO.is_upgraded = false;
+            itemDataSO.level_skill = 0;
+        }
     }
 
     private void clearInventory(List<ItemDataSO> anyInventory)
