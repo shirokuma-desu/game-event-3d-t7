@@ -20,8 +20,16 @@ namespace LeakyAbstraction
         ShadeCast, 
         ShadeImpact, 
         StarCast, 
-        StarImpact
-
+        StarImpact,
+        Multicast01,
+        Multicast02,
+        UIClick,
+        BeAttacked,
+        TurretPlace,
+        TurretShoot,
+        EnemyDie,
+        SoulCollect,
+        Rizz,
         // ...
     }
 }

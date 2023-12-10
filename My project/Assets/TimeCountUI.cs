@@ -10,7 +10,7 @@ public class TimeCountUI : MonoBehaviour
 
     private void Update()
     {
-        int _time = (int)GameManager.Instance.GameTime;
+        int _time = GameManager.Instance.MaxTime - (int)GameManager.Instance.GameTime;
         int _minutes = _time / 60;
         int _second = _time - _minutes * 60;
 

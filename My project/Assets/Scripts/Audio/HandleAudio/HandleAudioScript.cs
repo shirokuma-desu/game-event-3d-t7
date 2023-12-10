@@ -9,6 +9,12 @@ public class HandleAudioScript : MonoBehaviour
 {
     private void Start()
     {
+        StartGameSound();
+       
+    }
+
+    public void StartGameSound()
+    {
         PlayingBGM();
         PlayingAmbient();
     }

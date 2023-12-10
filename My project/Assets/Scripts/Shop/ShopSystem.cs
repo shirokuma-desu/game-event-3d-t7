@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using LeakyAbstraction;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -36,6 +37,10 @@ public class ShopSystem : MonoBehaviour
     private GameEvent m_sellASkill;
     [SerializeField]
     private GameEvent m_buyATurret;
+    [SerializeField]
+    private GameEvent m_buyAUpgrade;
+    [SerializeField]
+    private GameEvent m_reroll;
 
     #region get
 
@@ -85,6 +90,7 @@ public class ShopSystem : MonoBehaviour
 
         //call event reroll
         this.PostEvent(EventID.OnReroll);
+        m_reroll.RaiseEvent();
     }
 
     public void doBuySkill(DataContainer dataContainer)
@@ -135,6 +141,7 @@ public class ShopSystem : MonoBehaviour
             }
         }
 
+        m_buyAUpgrade.RaiseEvent();
     }
 
     public void buyTurret()
@@ -205,6 +212,7 @@ public class ShopSystem : MonoBehaviour
     public int Gain(int _ammount)
     {
         m_total_souls += _ammount;
+        SoundManager.Instance.PlaySound(GameSound.SoulCollect);
         return m_total_souls;
     }
     private int Sell(int soulToAdd)

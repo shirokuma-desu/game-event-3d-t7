@@ -1,4 +1,5 @@
 using UnityEngine;
+using LeakyAbstraction;
 
 public class TurretShooting : MonoBehaviour
 {
@@ -52,6 +53,6 @@ public class TurretShooting : MonoBehaviour
         if (!isStun && !isKnock)
         {
             ns.Shoot();
-        }
+        }        
     }
 }

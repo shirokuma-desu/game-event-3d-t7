@@ -66,7 +66,7 @@ public class TurretManager : MonoBehaviour
             m_emptySpotAvai = true;
         }
 
-        UpgradeStatTurret();
+        //UpgradeStatTurret();
     }
 
     private void UpgradeStatTurret()
@@ -141,12 +141,12 @@ public class TurretManager : MonoBehaviour
     {
         if (type == 1)
         {
-            m_isStunEnabled = !m_isStunEnabled;
+            m_isStunEnabled = true;
         }
 
         if (type == 2)
         {
-            m_isKnockbackEnabled = !m_isKnockbackEnabled;
+            m_isKnockbackEnabled = true;
         }
     }
 

@@ -11,6 +11,8 @@ public class PriestEnemy : Enemy
     private float m_healRadius = 5f;
     [SerializeField]
     private float m_healingInterval = 0.5f;
+    [SerializeField]
+    private GameObject m_healEffect;
 
     protected override void FixedUpdate()
     {
@@ -37,5 +39,8 @@ public class PriestEnemy : Enemy
                 _enemy.TakeHealingEffect(m_healAmmount, m_healingInterval);
             }
         }
+
+        GameObject _healObj = Instantiate(m_healEffect, transform.position, Quaternion.identity);
+        _healObj.transform.localScale = new Vector3(.2f * m_healRadius, 1f, .2f * m_healRadius);
     }
 }

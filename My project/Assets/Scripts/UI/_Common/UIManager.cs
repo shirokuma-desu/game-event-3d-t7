@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class UIManager : GenericSingleton<UIManager>
 {
@@ -11,4 +12,14 @@ public class UIManager : GenericSingleton<UIManager>
     [SerializeField]
     private UIBaseTower m_baseTowerUI;
     public UIBaseTower BaseTowerUI { get => m_baseTowerUI; }
+
+    [SerializeField]
+    private ShopUIManager m_shopUI;
+    public ShopUIManager ShopUI { get => m_shopUI; }
+
+
+    public void PlayClickSound()
+    {
+        SoundManager.Instance.PlaySound(GameSound.UIClick);
+    }
 }

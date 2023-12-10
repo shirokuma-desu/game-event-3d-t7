@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using LeakyAbstraction;
 
 public class MulticastVisualEffect : MonoBehaviour
 {
@@ -72,12 +73,17 @@ public class MulticastVisualEffect : MonoBehaviour
             if (i < _multicastTimes)
             {
                 Instantiate(m_normalMulticastEffect, m_effectPosition, Quaternion.identity);
+
+                SoundManager.Instance.PlaySound(GameSound.Multicast01);
             }
             else
             {
                 if (i >= 4) Instantiate(m_x4MulticastEffect, m_effectPosition, Quaternion.identity);
-                else if (i >= 2) Instantiate(m_x3MulticastEffect, m_effectPosition, Quaternion.identity);
+                else if (i >= 3) Instantiate(m_x3MulticastEffect, m_effectPosition, Quaternion.identity);
                 else Instantiate(m_normalMulticastEffect, m_effectPosition, Quaternion.identity);
+
+                if (i >= 3) SoundManager.Instance.PlaySound(GameSound.Multicast02);
+                else SoundManager.Instance.PlaySound(GameSound.Multicast01);
             }
 
             yield return new WaitForSeconds(0.2f);

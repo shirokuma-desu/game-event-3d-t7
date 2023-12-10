@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using LeakyAbstraction;
 
 public class Turret : MonoBehaviour
 {
@@ -62,6 +63,12 @@ public class Turret : MonoBehaviour
         m_currentHealth = m_health;
     }
 
+    private void Start()
+    {
+        tus.SetUp();
+        UpdateStat();
+    }
+
     private void Update()
     {
         m_isDead = m_currentHealth <= 0;
@@ -74,12 +81,12 @@ public class Turret : MonoBehaviour
         {
             transform.position = m_lockPos;
         }
-
-        UpdateStat();
     }
 
-    private void UpdateStat()
+    public void UpdateStat()
     {
+        m_currentHealth = tus.BonusHealth * (m_currentHealth / m_health);
+        
         m_health = tus.BonusHealth;
         m_attackDamage = tus.BonusAttackDamage;
         m_attackSpeed = tus.BonusAttackSpeed;
@@ -111,7 +118,10 @@ public class Turret : MonoBehaviour
     {
         GameManager.Instance.TurretManager.DeleteOccupied(m_spotIndex);
         GameManager.Instance.TurretManager.TurretSpots[m_spotIndex].GetComponent<TurretSpot>().IsSettled = false;
-        Destroy(gameObject);
+
         tm.ATurretDestroyed.RaiseEvent();
+        SoundManager.Instance.PlaySound(GameSound.TurretPlace);
+
+        Destroy(gameObject);
     }
 }

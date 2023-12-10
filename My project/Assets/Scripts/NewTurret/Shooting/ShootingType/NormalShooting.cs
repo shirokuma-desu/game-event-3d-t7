@@ -1,4 +1,5 @@
 using UnityEngine;
+using LeakyAbstraction;
 
 public class NormalShooting : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class NormalShooting : MonoBehaviour
             }
 
             m_lastShoot = Time.time;
+
+            SoundManager.Instance.PlaySound(GameSound.TurretShoot);
         }
     }
 
