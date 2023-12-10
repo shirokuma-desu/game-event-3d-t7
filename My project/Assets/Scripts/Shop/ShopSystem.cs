@@ -406,7 +406,7 @@ public class ShopSystem : MonoBehaviour
         {
             turretManager.ToggleShootType(data.ID_Effect);
             turretUpgradedStat.BonusKnockbackAmout += data.knockback_distance_increase;
-            turretUpgradedStat.BonusKnockbackDuration += data.knockback_distance_increase;
+            turretUpgradedStat.BonusKnockbackDuration += data.knockback_duration_increase;
             turretUpgradedStat.BonusStunDuration += data.stun_duration_increase;
         }
     }
