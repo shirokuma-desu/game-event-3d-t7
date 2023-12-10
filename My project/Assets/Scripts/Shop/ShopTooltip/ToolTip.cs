@@ -26,6 +26,8 @@ public class ToolTip : MonoBehaviour
 
     public TextMeshProUGUI InstaceText;
 
+    public TextMeshProUGUI[] totalText;
+
     public LayoutElement layoutElement;
 
     public int characterWrapLimit;
@@ -102,6 +104,7 @@ public class ToolTip : MonoBehaviour
 
         headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name.Trim() + "\n"+ PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
         contentField.text = itemdata.description;
+        resetGameObj();
         handleDisplayText(itemdata);
     }
 
@@ -127,7 +130,6 @@ public class ToolTip : MonoBehaviour
     private void handleDisplayText(ItemDataSO data)
     {
         string name = data.skill_name.ToString();
-
         switch (name)
         {
             case SKILL_ACID:
@@ -245,6 +247,14 @@ public class ToolTip : MonoBehaviour
                 EffectvieText.gameObject.SetActive(false);
                 InstaceText.gameObject.SetActive(false);
                 break;
+        }
+    }
+
+    private void resetGameObj()
+    {
+        foreach(var item in totalText)
+        {
+            item.gameObject.SetActive(true);
         }
     }
 }
