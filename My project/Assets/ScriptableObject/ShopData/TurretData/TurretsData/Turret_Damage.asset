@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID_Skill: 1
   image: {fileID: 21300000, guid: 207f2eeb7c0c34e4db961f8fff3c15dd, type: 3}
-  image_upgrade: {fileID: 21300000, guid: d7caa96058173d44bb453866e95665d8, type: 3}
-  skill_name: Damage
-  description: Increase Damage
+  image_upgrade: {fileID: 21300000, guid: 207f2eeb7c0c34e4db961f8fff3c15dd, type: 3}
+  skill_name: Damage+
+  description: Increases damage.
   multi_cast_chance: 0
-  price: 10
-  sellprice: 2
-  price_increase: 20
-  sell_price_increase: 2
+  price: 200
+  sellprice: 0
+  price_increase: 100
+  sell_price_increase: 0
   level_skill: 0
   damage: 0
   radius: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
   instance_per_cast: 0
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 20
+  damage_increase: 2
   radius_increase: 0
   cooldown_decrease: 0
   instance_increase: 0

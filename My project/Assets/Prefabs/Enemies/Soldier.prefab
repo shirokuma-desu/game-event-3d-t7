@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_model: {fileID: 5617761404323261975}
+  m_originalModelPosition: {x: 0, y: 0, z: 0}
   m_renderer: {fileID: 302618016260944083}
   m_animator: {fileID: 6522871148970833809}
   m_aniClips: []

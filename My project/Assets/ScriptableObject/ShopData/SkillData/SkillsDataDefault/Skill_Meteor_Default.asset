@@ -17,20 +17,20 @@ MonoBehaviour:
   image_upgrade: {fileID: 21300000, guid: f167f096fa6f39b4a92b53a43d59f03a, type: 3}
   skill_name: meteor
   description: 
-  multi_cast_chance: 100
-  price: 8
-  sellprice: 2
-  price_increase: 0
-  sell_price_increase: 0
+  multi_cast_chance: 50
+  price: 200
+  sellprice: 100
+  price_increase: 350
+  sell_price_increase: 50
   level_skill: 0
-  damage: 10
-  radius: 10
-  cooldown: 1
+  damage: 45
+  radius: 3
+  cooldown: 4
   instance_per_cast: 0
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 0
-  radius_increase: 0
+  damage_increase: 50
+  radius_increase: 2
   cooldown_decrease: 0
   instance_increase: 0
   debuff_duration_increase: 0

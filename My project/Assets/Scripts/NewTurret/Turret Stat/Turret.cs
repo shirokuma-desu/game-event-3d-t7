@@ -65,6 +65,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<Collider>().enabled = false;
         tus.SetUp();
         UpdateStat();
     }

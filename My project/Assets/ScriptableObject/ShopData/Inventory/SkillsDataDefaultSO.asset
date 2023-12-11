@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SkillsDataDefaultSO
   m_EditorClassIdentifier: 
   m_Inventory_Skill:
+  - {fileID: 11400000, guid: c25c52d347342d448baa2661fa4982d6, type: 2}
   - {fileID: 11400000, guid: a1452fe96cd4b7140a3b3aa4a76fa0fd, type: 2}
   - {fileID: 11400000, guid: e1da49316f1a22f469a2b3edc2ac540a, type: 2}
   - {fileID: 11400000, guid: 7420275f2b99a5d4a96b366f0f45b972, type: 2}
@@ -20,6 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85ca990720c616b44acfa2c1fa76cc38, type: 2}
   - {fileID: 11400000, guid: db057e6ceb5f2c84db9d4912a5f1a50d, type: 2}
   m_Inventory_Turret:
+  - {fileID: 11400000, guid: c25c52d347342d448baa2661fa4982d6, type: 2}
   - {fileID: 11400000, guid: cf8f9e22ecd3f4b4fba3041970fdf74d, type: 2}
   - {fileID: 11400000, guid: 3b61fed0254cc3140ac8f431c5123a5b, type: 2}
   - {fileID: 11400000, guid: 4ccbb89ddd5a6a94c8a5bcbc829c13f1, type: 2}

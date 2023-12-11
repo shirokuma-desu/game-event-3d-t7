@@ -15,24 +15,24 @@ MonoBehaviour:
   ID_Skill: 4
   image: {fileID: 21300000, guid: ddfc8fde9c707854f89051474c697eca, type: 3}
   image_upgrade: {fileID: 21300000, guid: 3b9eff5fd8edf3a4f831cb36333058d3, type: 3}
-  skill_name: Ghostflame
-  description: Summon lingering ghostflames that explode on contact with the enemy
-  multi_cast_chance: 30
-  price: 22
-  sellprice: 2
-  price_increase: 0
-  sell_price_increase: 0
+  skill_name: star fall
+  description: 
+  multi_cast_chance: 33
+  price: 100
+  sellprice: 50
+  price_increase: 150
+  sell_price_increase: 25
   level_skill: 0
-  damage: 10
-  radius: 10
-  cooldown: 2
-  instance_per_cast: 3
+  damage: 50
+  radius: 5
+  cooldown: 5
+  instance_per_cast: 1
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 0
+  damage_increase: 10
   radius_increase: 0
   cooldown_decrease: 0
-  instance_increase: 0
+  instance_increase: 1
   debuff_duration_increase: 0
   debuff_effective_increase: 0
   ID_Effect: 0

@@ -15,23 +15,23 @@ MonoBehaviour:
   ID_Skill: 6
   image: {fileID: 21300000, guid: dde9d15906ac30b4b8b0f298e95de66a, type: 3}
   image_upgrade: {fileID: 21300000, guid: 738f34b850f3c6b41812e1806a4ee709, type: 3}
-  skill_name: lava
-  description: 20
-  multi_cast_chance: 100
-  price: 27
-  sellprice: 16
-  price_increase: 0
-  sell_price_increase: 0
+  skill_name: Lava
+  description: 
+  multi_cast_chance: 50
+  price: 400
+  sellprice: 200
+  price_increase: 600
+  sell_price_increase: 100
   level_skill: 0
-  damage: 10
-  radius: 10
-  cooldown: 6
+  damage: 25
+  radius: 5
+  cooldown: 10
   instance_per_cast: 0
-  debuff_duration: 2
+  debuff_duration: 4
   debuff_effective: 0
-  damage_increase: 0
-  radius_increase: 0
-  cooldown_decrease: 0
+  damage_increase: 10
+  radius_increase: 2
+  cooldown_decrease: 0.25
   instance_increase: 0
   debuff_duration_increase: 0
   debuff_effective_increase: 0

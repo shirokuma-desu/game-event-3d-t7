@@ -18,22 +18,22 @@ MonoBehaviour:
   skill_name: Shade
   description: 'Calls forth a burning soul that chases down and explodes on impact
     with the first enemy.  '
-  multi_cast_chance: 100
-  price: 35
-  sellprice: 26
-  price_increase: 0
-  sell_price_increase: 0
+  multi_cast_chance: 33
+  price: 200
+  sellprice: 75
+  price_increase: 150
+  sell_price_increase: 25
   level_skill: 1
-  damage: 10
-  radius: 10
-  cooldown: 2
+  damage: 30
+  radius: 5
+  cooldown: 3
   instance_per_cast: 3
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 0
+  damage_increase: 20
   radius_increase: 0
   cooldown_decrease: 0
-  instance_increase: 0
+  instance_increase: 1
   debuff_duration_increase: 0
   debuff_effective_increase: 0
   ID_Effect: 0

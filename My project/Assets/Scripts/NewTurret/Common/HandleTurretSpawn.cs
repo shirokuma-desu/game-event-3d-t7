@@ -54,9 +54,12 @@ public class HandleTurretSpawn : MonoBehaviour
                         {
                             m_currentTurret.GetComponent<Turret>().SpotIndex = m_snappedIndex;
                             tm.SetOccupied(m_snappedIndex);
+                            m_currentTurret.GetComponent<Collider>().enabled = true;
                             m_currentTurret = null;
                             tm.BuildANewTurret.RaiseEvent();
                             SoundManager.Instance.PlaySound(GameSound.TurretPlace);
+
+                            
                         }
                         break;
                     }

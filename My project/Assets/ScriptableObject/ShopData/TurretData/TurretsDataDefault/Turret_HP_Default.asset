@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Turret_HP_Default
   m_EditorClassIdentifier: 
   ID_Skill: 3
-  image: {fileID: 21300000, guid: 56395ae3ee477d648bc749a917c97b80, type: 3}
-  image_upgrade: {fileID: 21300000, guid: aa2145d540ba5d348b300c481e462773, type: 3}
-  skill_name: HP
-  description: Increase HP
+  image: {fileID: 21300000, guid: 78eb62a09decdd44885cd0bffe3168fa, type: 3}
+  image_upgrade: {fileID: 21300000, guid: 78eb62a09decdd44885cd0bffe3168fa, type: 3}
+  skill_name: Increase HP
+  description: 
   multi_cast_chance: 0
-  price: 2
-  sellprice: 1
-  price_increase: 2
-  sell_price_increase: 2
+  price: 200
+  sellprice: 0
+  price_increase: 200
+  sell_price_increase: 0
   level_skill: 0
   damage: 0
   radius: 0
@@ -41,5 +41,5 @@ MonoBehaviour:
   knockback_duration_increase: 0
   range_increase: 0
   fire_rate_increase: 0
-  hp_increase: 20
-  is_upgraded: 0
+  hp_increase: 50
+  is_upgraded: 1

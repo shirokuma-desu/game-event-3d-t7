@@ -82,7 +82,7 @@ public class GameManager : GenericSingleton<GameManager>
             Debug.LogWarning("GameManager: The game is already paused");
         }
 
-        Time.timeScale = .1f;
+        Time.timeScale = .01f;
 
         m_gameState = State.Paused;
     }

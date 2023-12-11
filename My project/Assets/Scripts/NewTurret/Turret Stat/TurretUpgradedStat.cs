@@ -42,7 +42,7 @@ public class TurretUpgradedStat : MonoBehaviour
         {
             m_bonusHealth += ts.health;
             m_bonusAttackDamage = ts.attackDamage;
-            m_bonusAttackSpeed += ts.attackSpeed;
+            m_bonusAttackSpeed += ts.attackSpeed / 3f;
             m_bonusAttackRange += ts.attackRange;
             m_bonusStunDuration += ts.stunDuration;
             m_bonusKnockbackAmount += ts.knockbackAmount;

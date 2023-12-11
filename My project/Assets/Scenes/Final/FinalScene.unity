@@ -13011,11 +13011,6 @@ PrefabInstance:
       objectReference: {fileID: 463784811}
     - target: {fileID: 7377702755778964649, guid: 507dada1523d67244aabc101b7ffccea,
         type: 3}
-      propertyPath: m_enemyManager
-      value: 
-      objectReference: {fileID: 1593230889}
-    - target: {fileID: 7377702755778964649, guid: 507dada1523d67244aabc101b7ffccea,
-        type: 3}
       propertyPath: m_towerSpots.Array.data[0]
       value: 
       objectReference: {fileID: 625007797}
@@ -21123,37 +21118,37 @@ MonoBehaviour:
   - Name: Soldier
     Spawner: {fileID: 1095843327}
     StartSpawnTime: 0
-    StartInterval: 1
-    IntervalDecrease: 0.05
-    IntervalTerminal: 0.5
+    StartInterval: 3
+    IntervalDecrease: 0.1
+    IntervalTerminal: 0.2
     SpawnProbability: 1
   - Name: Angel
     Spawner: {fileID: 1860512027}
-    StartSpawnTime: 60
-    StartInterval: 2
-    IntervalDecrease: 0.05
-    IntervalTerminal: 0.3
+    StartSpawnTime: 120
+    StartInterval: 3
+    IntervalDecrease: 0.1
+    IntervalTerminal: 0.2
     SpawnProbability: 1
   - Name: Paladin
     Spawner: {fileID: 899900217}
-    StartSpawnTime: 120
-    StartInterval: 2
-    IntervalDecrease: 0.02
+    StartSpawnTime: 300
+    StartInterval: 5
+    IntervalDecrease: 0.1
     IntervalTerminal: 2
     SpawnProbability: 1
   - Name: Priest
     Spawner: {fileID: 1256680058}
-    StartSpawnTime: 180
-    StartInterval: 4
-    IntervalDecrease: 0.02
-    IntervalTerminal: 3
+    StartSpawnTime: 480
+    StartInterval: 7
+    IntervalDecrease: 0.2
+    IntervalTerminal: 2
     SpawnProbability: 1
   - Name: Mother
     Spawner: {fileID: 71339180}
-    StartSpawnTime: 240
-    StartInterval: 5
-    IntervalDecrease: 0.02
-    IntervalTerminal: 3
+    StartSpawnTime: 720
+    StartInterval: 8
+    IntervalDecrease: 0.2
+    IntervalTerminal: 2
     SpawnProbability: 1
 --- !u!114 &1159067240
 MonoBehaviour:
@@ -21176,7 +21171,7 @@ MonoBehaviour:
   m_timeScoreSave: {fileID: 11400000, guid: 25cdb9d3b6503ad43be886c9f7e92173, type: 2}
   m_endShockwave: {fileID: 4360717307163777143, guid: fa6215c0357bdce4eafedaa0171871a0,
     type: 3}
-  m_maxTime: 900
+  m_maxTime: 1200
 --- !u!4 &1159067241
 Transform:
   m_ObjectHideFlags: 0
@@ -22421,11 +22416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86879fd3c3399fe44852526e4054506a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_total_souls: 100000
-  m_reroll_price: 0
+  m_total_souls: 400
+  m_reroll_price: 100
   m_price_reroll_increase: 10
-  m_price_turret_increase: 10
-  m_price_turret: 50
+  m_price_turret_increase: 50
+  m_price_turret: 100
   shop_inventory: {fileID: 11400000, guid: ef1209a5b0ceb584cbc0f12ef2892b13, type: 2}
   emptySlot: {fileID: 11400000, guid: c25c52d347342d448baa2661fa4982d6, type: 2}
   player_inventory_SO: {fileID: 11400000, guid: 338bda6eabc5d97418589377757545ff,
@@ -37628,9 +37623,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37.61947, y: 656.8938}
+  m_AnchoredPosition: {x: 54.9823, y: 651.1062}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5194223, y: 1.1026548}
+  m_Pivot: {x: 0.5283865, y: 1.0973451}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0

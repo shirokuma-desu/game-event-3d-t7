@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TurretSO
   m_EditorClassIdentifier: 
   health: 100
-  attackDamage: 1
-  attackSpeed: 5
-  attackRange: 30
+  attackDamage: 8
+  attackSpeed: 2
+  attackRange: 20
   stunDuration: 0
-  knockbackAmount: 200
+  knockbackAmount: 0
   knockbackDuration: 0.1

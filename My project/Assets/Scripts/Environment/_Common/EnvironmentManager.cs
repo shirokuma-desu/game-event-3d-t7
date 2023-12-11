@@ -17,6 +17,7 @@ public class EnvironmentManager : GenericSingleton<EnvironmentManager>
     public EnemySpawnZone EnemySpawnZone { get => m_enemySpawnZone; }
 
     private int m_currentTowerNumber;
+    public int CurrentTowerNumber { get => m_currentTowerNumber; }
 
     private bool m_isAnyTowerLeft;
     public bool IsAnyTurretLeft { get => m_isAnyTowerLeft; }

@@ -146,7 +146,7 @@ public class ShopSystem : MonoBehaviour
 
     public void buyTurret()
     {
-        if (m_total_souls < m_price_turret)
+        if (m_total_souls < m_price_turret || EnvironmentManager.Instance.CurrentTowerNumber >= 4)
         {
             return;
         }
@@ -360,10 +360,19 @@ public class ShopSystem : MonoBehaviour
             }
         }
 
-        foreach(ItemDataSO itemDataSO in shop_inventory.m_Inventory_Turret)
+        for(int i = 0; i < shop_inventory.m_Inventory_Turret.Count; i++)
         {
-            itemDataSO.is_upgraded = false;
-            itemDataSO.level_skill = 0;
+            for(int j = 0; j < default_data_item_inventory.m_Inventory_Turret.Count; j++)
+            {
+                if (shop_inventory.m_Inventory_Turret[i].ID_Skill == default_data_item_inventory.m_Inventory_Turret[j].ID_Skill)
+                {
+                    shop_inventory.m_Inventory_Turret[i].price = default_data_item_inventory.m_Inventory_Turret[j].price;
+                    shop_inventory.m_Inventory_Turret[i].is_upgraded = false;
+                    shop_inventory.m_Inventory_Turret[i].level_skill = default_data_item_inventory.m_Inventory_Turret[j].level_skill;
+                }
+                
+                //Debug.Log()
+            }
         }
     }
 

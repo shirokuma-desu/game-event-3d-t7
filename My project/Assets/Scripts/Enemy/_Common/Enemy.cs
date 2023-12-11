@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         if (!IsDied)
         {
             var go = Instantiate(FloatingDamageText, transform.position + Random.insideUnitSphere, Quaternion.identity, transform);
-            go.GetComponent<TextMeshPro>().text = _ammount.ToString();
+            go.GetComponent<TextMeshPro>().text = (_ammount * m_damageTakenModifyScale).ToString();
         }
     }
 
@@ -146,7 +146,6 @@ public class Enemy : MonoBehaviour
     {
         m_visual.StartAttackEffect();
 
-        Debug.Log(_turret);
         _turret.TakeDamage(m_attackDamage);
         
         IsDied = true;
@@ -233,6 +232,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeKnockbackEffect(float _ammount, float _duration)
     {
+        if (_duration >= .1f) _duration = .1f;
         EnemyDebuff _debuff = new EnemyDebuff(
             EnemyDebuff.DebuffType.Knockback, _ammount, _duration
         );
@@ -302,7 +302,8 @@ public class Enemy : MonoBehaviour
     {
         m_collider.enabled = true;
         
-        m_currentHealth = m_maxHealth;
+        if (GameManager.Instance.GameTime > 7 * 60f) m_currentHealth = m_maxHealth + (GameManager.Instance.GameTime * 1f);
+        else m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 
         IsSpawned = false;

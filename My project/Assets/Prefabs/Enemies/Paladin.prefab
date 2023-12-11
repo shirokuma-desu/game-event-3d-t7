@@ -105,7 +105,7 @@ MonoBehaviour:
   m_maxHealth: 300
   m_moveSpeed: 50
   m_attackDamage: 200
-  m_bounty: 30
+  m_bounty: 15
   m_attackRayLength: 2.8
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
   m_anEnemyAttacking: {fileID: 11400000, guid: 6b08b8d4680f9e84c8fc7793499e72d6, type: 2}
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_model: {fileID: 7370503778236129036}
+  m_originalModelPosition: {x: 0, y: 0, z: 0}
   m_renderer: {fileID: 4385800465727851871}
   m_animator: {fileID: 7496014846686787663}
   m_aniClips: []

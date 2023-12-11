@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
 
                 StartSpawning(_spawnData);
 
-                StartCoroutine(DeceaseIntervalCountdown(_spawnData, 60f));
+                StartCoroutine(DeceaseIntervalCountdown(_spawnData, 10f));
             }
         }             
     }
@@ -63,6 +63,6 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(DeceaseIntervalCountdown(_spawnData, 60f));
+        StartCoroutine(DeceaseIntervalCountdown(_spawnData, 10f));
     }
 }

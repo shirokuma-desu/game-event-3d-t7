@@ -17,22 +17,22 @@ MonoBehaviour:
   image_upgrade: {fileID: 21300000, guid: 8c86a8d42467a434eaa31d0fd6666994, type: 3}
   skill_name: shade
   description: 
-  multi_cast_chance: 100
-  price: 35
-  sellprice: 26
-  price_increase: 5
-  sell_price_increase: 2
+  multi_cast_chance: 33
+  price: 100
+  sellprice: 50
+  price_increase: 150
+  sell_price_increase: 25
   level_skill: 0
   damage: 10
-  radius: 10
-  cooldown: 2
-  instance_per_cast: 3
+  radius: 5
+  cooldown: 3
+  instance_per_cast: 2
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 0
+  damage_increase: 20
   radius_increase: 0
   cooldown_decrease: 0
-  instance_increase: 0
+  instance_increase: 1
   debuff_duration_increase: 0
   debuff_effective_increase: 0
   ID_Effect: 0

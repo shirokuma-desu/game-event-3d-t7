@@ -17,24 +17,24 @@ MonoBehaviour:
   image_upgrade: {fileID: 21300000, guid: 0975fd1d16c72b74bbcaab2fd1c08b4b, type: 3}
   skill_name: Boiling Acid
   description: 'Spews forth boiling acid that burns and erodes enemies armor. '
-  multi_cast_chance: 100
-  price: 5
-  sellprice: 2
-  price_increase: 0
-  sell_price_increase: 0
+  multi_cast_chance: 50
+  price: 200
+  sellprice: 100
+  price_increase: 300
+  sell_price_increase: 50
   level_skill: 0
-  damage: 10
-  radius: 12
-  cooldown: 3
+  damage: 5
+  radius: 5
+  cooldown: 4
   instance_per_cast: 0
   debuff_duration: 8
-  debuff_effective: 1
-  damage_increase: 0
-  radius_increase: 0
+  debuff_effective: 0.3
+  damage_increase: 5
+  radius_increase: 1
   cooldown_decrease: 0
   instance_increase: 0
-  debuff_duration_increase: 0
-  debuff_effective_increase: 0
+  debuff_duration_increase: 0.25
+  debuff_effective_increase: 0.1
   ID_Effect: 0
   stun_duration_increase: 0
   knockback_distance_increase: 0

@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc85db487df27049a18a3a2a941d30e, type: 3}
   m_Name: Turret_Range
   m_EditorClassIdentifier: 
-  ID_Skill: 5
+  ID_Skill: 4
   image: {fileID: 21300000, guid: aed51e0a51e67154386cf062181f95c1, type: 3}
-  image_upgrade: {fileID: 21300000, guid: da91f6f7a1518f54bb1466a07f2d7e8d, type: 3}
-  skill_name: Range
+  image_upgrade: {fileID: 21300000, guid: aed51e0a51e67154386cf062181f95c1, type: 3}
+  skill_name: Range+
   description: Increase Range
   multi_cast_chance: 0
-  price: 3
-  sellprice: 1
-  price_increase: 2
-  sell_price_increase: 1
+  price: 200
+  sellprice: 0
+  price_increase: 100
+  sell_price_increase: 0
   level_skill: 0
   damage: 0
   radius: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   stun_duration_increase: 0
   knockback_distance_increase: 0
   knockback_duration_increase: 0
-  range_increase: 0
+  range_increase: 10
   fire_rate_increase: 0
   hp_increase: 0
   is_upgraded: 0
