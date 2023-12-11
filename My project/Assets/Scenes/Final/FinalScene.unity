@@ -371,11 +371,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MulticastText
       objectReference: {fileID: 0}
-    - target: {fileID: 9116005820580296804, guid: cdcb6d9302cd83947a932ef44b033736,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21784,7 +21779,7 @@ MonoBehaviour:
     StartSpawnTime: 240
     StartInterval: 5
     IntervalDecrease: 0.1
-    IntervalTerminal: 2
+    IntervalTerminal: 1
     SpawnProbability: 1
   - Name: Priest
     Spawner: {fileID: 1256680058}
@@ -37569,11 +37564,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1864966582}
     m_Modifications:
-    - target: {fileID: 5092157009395200581, guid: dce0f9d13d74ae74bb48763f870088ce,
-        type: 3}
-      propertyPath: m_renderer
-      value: 
-      objectReference: {fileID: 1980641251}
     - target: {fileID: 8210961863220809324, guid: dce0f9d13d74ae74bb48763f870088ce,
         type: 3}
       propertyPath: m_Pivot.x
@@ -37679,22 +37669,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MulticastTimeText
       objectReference: {fileID: 0}
-    - target: {fileID: 9116005820580296804, guid: dce0f9d13d74ae74bb48763f870088ce,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce0f9d13d74ae74bb48763f870088ce, type: 3}
---- !u!23 &1980641251 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5409335377496622851, guid: dce0f9d13d74ae74bb48763f870088ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1980641250}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1980641252 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8210961863220809324, guid: dce0f9d13d74ae74bb48763f870088ce,
@@ -38648,9 +38627,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 49.19469, y: 656.8938}
+  m_AnchoredPosition: {x: 41.477875, y: 651.1062}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.52539843, y: 1.1026548}
+  m_Pivot: {x: 0.52141434, y: 1.0973451}
 --- !u!114 &2114199238
 MonoBehaviour:
   m_ObjectHideFlags: 0

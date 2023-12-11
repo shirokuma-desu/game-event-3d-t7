@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         if (!IsDied)
         {
             var go = Instantiate(FloatingDamageText, transform.position + Random.insideUnitSphere, Quaternion.identity, transform);
-            go.GetComponent<TextMeshPro>().text = (_ammount * m_damageTakenModifyScale).ToString();
+            go.GetComponent<TextMeshPro>().text = ((int)(_ammount * m_damageTakenModifyScale)).ToString();
         }
     }
 

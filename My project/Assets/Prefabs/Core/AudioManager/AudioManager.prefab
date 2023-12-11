@@ -124,8 +124,8 @@ MonoBehaviour:
   - Name: BGM
     soundType: 3
     audioClip: {fileID: 8300000, guid: de94c9a3867916445bba8906bf08d18d, type: 3}
-    volumeLow: 0.4
-    volumeHigh: 0.4
+    volumeLow: 0.6
+    volumeHigh: 0.6
     pitchLow: 1
     pitchHigh: 1
   - Name: MenuBGM
@@ -138,15 +138,15 @@ MonoBehaviour:
   - Name: Multicast01
     soundType: 13
     audioClip: {fileID: 8300000, guid: 6873ec2187111b342ac3806425be53c6, type: 3}
-    volumeLow: 0.4
-    volumeHigh: 0.4
+    volumeLow: 0.6
+    volumeHigh: 0.6
     pitchLow: 1
     pitchHigh: 1
   - Name: Multicast02
     soundType: 14
     audioClip: {fileID: 8300000, guid: 2ae16de59efd9294aaeaec114d3d8af9, type: 3}
-    volumeLow: 0.3
-    volumeHigh: 0.3
+    volumeLow: 0.5
+    volumeHigh: 0.5
     pitchLow: 1
     pitchHigh: 1
   - Name: UIClick
