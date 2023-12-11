@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82545534ff832d6439ec726341668908, type: 3}
   m_Name: TimeScore
   m_EditorClassIdentifier: 
-  BestTime: 900
-  CurrentTime: 900
+  BestTime: 1200
+  CurrentTime: 1200

@@ -302,7 +302,7 @@ public class Enemy : MonoBehaviour
     {
         m_collider.enabled = true;
         
-        if (GameManager.Instance.GameTime > 7 * 60f) m_currentHealth = m_maxHealth + (GameManager.Instance.GameTime * 1f);
+        if (GameManager.Instance.GameTime > 6 * 60f) m_currentHealth = m_maxHealth + (GameManager.Instance.GameTime * 1f);
         else m_currentHealth = m_maxHealth;
         m_currentMoveSpeed = m_moveSpeed;
 
