@@ -104,7 +104,7 @@ public class ToolTip : MonoBehaviour
 
         headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name.Trim() + "\n"+ PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
         contentField.text = itemdata.description;
-        resetGameObj();
+        resetGameObjOn();
         handleDisplayText(itemdata);
     }
 
@@ -120,7 +120,9 @@ public class ToolTip : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
-
+        resetGameObjOff();
+        headerField.gameObject.SetActive(true);
+        contentField.gameObject.SetActive(true);
         headerField.text = itemdata.is_upgraded ? PREFIX_TITLE + itemdata.skill_name + PREFIX_LEVEL + itemdata.level_skill + "+" : "Buy " + itemdata.skill_name;
         contentField.text = itemdata.description;
 
@@ -250,11 +252,19 @@ public class ToolTip : MonoBehaviour
         }
     }
 
-    private void resetGameObj()
+    private void resetGameObjOn()
     {
         foreach(var item in totalText)
         {
             item.gameObject.SetActive(true);
+        }
+    }
+
+    private void resetGameObjOff()
+    {
+        foreach (var item in totalText)
+        {
+            item.gameObject.SetActive(false);
         }
     }
 }
