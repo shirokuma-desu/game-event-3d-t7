@@ -29,8 +29,8 @@ MonoBehaviour:
   instance_per_cast: 0
   debuff_duration: 0
   debuff_effective: 0
-  damage_increase: 50
-  radius_increase: 2
+  damage_increase: 25
+  radius_increase: 1
   cooldown_decrease: 0
   instance_increase: 0
   debuff_duration_increase: 0

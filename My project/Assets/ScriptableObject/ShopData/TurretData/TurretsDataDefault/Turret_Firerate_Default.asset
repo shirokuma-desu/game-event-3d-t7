@@ -20,7 +20,7 @@ MonoBehaviour:
   multi_cast_chance: 0
   price: 400
   sellprice: 0
-  price_increase: 400
+  price_increase: 800
   sell_price_increase: 0
   level_skill: 0
   damage: 0

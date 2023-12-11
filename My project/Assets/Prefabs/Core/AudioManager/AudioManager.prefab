@@ -124,8 +124,8 @@ MonoBehaviour:
   - Name: BGM
     soundType: 3
     audioClip: {fileID: 8300000, guid: de94c9a3867916445bba8906bf08d18d, type: 3}
-    volumeLow: 0.3
-    volumeHigh: 0.3
+    volumeLow: 0.4
+    volumeHigh: 0.4
     pitchLow: 1
     pitchHigh: 1
   - Name: MenuBGM
@@ -187,8 +187,8 @@ MonoBehaviour:
   - Name: SoulCollect
     soundType: 20
     audioClip: {fileID: 8300000, guid: 7424578cd4865c2458516d9f24965fbb, type: 3}
-    volumeLow: 0.1
-    volumeHigh: 0.2
+    volumeLow: 0.02
+    volumeHigh: 0.1
     pitchLow: 0.1
     pitchHigh: 0.5
   - Name: Rizz

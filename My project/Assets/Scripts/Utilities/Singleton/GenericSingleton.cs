@@ -30,12 +30,12 @@ public class GenericSingleton<T> : MonoBehaviour where T : Component
 
                 if (instance == null)
                 {
-                    GameObject instanceGameObject = new()
-                    {
-                        name = typeof(T).Name
-                    };
+                    // GameObject instanceGameObject = new()
+                    // {
+                    //     name = typeof(T).Name
+                    // };
 
-                    instance = instanceGameObject.AddComponent<T>();
+                    // instance = instanceGameObject.AddComponent<T>();
                 }
             }
 

@@ -109,9 +109,9 @@ MonoBehaviour:
   m_attackRayLength: 0.9
   m_anEnemyDie: {fileID: 11400000, guid: 81baaa40dc9ae874f8c9d23c09eadbd0, type: 2}
   m_anEnemyAttacking: {fileID: 11400000, guid: 6b08b8d4680f9e84c8fc7793499e72d6, type: 2}
-  m_healAmmount: 50
+  m_healAmmount: 100
   m_healRadius: 10
-  m_healingInterval: 3
+  m_healingInterval: 2
   m_healEffect: {fileID: 8759802838134578910, guid: 93752f3049e7a7c40865ce752a391da0,
     type: 3}
 --- !u!114 &5522819284237837353
