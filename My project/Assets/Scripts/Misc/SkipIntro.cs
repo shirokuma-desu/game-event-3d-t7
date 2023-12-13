@@ -10,10 +10,12 @@ public class SkipIntro : MonoBehaviour
     [SerializeField] private double time;
     [SerializeField] private double currentTime;
     [SerializeField] private VideoPlayer introvideo;
+    [SerializeField] private GameObject text_popup;
 
     // Start is called before the first frame update
     void Start()
     {
+        text_popup.SetActive(false);
         time = introvideo.clip.length - 3.25f;
     }
 
@@ -29,6 +31,10 @@ public class SkipIntro : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("StartMenu");
+        }
+        if (Input.anyKeyDown)
+        {
+            text_popup.SetActive(true);
         }
     }
 
