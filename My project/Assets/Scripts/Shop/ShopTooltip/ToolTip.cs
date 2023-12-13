@@ -193,7 +193,7 @@ public class ToolTip : MonoBehaviour
             case TURRET_UPGRADE_DAMAGE:
                 chanceField.gameObject.SetActive(false);
                 contentField.text = data.description;
-                damageField.text = "Damage: " + baseTurretStatsSO.BonusAttackDamage.ToString() + " ( + " + data.hp_increase + " /lv)";
+                damageField.text = "Damage: " + baseTurretStatsSO.BonusAttackDamage.ToString() + " ( + " + data.damage_increase + " /lv)";
                 RadiusField.gameObject.SetActive(false);
                 cooldownField.gameObject.SetActive(false);
                 durationField.gameObject.SetActive(false);
@@ -203,7 +203,7 @@ public class ToolTip : MonoBehaviour
             case TURRET_UPGRADE_FIRERATE:
                 chanceField.gameObject.SetActive(false);
                 contentField.text = data.description;
-                damageField.text = "Fire Rate: " + baseTurretStatsSO.BonusAttackSpeed.ToString() + " ( + " + data.hp_increase + " /lv)";
+                damageField.text = "Fire Rate: " + baseTurretStatsSO.BonusAttackSpeed.ToString() + " ( + " + data.fire_rate_increase + " /lv)";
                 RadiusField.gameObject.SetActive(false);
                 cooldownField.gameObject.SetActive(false);
                 durationField.gameObject.SetActive(false);
@@ -223,7 +223,7 @@ public class ToolTip : MonoBehaviour
             case TURRET_UPGRADE_RANGE:
                 chanceField.gameObject.SetActive(false);
                 contentField.text = data.description;
-                damageField.text = "Range: " + baseTurretStatsSO.BonusAttackRange + " ( + " + data.hp_increase + " /lv)";
+                damageField.text = "Range: " + baseTurretStatsSO.BonusAttackRange + " ( + " + data.range_increase + " /lv)";
                 RadiusField.gameObject.SetActive(false);
                 cooldownField.gameObject.SetActive(false);
                 durationField.gameObject.SetActive(false);
