@@ -53,9 +53,9 @@ public class ToolTip : MonoBehaviour
     private const string SKILL_SHADE = "Shade";
     private const string SKILL_STARFALL = "Ghostflame";
     private const string TURRET_UPGRADE_HP = "HP";
-    private const string TURRET_UPGRADE_DAMAGE = "Damage";
-    private const string TURRET_UPGRADE_FIRERATE = "Fire rate";
-    private const string TURRET_UPGRADE_RANGE = "Range";
+    private const string TURRET_UPGRADE_DAMAGE = "Damage+";
+    private const string TURRET_UPGRADE_FIRERATE = "Fire Rate+";
+    private const string TURRET_UPGRADE_RANGE = "Range+";
     private const string TURRET_UPGRADE_KNOCK_BACK = "Knockback";
     private const string TURRE_UPGRADE_STUN = "Stun";
 
